@@ -1,6 +1,6 @@
 <?php
 
-namespace SiteBundle;
+namespace Geolocation\SiteBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
