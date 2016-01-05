@@ -1,0 +1,1361 @@
+CPF rév. 2.1, 2015 - Niveau 5 - Liste des catégories;
+CODE;LIBELLE
+01.11.1;Blé
+01.11.2;Maïs
+01.11.3;Orge, seigle et avoine
+01.11.4;Sorgho, millet et autres céréales
+01.11.5;Paille et balles de céréales
+01.11.6;Légumes à cosse, verts
+01.11.7;Légumes à cosse, secs
+01.11.8;Fèves de soja et arachides
+01.11.9;Autres oléagineux
+01.12.1;Riz, non décortiqué
+01.13.1;Légumes à feuilles ou à tiges
+01.13.2;Melons
+01.13.3;Autres légumes à fruits
+01.13.4;Légumes à racine, à bulbe ou à tubercules
+01.13.5;Racines et tubercules à amidon ou inuline comestibles
+01.13.6;Plants et semences potagers, à l'exclusion des semences de betteraves
+01.13.7;Betteraves à sucre et semences de betteraves à sucre
+01.13.8;Champignons et truffes
+01.13.9;Légumes frais n.c.a.
+01.14.1;Cannes à sucre
+01.15.1;Tabac brut
+01.16.1;Plantes textiles
+01.19.1;Plantes fourragères
+01.19.2;"Fleurs coupées et boutons de fleurs ; semences florales"
+01.19.3;Semences de betteraves et de plantes fourragères, autres produits végétaux bruts
+01.21.1;Raisin
+01.22.1;Fruits tropicaux et subtropicaux
+01.23.1;Agrumes
+01.24.1;Pommes
+01.24.2;Autres fruits à pépins et à noyau
+01.25.1;Baies et fruits du genre vaccinium
+01.25.2;Semences fruitières
+01.25.3;Fruits à coque (à l'exclusion des noix sauvages, arachides et noix de coco)
+01.25.9;Autres fruits d'arbres ou d'arbustes n.c.a.
+01.26.1;Olives
+01.26.2;Noix de coco
+01.26.9;Autres fruits oléagineux
+01.27.1;Plantes à boissons
+01.28.1;Épices, brutes
+01.28.2;Houblon en cônes
+01.28.3;Plantes utilisées principalement en parfumerie, en pharmacie ou à des fins insecticides, fongicides ou similaires
+01.29.1;Caoutchouc naturel brut
+01.29.2;Arbres de noël coupés
+01.29.3;Matières premières végétales utilisées principalement pour la vannerie, le rembourrage, la teinture ou le tannage
+01.30.1;"Plants : plants de pépinière, bulbes, tubercules et rhizomes, boutures et greffons ; blanc de champignon"
+01.41.1;Vaches laitières, vivantes
+01.41.2;Lait de vache, brut
+01.42.1;Autres bovins et buffles, vivants
+01.42.2;Sperme de taureau et de buffle
+01.43.1;Chevaux et autres équidés, vivants
+01.44.1;Chameaux et autres camélidés, vivants
+01.45.1;Ovins et caprins, vivants
+01.45.2;Lait de brebis et de chèvre, brut
+01.45.3;Laine en suint et poils d'ovins et de caprins
+01.46.1;Porcins, vivants
+01.47.1;Volailles, vivantes
+01.47.2;Œufs, en coquille, frais
+01.49.1;Autres animaux d'élevage, vivants
+01.49.2;Autres produits d'origine animale
+01.49.3;Peaux et fourrures
+01.61.1;Services de soutien aux cultures
+01.62.1;Services de soutien à la production animale
+01.63.1;Traitement primaire des récoltes
+01.64.1;Traitement des semences
+01.70.1;Chasse, piégeage et services annexes
+02.10.1;"Plants d'arbres forestiers ; semences d'arbres forestiers"
+02.10.2;Services des pépinières forestières
+02.10.3;Arbres forestiers
+02.20.1;Bois brut
+02.30.1;Gommes naturelles
+02.30.2;Liège naturel, brut ou simplement préparé
+02.30.3;Parties de plantes, herbes, mousses et lichens utilisables à des fins ornementales
+02.30.4;Produits forestiers comestibles
+02.40.1;Services de soutien à l'exploitation forestière
+03.00.1;Poissons, vivants, non destinés à l'alimentation humaine
+03.00.2;Poissons, vivants, frais ou réfrigérés, destinés à l'alimentation humaine
+03.00.3;Crustacés, non congelés ou surgelés
+03.00.4;Mollusques et autres invertébrés aquatiques vivants, frais ou réfrigérés
+03.00.5;Perles, brutes
+03.00.6;Autres plantes et animaux aquatiques et leurs produits
+03.00.7;Services de soutien à la pêche et à l'aquaculture
+05.10.1;Houille
+05.20.1;Lignite
+06.10.1;Huiles brutes de pétrole ou de minéraux bitumineux
+06.10.2;Sables et schistes bitumineux
+06.20.1;Gaz naturel, liquéfié ou gazeux
+07.10.1;Minerais de fer
+07.21.1;Minerais d'uranium et de thorium
+07.29.1;Autres minerais métalliques
+08.11.1;Pierres ornementales ou de construction
+08.11.2;Calcaire industriel et gypse
+08.11.3;Craie et dolomie crue
+08.11.4;Ardoise
+08.12.1;Sables et granulats
+08.12.2;Argiles et kaolin
+08.91.1;Minéraux chimiques et engrais minéraux
+08.92.1;Tourbe
+08.93.1;"Sel et chlorure de sodium pur ; eau de mer"
+08.99.1;"Bitumes et asphaltes naturels ; asphaltites et roche asphaltique"
+08.99.2;"Pierres précieuses et semi-précieuses ; diamants industriels, bruts ou dégrossis ; pierre ponce ; émeri ; corindon et grenat naturels et autres abrasifs naturels ; autres minéraux"
+09.10.1;Services de soutien à l'extraction d'hydrocarbures
+09.90.1;Services de soutien aux autres industries extractives
+10.11.1;Viandes de boucherie, fraîches ou réfrigérées
+10.11.2;Abats comestibles d'animaux de boucherie, frais ou réfrigérés
+10.11.3;"Viande et abats comestibles congelés ou surgelés ; autres viandes et abats comestibles"
+10.11.4;Laine de délainage et cuirs bruts
+10.11.5;Graisses d'animaux de boucherie
+10.11.6;Sous-produits animaux bruts, non comestibles
+10.11.9;Opérations sous-traitées intervenant dans la préparation de viandes de boucherie et produits d'abattage
+10.12.1;Viandes de volailles, fraîches ou réfrigérées
+10.12.2;Viandes de volailles, congelées ou surgelées
+10.12.3;Graisses de volailles
+10.12.4;Abats comestibles de volailles
+10.12.5;Plumes et duvets
+10.12.9;Opérations sous-traitées intervenant dans la préparation de viandes de volailles
+10.13.1;Conserves et préparations à base de viande, abats et sang
+10.13.9;"Cuisson et autres façons de préparations à base de viandes ; opérations sous-traitées intervenant dans l'élaboration de produits à base de viandes"
+10.20.1;Poissons, frais, réfrigérés, congelés ou surgelés
+10.20.2;"Autres préparations et conserves à base de poissons ; caviar et ses succédanés"
+10.20.3;Crustacés, mollusques, algues et autres invertébrés aquatiques, congelés ou surgelés, préparés ou en conserves
+10.20.4;Farines, poudres et pellets, impropres à l'alimentation humaine et autres produits n.c.a. à base de poissons, crustacés, mollusque, autres invertébrés aquatiques ou algues
+10.20.9;"Fumage et autres façons de préparations à base de poissons ; opérations sous-traitées intervenant dans l'élaboration de préparations et conserves à base de poissons, crustacés et mollusques"
+10.31.1;Préparations et conserves à base de pommes de terre
+10.31.9;"Cuisson et autres façons de préparations à base de pommes de terre ; opérations sous-traitées intervenant dans l'élaboration de préparations et conserves à base de pommes de terre"
+10.32.1;Jus de fruits et légumes
+10.32.9;Opérations sous-traitées intervenant dans l'élaboration de jus de fruits et légumes
+10.39.1;Préparations et conserves de légumes, à l'exclusion des pommes de terre
+10.39.2;Préparations et conserves de fruits
+10.39.3;Déchets et sous-produits de fruits et légumes
+10.39.9;"Cuisson et autres façons de préparations à base de fruits et légumes ; opérations sous-traitées intervenant dans l'élaboration de préparations et conserves à base de fruits et légumes"
+10.41.1;Huiles et graisses animales et leurs fractions, brutes
+10.41.2;Huiles végétales, brutes
+10.41.3;Linters de coton
+10.41.4;"Tourteaux et autres résidus solides de graisses et d'huiles végétales ; farines et poudres de graines ou de fruits oléagineux"
+10.41.5;Huiles raffinées, à l'exclusion des résidus
+10.41.6;Huiles et graisses animales ou végétales et leurs fractions, hydrogénées, estérifiées, mais non autrement préparées
+10.41.7;"Cires végétales (à l'exclusion des triglycérides) ; dégras ; résidus provenant du traitement de corps gras ou de cires animales ou végétales"
+10.41.9;Opérations sous-traitées intervenant dans l'élaboration d'huiles et de graisses
+10.42.1;Margarines et graisses comestibles similaires
+10.42.9;Opérations sous-traitées intervenant dans l'élaboration de margarines et graisses comestibles similaires
+10.51.1;Lait liquide et crème de lait
+10.51.2;Lait et crème de lait, sous forme solide
+10.51.3;Beurre et pâtes à tartiner laitières
+10.51.4;Fromages
+10.51.5;Autres produits laitiers
+10.51.9;Opérations sous-traitées intervenant dans l'élaboration de produits laitiers
+10.52.1;Glaces et sorbets
+10.52.9;Opérations sous-traitées intervenant dans l'élaboration de glaces et sorbets
+10.61.1;Riz, semi-blanchi ou blanchi, décortiqué ou en brisures
+10.61.2;"Farines de céréales et de légumes ; mélanges de ces farines"
+10.61.3;Gruaux, semoules, pellets et autres produits à base de céréales
+10.61.4;Sons et autres résidus de meunerie
+10.61.9;Opérations sous-traitées intervenant dans l'élaboration de produits du travail des grains
+10.62.1;"Produits amylacés ; sucres et sirops de sucre n.c.a."
+10.62.2;Résidus d'amidonnerie
+10.62.9;Opérations sous-traitées intervenant dans l'élaboration de produits amylacés
+10.71.1;"Pain ; pâtisseries et viennoiseries fraîches"
+10.71.9;Opérations sous-traitées intervenant dans l'élaboration du pain et de pâtisseries et viennoiseries, frais et congelés ou surgelés
+10.72.1;"Biscottes et biscuits ; pâtisseries de conservation"
+10.72.9;Opérations sous-traitées intervenant dans l'élaboration de biscottes, de biscuits et de pâtisseries de conservation
+10.73.1;Macaronis, nouilles, couscous et autres produits similaires à base de farine
+10.73.9;Opérations sous-traitées intervenant dans l'élaboration de pâtes alimentaires
+10.81.1;"Sucre de canne ou de betterave, brut ou raffiné ; mélasses"
+10.81.2;Pulpe de betteraves, bagasses et autres résidus de sucrerie
+10.81.9;Opérations sous-traitées intervenant dans l'élaboration du sucre
+10.82.1;Cacao en masse, dégraissé ou non, beurre de cacao, cacao en poudre
+10.82.2;Chocolat et produits de confiserie
+10.82.3;Coques, pellicules et autres résidus de cacao
+10.82.9;Opérations sous-traitées intervenant dans l'élaboration de cacao, chocolat et produits de confiserie
+10.83.1;Café et thé transformés
+10.83.9;Opérations sous-traitées intervenant dans l'élaboration du café et du thé
+10.84.1;"Vinaigres ; sauces ; mélanges de condiments ; farines de moutarde et moutardes préparées"
+10.84.2;Épices préparées
+10.84.3;Sel de qualité alimentaire
+10.84.9;Opérations sous-traitées intervenant dans l'élaboration de condiments et d'assaisonnements
+10.85.1;Plats préparés
+10.85.9;Opérations sous-traitées intervenant dans l'élaboration de plats préparés
+10.86.1;Aliments homogénéisés et diététiques
+10.86.9;Opérations sous-traitées intervenant dans l'élaboration d'aliments homogénéisés et diététiques
+10.89.1;"Soupes, ovoproduits, levures et autres produits alimentaires ; extraits et jus de viandes, de poissons et d'invertébrés aquatiques"
+10.89.9;Opérations sous-traitées intervenant dans l'élaboration d'autres produits alimentaires n.c.a.
+10.91.1;Aliments pour animaux de ferme, à l'exclusion des fourrages déshydratés (luzerne)
+10.91.2;Fourrages déshydratés (luzerne)
+10.91.9;Opérations sous-traitées intervenant dans l'élaboration d'aliments pour animaux de ferme
+10.92.1;Aliments pour animaux de compagnie
+10.92.9;Opérations sous-traitées intervenant dans l'élaboration d'aliments pour animaux de compagnie
+11.01.1;Boissons alcoolisées distillées
+11.01.9;Opérations sous-traitées intervenant dans l'élaboration de boissons alcoolisées distillées
+11.02.1;"Vins de raisin frais ; moûts de raisins"
+11.02.2;"Lie de vin ; tartre"
+11.02.9;Opérations sous-traitées intervenant dans l'élaboration de vins de raisin
+11.03.1;"Autres boissons fermentées (cidre, poiré, hydromel) ; mélanges de boissons alcoolisées"
+11.03.9;Opérations sous-traitées dans le cadre de l'élaboration du cidre et d'autres vins de fruits
+11.04.1;Vermouths et autres vins de raisin frais aromatisés
+11.04.9;Opérations sous-traitées intervenant dans l'élaboration d'autres boissons fermentées non distillées
+11.05.1;Bière, à l'exclusion des résidus de brasserie
+11.05.2;Résidus de brasserie et de distillerie
+11.05.9;Opérations sous-traitées intervenant dans l'élaboration de la bière
+11.06.1;Malt
+11.06.9;Opérations sous-traitées intervenant dans l'élaboration du malt
+11.07.1;Eaux minérales et boissons rafraîchissantes
+11.07.9;Opérations sous-traitées intervenant dans l'élaboration d'eaux minérales et boissons rafraîchissantes
+12.00.1;Produits à base de tabac, à l'exclusion des déchets
+12.00.2;Déchets de tabac
+12.00.9;Opérations sous-traitées intervenant dans l'élaboration de produits à base de tabac
+13.10.1;Graisse de suint (y compris lanoline)
+13.10.2;Fibres textiles naturelles préparées
+13.10.3;Fibres artificielles ou synthétiques discontinues préparées
+13.10.4;Fils de soie ou de déchets de soie
+13.10.5;"Fils de laine conditionnés ou non pour la vente au détail ; fils de poils fins ou grossiers ou fils de crin"
+13.10.6;"Fils de coton ; fils à coudre de coton"
+13.10.7;"Fils de fibres textiles végétales autres que le coton (y compris le lin, le jute, le coco et le chanvre commun) ; fils de papier"
+13.10.8;Fils de fibres discontinues ou de filaments artificiels ou synthétiques
+13.10.9;"Effilochés ; préparation de fibres textiles naturelles ; opérations sous-traitées intervenant dans la fabrication de fils textiles"
+13.20.1;Tissus (à l'exclusion des tissus spéciaux) en fibres naturelles autres que le coton
+13.20.2;Tissus de coton
+13.20.3;Tissus (à l'exclusion des tissus spéciaux) en fibres discontinues et filaments artificiels ou synthétiques
+13.20.4;Velours, peluches, tissus éponge et autres tissus spéciaux
+13.20.5;Imitation de fourrure par tissage
+13.20.9;Opérations sous-traitées intervenant dans la fabrication de tissus
+13.30.1;Apprêt de textiles
+13.91.1;Étoffes à maille
+13.91.9;Opérations sous-traitées intervenant dans la fabrication d'étoffes à maille
+13.92.1;Linge de maison, articles d'ameublement et de literie
+13.92.2;Autres articles textiles confectionnés
+13.92.9;Opérations sous-traitées intervenant dans la fabrication d'articles textiles confectionnés, sauf habillement
+13.93.1;Tapis et moquettes
+13.93.9;Opérations sous-traitées intervenant dans la fabrication de tapis et moquettes
+13.94.1;Ficelles, cordes et filets, à l'exclusion des déchets
+13.94.2;Chiffons, déchets de cordages et articles textiles usés
+13.94.9;Opérations sous-traitées intervenant dans la fabrication de ficelles, cordes et filets
+13.95.1;Non-tissés et articles en non-tissés, sauf habillement
+13.95.9;Opérations sous-traitées intervenant dans la fabrication de non-tissés et d'articles en non-tissés, sauf habillement
+13.96.1;"Fils et filés métallisés ; tissus en fils métalliques et filés métallisés ; fils et cordes de caoutchouc, recouverts de textile ; produits et articles textiles pour usages techniques"
+13.96.9;Opérations sous-traitées intervenant dans la fabrication de textiles techniques et industriels
+13.99.1;"Tulles, dentelles et broderies ; fils guipés et guipures ; chenilles ; chaînettes"
+13.99.9;Opérations sous-traitées intervenant dans la fabrication d'autres textiles n.c.a.
+14.11.1;Vêtements en cuir naturel ou reconstitué
+14.11.9;Opérations sous-traitées intervenant dans la fabrication de vêtements en cuir
+14.12.1;Vêtements de travail pour hommes
+14.12.2;Vêtements de travail pour femmes
+14.12.3;Autres vêtements de travail
+14.12.9;Opérations sous-traitées intervenant dans la confection de vêtements de travail
+14.13.1;Vêtements de dessus, en maille
+14.13.2;Autres vêtements de dessus, pour hommes et garçonnets
+14.13.3;Autres vêtements de dessus, pour femmes et fillettes
+14.13.4;Fripes
+14.13.9;Opérations sous-traitées intervenant dans la confection de vêtements de dessus
+14.14.1;Vêtements de dessous, en maille
+14.14.2;Vêtements de dessous, en tissu
+14.14.3;Tee-shirts et maillots de corps, en maille
+14.14.9;Opérations sous-traitées intervenant dans la confection de vêtements de dessous
+14.19.1;Layette, survêtements et autres vêtements de sport, accessoires du vêtement, en maille
+14.19.2;Layette, autres vêtements et accessoires de l'habillement, en tissu
+14.19.3;"Accessoires en cuir ; vêtements confectionnés en feutres ou en non-tissés ; vêtements confectionnés en textiles enduits"
+14.19.4;Articles de chapellerie
+14.19.9;Opérations sous-traitées intervenant dans la confection d'autres vêtements et accessoires
+14.20.1;Vêtements, accessoires et autres articles en fourrure, à l'exclusion des coiffures
+14.20.9;Opérations sous-traitées intervenant dans la confection d'articles en fourrure
+14.31.1;Collants, bas, chaussettes et autres articles chaussants à mailles
+14.31.9;Opérations sous-traitées intervenant dans la confection d'articles chaussants à mailles
+14.39.1;Pull-overs, cardigans, chandails, gilets et articles similaires à mailles
+14.39.9;Opérations sous-traitées intervenant dans la confection d'autres articles à mailles
+15.11.1;Peaux tannées ou apprêtées
+15.11.2;"Cuirs et peaux chamoisés ; cuirs et peaux vernis ou plaqués ; cuirs et peaux métallisés"
+15.11.3;Cuirs et peaux épilés de bovins et équidés
+15.11.4;Cuirs et peaux épilés d'ovins, caprins et porcins
+15.11.5;"Cuirs et peaux d'autres animaux ; cuirs reconstitués à base de cuir"
+15.11.9;Opérations sous-traitées intervenant dans la fabrication de cuirs et peaux tannés et apprêtés et de peaux apprêtées et teintées
+;
+15.12.1;"Articles de sellerie et de bourrellerie ; articles de voyage et de maroquinerie ; autres articles en cuir"
+15.12.9;Opérations sous-traitées intervenant dans la fabrication d'articles de sellerie et de bourrellerie et d'articles de voyage et de maroquinerie
+15.20.1;Chaussures, autres que chaussures de sport et de protection et chaussures orthopédiques
+15.20.2;Chaussures de sport
+15.20.3;Chaussures de protection et autres chaussures n.c.a.
+15.20.4;"Parties de chaussures en cuir ; semelles intérieures amovibles, talonnettes et articles similaires ; guêtres, jambières et articles similaires, et leurs parties"
+15.20.9;Opérations sous-traitées intervenant dans la fabrication de chaussures
+16.10.1;"Bois, sciés ou dédossés longitudinalement, tranchés ou déroulés, d'une épaisseur supérieure à 6 mm ; traverses de chemins de fer en bois, non traitées"
+16.10.2;"Bois profilés sur au moins une face ; laine de bois ; farine de bois ; plaquettes et particules de bois"
+16.10.3;"Bois bruts ; traverses de chemins de fer en bois, imprégnées ou autrement traitées"
+16.10.9;"Séchage, imprégnation ou traitement chimique du bois ; opérations sous-traitées intervenant dans la fabrication de bois, sciés et rabotés"
+16.21.1;"Bois contreplaqués, bois plaqués et bois stratifiés similaires ; panneaux de particules et panneaux similaires en bois ou en autres matières ligneuses"
+16.21.2;"Feuilles de placage ; feuilles pour contreplaqués ; bois densifiés"
+16.21.9;"Finition de contreplaqués et panneaux à base de bois ; opérations sous-traitées intervenant dans la fabrication de panneaux et placages à base de bois"
+16.22.1;Parquets assemblés en panneaux
+16.22.9;Opérations sous-traitées intervenant dans la fabrication de parquets assemblés
+16.23.1;Éléments de menuiserie et de charpente (à l'exclusion des bâtiments préfabriqués), en bois
+16.23.2;Bâtiments préfabriqués en bois
+16.23.9;Opérations sous-traitées intervenant dans la fabrication d'autres éléments de menuiserie et de charpente
+16.24.1;Emballages en bois
+16.24.9;Opérations sous-traitées intervenant dans la fabrication d'emballages en bois
+16.29.1;Autres objets en bois
+16.29.2;Objets en liège, vannerie et sparterie
+16.29.9;"Services liés à la fabrication d'article en bois et en liège, à l'exclusion de meubles, et façons de vannerie et de sparterie ; opérations sous-traitées intervenant dans la fabrication d'autres objets en bois et d'objets en liège, sparterie et vannerie"
+17.11.1;Pâtes de bois et d'autres matières fibreuses cellulosiques
+17.11.9;Opérations sous-traitées intervenant dans la fabrication de la pâte à papier
+17.12.1;Papier journal, papier à la main et autres papiers et cartons à usage graphique, ni couchés, ni enduits
+17.12.2;Papiers toilette, pour serviettes à démaquiller, pour essuie-mains ou serviettes, ouate de cellulose et nappes de fibres de cellulose
+17.12.3;Papier pour carton ondulé
+17.12.4;Papiers non couchés, ni enduits
+17.12.5;Cartons non couchés, ni enduits (autres que les cartons utilisés pour l'écriture, l'impression ou d'autres fins graphiques)
+17.12.6;"Parchemin végétal, papiers ingraissables, papiers calque et ""cristal"" et autres papiers calandrés transparents ou translucides"
+17.12.7;Papiers et cartons élaborés
+17.12.9;Opérations sous-traitées intervenant dans la fabrication de papiers et cartons
+17.21.1;Papier et carton ondulés et emballages en papier ou en carton
+17.21.9;Opérations sous-traitées intervenant dans la fabrication de papier et carton ondulés et d'emballages en papier ou en carton
+17.22.1;Articles en papier à usage sanitaire ou domestique
+17.22.9;Opérations sous-traitées intervenant dans la fabrication d'articles en papier à usage sanitaire ou domestique
+17.23.1;Articles de papeterie
+17.23.9;Opérations sous-traitées intervenant dans la fabrication d'articles de papeterie
+17.24.1;Papiers peints
+17.24.9;Opérations sous-traitées intervenant dans la fabrication de papiers peints
+17.29.1;Autres articles en papier ou en carton
+17.29.9;Opérations sous-traitées intervenant dans la fabrication d'autres articles en papier ou en carton
+18.11.1;Impression de journaux
+18.12.1;Autres travaux d'impression
+18.13.1;Travaux de préparation d'impression
+18.13.2;Plaques ou cylindres d'impression et autres supports d'impression
+18.13.3;Travaux auxiliaires de l'impression
+18.14.1;Reliure et services connexes
+18.20.1;Reproduction d'enregistrements sonores
+18.20.2;Reproduction d'enregistrements vidéo
+18.20.3;Reproduction d'enregistrements informatiques
+19.10.1;"Cokes et semi-cokes de houille, de lignite ou de tourbe ; charbon de cornue"
+19.10.2;"Goudrons de houille, de lignite ou de tourbe ; autres goudrons minéraux"
+19.10.3;Brai et coke de brai
+19.10.9;Opérations sous-traitées intervenant dans la fabrication de produits de la cokéfaction
+19.20.1;Briquettes, boulets et combustibles solides similaires
+19.20.2;"Huile et gaz combustibles ; huiles lubrifiantes"
+19.20.3;Gaz de pétrole et autres hydrocarbures gazeux, à l'exclusion du gaz naturel
+19.20.4;Autres produits pétroliers
+19.20.9;Opérations sous-traitées intervenant dans la fabrication de produits du raffinage du pétrole
+20.11.1;Gaz industriels
+20.11.9;Opérations sous-traitées intervenant dans la fabrication de gaz industriels
+20.12.1;Oxydes, peroxydes et hydroxydes
+20.12.2;"Extraits tannants ; tanins naturels et dérivés ; matières colorantes n.c.a."
+20.12.9;Opérations sous-traitées intervenant dans la fabrication de colorants, pigments et agents tannants
+20.13.1;"Uranium et plutonium enrichis ; uranium et thorium appauvris ; autres éléments radioactifs"
+20.13.2;"Éléments chimiques n.c.a. ; acides et composés inorganiques"
+20.13.3;"Halogénures métalliques ; hypochlorites, chlorates et perchlorates"
+20.13.4;"Sulfures et sulfates ; nitrates, phosphates et carbonates"
+20.13.5;Autres sels métalliques
+20.13.6;Autres produits chimiques inorganiques de base
+20.13.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits chimiques inorganiques de base
+20.14.1;Hydrocarbures et leurs dérivés
+20.14.2;"Alcools, phénols, phénols-alcools et leurs dérivés halogénés, sulfonés, nitrés ou nitrosés ; alcools gras industriels"
+20.14.3;"Acides monocarboxyliques gras industriels ; acides carboxyliques et leurs dérivés"
+20.14.4;Composés organiques à fonction azotée
+20.14.5;"Thiocomposés organiques et autres composés organo-inorganiques ; composés hétérocycliques n.c.a."
+20.14.6;"Éthers, peroxydes organiques, époxydes, acétals, hémiacétals ; autres composés organiques"
+20.14.7;Produits chimiques organiques de base divers
+20.14.8;Lessives résiduaires de l'industrie de la pâte à papier, à l'exclusion du tall-oil
+20.14.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits chimiques organiques de base
+20.15.1;"Acide nitrique ; acides sulfonitriques ; ammoniac"
+20.15.2;"Chlorure d'ammonium ; nitrites"
+20.15.3;Engrais azotés, minéraux ou chimiques
+20.15.4;Engrais phosphatés, minéraux ou chimiques
+20.15.5;Engrais potassiques, minéraux ou chimiques
+20.15.6;Nitrate de sodium
+20.15.7;Engrais n.c.a.
+20.15.8;Engrais d'origine animale ou végétale n.c.a.
+20.15.9;Opérations sous-traitées intervenant dans la fabrication d'engrais et de composés azotés
+20.16.1;Polymères de l'éthylène, sous formes primaires
+20.16.2;Polymères du styrène, sous formes primaires
+20.16.3;Polymères du chlorure de vinyle ou d'autres oléfines halogénées, sous formes primaires
+20.16.4;"Polyacétals, autres polyéthers et résines époxydes, sous formes primaires ; polycarbonates, résines alkydes, polyesters allyliques et autres polyesters, sous formes primaires"
+20.16.5;"Autres matières plastiques sous formes primaires ; échangeurs d'ions"
+20.16.9;Opérations sous-traitées intervenant dans la fabrication de matières plastiques sous formes primaires
+20.17.1;Caoutchouc synthétique sous formes primaires
+20.17.9;Opérations sous-traitées intervenant dans la fabrication de caoutchouc synthétique sous formes primaires
+20.20.1;Pesticides et autres produits agrochimiques
+20.20.9;Opérations sous-traitées intervenant dans la fabrication de pesticides et d'autres produits agrochimiques
+20.30.1;Peintures et vernis à base de polymères
+20.30.2;"Autres peintures et vernis et produits connexes ; couleurs fines et encres d'imprimerie"
+20.30.9;Opérations sous-traitées intervenant dans la fabrication de peintures, vernis et revêtements similaires, encres d'imprimerie et mastics
+20.41.1;Glycérine
+20.41.2;Agents tensioactifs, à l'exclusion du savon
+20.41.3;Savons et produits de nettoyage
+20.41.4;Préparations odoriférantes et cires
+20.41.9;Opérations sous-traitées intervenant dans la fabrication de savons, détergents et produits d'entretien
+20.42.1;Parfums et produits pour la toilette
+20.42.9;Opérations sous-traitées intervenant dans la fabrication de parfums et de produits pour la toilette
+20.51.1;"Produits explosifs préparés ; mèches de sûreté ; amorces et capsules fulminantes ; allumeurs ; détonateurs électriques ; feux d'artifice"
+20.51.2;Allumettes
+20.51.9;Opérations sous-traitées intervenant dans la fabrication de produits explosifs
+20.52.1;Colles
+20.52.9;Opérations sous-traitées intervenant dans la fabrication de colles
+20.53.1;Huiles essentielles
+20.53.9;Opérations sous-traitées intervenant dans la fabrication d'huiles essentielles
+20.59.1;"Plaques et films photographiques, films à développement instantané ; préparations chimiques et produits non mélangés pour usages photographiques"
+20.59.2;"Graisses et huiles animales ou végétales modifiées chimiquement ; mélanges non comestibles de graisses et d'huiles animales ou végétales"
+20.59.3;Encres de bureau et de dessin et autres encres
+20.59.4;"Préparations lubrifiantes ; additifs ; préparations antigel"
+20.59.5;Produits chimiques divers
+20.59.6;Gélatines et leurs dérivés, y compris lactalbumines
+20.59.9;Opérations sous-traitées intervenant dans l'élaboration d'autres produits chimiques n.c.a.
+20.60.1;Fibres synthétiques
+20.60.2;Fibres artificielles
+20.60.9;Opérations sous-traitées intervenant dans la fabrication de fibres artificielles ou synthétiques
+21.10.1;Acide salicylique et ses dérivés, sels et esters
+21.10.2;"Lysine, acide glutamique et leurs sels ; sels et hydroxydes d'ammonium quaternaire ; phosphoaminolipides ; amides et leurs dérivés et sels"
+21.10.3;"Lactones n.c.a., composés hétérocycliques à hétéroatome(s) d'azote exclusivement, dont la structure comporte un cycle pyrazole non condensé, un cycle pyrimydine, un cycle pipérazine, un cycle triazine non condensé ou des cycles phénotiazine sans autres condensations ; hydantoïne et ses dérivés ; sulfonamides"
+21.10.4;"Sucres chimiquement purs, n.c.a. ; éthers et esters de sucre et leurs sels n.c.a."
+21.10.5;"Provitamines, vitamines et hormones ; glycosides et alcaloïdes d'origine végétale et leurs dérivés ; antibiotiques"
+21.10.6;"Glandes et autres organes ; extraits de glandes ou d'autres organes et autres substances humaines ou animales n.c.a."
+21.10.9;Opérations sous-traitées intervenant dans la fabrication de produits pharmaceutiques de base
+21.20.1;Médicaments
+21.20.2;Autres préparations pharmaceutiques
+21.20.9;Opérations sous-traitées intervenant dans la fabrication de préparations pharmaceutiques
+22.11.1;Pneumatiques neufs
+22.11.2;Pneumatiques rechapés
+22.11.9;"Opérations sous-traitées intervenant dans la fabrication de pneumatiques ; rechapage et resculptage de pneumatiques"
+22.19.1;Caoutchouc régénéré sous formes primaires ou en plaques, feuilles ou bandes
+22.19.2;"Caoutchouc non vulcanisé et articles en caoutchouc vulcanisé ; caoutchouc vulcanisé non durci en fils, cordes, plaques, feuilles, bandes, baguettes et profilés"
+22.19.3;Tubes et tuyaux en caoutchouc vulcanisé non durci
+22.19.4;Bandes transporteuses et courroies de transmission en caoutchouc vulcanisé
+22.19.5;Tissus caoutchoutés, à l'exclusion des toiles à pneu
+22.19.6;Vêtements et accessoires de l'habillement en caoutchouc vulcanisé non durci
+22.19.7;"Articles en caoutchouc vulcanisé n.c.a. ; caoutchouc durci et articles en caoutchouc durci"
+22.19.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits en caoutchouc
+22.21.1;Monofilaments supérieurs à 1 mm, joncs, bâtons et profilés, en matières plastiques
+22.21.2;Tubes, tuyaux et leurs accessoires, en matières plastiques
+22.21.3;Plaques, feuilles, films, bandes et lames, en matières plastiques, non munies d'un support, ni associées à d'autres matières
+22.21.4;Autres plaques, feuilles, films, bandes et lames en matières plastiques
+22.21.9;Opérations sous-traitées intervenant dans la fabrication de plaques, feuilles, tubes et profilés en matières plastiques
+22.22.1;Emballages en matières plastiques
+22.22.9;Opérations sous-traitées intervenant dans la fabrication d'emballages en matières plastiques
+22.23.1;"Éléments en matières plastiques pour la construction ; linoléum et revêtements de sol durs à surface non plastique"
+22.23.2;Constructions préfabriquées en matières plastiques
+22.23.9;Opérations sous-traitées intervenant dans la fabrication d'éléments en matières plastiques pour la construction
+22.29.1;Vêtements et accessoires de l'habillement (y compris gants) en matières plastiques
+22.29.2;Autres produits en matières plastiques n.c.a.
+22.29.9;"Façons de travail des matières plastiques ; opérations sous-traitées intervenant dans la fabrication d'autres produits en matières plastiques"
+23.11.1;Verre plat
+23.11.9;Opérations sous-traitées intervenant dans la fabrication de verre plat
+23.12.1;Verre plat travaillé
+23.12.9;Opérations sous-traitées intervenant dans la fabrication de verre plat travaillé
+23.13.1;Verre creux
+23.13.9;"Façonnage du verre creux ; opérations sous-traitées intervenant dans la fabrication de verre creux"
+23.14.1;Fibres de verre
+23.14.9;Opérations sous-traitées intervenant dans la fabrication de fibres de verre
+23.19.1;Autre verre, semi-fini
+23.19.2;Verre technique et autre
+23.19.9;"Façonnage d'articles en verre, y compris d'articles techniques en verre ; opérations sous-traitées intervenant dans la fabrication d'autres articles en verre travaillé, y compris de verre technique"
+23.20.1;Produits réfractaires
+23.20.9;Opérations sous-traitées intervenant dans la fabrication de produits réfractaires
+23.31.1;Carreaux et dalles en céramique
+23.31.9;Opérations sous-traitées intervenant dans la fabrication de carreaux et dalles en céramique
+23.32.1;Tuiles, briques et produits de construction en terre cuite
+23.32.9;Opérations sous-traitées intervenant dans la fabrication de tuiles, briques et produits de construction en terre cuite
+23.41.1;Articles céramiques à usage domestique ou ornemental
+23.41.9;Opérations sous-traitées intervenant dans la fabrication d'articles céramiques à usage domestique ou ornemental
+23.42.1;Appareils sanitaires en céramique
+23.42.9;Opérations sous-traitées intervenant dans la fabrication d'appareils sanitaires en céramique
+23.43.1;"Isolateurs en céramique ; pièces isolantes pour machines, appareils ou équipements électriques, en céramique"
+23.43.9;Opérations sous-traitées intervenant dans la fabrication d'isolateurs et de pièces isolantes en céramique
+23.44.1;Autres produits céramiques à usage technique
+23.44.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits céramiques à usage technique
+23.49.1;Autres produits céramiques
+23.49.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits céramiques
+23.51.1;Ciment
+23.51.9;Opérations sous-traitées intervenant dans la fabrication du ciment
+23.52.1;Chaux vive, chaux éteinte et chaux hydraulique
+23.52.2;Plâtre
+23.52.3;Dolomie calcinée ou agglomérée
+23.52.9;Opérations sous-traitées intervenant dans la fabrication de la chaux et du plâtre
+23.61.1;Éléments en béton pour la construction
+23.61.2;Constructions préfabriquées en béton
+23.61.9;Opérations sous-traitées intervenant dans la fabrication d'éléments en béton pour la construction
+23.62.1;Éléments en plâtre pour la construction
+23.62.9;Opérations sous-traitées intervenant dans la fabrication d'éléments en plâtre pour la construction
+23.63.1;Béton prêt à l'emploi
+23.63.9;Opérations sous-traitées intervenant dans la fabrication de béton prêt à l'emploi
+23.64.1;Mortiers et bétons secs
+23.64.9;Opérations sous-traitées intervenant dans la fabrication de mortiers et bétons secs
+23.65.1;Ouvrages en fibre-ciment
+23.65.9;Opérations sous-traitées intervenant dans la fabrication d'ouvrages en fibre-ciment
+23.69.1;Autres ouvrages en béton, plâtre ou ciment
+23.69.9;Opérations sous-traitées intervenant dans la fabrication d'autres ouvrages en béton, plâtre ou ciment
+23.70.1;Pierre taillée, façonnée et finie
+23.70.9;Opérations sous-traitées intervenant dans la fabrication de pierre taillée et façonnée
+23.91.1;Produits abrasifs
+23.91.9;Opérations sous-traitées intervenant dans la fabrication de produits abrasifs
+23.99.1;Autres produits minéraux non métalliques n.c.a.
+23.99.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits minéraux non métalliques n.c.a.
+24.10.1;Produits sidérurgiques primaires
+24.10.2;Acier brut
+24.10.3;Produits laminés plats en acier, simplement laminés à chaud
+24.10.4;Produits laminés plats en acier, simplement laminés à froid, d'une largeur supérieure ou égale à 600 mm
+24.10.5;Produits laminés plats en acier, plaqués ou revêtus et produits laminés plats en acier à coupe rapide et en acier au silicium
+24.10.6;Barres laminées à chaud en acier
+24.10.7;Profilés ouverts laminés à chaud, palplanches et éléments de voie ferrée, en acier
+24.10.9;Opérations sous-traitées intervenant dans la fabrication de produits sidérurgiques de base et de ferroalliages
+24.20.1;Tubes, tuyaux et profilés creux, sans soudure, en acier
+24.20.2;Tubes et tuyaux, soudés, de section circulaire et d'un diamètre extérieur supérieur à 406,4 mm, en acier
+24.20.3;Tubes et tuyaux soudés, d'un diamètre extérieur inférieur ou égal à 406,4 mm, en acier
+24.20.4;Accessoires de tuyauterie, en acier, non moulés
+24.20.9;Opérations sous-traitées intervenant dans la fabrication de tubes, tuyaux, profilés creux et accessoires correspondants en acier
+24.31.1;Barres étirées à froid et profilés pleins en acier non allié
+24.31.2;Barres étirées à froid et profilés pleins en acier allié, autres qu'en acier inoxydable
+24.31.3;Barres étirées à froid et profilés pleins en acier inoxydable
+24.31.9;Opérations sous-traitées intervenant dans la fabrication de barres étirées à froid
+24.32.1;Produits plats laminés à froid, en acier, non revêtus, d'une largeur inférieure à 600 mm
+24.32.2;Produits plats laminés à froid, en acier, plaqués ou revêtus, d'une largeur inférieure à 600 mm
+24.32.9;Opérations sous-traitées intervenant dans la fabrication de feuillards laminés à froid
+24.33.1;Profilés formés à froid ou pliés
+24.33.2;Tôles nervurées, en acier non allié
+24.33.3;Panneaux-sandwichs en tôle d'acier revêtue
+24.33.9;Opérations sous-traitées intervenant dans la fabrication de produits formés à froid ou pliés
+24.34.1;Fils tréfilés à froid
+24.34.9;Opérations sous-traitées intervenant dans la fabrication de fils tréfilés à froid
+24.41.1;Argent brut, mi-ouvré ou en poudre
+24.41.2;Or brut, mi-ouvré ou en poudre
+24.41.3;Platine, brut, mi-ouvré ou en poudre
+24.41.4;Plaqués ou doublés d'or sur métaux communs ou sur argent, sous formes brutes ou mi-ouvrées
+24.41.5;Plaqués ou doublés d'argent sur métaux communs et plaqués ou doublés de platine sur métaux communs, or ou argent, sous formes brutes ou mi-ouvrées
+24.41.9;Opérations sous-traitées intervenant dans la fabrication de métaux précieux
+24.42.1;"Aluminium brut ; oxyde d'aluminium"
+24.42.2;Demi-produits en aluminium ou en alliages d'aluminium
+24.42.9;Opérations sous-traitées intervenant dans la fabrication de l'aluminium
+24.43.1;Plomb, zinc et étain bruts
+24.43.2;Demi-produits en plomb, zinc ou étain ou en alliages à base de ces métaux
+24.43.9;Opérations sous-traitées intervenant dans la fabrication de plomb, zinc et étain
+24.44.1;"Cuivre brut ; mattes de cuivre ; cuivre de ciment"
+24.44.2;Demi-produits en cuivre et en alliages de cuivre
+24.44.9;Opérations sous-traitées intervenant dans la fabrication du cuivre
+24.45.1;"Nickel brut ; produits intermédiaires de la métallurgie du nickel"
+24.45.2;Demi-produits en nickel et en alliages de nickel
+24.45.3;"Autres métaux non ferreux et ouvrages en ces métaux ; cermets ; cendres et résidus contenant des métaux ou des composés métalliques"
+24.45.9;Opérations sous-traitées intervenant dans la fabrication d'autres métaux non ferreux
+24.46.1;"Uranium naturel et ses composés ; alliages, dispersions (y compris cermets), produits céramiques et mélanges contenant de l'uranium naturel ou des composés"
+24.46.9;Opérations sous-traitées intervenant dans le traitement de combustibles nucléaires
+24.51.1;Travaux de fonderie de fonte
+24.51.2;Tubes, tuyaux et profilés creux, en fonte
+24.51.3;Accessoires de tuyauterie, en fonte
+24.51.9;Opérations sous-traitées intervenant dans la fonderie de fonte
+24.52.1;Travaux de fonderie d'acier
+24.52.2;Tubes et tuyaux en acier coulé par centrifugation
+24.52.3;Accessoires de tuyauterie, en acier coulé
+24.53.1;Travaux de fonderie de métaux légers
+24.54.1;Travaux de fonderie d'autres métaux non ferreux
+25.11.1;Constructions métalliques préfabriquées
+25.11.2;Constructions et ossatures métalliques
+25.11.9;Opérations sous-traitées intervenant dans la fabrication de structures métalliques et parties de structures
+25.12.1;Portes, fenêtres et huisseries métalliques
+25.12.9;Opérations sous-traitées intervenant dans la fabrication de portes et fenêtres en métal
+25.21.1;Radiateurs et chaudières pour le chauffage central
+25.21.9;Opérations sous-traitées intervenant dans la fabrication de radiateurs et chaudières pour le chauffage central
+25.29.1;Autres réservoirs, citernes et conteneurs métalliques
+25.29.9;Opérations sous-traitées intervenant dans la fabrication de réservoirs, citernes et conteneurs métalliques
+25.30.1;Générateurs de vapeur et leurs éléments
+25.30.2;Réacteurs nucléaires et leurs éléments
+25.30.9;Opérations sous-traitées intervenant dans la fabrication de générateurs de vapeur
+25.40.1;Armes et munitions et leurs parties
+25.40.9;Opérations sous-traitées intervenant dans la fabrication d'armes et de munitions
+25.50.1;Produits de la forge, de l'emboutissage, de l'estampage et du profilage
+25.50.2;Travaux de la métallurgie des poudres
+25.61.1;Revêtement des métaux
+25.61.2;Autres traitements des métaux
+25.62.1;Décolletage
+25.62.2;Autres travaux d'usinage
+25.71.1;Articles de coutellerie
+25.71.9;Opérations sous-traitées intervenant dans la fabrication d'articles de coutellerie
+25.72.1;Serrures et ferrures
+25.72.9;Opérations sous-traitées intervenant dans la fabrication de serrures et ferrures
+25.73.1;Outils à main agricoles, horticoles ou forestiers
+25.73.2;"Scies à main ; lames de scie de toutes sortes"
+25.73.3;Autres outils à main
+25.73.4;Outils interchangeables pour outillage à main, mécanique ou non, ou pour machines-outils
+25.73.5;"Moules ; châssis de moulage pour la fonderie ; carcasses ; modèles"
+25.73.6;Autres outils
+25.73.9;Opérations sous-traitées intervenant dans la fabrication d'outillage
+25.91.1;Bidons métalliques et récipients similaires
+25.91.9;Opérations sous-traitées intervenant dans la fabrication de bidons métalliques et récipients similaires
+25.92.1;Emballages légers métalliques
+25.92.9;Opérations sous-traitées intervenant dans la fabrication d'emballages légers métalliques
+25.93.1;Articles en fils, chaînes et ressorts
+25.93.9;Opérations sous-traitées intervenant dans la fabrication d'articles en fils, de chaînes et de ressorts
+25.94.1;Vis et boulons
+25.94.9;Opérations sous-traitées intervenant dans la fabrication de vis et boulons
+25.99.1;Articles métalliques domestiques
+25.99.2;Autres articles en métaux communs
+25.99.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits métalliques n.c.a.
+26.11.1;Lampes, tubes et valves électroniques à cathode chaude, à cathode froide ou à photocathode, y compris tubes cathodiques
+26.11.2;Diodes et transistors
+26.11.3;Circuits intégrés électroniques
+26.11.4;Parties de tubes, valves et autres composants électroniques n.c.a.
+26.11.5;Circuits imprimés nus
+26.11.9;"Fabrication de circuits intégrés électroniques ; opérations sous-traitées intervenant dans la fabrication de composants électroniques"
+26.12.1;Circuits imprimés chargés
+26.12.2;Cartes son, vidéo, réseau et similaires pour unités automatiques de traitement de l'information
+26.12.3;Cartes intelligentes
+26.12.9;"Impression de circuits ; opérations sous-traitées intervenant dans la fabrication de cartes électroniques assemblées"
+26.20.1;Ordinateurs et leurs parties et accessoires
+26.20.2;Unités de mémoire et autres dispositifs de stockage
+26.20.3;Autres unités pour matériel informatique
+26.20.4;Parties et accessoires pour matériel informatique
+26.20.9;"Fabrication d'ordinateurs et d'équipements périphériques ; opérations sous-traitées intervenant dans la fabrication d'ordinateurs et d'équipements périphériques"
+26.30.1;"Appareils d'émission pour la radiodiffusion ou la télévision ; caméras de télévision"
+26.30.2;"Appareils électriques pour la téléphonie ou la télégraphie par fil ; visiophones"
+26.30.3;Parties de matériel téléphonique et télégraphique
+26.30.4;"Antennes et réflecteurs d'antenne de tous types et leurs parties ; parties d'appareils d'émission pour la radiodiffusion et la télévision et caméras de télévision"
+26.30.5;Avertisseurs pour la protection contre le vol ou l'incendie et appareils similaires
+26.30.6;Parties d'avertisseurs pour la protection contre le vol ou l'incendie et d'appareils similaires
+26.30.9;Opérations sous-traitées intervenant dans la fabrication d'équipements de communication
+26.40.1;Récepteurs radio
+26.40.2;Récepteurs de télévision, combinés ou non à un récepteur de radio ou un appareil d'enregistrement ou de reproduction du son ou des images
+26.40.3;Appareils d'enregistrement ou de reproduction du son ou des images
+26.40.4;Microphones, haut-parleurs, récepteurs de radiotéléphonie ou de télégraphie
+26.40.5;Parties d'appareils de réception, enregistrement ou reproduction du son et de l'image
+26.40.6;Jeux vidéo (utilisables avec un récepteur de télévision ou à écran intégré) et autres jeux électroniques
+26.40.9;Opérations sous-traitées intervenant dans la fabrication de produits électroniques grand public
+26.51.1;Instruments et appareils d'aide à la navigation et de mesures météorologiques, géophysiques et similaires
+26.51.2;Appareils radar et de radionavigation
+26.51.3;"Balances de précision ; instruments de dessin, calcul et mesure des longueurs"
+26.51.4;Instruments de mesure de grandeurs électriques ou de radiations ionisantes
+26.51.5;Instruments de contrôle d'autres grandeurs physiques
+26.51.6;Autres instruments et appareils de mesure, de contrôle et d'essai
+26.51.7;Thermostats, manostats et autres instruments et appareils de régulation ou de contrôle automatiques
+26.51.8;Parties et accessoires des instruments et appareils de mesure, d'essai et de navigation
+26.51.9;Opérations sous-traitées intervenant dans la fabrication d'instruments et appareils de mesure, d'essai et de navigation
+26.52.1;Montres et autres compteurs de temps, à l'exclusion de leurs mouvements et éléments
+26.52.2;Mouvements et éléments de montres
+26.52.9;Opérations sous-traitées intervenant dans la fabrication d'articles d'horlogerie
+26.60.1;Équipements d'irradiation médicale, électromédicaux et électrothérapeutiques
+26.60.9;"Fabrication d'appareils médicaux ; opérations sous-traitées intervenant dans la fabrication d'équipements d'irradiation médicale, électromédicaux et électrothérapeutiques"
+26.70.1;Matériel photographique et parties
+26.70.2;Autre matériel optique et parties
+26.70.9;Opérations sous-traitées intervenant dans la fabrication de matériel optique et photographique
+26.80.1;Supports magnétiques et optiques
+26.80.9;Opérations sous-traitées intervenant dans la fabrication de supports magnétiques et optiques
+27.11.1;"Moteurs d'une puissance inférieure ou égale à 37,5 w ; autres moteurs à courant continu ; génératrices à courant continu"
+27.11.2;"Moteurs universels d'une puissance supérieure à 37,5 w ; autres moteurs à courant alternatif ; génératrices (alternateurs) à courant alternatif"
+27.11.3;Groupes électrogènes et convertisseurs rotatifs
+27.11.4;Transformateurs électriques
+27.11.5;"Ballasts pour lampes ou tubes à décharge ; autres bobines de réactance"
+27.11.6;Parties de moteurs, génératrices et transformateurs électriques
+27.11.9;Opérations sous-traitées intervenant dans la fabrication de moteurs, génératrices et transformateurs électriques
+27.12.1;Matériel de commande et de protection de circuits électriques, pour une tension supérieure à 1 000 v
+27.12.2;Matériel de commande et de protection de circuits électriques, pour une tension inférieure ou égale à 1 000 v
+27.12.3;Armoires de commande électrique
+27.12.4;Parties de matériel de distribution et de commande électrique
+27.12.9;Opérations sous-traitées intervenant dans la fabrication de matériel de distribution et de commande électrique
+27.20.1;Piles et batteries de piles électriques et leurs parties
+27.20.2;Accumulateurs électriques et leurs parties
+27.20.9;Opérations sous-traitées intervenant dans la fabrication de piles et accumulateurs électriques
+27.31.1;Câbles de fibres optiques
+27.31.9;Opérations sous-traitées intervenant dans la fabrication de câbles de fibres optiques
+27.32.1;Autres fils et câbles électroniques ou électriques
+27.32.9;Opérations sous-traitées intervenant dans la fabrication d'autres fils et câbles électroniques ou électriques
+27.33.1;Matériel d'installation électrique
+27.33.9;Opérations sous-traitées intervenant dans la fabrication de matériel d'installation électrique
+27.40.1;"Lampes électriques à incandescence ou à décharge ; lampes à arc"
+27.40.2;Appareils d'éclairage
+27.40.3;Autres appareils d'éclairage
+27.40.4;Parties de lampes et d'appareils d'éclairage
+27.40.9;Opérations sous-traitées intervenant dans la fabrication d'appareils d'éclairage électrique
+27.51.1;"Réfrigérateurs et congélateurs ; lave-vaisselle et lave-linge ; couvertures chauffantes ; ventilateurs"
+27.51.2;Autres appareils électroménagers n.c.a.
+27.51.3;Parties d'appareils électroménagers
+27.51.9;Opérations sous-traitées intervenant dans la fabrication d'appareils électroménagers
+27.52.1;Appareils ménagers de cuisson et de chauffage, non électriques
+27.52.2;Parties d'appareils de cuisson ou de chauffage, non électriques
+27.52.9;Opérations sous-traitées intervenant dans la fabrication d'appareils ménagers non électriques
+27.90.1;Autres matériels électriques et leurs parties
+27.90.2;"Tableaux d'affichage équipés de dispositifs à cristaux liquides ou de diodes électroluminescentes ; appareils électriques de signalisation sonore ou visuelle"
+27.90.3;Matériel électrique pour le soudage, le brasage, la trempe superficielle et la projection à chaud
+27.90.4;"Autres matériels électriques n.c.a. (y compris électro-aimants ; accouplements et freins électromagnétiques ; têtes de levage électromagnétiques ; accélérateurs de particules électriques ; générateurs de signaux électriques et appareils pour galvanoplastie, électrolyse et électrophorèse)"
+27.90.5;Condensateurs
+27.90.6;Résistances électriques, à l'exclusion des résistances chauffantes
+27.90.7;Équipements électriques de signalisation, de sécurité ou de contrôle pour voies ferrées ou similaires, routières ou fluviales, aires ou parcs de stationnement, installations portuaires ou aérodromes
+27.90.8;Éléments pour condensateurs, résistances électriques, rhéostats et potentiomètres
+27.90.9;Opérations sous-traitées intervenant dans la fabrication d'autres matériels électriques
+28.11.1;Moteurs, à l'exclusion des moteurs pour avions, automobiles et motocycles
+28.11.2;Turbines
+28.11.3;Parties de turbines
+28.11.4;Parties pour moteurs
+28.11.9;Opérations sous-traitées intervenant dans la fabrication de moteurs et turbines, à l'exclusion des moteurs pour avions, automobiles et motocycles
+28.12.1;Équipements hydrauliques et pneumatiques, à l'exclusion des parties
+28.12.2;Parties pour équipements hydrauliques et pneumatiques
+28.12.9;Opérations sous-traitées intervenant dans la fabrication d'équipements hydrauliques et pneumatiques
+28.13.1;"Pompes pour liquides ; élévateurs à liquides"
+28.13.2;"Pompes à air ou à vide ; compresseurs d'air ou d'autres gaz"
+28.13.3;Parties de pompes et compresseurs
+28.13.9;Opérations sous-traitées intervenant dans la fabrication d'autres pompes et compresseurs
+28.14.1;Articles de robinetterie et organes similaires pour tuyauteries, chaudières, réservoirs, cuves ou contenants similaires
+28.14.2;Pièces de robinetterie et articles similaires
+28.14.9;Opérations sous-traitées intervenant dans la fabrication d'autres articles de robinetterie
+28.15.1;Roulements à billes ou à rouleaux
+28.15.2;Autres organes mécaniques de transmission
+28.15.3;Parties d'organes mécaniques de transmission
+28.15.9;Opérations sous-traitées intervenant dans la fabrication d'engrenages et d'organes mécaniques de transmission
+28.21.1;Fours et brûleurs et leurs parties
+28.21.9;Opérations sous-traitées intervenant dans la fabrication de fours et brûleurs
+28.22.1;Équipements de levage et de manutention et leurs parties
+28.22.2;Godets, bennes, pelles et pinces pour grues ou matériel de génie civil
+28.22.9;Opérations sous-traitées intervenant dans la fabrication de matériel de levage et de manutention
+28.23.1;Machines comptables et machines similaires comportant un dispositif de calcul
+28.23.2;Machines de bureau et leurs parties
+28.23.9;"Fabrication de machines de bureau et comptables ; opérations sous-traitées intervenant dans la fabrication de machines et équipements de bureau (à l'exclusion des ordinateurs et équipements périphériques)"
+28.24.1;"Outillage manuel électromécanique ; autre outillage manuel électroportatif"
+28.24.2;Parties d'outillage portatif à moteur incorporé
+28.24.9;Opérations sous-traitées intervenant dans la fabrication d'outillage portatif à moteur incorporé
+28.25.1;"Échangeurs de chaleur ; climatiseurs, équipements de réfrigération, de congélation et de surgélation industriels"
+28.25.2;Appareils de ventilation non domestiques
+28.25.3;Parties d'équipements frigorifiques industriels et de pompes à chaleur
+28.25.9;Opérations sous-traitées intervenant dans la fabrication d'équipements aérauliques et frigorifiques industriels
+28.29.1;Générateurs de gaz, appareils de distillation et de filtration
+28.29.2;"Équipements de nettoyage, remplissage, emballage ou conditionnement de bouteilles ou autres récipients ; extincteurs, pistolets pulvérisateurs, appareils de nettoyage à la vapeur ou au sable ; joints"
+28.29.3;Appareils de pesage et de mesurage industriels, domestiques ou autres
+28.29.4;Centrifugeuses, appareils de calandrage et machines de vente automatiques
+28.29.5;Machines à laver la vaisselle de type industriel
+28.29.6;Matériel n.c.a. pour le traitement de matériaux fonctionnant sur la base d'une différence de température
+28.29.7;"Matériel non électrique pour le soudage et le brasage et ses parties ; matériel pour la trempe superficielle fonctionnant au gaz"
+28.29.8;Parties d'autres machines d'usage général n.c.a.
+28.29.9;Opérations sous-traitées intervenant dans la fabrication d'autres machines d'usage général n.c.a.
+28.30.1;Motoculteurs
+28.30.2;Autres tracteurs agricoles
+28.30.3;Matériel agricole pour le travail du sol
+28.30.4;Tondeuses à gazon
+28.30.5;Matériel de récolte
+28.30.6;Pulvérisateurs et poudreuses agricoles et horticoles
+28.30.7;Remorques autochargeuses et autodéchargeuses et semi-remorques agricoles
+28.30.8;Autre matériel agricole
+28.30.9;"Parties de matériel agricole ; opérations sous-traitées intervenant dans la fabrication de machines agricoles et forestières"
+28.41.1;"Machines-outils d'usinage des métaux, opérant par laser ou procédés similaires ; centres d'usinage des métaux"
+28.41.2;Tours, machines à percer et à fraiser, pour l'usinage des métaux
+28.41.3;Autres machines-outils pour l'usinage des métaux
+28.41.4;Parties et accessoires de machines-outils à métaux
+28.41.9;Opérations sous-traitées intervenant dans la fabrication de machines de formage des métaux
+28.49.1;Machines-outils pour le travail de la pierre, du bois et d'autres matériaux durs
+28.49.2;Porte-outils
+28.49.9;Opérations sous-traitées intervenant dans la fabrication d'autres machines-outils
+28.91.1;Machines pour la métallurgie et leurs parties
+28.91.9;Opérations sous-traitées intervenant dans la fabrication de machines pour la métallurgie
+28.92.1;Matériel de mines
+28.92.2;Autres machines et appareils de terrassement, nivellement, décapage, excavation, compactage, extraction de la terre, des minéraux ou minerais, autopropulsés (y compris bouteurs, pelles mécaniques et rouleaux compresseurs)
+28.92.3;Autres matériels de travaux publics
+28.92.4;Machines à trier, broyer, mélanger la terre, la pierre, les minerais et d'autres substances minérales
+28.92.5;Tracteurs de chantier
+28.92.6;Parties de machines pour l'extraction ou la construction
+28.92.9;Opérations sous-traitées intervenant dans la fabrication de machines pour l'extraction ou la construction
+28.93.1;Machines pour l'industrie agroalimentaire, à l'exclusion de leurs parties
+28.93.2;Machines pour le nettoyage, le tri ou le criblage des grains ou des légumes secs
+28.93.3;Parties de machines pour l'industrie agroalimentaire
+28.93.9;Opérations sous-traitées intervenant dans la fabrication de machines pour l'industrie agroalimentaire
+28.94.1;Machines de filature, tissage et tricotage
+28.94.2;Autres machines pour l'industrie textile et la confection, y compris machines à coudre
+28.94.3;Machines pour le travail du cuir ou pour la fabrication ou réparation de chaussures ou autres
+28.94.4;Machines à coudre de type ménager
+28.94.5;Parties et accessoires de machines de filature, tissage et tricotage et d'autres machines pour l'industrie textile et la confection
+28.94.9;Opérations sous-traitées intervenant dans la fabrication de machines pour les industries textiles
+28.95.1;Machines pour les industries du papier et du carton et leurs parties
+28.95.9;Opérations sous-traitées intervenant dans la fabrication de machines pour les industries du papier et du carton
+28.96.1;Machines n.c.a. pour le travail du caoutchouc ou des matières plastiques et pour la fabrication d'articles en ces matières
+28.96.2;Parties de machines n.c.a. pour le travail du caoutchouc ou des matières plastiques et pour la fabrication d'articles en ces matières
+28.96.9;Opérations sous-traitées intervenant dans la fabrication de machines pour le travail du caoutchouc ou des matières plastiques
+28.99.1;Machines d'imprimerie et machines pour le brochage et la reliure
+28.99.2;Machines et appareils utilisés uniquement ou principalement pour fabriquer des barreaux ou plaquettes de semi-conducteurs, des dispositifs à semi-conducteur, des circuits intégrés électroniques ou des écrans plats
+28.99.3;Machines d'usage spécifique n.c.a.
+28.99.4;Parties de machines d'imprimerie et de machines pour le brochage et la reliure
+28.99.5;"Parties de machines et d'appareils utilisés uniquement ou principalement pour fabriquer des barreaux ou plaquettes de semi-conducteurs, des dispositifs à semi-conducteur, des circuits intégrés électroniques ou des écrans plats ; parties de machines d'usage spécifique n.c.a."
+28.99.9;Opérations sous-traitées intervenant dans la fabrication d'autres machines d'usage spécifique n.c.a.
+29.10.1;Moteurs pour véhicules automobiles
+29.10.2;Voitures particulières
+29.10.3;Autobus et autocars
+29.10.4;Véhicules utilitaires pour le transport de marchandises
+29.10.5;Véhicules utilitaires spécifiques
+29.10.9;Opérations sous-traitées intervenant dans la fabrication de véhicules automobiles
+29.20.1;Carrosseries automobiles
+29.20.2;"Remorques et semi-remorques ; conteneurs"
+29.20.3;Parties de remorques, semi-remorques et autres véhicules, sans propulsion mécanique
+29.20.4;Travaux de reconditionnement, de montage, d'équipement et de carrosserie de véhicules automobiles
+29.20.5;Aménagement et équipement de caravanes et d'autocaravanes
+29.20.9;Opérations sous-traitées intervenant dans la fabrication de carrosseries automobiles et de remorques et semi-remorques
+29.31.1;Faisceaux d'allumage et autres jeux de fils pour véhicules, avions et bateaux
+29.31.2;Autres équipements électriques automobiles et leurs parties
+29.31.3;Parties d'équipements électriques pour véhicules automobiles et motocycles
+29.31.9;Opérations sous-traitées intervenant dans la fabrication d'équipements électriques et électroniques automobiles
+29.32.1;Sièges pour véhicules automobiles
+29.32.2;Ceintures de sécurité, airbags et parties et accessoires de carrosseries
+29.32.3;Parties et accessoires n.c.a. pour véhicules automobiles
+29.32.9;"Assemblage de parties et accessoires pour véhicules automobiles, n.c.a. ; assemblage de sous-ensembles complets de véhicules automobiles dans le cadre du processus de fabrication ; opérations sous-traitées intervenant dans la fabrication d'autres parties et accessoires pour véhicules automobiles"
+30.11.1;Bâtiments de guerre
+30.11.2;Navires et vaisseaux similaires pour le transport de passagers et de marchandises
+30.11.3;Bateaux de pêche et autres bateaux spéciaux
+30.11.4;Plates-formes de forage en mer
+30.11.5;Autres structures flottantes (y compris radeaux, caissons, batardeaux, pontons flottants, bouées et balises)
+30.11.9;"Transformation, reconstruction et équipement de navires et de plates-formes et structures flottantes ; opérations sous-traitées intervenant dans la fabrication de navires et structures flottantes"
+30.12.1;Bateaux de plaisance
+30.12.9;Opérations sous-traitées intervenant dans la fabrication de bateaux de plaisance
+30.20.1;Motrices et tenders
+30.20.2;Automotrices, à l'exclusion des véhicules d'entretien ou de service
+30.20.3;Autre matériel ferroviaire roulant
+30.20.4;"Parties de matériel de traction et de matériel roulant ; châssis et accessoires et leurs parties ; équipements de contrôle mécaniques"
+30.20.9;"Reconditionnement et équipement de matériel ferroviaire roulant ; opérations sous-traitées intervenant dans la fabrication de matériel ferroviaire roulant"
+30.30.1;Moteurs pour aéronefs et engins spatiaux, simulateurs de vol, et leurs parties
+30.30.2;"Ballons et dirigeables ; planeurs, ailes delta et autres aéronefs sans moteur"
+30.30.3;Avions et hélicoptères
+30.30.4;Engins spatiaux (y compris satellites) et lanceurs
+30.30.5;Autres parties des aéronefs et engins spatiaux
+30.30.6;Révision et transformation d'aéronefs et de moteurs d'aéronefs
+30.30.9;Opérations sous-traitées intervenant dans la fabrication d'aéronefs et engins spatiaux
+30.40.1;Chars et autres véhicules blindés de combat, et leurs parties
+30.40.9;Opérations sous-traitées intervenant dans la fabrication de véhicules militaires de combat
+30.91.1;Motocycles et side-cars
+30.91.2;Parties et accessoires pour motocycles et side-cars
+30.91.3;Moteurs à explosion pour motocycles
+30.91.9;Opérations sous-traitées intervenant dans la fabrication de motocycles
+30.92.1;Bicyclettes et autres cycles, non motorisés
+30.92.2;Véhicules pour invalides, à l'exclusion des parties et accessoires
+30.92.3;Parties et accessoires pour bicyclettes et autres cycles non motorisés et pour véhicules pour invalides
+30.92.4;Landaus et poussettes, et leurs parties
+30.92.9;Opérations sous-traitées intervenant dans la fabrication de cycles et véhicules pour invalides
+30.99.1;Autres équipements de transport n.c.a.
+30.99.9;Opérations sous-traitées intervenant dans la fabrication d'autres équipements de transport n.c.a.
+31.00.1;Sièges et leurs parties
+31.00.2;Parties de meubles (à l'exclusion des sièges)
+31.00.9;"Garnissage de sièges ; opérations sous-traitées intervenant dans la fabrication de sièges, de leurs parties et de parties de meubles"
+31.01.1;Meubles de bureau et de magasin
+31.01.9;Opérations sous-traitées intervenant dans la fabrication de meubles de bureau et de magasin
+31.02.1;Meubles de cuisine
+31.02.9;Opérations sous-traitées intervenant dans la fabrication de meubles de cuisine
+31.03.1;Sommiers et matelas
+31.03.9;Opérations sous-traitées intervenant dans la fabrication de sommiers et matelas
+31.09.1;Autres meubles
+31.09.9;"Finition de meubles neufs ; opérations sous-traitées intervenant dans la fabrication d'autres meubles"
+32.11.1;Monnaies
+32.11.9;Opérations sous-traitées intervenant dans la fabrication de monnaies
+32.12.1;Articles de joaillerie et bijouterie
+32.12.9;Opérations sous-traitées intervenant dans la fabrication d'articles de joaillerie et de bijouterie
+32.13.1;Articles de bijouterie fantaisie et articles similaires
+32.13.9;Opérations sous-traitées intervenant dans la fabrication d'articles de bijouterie fantaisie et d'articles similaires
+32.20.1;"Pianos, orgues et autres instruments de musique à cordes et à vent ; claviers ; métronomes et diapasons ; mécanismes de boîtes à musique"
+32.20.2;Parties et accessoires d'instruments de musique
+32.20.9;Opérations sous-traitées intervenant dans la fabrication d'instruments de musique
+32.30.1;Articles de sport
+32.30.9;Opérations sous-traitées intervenant dans la fabrication d'articles de sports
+32.40.1;"Poupées représentant uniquement des êtres humains ; jouets représentant des animaux ou des créatures non humaines ; et leurs parties"
+32.40.2;"Trains-jouets et accessoires ; autres modèles réduits et jeux de construction"
+32.40.3;Autres jouets, y compris jouets musicaux
+32.40.4;Autres jeux
+32.40.9;Opérations sous-traitées intervenant dans la fabrication de jeux et jouets
+32.50.1;Instruments et appareils médicaux, chirurgicaux et dentaires
+32.50.2;"Instruments et appareils thérapeutiques ; accessoires, prothèses et appareils orthopédiques"
+32.50.3;"Articles médicaux, chirurgicaux, dentaires ou vétérinaires ; fauteuils de coiffeurs et sièges similaires, et leurs parties"
+32.50.4;Lunettes, verres et lentilles, et leurs parties
+32.50.5;Autres articles utilisés à des fins médicales ou chirurgicales
+32.50.9;Opérations sous-traitées intervenant dans la fabrication d'équipements médicaux et chirurgicaux et d'appareils orthopédiques
+32.91.1;Articles de brosserie
+32.91.9;Opérations sous-traitées intervenant dans la fabrication d'articles de brosserie
+32.99.1;"Casques de sécurité ; stylos et crayons, tableaux à écrire, cachets à dater, sceller ou numéroter ; rubans de machines à écrire, tampons encreurs"
+32.99.2;"Parapluies ; cannes ; boutons ; formes pour boutons ; fermetures à glissière, et leurs parties"
+32.99.3;"Produits en cheveux ou en poils d'animaux ; articles similaires en matières textiles"
+32.99.4;"Briquets, pipes et leurs parties ; articles en matières combustibles ; gaz liquides ou liquéfiés"
+32.99.5;Autres articles n.c.a.
+32.99.6;Travaux de taxidermie
+32.99.9;Opérations sous-traitées intervenant dans la fabrication d'autres produits manufacturés n.c.a.
+33.11.1;Réparation et entretien d'ouvrages en métaux
+33.12.1;Réparation et entretien de machines et équipements mécaniques d'usage général
+33.12.2;Réparation et entretien de machines et équipements mécaniques d'usage spécifique
+33.13.1;Réparation et entretien de matériels électroniques et optiques
+33.14.1;Réparation et entretien d'équipements électriques
+33.15.1;Réparation et entretien de navires et bateaux
+33.16.1;Réparation et entretien d'aéronefs et d'engins spatiaux
+33.17.1;Réparation et entretien d'autres équipements de transport
+33.19.1;Réparation d'autres équipements
+33.20.1;Installation d'ouvrages métalliques, à l'exclusion de machines et d'équipements
+33.20.2;Installation de machines d'usage général
+33.20.3;Installation de machines d'usage spécifique
+33.20.4;Installation de matériels électroniques et optiques
+33.20.5;Installation d'équipements électriques
+33.20.6;Installation d'équipements de contrôle automatique de processus industriels
+33.20.7;Installation d'autres produits n.c.a.
+35.11.1;Électricité
+35.12.1;Transport d'électricité
+35.13.1;Distribution d'électricité
+35.14.1;Commerce de l'électricité
+35.21.1;Gaz de houille, gaz à l'eau, gaz de gazogène et gaz similaires, autres que gaz de pétrole
+35.22.1;Distribution de combustibles gazeux par conduites
+35.23.1;Commerce du gaz par conduites
+35.30.1;"Vapeur et eau chaude ; production et distribution de vapeur et d'eau chaude"
+35.30.2;"Glace ; production et distribution d'air et d'eau refroidis"
+36.00.1;Eau naturelle
+36.00.2;Traitement et distribution de l'eau par conduites
+36.00.3;Commerce de l'eau par conduites
+37.00.1;Collecte et traitement des eaux usées
+37.00.2;Boues d'épuration
+38.11.1;Collecte des déchets recyclables non dangereux
+38.11.2;Collecte des déchets non recyclables non dangereux
+38.11.3;Déchets non recyclables non dangereux collectés
+38.11.4;Épaves, à démanteler
+38.11.5;Autres déchets recyclables non dangereux collectés
+38.11.6;Services des installations de transfert de déchets non dangereux
+38.12.1;Collecte des déchets dangereux
+38.12.2;Déchets dangereux collectés
+38.12.3;Services des installations de transfert de déchets dangereux
+38.21.1;Traitement des déchets non dangereux pour élimination finale
+38.21.2;Élimination des déchets non dangereux
+38.21.3;Déchets de solvants organiques
+38.21.4;Cendres et résidus issus de l'incinération des déchets
+38.21.5;Pellets de déchets municipaux
+38.22.1;Traitement des déchets nucléaires et d'autres déchets dangereux
+38.22.2;Élimination des déchets nucléaires et d'autres déchets dangereux
+38.31.1;Démantèlement d'épaves
+38.32.1;Récupération de matériaux triés
+38.32.2;Matières premières secondaires métalliques
+38.32.3;Matières premières secondaires non métalliques
+39.00.1;Dépollution et nettoyage
+39.00.2;Autres services de dépollution et de contrôle spécialisé de la pollution
+41.00.1;Bâtiments résidentiels
+41.00.2;Bâtiments non résidentiels
+41.00.3;Travaux de construction relatifs aux bâtiments résidentiels (construction, extension, modification et rénovation)
+41.00.4;Travaux de construction relatifs aux bâtiments non résidentiels (construction, extension, modification et rénovation)
+42.11.1;Autoroutes, routes, rues, autres chemins pour véhicules et piétons et pistes d'aviation
+42.11.2;Travaux de construction relatifs aux autoroutes, routes, rues, autres chemins pour véhicules et piétons et pistes d'aviation
+42.12.1;Voies ferrées de surface et souterraines
+42.12.2;Travaux de construction relatifs aux voies ferrées de surface et souterraines
+42.13.1;Ponts et tunnels
+42.13.2;Travaux de construction relatifs aux ponts et tunnels
+42.21.1;Ouvrages de réseaux pour fluides
+42.21.2;Travaux de construction relatifs aux réseaux pour fluides
+42.22.1;Ouvrages de réseaux d'électricité et de télécommunications
+42.22.2;Travaux de construction relatifs aux réseaux d'électricité et de télécommunications
+42.91.1;Ouvrages côtiers et portuaires, barrages, écluses et autres structures hydromécaniques
+42.91.2;Travaux de construction d'ouvrages côtiers et portuaires, barrages, écluses et autres structures hydromécaniques
+42.99.1;Autres ouvrages de génie civil
+42.99.2;Travaux de construction relatifs aux autres ouvrages de génie civil
+43.11.1;Travaux de démolition
+43.12.1;Travaux de préparation de sites
+43.13.1;Travaux de forage et de sondage
+43.21.1;Travaux d'installation électrique
+43.22.1;Travaux d'installation de distribution d'eau, de pose de conduites d'évacuation, d'installation de chauffage, de ventilation et de conditionnement d'air
+43.22.2;Travaux d'installation de distribution de gaz
+43.29.1;Autres travaux d'installation
+43.31.1;Travaux de plâtrerie
+43.32.1;Travaux de menuiserie
+43.33.1;Travaux de carrelage
+43.33.2;Autres travaux de revêtement intérieur des sols et des murs
+43.34.1;Travaux de peinture en bâtiment
+43.34.2;Travaux de vitrerie
+43.39.1;Autres travaux de finition
+43.91.1;Travaux de couverture
+43.99.1;Travaux d'étanchéification
+43.99.2;Travaux d'échafaudage
+43.99.3;"Travaux de battage de pieux ; travaux de fondation"
+43.99.4;Travaux de béton
+43.99.5;Travaux de montage d'ossatures métalliques
+43.99.6;Travaux de maçonnerie
+43.99.7;Travaux de montage sur chantier d'éléments préfabriqués
+43.99.9;Travaux de construction spécialisés n.c.a.
+45.11.1;Commerce de gros de voitures et de véhicules automobiles légers
+45.11.2;Commerce de détail de voitures et de véhicules automobiles légers en magasin spécialisé
+45.11.3;Autre commerce de détail de voitures et de véhicules automobiles légers
+45.11.4;Services d'intermédiaire du commerce de gros de voitures et véhicules automobiles légers
+45.19.1;Commerce de gros d'autres véhicules automobiles
+45.19.2;Commerce de détail d'autres véhicules automobiles en magasin spécialisé
+45.19.3;Autre commerce de détail d'autres véhicules automobiles
+45.19.4;Services d'intermédiaire du commerce de gros d'autres véhicules automobiles
+45.20.1;Entretien et réparation de voitures et véhicules utilitaires légers
+45.20.2;Entretien et réparation d'autres véhicules automobiles
+45.20.3;Lavage, nettoyage et lustrage de véhicules automobiles
+45.31.1;Commerce de gros de pièces détachées et accessoires pour véhicules automobiles
+45.31.2;Services d'intermédiaire du commerce de gros de pièces détachées et accessoires pour véhicules automobiles
+45.32.1;Commerce de détail de pièces détachées et accessoires pour véhicules automobiles en magasin spécialisé
+45.32.2;Autre commerce de détail de pièces détachées et accessoires pour véhicules automobiles
+45.40.1;Commerce de gros de motocycles, d'accessoires et d'équipements pour les motocycles
+45.40.2;Commerce de détail de motocycles, d'accessoires et d'équipements pour les motocycles en magasin spécialisé
+45.40.3;Autre commerce de détail de motocycles, d'accessoires et d'équipements pour les motocycles
+45.40.4;Services d'intermédiaire du commerce de gros de motocycles, d'accessoires et d'équipements pour les motocycles
+45.40.5;Entretien et réparation de motocycles
+46.11.1;Services d'intermédiaire du commerce de gros de matières premières agricoles, animaux vivants, matières premières textiles et produits semi-finis
+46.12.1;Services d'intermédiaire du commerce de gros de combustibles, minerais, métaux et produits chimiques
+46.13.1;Services d'intermédiaire du commerce de gros de bois et de matériaux de construction
+46.14.1;Services d'intermédiaire du commerce de gros de machines, équipements industriels, navires et aéronefs
+46.15.1;Services d'intermédiaire du commerce de gros de meubles, articles ménagers et quincaillerie
+46.16.1;Services d'intermédiaire du commerce de gros de textiles, habillement, fourrures, chaussures et articles en cuir
+46.17.1;Services d'intermédiaire du commerce de gros de denrées alimentaires, boissons et tabac
+46.18.1;Services d'intermédiaire du commerce de gros d'autres produits spécifiques
+46.19.1;Services d'intermédiaire du commerce de gros de produits divers
+46.21.1;Commerce de gros de céréales, semences et aliments pour le bétail
+46.21.2;Commerce de gros de tabac non manufacturé
+46.22.1;Commerce de gros de fleurs et plantes
+46.23.1;Commerce de gros d'animaux vivants
+46.24.1;Commerce de gros de cuirs et peaux
+46.31.1;Commerce de gros de fruits et légumes
+46.32.1;Commerce de gros de viandes et de produits à base de viande
+46.33.1;Commerce de gros de produits laitiers, œufs, huiles et matières grasses comestibles
+46.34.1;Commerce de gros de boissons
+46.35.1;Commerce de gros de produits à base de tabac
+46.36.1;Commerce de gros de sucre, chocolat et confiserie
+46.37.1;Commerce de gros de café, thé, cacao et épices
+46.38.1;Commerce de gros de poissons, crustacés et mollusques
+46.38.2;Commerce de gros d'autres produits alimentaires
+46.39.1;Commerce de gros non spécialisé de denrées alimentaires, boissons et tabac
+46.41.1;Commerce de gros de textiles
+46.42.1;Commerce de gros de vêtements et de chaussures
+46.43.1;Commerce de gros d'appareils électroménagers
+46.44.1;Commerce de gros de vaisselle, verrerie et produits d'entretien
+46.45.1;Commerce de gros de parfums et de produits de beauté
+46.46.1;Commerce de gros de produits pharmaceutiques
+46.47.1;Commerce de gros de meubles, de tapis et d'appareils d'éclairage
+46.48.1;Commerce de gros d'articles d'horlogerie et de bijouterie
+46.49.1;Commerce de gros d'articles de coutellerie et d'articles métalliques à usage ménager, d'articles de vannerie, d'articles en liège et d'autres articles ménagers n.c.a.
+46.49.2;Commerce de gros de livres, magazines et articles de papeterie
+46.49.3;Commerce de gros d'autres biens de consommation
+46.51.1;Commerce de gros d'ordinateurs, de périphériques et de logiciels
+46.52.1;Commerce de gros d'équipements et composants électroniques et de télécommunications
+46.61.1;Commerce de gros de matériel agricole
+46.62.1;Commerce de gros de machines-outils
+46.63.1;Commerce de gros de machines pour l'extraction, la construction et le génie civil
+46.64.1;Commerce de gros de machines pour l'industrie textile et l'habillement
+46.65.1;Commerce de gros de mobilier de bureau
+46.66.1;Commerce de gros d'autres machines et équipements de bureau
+46.69.1;Commerce de gros d'autres machines et équipements
+46.71.1;Commerce de gros de combustibles solides, liquides et gazeux et de produits annexes
+46.72.1;Commerce de gros de minerais et métaux
+46.73.1;Commerce de gros de bois, de matériaux de construction et d'appareils sanitaires
+46.74.1;Commerce de gros de quincaillerie et fournitures pour plomberie et chauffage
+46.75.1;Commerce de gros de produits chimiques
+46.76.1;Commerce de gros d'autres produits intermédiaires
+46.77.1;Commerce de gros de déchets et débris
+46.90.1;Commerce de gros non spécialisé
+47.00.1;Commerce de détail de fruits, légumes, viandes, poissons, produits de boulangerie-pâtisserie, produits laitiers et œufs
+47.00.2;Commerce de détail d'autres produits alimentaires, de boissons et de tabac
+47.00.3;Commerce de détail d'équipements d'information et de communication
+47.00.4;Commerce de détail de matériaux de construction et de quincaillerie
+47.00.5;Commerce de détail d'articles ménagers
+47.00.6;Commerce de détail d'articles culturels et récréatifs
+47.00.7;Commerce de détail d'habillement, de produits pharmaceutiques et médicaux, d'articles de toilette, de fleurs et plantes, d'animaux de compagnie et d'aliments pour animaux de compagnie
+47.00.8;Commerce de détail de carburants automobiles et d'autres articles neufs n.c.a.
+47.00.9;Commerce de détail de biens d'occasion
+49.10.1;Transport ferroviaire interurbain de voyageurs
+49.20.1;Transport ferroviaire de fret
+49.31.1;Transport ferroviaire urbain et suburbain de voyageurs
+49.31.2;Autres transports terrestres urbains et suburbains de voyageurs
+49.32.1;Services de taxi
+49.39.1;Transport terrestre régulier interurbain et spécial de voyageurs
+49.39.2;Transport de voyageurs par funiculaires, téléphériques et remontées mécaniques
+49.39.3;Transport terrestre non régulier de voyageurs
+49.41.1;Transport routier de fret
+49.41.2;Location de camions avec conducteur
+49.42.1;Services de déménagement
+49.50.1;Transport par conduites
+50.10.1;Transport maritime et côtier de passagers
+50.10.2;Location de bateaux maritimes et côtiers pour passagers avec pilote
+50.20.1;Transport maritime et côtier de fret
+50.20.2;"Location de bateaux maritimes et côtiers pour fret avec pilote ; services de remorquage et poussage"
+50.30.1;Transport fluvial de passagers
+50.30.2;Location de bateaux fluviaux pour passagers avec pilote
+50.40.1;Transport fluvial de fret
+50.40.2;"Location de bateaux fluviaux pour fret avec pilote ; services de remorquage et poussage"
+51.10.1;Transport aérien de passagers
+51.10.2;Location d'appareils de transport aérien de passagers avec pilote
+51.21.1;Transport aérien de fret
+51.21.2;Location d'appareils de transport aérien de fret avec pilote
+51.22.1;Transport spatial
+52.10.1;Entreposage et stockage
+52.21.1;Services auxiliaires des transports ferroviaires
+52.21.2;Services auxiliaires des transports routiers
+52.21.3;Services auxiliaires des transports par conduites
+52.22.1;Services auxiliaires des transports par eau
+52.23.1;Services des installations aéroportuaires (à l'exclusion de la manutention), services de contrôle de l'espace aérien et autres services auxiliaires des transports aériens
+52.23.2;Services auxiliaires des transports spatiaux
+52.24.1;Services de manutention
+52.29.1;Organisation du transport de fret
+52.29.2;Autres services auxiliaires des transports n.c.a.
+53.10.1;Services de poste dans le cadre d'une obligation de service universel
+53.20.1;Autres services de poste et de courrier
+55.10.1;Hébergement hôtelier en chambre ou unité d'habitation, avec entretien quotidien (à l'exclusion des biens en multipropriété)
+55.20.1;Hébergement touristique et autres services d'hébergement de courte durée
+55.30.1;Services des terrains de camping et parcs pour caravanes et véhicules de loisirs
+55.90.1;Autres services d'hébergement
+56.10.1;Restauration et restauration mobile
+56.21.1;Services de traiteurs
+56.29.1;Services de restauration collective sous contrat
+56.29.2;Services de cantines et restaurants d'entreprise
+56.30.1;Services de débits de boissons
+58.11.1;Livres imprimés
+58.11.2;Livres sur disque, cassette ou autre support physique
+58.11.3;Livres en ligne
+58.11.4;Espaces publicitaires dans les livres
+58.11.5;Édition de livres pour compte de tiers
+58.11.6;Services de licence pour livres
+58.12.1;Répertoires et fichiers d'adresses imprimés ou sur support physique
+58.12.2;Répertoires et fichiers d'adresses en ligne
+58.12.3;Services de licence pour l'utilisation de répertoires et de fichiers d'adresses
+58.12.4;Vente d'espaces publicitaires dans des répertoires et fichiers d'adresses
+58.13.1;Journaux imprimés
+58.13.2;Journaux en ligne
+58.13.3;Espaces publicitaires dans les journaux
+58.14.1;Revues et périodiques imprimés
+58.14.2;Revues et périodiques en ligne
+58.14.3;Espaces publicitaires dans les revues et périodiques
+58.14.4;Services de licence pour les revues et périodiques
+58.19.1;Autres activités d'édition d'imprimés
+58.19.2;Autres contenus en ligne
+58.19.3;Services de licence pour les autres imprimés
+58.21.1;Jeux électroniques, sur support physique
+58.21.2;Jeux électroniques, en téléchargement
+58.21.3;Jeux en ligne
+58.21.4;Services de licence pour l'utilisation de jeux électroniques
+58.29.1;Logiciels système, sur support physique
+58.29.2;Logiciels d'application, sur support physique
+58.29.3;Logiciels en téléchargement
+58.29.4;Logiciels en ligne
+58.29.5;Services de licence pour l'utilisation de logiciels informatiques
+59.11.1;Production de films cinématographiques, de vidéos et de programmes de télévision
+59.11.2;Produits cinématographiques, vidéos et programmes de télévision
+59.11.3;Vente d'espaces publicitaires ou de temps d'antenne dans les produits cinématographiques, vidéos et émissions de télévision
+59.12.1;Post-production de films cinématographiques, de vidéos et de programmes de télévision
+59.13.1;Services de licence et de distribution de films cinématographiques, de vidéos et de programmes de télévision
+59.14.1;Projection de films cinématographiques
+59.20.1;"Services d'enregistrement sonore et d'enregistrement en direct ; originaux d'enregistrement sonore"
+59.20.2;"Production de programmes radio ; originaux de programmes radio"
+59.20.3;Édition musicale
+59.20.4;Services de licence pour l'utilisation d'originaux acoustiques
+60.10.1;"Radiodiffusion ; originaux de radiodiffusion"
+60.10.2;Programmes de stations de radio
+60.10.3;Temps d'antenne publicitaire à la radio
+60.20.1;Programmation de télévision et télédiffusion
+60.20.2;Originaux d'émissions de télévision
+60.20.3;Temps d'antenne publicitaire à la télévision
+61.10.1;Transmission de messages ou de données
+61.10.2;Services de portage pour télécommunications filaires
+61.10.3;Services de transmission de données via des réseaux de télécommunications filaires
+61.10.4;Services de télécommunications par l'internet filaire
+61.10.5;Services de distribution de programmes à domicile par une infrastructure filaire
+61.20.1;Services de télécommunications mobiles et services de réseaux privés pour les systèmes de télécommunications sans fil
+61.20.2;Services de portage pour télécommunications sans fil
+61.20.3;Services de transmission de données via des réseaux de télécommunications sans fil
+61.20.4;Services de télécommunications par l'internet sans fil
+61.20.5;Services de distribution de programmes à domicile par des réseaux sans fil
+61.30.1;Services de télécommunications par satellite, à l'exclusion des services de distribution de programmes à domicile par satellite
+;
+61.30.2;Services de distribution de programmes à domicile par satellite
+61.90.1;Autres services de télécommunications
+62.01.1;Services de conception et développement informatique
+62.01.2;Originaux de logiciels
+62.02.1;Services de conseil en configurations informatiques
+62.02.2;Services de conseils en systèmes et logiciels informatiques
+62.02.3;Services d'assistance technique informatique
+62.03.1;Services de gestion d'installations informatiques
+62.09.1;Installation d'ordinateurs et d'équipements périphériques
+62.09.2;Autres services informatiques n.c.a.
+63.11.1;Traitement de données, hébergement, services applicatifs et autres services de fourniture d'infrastructures des technologies de l'information
+63.11.2;Espaces publicitaires sur internet
+63.12.1;Contenu de portails internet
+63.12.2;Espaces publicitaires sur des portails internet
+63.91.1;Services des agences de presse
+63.99.1;Services d'information n.c.a.
+63.99.2;Compilations originales de faits/informations
+64.11.1;Services de banque centrale
+64.19.1;Services de dépôts
+64.19.2;Services de crédits des institutions monétaires
+64.19.3;Autres services d'intermédiation monétaire n.c.a.
+64.20.1;Services des sociétés holding
+64.30.1;Services des fonds de placement et entités financières similaires
+64.91.1;Services de crédit-bail
+64.92.1;Autres services de crédits, autres que ceux des institutions monétaires
+64.99.1;Autres services financiers, hors assurances et caisses de retraite, n.c.a.
+65.11.1;Assurance vie
+65.12.1;Assurance accidents et assurance maladie
+65.12.2;Assurance de véhicules automobiles
+65.12.3;Assurance maritime, assurance aérienne et autre assurance-transports
+65.12.4;Assurance incendie et autres services d'assurance dommages
+65.12.5;Assurance responsabilité civile générale
+65.12.6;Assurances crédit et caution
+65.12.7;Assurance voyages et assistance, assurance protection juridique et assurance contre les pertes financières diverses
+65.12.9;Autres services d'assurances non-vie
+65.20.1;Réassurance vie, accidents et maladie
+65.20.2;Réassurance transports et dommages
+65.20.3;Réassurance responsabilité civile générale et crédit et caution
+65.20.4;Réassurance protection juridique et pertes financières diverses
+65.20.5;Réassurance en matière de financement des retraites
+65.20.6;Autres services de réassurances non-vie
+65.30.1;Caisses de retraite
+66.11.1;Services liés à l'administration de marchés financiers
+66.12.1;Services de courtage de valeurs mobilières et de marchandises
+66.19.1;Services de traitement et compensation des opérations sur valeurs immobilières
+66.19.2;Services auxiliaires liés aux banques d'investissement
+66.19.3;Services de fiducie et de garde
+66.19.9;Autres services auxiliaires aux services financiers, hors assurances et caisses de retraite, n.c.a.
+66.21.1;Services d'évaluation des risques et dommages
+66.22.1;Services des agents et courtiers d'assurances
+66.29.1;Autres services auxiliaires des assurances et caisses de retraite
+66.30.1;Services de gestion de fonds
+68.10.1;Transactions sur biens immobiliers propres
+68.20.1;Services de location et exploitation de biens immobiliers propres ou loués
+68.31.1;Services des agences immobilières
+68.32.1;Services d'administration de biens immobiliers pour compte de tiers
+69.10.1;Services juridiques
+69.20.1;Services d'audit financier
+69.20.2;Services comptables
+69.20.3;Services de conseil fiscal
+69.20.4;Services d'insolvabilité et de mise sous séquestre
+70.10.1;Services des sièges sociaux
+70.21.1;Services de relations publiques et communication
+70.22.1;Services de conseil en gestion d'entreprises
+70.22.2;Autres services de gestion de projets, à l'exclusion des projets de construction
+70.22.3;Autres services de conseil aux entreprises
+71.11.1;Plans et dessins architecturaux
+71.11.2;Services d'architecture pour bâtiments
+71.11.3;Services d'aménagement urbain et rural
+71.11.4;Services d'architecture paysagère et services de conseil en architecture paysagère
+71.12.1;Services d'ingénierie
+71.12.2;Services de gestion de projet pour projets de constructions
+71.12.3;Services de prospection et de conseil géologiques, géophysiques et autres
+71.20.1;Services de contrôle et analyses techniques
+72.00.1;Recherche et développement expérimental interdisciplinaires, à l'exclusion des projets originaux
+72.00.2;Projets originaux de recherche et développement interdisciplinaires
+72.11.1;Recherche et développement expérimental en biotechnologie de la santé
+72.11.2;Recherche et développement expérimental en biotechnologies environnementale et industrielle
+72.11.3;Recherche et développement expérimental en biotechnologie agricole
+72.11.4;Projets originaux de recherche et développement en biotechnologie
+72.19.1;Recherche et développement  expérimental en physique
+72.19.2;Recherche et développement expérimental en chimie et biologie
+72.19.3;Recherche et développement expérimental en ingénierie et technologie, à l'exclusion des biotechnologies
+72.19.4;Recherche et développement expérimental en médecine et pharmacie
+72.19.5;Recherche et développement expérimental en agronomie
+72.19.6;Recherche et développement expérimental en autres sciences naturelles
+72.19.7;Projets originaux de recherche et développement en autres sciences naturelles et ingénierie
+72.20.1;Recherche et développement expérimental en psychologie
+72.20.2;Recherche et développement expérimental en droit
+72.20.3;Recherche et développement expérimental en langues et littérature
+72.20.4;Recherche et développement expérimental en autres sciences sociales et humaines
+72.20.5;Recherche et développement expérimental en économie
+72.20.6;Projets originaux de recherche et développement en sciences sociales et humaines
+73.11.1;Services fournis par les agences publicitaires
+73.12.1;Vente d'espaces publicitaires pour compte de tiers
+73.12.2;Revente d'espaces publicitaires pour compte de tiers
+73.20.1;Études de marché et services similaires
+73.20.2;Services de sondages d'opinion
+74.10.1;Services de design de décoration d'intérieur et de produits industriels et autres services de design spécialisés
+74.10.2;Designs originaux
+74.20.1;Plaques et films photographiques, autres que cinématographiques, exposés
+74.20.2;Services de photographie spécialisés
+74.20.3;Autres services photographiques
+74.30.1;Services de traduction et interprétation
+74.90.1;Services spécialisés et techniques d'assistance et de conseil n.c.a.
+74.90.2;Autres services spécialisés, techniques et commerciaux n.c.a.
+75.00.1;Services vétérinaires
+77.11.1;Location et location-bail de voitures et véhicules automobiles légers
+77.12.1;Location et location-bail de camions
+77.21.1;Location et location-bail d'articles de loisirs et de sport
+77.22.1;Location de vidéocassettes et dvd
+77.29.1;Location et location-bail d'autres biens personnels et domestiques
+77.31.1;Location et location-bail de matériel agricole
+77.32.1;Location et location-bail de machines et équipements pour la construction et le génie civil
+77.33.1;Location et location-bail de machines de bureau et de matériel informatique
+77.34.1;Location et location-bail de matériels de transport par eau
+77.35.1;Location et location-bail de matériels de transport aérien
+77.39.1;Location et location-bail d'autres machines, équipements et biens n.c.a.
+77.40.1;Services de licence pour l'utilisation de produits de la propriété intellectuelle et similaires, à l'exclusion des œuvres protégées par des droits d'auteur
+78.10.1;Services des agences de placement de main-d'œuvre
+78.20.1;Services des agences de travail temporaire
+78.30.1;Autres services de mise à disposition de ressources humaines
+79.11.1;Services des agences de voyage pour la réservation de transports
+79.11.2;Services des agences de voyage pour la réservation de l'hébergement, de croisières et de voyages à forfait
+79.12.1;Services des voyagistes
+79.90.1;Services de promotion touristique et d'information des visiteurs
+79.90.2;Services des guides touristiques
+79.90.3;Autres services de réservation n.c.a.
+80.10.1;Services de sécurité privée
+80.20.1;Services de systèmes de sécurité
+80.30.1;Services d'enquête
+81.10.1;Services d'appui combinés liés aux bâtiments
+81.21.1;Services de nettoyage courant des bâtiments
+81.22.1;Service de nettoyage industriel
+81.29.1;Autres services de nettoyage
+81.30.1;Services d'aménagement paysager
+82.11.1;Services administratifs combinés
+82.19.1;Photocopie, préparation de documents et autres services spécialisés de soutien administratif
+82.20.1;Services des centres d'appels
+82.30.1;Services d'organisation de salons professionnels et congrès
+82.91.1;Services des agences de recouvrement et des sociétés d'information financière sur la clientèle
+82.92.1;Services de conditionnement
+82.99.1;Autres services de soutien aux entreprises n.c.a.
+84.11.1;Services publics généraux
+84.11.2;Services de soutien aux administrations
+84.12.1;Services d'administration publique (tutelle) de la santé, de la formation, de la culture et des services sociaux, autres que sécurité sociale
+84.13.1;Services d'administration publique (tutelle) des activités économiques
+84.21.1;Services des affaires étrangères
+84.22.1;Services de la défense
+84.23.1;Services de la justice
+84.24.1;Services de maintien de l'ordre et de sécurité
+84.25.1;Services du feu et de secours
+84.30.1;Services de sécurité sociale obligatoire
+85.10.1;Enseignement préprimaire
+85.20.1;Enseignement primaire
+85.31.1;Enseignement secondaire général du premier cycle
+85.31.2;Enseignement secondaire général du deuxième cycle
+85.32.1;Enseignement secondaire technique ou professionnel du premier cycle
+85.32.2;Enseignement secondaire technique ou professionnel du deuxième cycle
+85.41.1;Enseignement post-secondaire non supérieur
+85.42.1;Enseignement supérieur de cycle court
+85.42.2;Enseignement supérieur du premier cycle (niveau licence ou équivalent)
+85.42.3;Enseignement supérieur du deuxième cycle (niveau master ou équivalent)
+85.42.4;Enseignement supérieur du troisième cycle (niveau doctorat ou équivalent)
+85.51.1;Enseignement de disciplines sportives et d'activités de loisirs
+85.52.1;Enseignement culturel
+85.53.1;Enseignement de la conduite
+85.59.1;Services d'enseignement divers n.c.a.
+85.60.1;Services de soutien à l'enseignement
+86.10.1;Services hospitaliers
+86.21.1;Services des médecins généralistes
+86.22.1;Services des médecins spécialistes
+86.23.1;Services de soins dentaires
+86.90.1;Autres services de santé humaine
+87.10.1;Services d'hébergement médicalisé
+87.20.1;Services d'hébergement social pour personnes handicapées mentales, malades mentales et toxicomanes
+87.30.1;Services d'hébergement social pour personnes âgées ou handicapées physiques
+87.90.1;Autres services d'hébergement social
+88.10.1;Services d'action sociale sans hébergement pour personnes âgées ou handicapées
+88.91.1;Services d'action sociale sans hébergement pour jeunes enfants
+88.99.1;Autres services d'action sociale sans hébergement n.c.a.
+90.01.1;Services d'artistes du spectacle vivant
+90.02.1;Services de soutien au spectacle vivant
+90.03.1;Création artistique
+90.04.1;Services de gestion de salles de spectacles
+91.01.1;Services des bibliothèques et archives
+91.02.1;Services de gestion des musées
+91.02.2;Collections des musées
+91.03.1;Services de gestion des sites et monuments historiques et attractions touristiques similaires
+91.04.1;Services des jardins botaniques et zoologiques et des réserves naturelles
+92.00.1;Jeux de hasard
+92.00.2;Jeux d'argent
+93.11.1;Services de gestion d'installations sportives
+93.12.1;Services de clubs de sports
+93.13.1;Services des centres de culture physique
+93.19.1;Autres services liés au sport
+93.21.1;Services des parcs d'attraction et parcs à thème
+93.29.1;Autres services récréatifs n.c.a.
+93.29.2;Autres services du spectacle n.c.a.
+94.11.1;Services fournis par des organisations consulaires et patronales
+94.12.1;Services fournis par des organisations professionnelles
+94.20.1;Services fournis par des syndicats de salariés
+94.91.1;Services fournis par des organisations religieuses
+94.92.1;Services fournis par des organisations politiques
+94.99.1;Services (à l'exclusion des services d'octroi d'aides financières) fournis par d'autres organisations associatives n.c.a.
+94.99.2;Services d'octroi d'aides financières par des organisations associatives
+95.11.1;Services de réparation d'ordinateurs et d'équipements périphériques
+95.12.1;Services de réparation d'équipements de communication
+95.21.1;Services de réparation de produits électroniques grand public
+95.22.1;Services de réparation d'appareils électroménagers et d'équipements pour la maison et le jardin
+95.23.1;Services de réparation de chaussures et d'articles en cuir
+95.24.1;Services de réparation de meubles et d'équipements du foyer
+95.25.1;Services de réparation d'articles d'horlogerie et de bijouterie
+95.29.1;Services de réparation d'autres biens personnels et domestiques
+96.01.1;Services de blanchisserie-teinturerie
+96.02.1;Services de coiffure et soins de beauté
+96.02.2;Cheveux humains, non travaillés
+96.03.1;Services funéraires et connexes
+96.04.1;Services d'entretien corporel
+96.09.1;Autres services personnels n.c.a.
+97.00.1;Services des ménages en tant qu'employeurs de personnel domestique
+98.10.1;Biens divers produits par les ménages privés pour leur usage propre
+98.20.1;Services divers produits par les ménages privés pour leur usage propre
+99.00.1;Services extra-territoriaux

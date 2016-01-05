@@ -1,0 +1,578 @@
+CPF rév. 2.1, 2015 - Niveau 4 - Liste des classes;
+CODE;LIBELLE
+01.11;Céréales (à l'exclusion du riz), légumineuses et oléagineux
+01.12;Riz, non décortiqué
+01.13;Légumes et melons, racines et tubercules
+01.14;Cannes à sucre
+01.15;Tabac brut
+01.16;Plantes textiles
+01.19;Autres cultures non permanentes
+01.21;Raisin
+01.22;Fruits tropicaux et subtropicaux
+01.23;Agrumes
+01.24;Fruits à pépins et à noyau
+01.25;Autres fruits d'arbres ou d'arbustes et fruits à coque
+01.26;Fruits oléagineux
+01.27;Plantes à boissons
+01.28;Plantes à épices, aromatiques, médicinales et pharmaceutiques
+01.29;Autres cultures permanentes
+01.30;"Plants : plants de pépinière, bulbes, tubercules et rhizomes, boutures et greffons ; blanc de champignon"
+01.41;Vaches laitières, vivantes et lait de vache, brut
+01.42;Autres bovins et buffles, vivants et leur sperme
+01.43;Chevaux et autres équidés, vivants
+01.44;Chameaux et autres camélidés, vivants
+01.45;"Ovins et caprins, vivants ; lait de brebis et de chèvre brut, laine en suint et poils d'ovins et de caprins"
+01.46;Porcins, vivants
+01.47;Volailles vivantes et œufs
+01.49;Autres animaux d'élevage et produits d'origine animale
+01.61;Services de soutien aux cultures
+01.62;Services de soutien à la production animale
+01.63;Traitement primaire des récoltes
+01.64;Traitement des semences
+01.70;Chasse, piégeage et services annexes
+02.10;Arbres forestiers et services des pépinières
+02.20;Bois brut
+02.30;Autres produits forestiers
+02.40;Services de soutien à l'exploitation forestière
+03.00;"Produits de la pêche et de l'aquaculture ; services de soutien à la pêche"
+05.10;Houille
+05.20;Lignite
+06.10;Pétrole brut
+06.20;Gaz naturel, liquéfié ou gazeux
+07.10;Minerais de fer
+07.21;Minerais d'uranium et de thorium
+07.29;Autres minerais métalliques
+08.11;Pierres ornementales ou de construction, calcaire industriel, gypse, craie et ardoise
+08.12;Sables et granulats, argiles et kaolin
+08.91;Minéraux chimiques et engrais minéraux
+08.92;Tourbe
+08.93;"Sel et chlorure de sodium pur ; eau de mer"
+08.99;Autres produits des industries extractives n.c.a.
+09.10;Services de soutien à l'extraction d'hydrocarbures
+09.90;Services de soutien aux autres industries extractives
+10.11;Viandes de boucherie et produits d'abattage
+10.12;Viandes de volailles
+10.13;Produits à base de viande
+10.20;Préparations et conserves à base de poisson et de produits de la pêche
+10.31;Préparations et conserves à base de pommes de terre
+10.32;Jus de fruits et légumes
+10.39;Autres préparations et conserves à base de fruits et légumes
+10.41;Huiles et graisses
+10.42;Margarines et graisses comestibles similaires
+10.51;Produits laitiers et fromages
+10.52;Glaces et sorbets
+10.61;Produits du travail des grains
+10.62;Produits amylacés
+10.71;"Pain ; pâtisseries et viennoiseries fraîches"
+10.72;"Biscottes et biscuits ; pâtisseries de conservation"
+10.73;Pâtes alimentaires
+10.81;Sucre
+10.82;Cacao, chocolat et produits de confiserie
+10.83;Café et thé transformés
+10.84;Condiments et assaisonnements
+10.85;Plats préparés
+10.86;Aliments homogénéisés et diététiques
+10.89;Autres produits alimentaires n.c.a.
+10.91;Aliments pour animaux de ferme
+10.92;Aliments pour animaux de compagnie
+11.01;Boissons alcoolisées distillées
+11.02;Vins de raisin
+11.03;Cidre et autres vins de fruits
+11.04;Autres boissons fermentées non distillées
+11.05;Bière
+11.06;Malt
+11.07;"Boissons rafraîchissantes ; eaux minérales et autres eaux en bouteille"
+12.00;Produits à base de tabac
+13.10;Fils et filés
+13.20;Tissus
+13.30;Ennoblissement textile
+13.91;Étoffes à maille
+13.92;Articles textiles confectionnés, sauf habillement
+13.93;Tapis et moquettes
+13.94;Ficelles, cordes et filets
+13.95;Non-tissés et articles en non-tissés, sauf habillement
+13.96;Autres textiles techniques et industriels
+13.99;Autres textiles n.c.a.
+14.11;Vêtements en cuir
+14.12;Vêtements de travail
+14.13;Autres vêtements de dessus
+14.14;Vêtements de dessous
+14.19;Autres vêtements et accessoires
+14.20;Articles en fourrure
+14.31;Articles chaussants à mailles
+14.39;Autres articles à mailles
+15.11;"Cuirs et peaux tannés et apprêtés ; peaux apprêtées et teintées"
+15.12;Articles de voyage, de maroquinerie, de sellerie et de bourrellerie
+15.20;Chaussures
+16.10;Bois, sciés et rabotés
+16.21;Panneaux et placages à base de bois
+16.22;Parquets assemblés
+16.23;Autres éléments de menuiserie et de charpente
+16.24;Emballages en bois
+16.29;"Autres objets en bois ; objets en liège, vannerie et sparterie"
+17.11;Pâte à papier
+17.12;Papier et carton
+17.21;Papier et carton ondulés et emballages en papier ou en carton
+17.22;Articles en papier à usage sanitaire ou domestique
+17.23;Articles de papeterie
+17.24;Papiers peints
+17.29;Autres articles en papier ou en carton
+18.11;Impression de journaux
+18.12;Autres travaux d'impression
+18.13;Travaux de préparation d'impression
+18.14;Reliure et services connexes
+18.20;Reproduction d'enregistrements
+19.10;Produits de la cokéfaction
+19.20;Produits du raffinage du pétrole
+20.11;Gaz industriels
+20.12;Colorants, pigments et agents tannants
+20.13;Autres produits chimiques inorganiques de base
+20.14;Autres produits chimiques organiques de base
+20.15;Engrais et composés azotés
+20.16;Matières plastiques sous formes primaires
+20.17;Caoutchouc synthétique sous formes primaires
+20.20;Pesticides et autres produits agrochimiques
+20.30;Peintures, vernis et revêtements similaires, encres d'imprimerie et mastics
+20.41;Savons, détergents et produits d'entretien
+20.42;Parfums et produits pour la toilette
+20.51;Produits explosifs
+20.52;Colles
+20.53;Huiles essentielles
+20.59;Autres produits chimiques n.c.a.
+20.60;Fibres artificielles ou synthétiques
+21.10;Produits pharmaceutiques de base
+21.20;Préparations pharmaceutiques
+22.11;"Pneumatiques ; rechapage et resculptage de pneumatiques"
+22.19;Autres produits en caoutchouc
+22.21;Plaques, feuilles, tubes et profilés en matières plastiques
+22.22;Emballages en matières plastiques
+22.23;Éléments en matières plastiques pour la construction
+22.29;Autres produits en matières plastiques
+23.11;Verre plat
+23.12;Verre plat travaillé
+23.13;Verre creux
+23.14;Fibres de verre
+23.19;Autres articles en verre travaillé, y compris verre technique
+23.20;Produits réfractaires
+23.31;Carreaux et dalles en céramique
+23.32;Tuiles, briques et produits de construction en terre cuite
+23.41;Articles céramiques à usage domestique ou ornemental
+23.42;Appareils sanitaires en céramique
+23.43;Isolateurs et pièces isolantes en céramique
+23.44;Autres produits céramiques à usage technique
+23.49;Autres produits céramiques
+23.51;Ciment
+23.52;Chaux et plâtre
+23.61;Éléments en béton pour la construction
+23.62;Éléments en plâtre pour la construction
+23.63;Béton prêt à l'emploi
+23.64;Mortiers et bétons secs
+23.65;Fibre-ciment
+23.69;Autres ouvrages en béton, plâtre ou ciment
+23.70;Pierre taillée, façonnée et finie
+23.91;Produits abrasifs
+23.99;Autres produits minéraux non métalliques n.c.a.
+24.10;Produits sidérurgiques de base et ferroalliages
+24.20;Tubes, tuyaux, profilés creux et accessoires correspondants en acier
+24.31;Barres étirées à froid
+24.32;Feuillards laminés à froid
+24.33;Produits formés à froid ou pliés
+24.34;Fils tréfilés à froid
+24.41;Métaux précieux
+24.42;Aluminium
+24.43;Plomb, zinc et étain
+24.44;Cuivre
+24.45;Autres métaux non ferreux
+24.46;Combustibles nucléaires traités
+24.51;Travaux de fonderie de fonte
+24.52;Travaux de fonderie d'acier
+24.53;Travaux de fonderie de métaux légers
+24.54;Travaux de fonderie d'autres métaux non ferreux
+25.11;Structures métalliques et parties de structures
+25.12;Portes et fenêtres en métal
+25.21;Radiateurs et chaudières pour le chauffage central
+25.29;Autres réservoirs, citernes et conteneurs métalliques
+25.30;Générateurs de vapeur, à l'exclusion des chaudières pour chauffage central
+25.40;Armes et munitions
+25.50;"Produits de la forge, de l'emboutissage, de l'estampage et du profilage ; produits de la métallurgie des poudres"
+25.61;Traitement et revêtement des métaux
+25.62;Usinage
+25.71;Articles de coutellerie
+25.72;Serrures et ferrures
+25.73;Outillage
+25.91;Bidons métalliques et récipients similaires
+25.92;Emballages légers métalliques
+25.93;Articles en fils, chaînes et ressorts
+25.94;Vis et boulons
+25.99;Autres produits métalliques n.c.a.
+26.11;Composants électroniques
+26.12;Cartes électroniques assemblées
+26.20;Ordinateurs et équipements périphériques
+26.30;Équipements de communication
+26.40;Produits électroniques grand public
+26.51;Instruments et appareils de mesure, d'essai et de navigation
+26.52;Articles d'horlogerie
+26.60;Équipements d'irradiation médicale, électromédicaux et électrothérapeutiques
+26.70;Matériel optique et photographique
+26.80;Supports magnétiques et optiques
+27.11;Moteurs, génératrices et transformateurs électriques
+27.12;Matériel de distribution et de commande électrique
+27.20;Piles et accumulateurs électriques
+27.31;Câbles de fibres optiques
+27.32;Autres fils et câbles électroniques ou électriques
+27.33;Matériel d'installation électrique
+27.40;Appareils d'éclairage électrique
+27.51;Appareils électroménagers
+27.52;Appareils ménagers non électriques
+27.90;Autres matériels électriques
+28.11;Moteurs et turbines, à l'exclusion des moteurs pour avions, automobiles et motocycles
+28.12;Équipements hydrauliques et pneumatiques
+28.13;Autres pompes et compresseurs
+28.14;Autres articles de robinetterie
+28.15;Engrenages et organes mécaniques de transmission
+28.21;Fours et brûleurs
+28.22;Matériel de levage et de manutention
+28.23;Machines et équipements de bureau (à l'exclusion des ordinateurs et équipements périphériques)
+28.24;Outillage portatif à moteur incorporé
+28.25;Équipements aérauliques et frigorifiques industriels
+28.29;Autres machines d'usage général n.c.a.
+28.30;Machines agricoles et forestières
+28.41;Machines de formage des métaux
+28.49;Autres machines-outils
+28.91;Machines pour la métallurgie
+28.92;Machines pour l'extraction ou la construction
+28.93;Machines pour l'industrie agroalimentaire
+28.94;Machines pour les industries textiles
+28.95;Machines pour les industries du papier et du carton
+28.96;Machines pour le travail du caoutchouc ou des matières plastiques
+28.99;Autres machines d'usage spécifique n.c.a.
+29.10;Véhicules automobiles
+29.20;"Carrosseries automobiles ; remorques et semi-remorques"
+29.31;Équipements électriques et électroniques automobiles
+29.32;Autres parties et accessoires pour véhicules automobiles
+30.11;Navires et structures flottantes
+30.12;Bateaux de plaisance
+30.20;Locomotives et autre matériel ferroviaire roulant
+30.30;Aéronefs et engins spatiaux
+30.40;Véhicules militaires de combat
+30.91;Motocycles
+30.92;Cycles et véhicules pour invalides
+30.99;Autres équipements de transport n.c.a.
+31.00;"Sièges et leurs parties ; parties de meubles"
+31.01;Meubles de bureau et de magasin
+31.02;Meubles de cuisine
+31.03;Sommiers et matelas
+31.09;Autres meubles
+32.11;Monnaies
+32.12;Articles de joaillerie et bijouterie
+32.13;Articles de bijouterie fantaisie et articles similaires
+32.20;Instruments de musique
+32.30;Articles de sport
+32.40;Jeux et jouets
+32.50;Instruments et fournitures à usage médical et dentaire
+32.91;Articles de brosserie
+32.99;Autres produits manufacturés n.c.a.
+33.11;Réparation d'ouvrages en métaux
+33.12;Réparation de machines et équipements mécaniques
+33.13;Réparation de matériels électroniques et optiques
+33.14;Réparation d'équipements électriques
+33.15;Réparation et entretien de navires et bateaux
+33.16;Réparation et entretien d'aéronefs et d'engins spatiaux
+33.17;Réparation et entretien d'autres équipements de transport
+33.19;Réparation d'autres équipements
+33.20;Installation de machines et d'équipements industriels
+35.11;Électricité
+35.12;Transport d'électricité
+35.13;Distribution d'électricité
+35.14;Commerce de l'électricité
+35.21;Gaz manufacturé
+35.22;Distribution de combustibles gazeux par conduites
+35.23;Commerce du gaz par conduites
+35.30;Production et distribution de vapeur et d'air conditionné
+36.00;"Eau naturelle ; traitement et distribution d'eau"
+37.00;"Collecte et traitement des eaux usées ; boues d'épuration"
+38.11;"Déchets non dangereux ; collecte des déchets non dangereux"
+38.12;"Déchets dangereux ; collecte des déchets dangereux"
+38.21;Traitement et élimination des déchets non dangereux
+38.22;Traitement et élimination des déchets dangereux
+38.31;Démantèlement d'épaves
+38.32;"Récupération de matériaux triés ; matières premières secondaires"
+39.00;Dépollution et autres services de gestion des déchets
+41.00;Bâtiments et travaux de construction de bâtiments
+42.11;"Routes et autoroutes ; travaux de construction relatifs aux routes et autoroutes"
+42.12;"Voies ferrées de surface et souterraines ; travaux de construction relatifs aux voies ferrées de surface et souterraines"
+42.13;"Ponts et tunnels ; travaux de construction relatifs aux ponts et tunnels"
+42.21;Ouvrages et travaux de construction relatifs aux réseaux pour fluides
+42.22;Ouvrages et travaux de construction relatifs aux réseaux d'électricité et de télécommunications
+42.91;Ouvrages et travaux de construction relatifs aux projets liés à l'eau
+42.99;Ouvrages et travaux de construction relatifs aux autres projets de génie civil n.c.a.
+43.11;Travaux de démolition
+43.12;Travaux de préparation de sites
+43.13;Travaux de forage et de sondage
+43.21;Travaux d'installation électrique
+43.22;Travaux de plomberie et d'installation de chauffage et de conditionnement d'air
+43.29;Autres travaux d'installation
+43.31;Travaux de plâtrerie
+43.32;Travaux de menuiserie
+43.33;Travaux de revêtement des sols et des murs
+43.34;Travaux de peinture et de vitrerie
+43.39;Autres travaux de finition
+43.91;Travaux de couverture
+43.99;Autres travaux de construction spécialisés n.c.a.
+45.11;Commerce de voitures et de véhicules automobiles légers
+45.19;Commerce d'autres véhicules automobiles
+45.20;Entretien et réparation de véhicules automobiles
+45.31;Commerce de gros de pièces détachées et accessoires pour véhicules automobiles
+45.32;Commerce de détail de pièces détachées et accessoires pour véhicules automobiles
+45.40;Commerce et réparation de motocycles
+46.11;Services d'intermédiaire du commerce de gros de matières premières agricoles, animaux vivants, matières premières textiles et produits semi-finis
+46.12;Services d'intermédiaire du commerce de gros de combustibles, minerais, métaux et produits chimiques
+46.13;Services d'intermédiaire du commerce de gros de bois et de matériaux de construction
+46.14;Services d'intermédiaire du commerce de gros de machines, équipements industriels, navires et aéronefs
+46.15;Services d'intermédiaire du commerce de gros de meubles, articles ménagers et quincaillerie
+46.16;Services d'intermédiaire du commerce de gros de textiles, habillement, fourrures, chaussures et articles en cuir
+46.17;Services d'intermédiaire du commerce de gros de denrées alimentaires, boissons et tabac
+46.18;Services d'intermédiaire du commerce de gros d'autres produits spécifiques
+46.19;Services d'intermédiaire du commerce de gros de produits divers
+46.21;Commerce de gros de céréales, tabac non manufacturé, semences et aliments pour le bétail
+46.22;Commerce de gros de fleurs et plantes
+46.23;Commerce de gros d'animaux vivants
+46.24;Commerce de gros de cuirs et peaux
+46.31;Commerce de gros de fruits et légumes
+46.32;Commerce de gros de viandes et de produits à base de viande
+46.33;Commerce de gros de produits laitiers, œufs, huiles et matières grasses comestibles
+46.34;Commerce de gros de boissons
+46.35;Commerce de gros de produits à base de tabac
+46.36;Commerce de gros de sucre, chocolat et confiserie
+46.37;Commerce de gros de café, thé, cacao et épices
+46.38;Commerce de gros d'autres denrées alimentaires, y compris de poissons, crustacés et mollusques
+46.39;Commerce de gros non spécialisé de denrées alimentaires, boissons et tabac
+46.41;Commerce de gros de textiles
+46.42;Commerce de gros de vêtements et de chaussures
+46.43;Commerce de gros d'appareils électroménagers
+46.44;Commerce de gros de vaisselle, verrerie et produits d'entretien
+46.45;Commerce de gros de parfums et de produits de beauté
+46.46;Commerce de gros de produits pharmaceutiques
+46.47;Commerce de gros de meubles, de tapis et d'appareils d'éclairage
+46.48;Commerce de gros d'articles d'horlogerie et de bijouterie
+46.49;Commerce de gros d'autres articles ménagers
+46.51;Commerce de gros d'ordinateurs, de périphériques et de logiciels
+46.52;Commerce de gros d'équipements et composants électroniques et de télécommunications
+46.61;Commerce de gros de matériel agricole
+46.62;Commerce de gros de machines-outils
+46.63;Commerce de gros de machines pour l'extraction, la construction et le génie civil
+46.64;Commerce de gros de machines pour l'industrie textile et l'habillement
+46.65;Commerce de gros de mobilier de bureau
+46.66;Commerce de gros d'autres machines et équipements de bureau
+46.69;Commerce de gros d'autres machines et équipements
+46.71;Commerce de gros de combustibles solides, liquides et gazeux et de produits annexes
+46.72;Commerce de gros de minerais et métaux
+46.73;Commerce de gros de bois, de matériaux de construction et d'appareils sanitaires
+46.74;Commerce de gros de quincaillerie et fournitures pour plomberie et chauffage
+46.75;Commerce de gros de produits chimiques
+46.76;Commerce de gros d'autres produits intermédiaires
+46.77;Commerce de gros de déchets et débris
+46.90;Commerce de gros non spécialisé
+47.00;Commerce de détail, à l'exclusion des automobiles et des motocycles
+49.10;Transport ferroviaire interurbain de voyageurs
+49.20;Transport ferroviaire de fret
+49.31;Transport terrestre urbain et suburbain de voyageurs
+49.32;Services de taxi
+49.39;Autres transports terrestres de voyageurs n.c.a.
+49.41;Transport routier de fret
+49.42;Services de déménagement
+49.50;Transport par conduites
+50.10;Transport maritime et côtier de passagers
+50.20;Transport maritime et côtier de fret
+50.30;Transport fluvial de passagers
+50.40;Transport fluvial de fret
+51.10;Transport aérien de passagers
+51.21;Transport aérien de fret
+51.22;Transport spatial
+52.10;Entreposage et stockage
+52.21;Services auxiliaires des transports terrestres
+52.22;Services auxiliaires des transports par eau
+52.23;Services auxiliaires des transports aériens
+52.24;Services de manutention
+52.29;Autres services auxiliaires des transports
+53.10;Services de poste dans le cadre d'une obligation de service universel
+53.20;Autres services de poste et de courrier
+55.10;Hôtellerie et hébergement similaire
+55.20;Hébergement touristique et autres services d'hébergement de courte durée
+55.30;Services des terrains de camping et parcs pour caravanes et véhicules de loisirs
+55.90;Autres services d'hébergement
+56.10;Restauration et restauration mobile
+56.21;Services de traiteurs
+56.29;Autres services de restauration collective
+56.30;Services de débits de boissons
+58.11;Édition de livres
+58.12;Édition de répertoires et de fichiers d'adresses
+58.13;Édition de journaux
+58.14;Édition de revues et périodiques
+58.19;Autres activités d'édition
+58.21;Édition de jeux électroniques
+58.29;Édition d'autres logiciels
+59.11;Production de films cinématographiques, de vidéos et de programmes de télévision
+59.12;Post-production de films cinématographiques, de vidéos et de programmes de télévision
+59.13;Distribution de films cinématographiques, de vidéos et de programmes de télévision
+59.14;Projection de films cinématographiques
+59.20;Enregistrement sonore et édition musicale
+60.10;Radiodiffusion
+60.20;"Programmation de télévision et télédiffusion ; originaux d'émissions de télévision"
+61.10;Services de télécommunications filaires
+61.20;Services de télécommunications sans fil
+61.30;Services de télécommunications par satellite
+61.90;Autres services de télécommunications
+62.01;Services de programmation informatique
+62.02;Services de conseil en informatique
+62.03;Services de gestion d'installations informatiques
+62.09;Autres services informatiques
+63.11;Traitement de données, hébergement et activités connexes
+63.12;Services de portails internet
+63.91;Services des agences de presse
+63.99;Autres services d'information n.c.a.
+64.11;Services de banque centrale
+64.19;Autres services d'intermédiation monétaire
+64.20;Services des sociétés holding
+64.30;Services des fonds de placement et entités financières similaires
+64.91;Services de crédit-bail
+64.92;Autres services de crédits
+64.99;Autres services financiers, hors assurances et caisses de retraite, n.c.a.
+65.11;Assurance vie
+65.12;Assurances non-vie
+65.20;Réassurance
+65.30;Caisses de retraite
+66.11;Services liés à l'administration de marchés financiers
+66.12;Services de courtage de valeurs mobilières et de marchandises
+66.19;Autres services auxiliaires aux services financiers, hors assurances et caisses de retraite
+66.21;Services d'évaluation des risques et dommages
+66.22;Services des agents et courtiers d'assurances
+66.29;Autres services auxiliaires des assurances et caisses de retraite
+66.30;Services de gestion de fonds
+68.10;Transactions sur biens immobiliers propres
+68.20;Services de location et exploitation de biens immobiliers propres ou loués
+68.31;Services des agences immobilières
+68.32;Services d'administration de biens immobiliers pour compte de tiers
+69.10;Services juridiques
+69.20;"Services comptables, de tenue de livres de comptes et d'audits ; services de conseil fiscal"
+70.10;Services des sièges sociaux
+70.21;Services de relations publiques et communication
+70.22;Services de conseil en matière d'affaires et de gestion
+71.11;Services d'architecture
+71.12;Services d'ingénierie et services de conseil technique connexes
+71.20;Services de contrôle et analyses techniques
+72.00;Recherche et développement expérimental interdisciplinaires
+72.11;Recherche et développement en biotechnologie
+72.19;Recherche et développement en autres sciences physiques et naturelles
+72.20;Recherche et développement en sciences humaines et sociales
+73.11;Services fournis par les agences publicitaires
+73.12;Régie publicitaire de médias
+73.20;Services d'études de marché et de sondages
+74.10;Services de design spécialisés
+74.20;Services photographiques
+74.30;Services de traduction et interprétation
+74.90;Autres services spécialisés, scientifiques et techniques n.c.a.
+75.00;Services vétérinaires
+77.11;Location et location-bail de voitures et véhicules automobiles légers
+77.12;Location et location-bail de camions
+77.21;Location et location-bail d'articles de loisirs et de sport
+77.22;Location de vidéocassettes et dvd
+77.29;Location et location-bail d'autres biens personnels et domestiques
+77.31;Location et location-bail de matériel agricole
+77.32;Location et location-bail de machines et équipements pour la construction et le génie civil
+77.33;Location et location-bail de machines de bureau et de matériel informatique
+77.34;Location et location-bail de matériels de transport par eau
+77.35;Location et location-bail de matériels de transport aérien
+77.39;Location et location-bail d'autres machines, équipements et biens n.c.a.
+77.40;Services de licence pour l'utilisation de produits de la propriété intellectuelle et similaires, à l'exclusion des œuvres protégées par des droits d'auteur
+78.10;Services des agences de placement de main-d'œuvre
+78.20;Services des agences de travail temporaire
+78.30;Autres services de mise à disposition de ressources humaines
+79.11;Services des agences de voyage
+79.12;Services des voyagistes
+79.90;Autres services de réservation et services connexes
+80.10;Services de sécurité privée
+80.20;Services de systèmes de sécurité
+80.30;Services d'enquête
+81.10;Services d'appui combinés liés aux bâtiments
+81.21;Services de nettoyage courant des bâtiments
+81.22;Autres services de nettoyage des bâtiments et de nettoyage industriel
+81.29;Autres services de nettoyage
+81.30;Services d'aménagement paysager
+82.11;Services administratifs combinés
+82.19;Photocopie, préparation de documents et autres services spécialisés de soutien administratif
+82.20;Services des centres d'appels
+82.30;Services d'organisation de salons professionnels et congrès
+82.91;Services des agences de recouvrement et des sociétés d'information financière sur la clientèle
+82.92;Services de conditionnement
+82.99;Autres services de soutien aux entreprises n.c.a.
+84.11;Services d'administration publique générale
+84.12;Services d'administration publique (tutelle) de la santé, de la formation, de la culture et des services sociaux, autres que sécurité sociale
+84.13;Services d'administration publique (tutelle) des activités économiques
+84.21;Services des affaires étrangères
+84.22;Services de la défense
+84.23;Services de la justice
+84.24;Services de maintien de l'ordre et de sécurité
+84.25;Services du feu et de secours
+84.30;Services de sécurité sociale obligatoire
+85.10;Enseignement préprimaire
+85.20;Enseignement primaire
+85.31;Enseignement secondaire général
+85.32;Enseignement secondaire technique ou professionnel
+85.41;Enseignement post-secondaire non supérieur
+85.42;Enseignement supérieur
+85.51;Enseignement de disciplines sportives et d'activités de loisirs
+85.52;Enseignement culturel
+85.53;Enseignement de la conduite
+85.59;Services d'enseignement divers n.c.a.
+85.60;Services de soutien à l'enseignement
+86.10;Services hospitaliers
+86.21;Services des médecins généralistes
+86.22;Services des médecins spécialistes
+86.23;Services de soins dentaires
+86.90;Autres services de santé humaine
+87.10;Services d'hébergement médicalisé
+87.20;Services d'hébergement social pour personnes handicapées mentales, malades mentales et toxicomanes
+87.30;Services d'hébergement social pour personnes âgées ou handicapées physiques
+87.90;Autres services d'hébergement social
+88.10;Services d'action sociale sans hébergement pour personnes âgées ou handicapées
+88.91;Services d'action sociale sans hébergement pour jeunes enfants
+88.99;Autres services d'action sociale sans hébergement n.c.a.
+90.01;Services d'artistes du spectacle vivant
+90.02;Services de soutien au spectacle vivant
+90.03;Création artistique
+90.04;Services de gestion de salles de spectacles
+91.01;Services des bibliothèques et archives
+91.02;Services des musées
+91.03;Services de gestion des sites et monuments historiques et attractions touristiques similaires
+91.04;Services des jardins botaniques et zoologiques et des réserves naturelles
+92.00;Jeux de hasard et d'argent
+93.11;Services de gestion d'installations sportives
+93.12;Services de clubs de sports
+93.13;Services des centres de culture physique
+93.19;Autres services liés au sport
+93.21;Services des parcs d'attraction et parcs à thème
+93.29;Autres services récréatifs et de loisirs
+94.11;Services fournis par des organisations consulaires et patronales
+94.12;Services fournis par des organisations professionnelles
+94.20;Services fournis par des syndicats de salariés
+94.91;Services fournis par des organisations religieuses
+94.92;Services fournis par des organisations politiques
+94.99;Services fournis par d'autres organisations associatives n.c.a.
+95.11;Services de réparation d'ordinateurs et d'équipements périphériques
+95.12;Services de réparation d'équipements de communication
+95.21;Services de réparation de produits électroniques grand public
+95.22;Services de réparation d'appareils électroménagers et d'équipements pour la maison et le jardin
+95.23;Services de réparation de chaussures et d'articles en cuir
+95.24;Services de réparation de meubles et d'équipements du foyer
+95.25;Services de réparation d'articles d'horlogerie et de bijouterie
+95.29;Services de réparation d'autres biens personnels et domestiques
+96.01;Services de blanchisserie-teinturerie
+96.02;Services de coiffure et soins de beauté
+96.03;Services funéraires et connexes
+96.04;Services d'entretien corporel
+96.09;Autres services personnels n.c.a.
+97.00;Services des ménages en tant qu'employeurs de personnel domestique
+98.10;Biens divers produits par les ménages privés pour leur usage propre
+98.20;Services divers produits par les ménages privés pour leur usage propre
+99.00;Services extra-territoriaux
