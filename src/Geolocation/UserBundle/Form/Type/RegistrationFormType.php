@@ -27,7 +27,7 @@ class RegistrationFormType extends BaseType {
     }
 
     public function getName() {
-        return 'mediamotion_user_registration';
+        return 'geolocation_user_registration';
     }
 
 }
