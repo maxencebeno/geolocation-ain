@@ -1,0 +1,86 @@
+<?php
+
+namespace Geolocation\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cpf
+ *
+ * @ORM\Table(name="cpf", indexes={@ORM\Index(name="IDX_3E3E11F0D823E37A", columns={"section_id"}), @ORM\Index(name="IDX_3E3E11F07A45358C", columns={"groupe_id"}), @ORM\Index(name="IDX_3E3E11F08F5EA509", columns={"classe_id"}), @ORM\Index(name="IDX_3E3E11F041859289", columns={"division_id"}), @ORM\Index(name="IDX_3E3E11F0BCF5E72D", columns={"categorie_id"}), @ORM\Index(name="IDX_3E3E11F0A27126E0", columns={"souscategorie_id"})})
+ * @ORM\Entity
+ */
+class Cpf
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     * })
+     */
+    private $categorie;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\Section
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Section")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="section_id", referencedColumnName="id")
+     * })
+     */
+    private $section;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\Classe
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Classe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="classe_id", referencedColumnName="id")
+     * })
+     */
+    private $classe;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\Groupe
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Groupe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="groupe_id", referencedColumnName="id")
+     * })
+     */
+    private $groupe;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\Division
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Division")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="division_id", referencedColumnName="id")
+     * })
+     */
+    private $division;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\SousCategorie
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\SousCategorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="souscategorie_id", referencedColumnName="id")
+     * })
+     */
+    private $souscategorie;
+
+
+}
+

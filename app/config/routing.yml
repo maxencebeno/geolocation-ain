@@ -1,3 +1,7 @@
+geolocation_admin:
+    resource: "@GeolocationAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
     prefix:   /

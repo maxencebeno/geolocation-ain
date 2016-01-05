@@ -1,0 +1,53 @@
+<?php
+
+namespace Geolocation\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ressources
+ *
+ * @ORM\Table(name="ressources", indexes={@ORM\Index(name="IDX_6A2CD5C7A76ED395", columns={"user_id"}), @ORM\Index(name="IDX_6A2CD5C7413D8865", columns={"cpf_id"})})
+ * @ORM\Entity
+ */
+class Ressources
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="besoin", type="boolean", nullable=false)
+     */
+    private $besoin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\Cpf
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Cpf")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cpf_id", referencedColumnName="id")
+     * })
+     */
+    private $cpf;
+
+
+}
+
