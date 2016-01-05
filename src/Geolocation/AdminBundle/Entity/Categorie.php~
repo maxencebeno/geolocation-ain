@@ -25,6 +25,13 @@ class Categorie
      * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
      */
     private $libelle;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="affiche", type="boolean")
+     */
+    private $affiche;
 
     /**
      * @var integer
@@ -69,5 +76,58 @@ class Categorie
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * @var string
+     */
+    private $lbelle;
+
+
+    /**
+     * Set lbelle
+     *
+     * @param string $libelle
+     *
+     * @return Categorie
+     */
+    public function setLibelle($libelle)
+    {
+        $this->lbelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * Set affiche
+     *
+     * @param boolean $affiche
+     *
+     * @return Categorie
+     */
+    public function setAffiche($affiche)
+    {
+        $this->affiche = $affiche;
+
+        return $this;
+    }
+
+    /**
+     * Get affiche
+     *
+     * @return boolean
+     */
+    public function getAffiche()
+    {
+        return $this->affiche;
     }
 }

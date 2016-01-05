@@ -1,0 +1,25 @@
+{% extends "MediamotionUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets '@MediamotionUserBundle/Resources/public/css/registration/style_confirmed.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+            
+    {% stylesheets '../app/Resources/public/css/mediamotion.min.css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% trans_default_domain 'MediamotionUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="container">
+        <div id="confirmed_message">
+            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+            {% if app.session is not empty %}
+                {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+                {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock fos_user_content %}

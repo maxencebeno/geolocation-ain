@@ -2,6 +2,7 @@
 
 namespace Geolocation\AdminBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,126 +11,78 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User extends BaseUser
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
-     */
-    private $nom;
 
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="text", nullable=false)
      */
-    private $adresse;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mdp", type="string", length=255, nullable=false)
-     */
-    private $mdp;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
-     */
-    private $email;
+    protected $adresse;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="code_postal", type="integer", nullable=false)
      */
-    private $codePostal;
+    protected $codePostal;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=255, nullable=false)
      */
-    private $ville;
+    protected $ville;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tel", type="string", length=255, nullable=true)
      */
-    private $tel;
+    protected $tel;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=false)
      */
-    private $dateCreation;
+    protected $dateCreation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modification", type="datetime", nullable=false)
      */
-    private $dateModification;
+    protected $dateModification;
 
     /**
      * @var string
      *
      * @ORM\Column(name="siret", type="string", length=255, nullable=false)
      */
-    private $siret;
+    protected $siret;
 
     /**
      * @var string
      *
      * @ORM\Column(name="kbis", type="string", length=255, nullable=false)
      */
-    private $kbis;
+    protected $kbis;
 
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="text", nullable=true)
      */
-    private $url;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return User
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
+    protected $url;
 
     /**
      * Set adresse
@@ -153,54 +106,6 @@ class User
     public function getAdresse()
     {
         return $this->adresse;
-    }
-
-    /**
-     * Set mdp
-     *
-     * @param string $mdp
-     *
-     * @return User
-     */
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
-    /**
-     * Get mdp
-     *
-     * @return string
-     */
-    public function getMdp()
-    {
-        return $this->mdp;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -393,15 +298,5 @@ class User
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

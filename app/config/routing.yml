@@ -1,3 +1,7 @@
+geolocation_user:
+    resource: "@GeolocationUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 geolocation_admin:
     resource: "@GeolocationAdminBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,4 +9,7 @@ geolocation_admin:
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
     prefix:   /
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

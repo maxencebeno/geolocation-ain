@@ -1,0 +1,22 @@
+{% extends "MediamotionUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'MediamotionUserBundle' %}
+
+{% block stylesheets %}
+    {% stylesheets '@MediamotionUserBundle/Resources/public/css/resetting/style_checkEmail.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+        
+    {% stylesheets '../app/Resources/public/css/mediamotion.min.css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="container">
+        <div id="email-reset-sent">
+            <p>{{ 'resetting.check_email'|trans({'%email%': email}) }}</p>
+            <p id="back-to-login-page"><a href="{{ path('fos_user_security_login') }}">{{ 'resetting.request.back_to_login' |trans }}</a></p>
+        </div>
+    </div>
+{% endblock %}

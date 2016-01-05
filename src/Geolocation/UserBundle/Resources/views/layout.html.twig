@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% block header %}
+        {% include "::includes/general_header.html.twig" %}
+    {% endblock header %}
+
+    {% block wrapper %}
+        <div id="wrapper">
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for key, message in messages %}
+                    <div class="flash-{{ type }} op_message">
+                        {{ message|trans({}, 'MediamotionUserBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    {% endblock wrapper %}
+
+    {% block footer %}
+        {% include "::includes/general_footer.html.twig" %}
+    {% endblock footer %}
+{% endblock body %}

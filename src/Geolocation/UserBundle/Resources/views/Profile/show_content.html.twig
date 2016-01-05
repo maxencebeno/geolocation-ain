@@ -1,0 +1,71 @@
+{% trans_default_domain 'MediamotionUserBundle' %}
+
+<div class="container">
+    <div id="fos_user_user_show">
+        <h1>{{ 'profile.show.title'|trans }}</h1>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>{{ 'profile.show.basic_infos'|trans }}</h2>
+
+                <p><span class="show-legends">{{ 'profile.show.name'|trans }}:</span> {{ user.surname }}</p>
+                <p><span class="show-legends">{{ 'profile.show.surname'|trans }}:</span> {{ user.name }}</p>
+                <p><span class="show-legends">{{ 'profile.show.username'|trans }}:</span> {{ user.username }}</p>
+                <p><span class="show-legends">{{ 'profile.show.email'|trans }}:</span> {{ user.email }}</p>
+                {% if user.gender == '0' %}
+                    <p><span class="show-legends">{{ 'profile.show.gender'|trans }}:</span> masculin</p>
+                {% else %}
+                    <p><span class="show-legends">{{ 'profile.show.gender'|trans }}:</span> féminin</p>
+                {% endif %}
+                <p>
+                    <span class="show-legends">{{ 'profile.show.adresse'|trans }}: </span>
+                    {% if user.adresse != '' %}
+                        {{ user.adresse }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
+                <p>
+                    <span class="show-legends">{{ 'profile.show.ville'|trans }}: </span>
+                    {% if user.ville != '' %}
+                        {{ user.ville }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
+                <p>
+                    <span class="show-legends">{{ 'profile.show.codepostal'|trans }}: </span>
+                    {% if user.codepostal != '' %}
+                        {{ user.codepostal }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
+                <p>
+                    <span class="show-legends">{{ 'profile.show.pays'|trans }}: </span>
+                    {% if user.pays != '' %}
+                        {{ user.pays }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
+                <p>
+                    <span class="show-legends">Type de compte :</span>
+                    {% if user.roles[0] == "ROLE_USER" %} 
+                        Compte gratuit
+                    {% else %}
+                        Compte payant
+                    {% endif %}
+                </p>
+                
+                <p style="margin-top: 15px;"><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a></p>
+            </div>
+            <div class="col-sm-6">
+                <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
+            </div>
+        </div>
+        
+        <h2>{{ 'profile.show.security_infos'|trans }}</h2>
+        <p><a href="{{ path('fos_user_change_password') }}">{{ 'profile.show.link_change_password'|trans }}</a></p>
+    </div>
+</div>

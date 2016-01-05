@@ -1,0 +1,80 @@
+{% trans_default_domain 'MediamotionUserBundle' %}
+
+<div class="container">
+    <div class="ro">
+        <div id="fos_user_user_edit" class="form-group col-sm-6">
+            <h2>{{ 'profile.edit.title'|trans }}</h2>
+            {% form_theme form 'MediamotionUserBundle:Form:error.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <span class="form-edit-label">{{ form_label(form.surname) }}</span>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form_widget(form.surname, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-surname">{{ form_errors(form.name) }}</span>
+                </div>
+                <div class="col-sm-6">
+                    {{ form_widget(form.name, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-name">{{ form_errors(form.name) }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <span class="form-edit-label">{{ form_label(form.email) }}</span>
+                    {{ form_widget(form.email, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-email">{{ form_errors(form.email) }}</span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-edit-label">{{ form_label(form.file) }}</span>
+                    {{ form_widget(form.file, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-surname">{{ form_errors(form.file) }}</span>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <label class="form-register-label">{{ form_label(form.gender) }}</label>
+                    {{ form_widget(form.gender, { 'attr': {'class' : 'radio-gender', 'type': 'radio', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-gender">{{ form_errors(form.gender) }}</span>
+                </div>
+            </div>
+
+            <span class="form-edit-label">{{ form_label(form.adresse) }}</span>
+            {{ form_widget(form.adresse, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-surname">{{ form_errors(form.adresse) }}</span>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <span class="form-edit-label">{{ form_label(form.ville) }}</span>
+                    {{ form_widget(form.ville, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-surname">{{ form_errors(form.ville) }}</span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-edit-label">{{ form_label(form.codepostal) }}</span>
+                    {{ form_widget(form.codepostal, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-surname">{{ form_errors(form.codepostal) }}</span>
+                </div>
+            </div>
+
+            <span class="form-edit-label">{{ form_label(form.pays) }}</span>
+            {{ form_widget(form.pays, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-surname">{{ form_errors(form.pays) }}</span>
+
+            <div class="mt20"></div>
+            <span class="form-edit-label">{{ form_label(form.current_password) }}</span>
+            {{ form_widget(form.current_password, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-current_password">{{ form_errors(form.current_password) }}</span>
+            
+            {{ form_widget(form.save, { 'attr': {'class': 'submit-button-mediamotion', 'value' : ('profile.edit.submit'|trans) }}) }}
+            
+            {{ form_end(form) }}
+            
+            <p class="text-center mt20">{{ 'profile.edit.or'|trans }}</p>
+            
+            <p><a href="{{ path('fos_user_profile_show') }}" class="submit-button-mediamotion-light">{{ 'profile.edit.back_on_profile'|trans }}</a></p>
+        </div>
+    </div>
+</div>

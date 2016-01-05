@@ -1,0 +1,21 @@
+{% extends "MediamotionUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets '@MediamotionUserBundle/Resources/public/css/registration/style_checkEmail.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+            
+    {% stylesheets '../app/Resources/public/css/mediamotion.min.css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% trans_default_domain 'MediamotionUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="container">
+        <div id="checkEmail_message">
+            <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+        </div>
+    </div>
+{% endblock fos_user_content %}

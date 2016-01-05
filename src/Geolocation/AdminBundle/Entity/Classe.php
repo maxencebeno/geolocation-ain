@@ -25,6 +25,13 @@ class Classe
      * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
      */
     private $libelle;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="affiche", type="boolean")
+     */
+    private $affiche;
 
     /**
      * @var integer
@@ -93,5 +100,29 @@ class Classe
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set affiche
+     *
+     * @param boolean $affiche
+     *
+     * @return Classe
+     */
+    public function setAffiche($affiche)
+    {
+        $this->affiche = $affiche;
+
+        return $this;
+    }
+
+    /**
+     * Get affiche
+     *
+     * @return boolean
+     */
+    public function getAffiche()
+    {
+        return $this->affiche;
     }
 }

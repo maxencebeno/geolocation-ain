@@ -1,0 +1,20 @@
+{% extends "GeolocationUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets '@GeolocationUserBundle/Resources/public/css/registration/style_register.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+    
+    {% stylesheets '../app/Resources/public/css/mediamotion.min.css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block fos_user_content %}
+        {% include "GeolocationUserBundle:Registration:register_content.html.twig" %}
+        {% block javascript %}
+            {% javascripts '@GeolocationUserBundle/Resources/public/js/registration/*' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock javascript %}
+{% endblock fos_user_content %}

@@ -1,0 +1,15 @@
+{% extends "MediamotionUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets '@MediamotionUserBundle/Resources/public/css/profile/style_edit.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+            
+    {% stylesheets '../app/Resources/public/css/mediamotion.min.css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block fos_user_content %}
+{% include "MediamotionUserBundle:Profile:edit_content.html.twig" %}
+{% endblock fos_user_content %}

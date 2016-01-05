@@ -17,6 +17,8 @@ class AppKernel extends Kernel {
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Geolocation\SiteBundle\SiteBundle(),
             new Geolocation\AdminBundle\GeolocationAdminBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Geolocation\UserBundle\GeolocationUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
