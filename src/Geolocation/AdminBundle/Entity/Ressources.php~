@@ -49,5 +49,86 @@ class Ressources
     private $cpf;
 
 
-}
 
+    /**
+     * Set besoin
+     *
+     * @param boolean $besoin
+     *
+     * @return Ressources
+     */
+    public function setBesoin($besoin)
+    {
+        $this->besoin = $besoin;
+
+        return $this;
+    }
+
+    /**
+     * Get besoin
+     *
+     * @return boolean
+     */
+    public function getBesoin()
+    {
+        return $this->besoin;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Geolocation\AdminBundle\Entity\User $user
+     *
+     * @return Ressources
+     */
+    public function setUser(\Geolocation\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Geolocation\AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set cpf
+     *
+     * @param \Geolocation\AdminBundle\Entity\Cpf $cpf
+     *
+     * @return Ressources
+     */
+    public function setCpf(\Geolocation\AdminBundle\Entity\Cpf $cpf = null)
+    {
+        $this->cpf = $cpf;
+
+        return $this;
+    }
+
+    /**
+     * Get cpf
+     *
+     * @return \Geolocation\AdminBundle\Entity\Cpf
+     */
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
+}

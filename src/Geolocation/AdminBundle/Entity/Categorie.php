@@ -22,9 +22,9 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="lbelle", type="string", length=255, nullable=false)
+     * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
      */
-    private $lbelle;
+    private $libelle;
 
     /**
      * @var integer
@@ -62,6 +62,21 @@ class Categorie
     }
 
     /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    /**
+     * @var string
+     */
+    private $lbelle;
+
+
+    /**
      * Set lbelle
      *
      * @param string $lbelle
@@ -83,15 +98,5 @@ class Categorie
     public function getLbelle()
     {
         return $this->lbelle;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

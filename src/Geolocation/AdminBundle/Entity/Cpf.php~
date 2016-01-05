@@ -82,5 +82,158 @@ class Cpf
     private $souscategorie;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \Geolocation\AdminBundle\Entity\Categorie $categorie
+     *
+     * @return Cpf
+     */
+    public function setCategorie(\Geolocation\AdminBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Geolocation\AdminBundle\Entity\Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Geolocation\AdminBundle\Entity\Section $section
+     *
+     * @return Cpf
+     */
+    public function setSection(\Geolocation\AdminBundle\Entity\Section $section = null)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Geolocation\AdminBundle\Entity\Section
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param \Geolocation\AdminBundle\Entity\Classe $classe
+     *
+     * @return Cpf
+     */
+    public function setClasse(\Geolocation\AdminBundle\Entity\Classe $classe = null)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \Geolocation\AdminBundle\Entity\Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set groupe
+     *
+     * @param \Geolocation\AdminBundle\Entity\Groupe $groupe
+     *
+     * @return Cpf
+     */
+    public function setGroupe(\Geolocation\AdminBundle\Entity\Groupe $groupe = null)
+    {
+        $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * Get groupe
+     *
+     * @return \Geolocation\AdminBundle\Entity\Groupe
+     */
+    public function getGroupe()
+    {
+        return $this->groupe;
+    }
+
+    /**
+     * Set division
+     *
+     * @param \Geolocation\AdminBundle\Entity\Division $division
+     *
+     * @return Cpf
+     */
+    public function setDivision(\Geolocation\AdminBundle\Entity\Division $division = null)
+    {
+        $this->division = $division;
+
+        return $this;
+    }
+
+    /**
+     * Get division
+     *
+     * @return \Geolocation\AdminBundle\Entity\Division
+     */
+    public function getDivision()
+    {
+        return $this->division;
+    }
+
+    /**
+     * Set souscategorie
+     *
+     * @param \Geolocation\AdminBundle\Entity\SousCategorie $souscategorie
+     *
+     * @return Cpf
+     */
+    public function setSouscategorie(\Geolocation\AdminBundle\Entity\SousCategorie $souscategorie = null)
+    {
+        $this->souscategorie = $souscategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get souscategorie
+     *
+     * @return \Geolocation\AdminBundle\Entity\SousCategorie
+     */
+    public function getSouscategorie()
+    {
+        return $this->souscategorie;
+    }
+}
