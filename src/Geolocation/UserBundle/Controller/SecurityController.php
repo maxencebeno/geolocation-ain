@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 class SecurityController extends Controller {
 
     public function loginAction(Request $request) {
-
+        
         if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // Puis redirige vers le file manager au bon endroit
             return $this->redirect($this->generateUrl('site'));

@@ -1,4 +1,12 @@
+parameters:
+    geolocation_user.subscriber.fos_user.class: 
+            Geolocation\UserBundle\EventSubscriber\FOSUserSubscriber
+
 services:
-#    geolocation_user.example:
-#        class: Geolocation\UserBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    geolocation_user.subscriber.fos_user:
+        class: %geolocation_user.subscriber.fos_user.class%
+        arguments:
+            - @router
+            - @security.context
+        tags:
+            - { name: kernel.event_subscriber }

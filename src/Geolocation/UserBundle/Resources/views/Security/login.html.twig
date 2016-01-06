@@ -1,28 +1,26 @@
-{% extends "MediamotionUserBundle::layout.html.twig" %}
+{% extends "GeolocationUserBundle::layout.html.twig" %}
 
-{% trans_default_domain 'MediamotionUserBundle' %}
+{% trans_default_domain 'GeolocationUserBundle' %}
 
 {% block stylesheets %}
-    {% stylesheets '@MediamotionUserBundle/Resources/public/css/login/*' %}
+    {% stylesheets '@GeolocationUserBundle/Resources/public/css/login/*' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-    {% endstylesheets %}
-        
-    {% stylesheets '../app/Resources/public/css/mediamotion.min.css' %}
-        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
 {% endblock %}
 
 {% block fos_user_content %}
 
-<div class="bg-login" style="background-image: url({{ asset('bundles/mediamotionsite/images/sea-city-mountains-landmark.jpg') }})">
+<div>
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                <form action="{{ path("fos_user_security_check") }}" method="post" id="login-form">
+            <div class="col-md-6 col-sm-8">
+                <form action="{{ path("fos_user_security_check") }}" method="post" id="login-form" class="form-group">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-                    <div class="logo_login"><img src="{{ asset('bundles/mediamotionfm2/images/logo.png') }}" alt="" /></div>
-
+                    <div class="social_icon"></div>
+                    
+                    <h2>{{ 'layout.login'|trans }}</h2>
+                    <hr class="col-sm-12">
                     {% if error %}
                         <div class="alert alert-danger alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -30,11 +28,11 @@
                         </div>
                     {% endif %}
                     
-                    <input type="text" id="username" class="login-form-input" name="_username" spellcheck="false" autocomplete="off" placeholder="{{ 'security.login.username'|trans }}" autofocus required="required" />
+                    <input type="text" id="username" class="form-control" name="_username" spellcheck="false" autocomplete="off" placeholder="{{ 'security.login.username'|trans }}" autofocus required="required" />
 
                     <br />
 
-                    <input type="password" id="password" class="login-form-input" name="_password" spellcheck="false" placeholder="{{ 'security.login.password'|trans }}" required="required" />
+                    <input type="password" id="password" class="form-control" name="_password" spellcheck="false" placeholder="{{ 'security.login.password'|trans }}" required="required" />
 
                     <br />
 
@@ -43,7 +41,7 @@
                         <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                     </div>
 
-                    <input type="submit" id="login-submit" class="submit-button-mediamotion" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    <input type="submit" id="login-submit" class="btn btn-primary" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 
                     <p class="forgot_password"><a href="{{ path('fos_user_resetting_request') }}">{{ 'security.login.forgot'|trans }}</a></p>
                 </form>

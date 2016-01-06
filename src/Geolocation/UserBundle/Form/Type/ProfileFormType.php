@@ -41,7 +41,7 @@ class ProfileFormType extends AbstractType {
 
         $builder->add('current_password', 'password', array(
             'label' => 'form.current_password',
-            'translation_domain' => 'MediamotionUserBundle',
+            'translation_domain' => 'GeolocationUserBundle',
             'mapped' => false,
             'constraints' => $constraint,
         ));
@@ -55,7 +55,7 @@ class ProfileFormType extends AbstractType {
     }
 
     public function getName() {
-        return 'mediamotion_user_profile';
+        return 'geolocation_user_profile';
     }
 
     /**
@@ -67,28 +67,14 @@ class ProfileFormType extends AbstractType {
     protected function buildUserForm(FormBuilderInterface $builder, array $options) {
         $countries = Intl::getRegionBundle()->getCountryNames();
         $builder
-                ->add('surname', null, array('label' => 'form.surname', 'translation_domain' => 'MediamotionUserBundle'))
-                ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'MediamotionUserBundle'))
-                ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'MediamotionUserBundle'))
-                ->add('file', null, array('label' => 'form.profilPic', 'translation_domain' => 'MediamotionUserBundle'))
-                ->add('adresse', 'textarea', array(
-                    'label' => 'form.adresse',
-                    'required' => false,
-                    'translation_domain' => 'MediamotionUserBundle')
-                )
-                ->add('ville', null, array('label' => 'form.ville', 'translation_domain' => 'MediamotionUserBundle'))
-                ->add('codepostal', null, array('label' => 'form.codepostal', 'translation_domain' => 'MediamotionUserBundle'))
-                ->add('gender', 'choice', array(
-                    'choices' => array('0' => 'Masculin', '1' => 'Féminin'),
-                    'required' => true,
-                    'expanded' => true,
-                    'multiple' => false,
-                    'translation_domain' => 'MediamotionUserBundle',
-                    'label' => 'form.gender'
-                ))
+                ->add('surname', null, array('label' => 'form.surname', 'translation_domain' => 'GeolocationUserBundle'))
+                ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'GeolocationUserBundle'))
+                ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'GeolocationUserBundle'))
+                ->add('ville', null, array('label' => 'form.ville', 'translation_domain' => 'GeolocationUserBundle'))
+                ->add('codepostal', null, array('label' => 'form.codepostal', 'translation_domain' => 'GeolocationUserBundle'))
                 ->add('pays', 'country', array(
                     'choices' => $countries,
-                    'translation_domain' => 'MediamotionUserBundle',
+                    'translation_domain' => 'GeolocationUserBundle',
                     'label' => 'form.pays'
                 ))
                 ->add('save', 'submit', array());

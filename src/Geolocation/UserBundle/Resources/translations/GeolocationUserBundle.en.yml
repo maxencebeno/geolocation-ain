@@ -1,0 +1,135 @@
+# Group
+group:
+    edit:
+        submit: Update group
+    show:
+        name: Group name
+    new:
+        submit: Create group
+    flash:
+        updated: The group has been updated
+        created: The group has been created
+        deleted: The group has been deleted
+
+Bad credentials.: Invalid username or password
+
+# Security
+security:
+    login:
+        username: "Email address"
+        password: "Password"
+        remember_me: Remember me
+        submit: Login
+        forgot: Forgotten password ?
+        Bad credentials.: Invalid username or password
+
+# Profile
+profile:
+    show:
+        username: Username
+        email: Email
+        surname: Surname
+        name: Name
+        adresse: Address
+        ville: City
+        codepostal: Zip code
+        pays: Country
+        gender: Gender
+        title: My profile
+        basic_infos: General information
+        link_edit: Update this
+        security_infos: Security
+        link_change_password: Change my password
+        nonrenseigne: Not specified
+    edit:
+        submit: Update
+        title: Update my general information
+        back_on_profile: Come back to my profile
+        or: or
+    flash:
+        updated: The profile has been updated
+
+# Password change
+change_password:
+    submit: Change password
+    title: Change my password
+    back_on_profile: Come back to my profile
+    flash:
+        success: The password has been changed
+
+# Registration
+registration:
+    check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account. If you don't see our email, please check your "Spam" folder.
+    confirmed: Congrats %username%, your account is now activated. You can directly use our service, you have been automatically connected !
+    back: Back to the originating page.
+    submit: Register
+    flash:
+        user_created: The user has been created successfully
+    email:
+        subject: Welcome %username%!
+        message: |
+            Welcome %username%!
+
+            You just susbscribed an account on the website www.mediamotion.fr
+
+            To finish activating your account - please visit %confirmationUrl%
+            
+            We hope you a good experience on our service.
+
+            Regards,
+            
+            The Geolocation Team.
+
+# Password resetting
+resetting:
+    password_already_requested: The password for this user has already been requested within the last 24 hours.
+    check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
+    request:
+        invalid_username: The email address "%username%" does not exist.
+        username: "Email address"
+        submit: Reset password
+        title: Reset your password
+        back_to_login: Come back to the login pagen
+    reset:
+        submit: Change password
+        title: Password's reset authorised
+    flash:
+        success: The password has been reset successfully
+    email:
+        subject: Reset Password
+        message: |
+            Hello %username%!
+
+            You made a request to change your Geolocation's password.
+
+            To reset your password - please visit %confirmationUrl%
+
+            Regards,
+            
+            The Geolocation Team.
+
+# Global strings
+layout:
+    logout: Logout
+    login: Login
+    register: Create an account
+    logged_in_as: Logged in as %username%
+
+# Form field labels
+form:
+    group_name: "Group name"
+    username: "Username"
+    email: "Email"
+    name: "Name"
+    surname: "Surname"
+    current_password: "Current password"
+    password: "Password"
+    password_confirmation: "Password again"
+    new_password: "New password"
+    new_password_confirmation: "New password again"
+    profilPic: "Profile picture"
+    gender: "Gender"
+    adresse: "Address"
+    ville: "City"
+    codepostal: "Zip code"
+    pays: "Country"

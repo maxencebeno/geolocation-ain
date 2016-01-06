@@ -1,0 +1,140 @@
+# Group
+group:
+    edit:
+        submit: Mettre à jour le groupe
+    show:
+        name: Nom du groupe
+    new:
+        submit: Créer le groupe
+    flash:
+        updated: Le groupe a été mis à jour
+        created: Le groupe a été créé
+        deleted: Le groupe a été supprimé
+        
+Bad credentials.: "Nom d'utilisateur ou mot de passe incorrect"
+
+# Security
+security:
+    login:
+        username: "Nom d'utilisateur"
+        password: "Mot de passe"
+        remember_me: Se souvenir de moi
+        submit: Connexion
+        forgot: E-mail ou mot de passe oublié ?
+        Bad credentials.: "Nom d'utilisateur ou mot de passe incorrect"
+
+# Profile
+profile:
+    show:
+        username: Nom d'utilisateur
+        email: Adresse e-mail
+        name: Nom
+        surname: Prénom
+        adresse: Adresse
+        ville: Ville
+        codepostal: Code postal
+        pays: Pays
+        gender: Genre
+        title: Mon profil
+        basic_infos: Informations générales
+        link_edit: Mettre à jour ces informations
+        security_infos: Sécurité
+        link_change_password: Changer mon mot de passe
+    edit:
+        submit: Mettre à jour
+        title: Modifier mes informations générales
+        back_on_profile: Revenir à mon profil
+    flash:
+        updated: Le profil a été mis à jour
+
+# Password change
+change_password:
+    submit: Modifier le mot de passe
+    title: Changer mon mot de passe
+    back_on_profile: Revenir à mon profil
+    flash:
+        success: Le mot de passe a été modifié
+
+# Registration
+registration:
+    check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte. Si vous ne voyez pas notre mail, pensez à regarder dans le dossier "Courriers indésirables" ou "Spam" de votre messagerie.
+    confirmed: Félicitations %username%, votre compte est maintenant activé. Vous pouvez profiter dès maintenant de nos services, vous avez été connecté automatiquement !
+    back: Retour à la page d'origine.
+    name_too_short: Votre nom doit contenir au moins 2 caractères
+    name_too_long: Votre nom doit contenir au maximum 50 caractères
+    surname_too_short: Votre prénom doit contenir au moins 2 caractères
+    surname_too_long: Votre prénom doit contenir au maximum 50 caractères
+    password_too_week: La sécurité de votre mot de passe est trop faible. Merci d\'en choisir un avec une force moyenne au minimum.
+    submit: Enregistrer
+    flash:
+        user_created: L'utilisateur a été créé avec succès
+    email:
+        subject: Bienvenue %username% !
+        message: |
+            Bienvenue %username% !
+
+            Vous venez de souscrire un compte sur le site www.mediamotion.fr
+
+            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+            
+            Nous vous souhaitons une excellente expérience sur notre service.
+
+            Cordialement,
+            
+            L'équipe Mediamotion.
+
+# Password resetting
+resetting:
+    password_already_requested: Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.
+    back_to_login: Revenir à la page de connexion
+    check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
+    request:
+        invalid_username: L'adresse e-mail "%username%" n'existe pas.
+        username: "Adresse e-mail"
+        submit: Réinitialiser le mot de passe
+        title: Réinitialiser votre mot de passe
+        back_to_login: Revenir à la page de connexion
+    reset:
+        submit: Modifier le mot de passe
+        title: Réinitialisation de mot de passe autorisée
+    flash:
+        success: Le mot de passe a été réinitialisé avec succès
+    email:
+        subject: Réinitialisation de votre mot de passe
+        message: |
+            Bonjour %username% !
+
+            Vous avez effectué une demande de réinitialisation de votre mot de passe Mediamotion.
+
+            Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
+
+            Cordialement,
+            
+            L'équipe Mediamotion.
+
+# Global strings
+layout:
+    logout: Déconnexion
+    login: Connexion
+    register: Créer un compte
+    logged_in_as: Connecté en tant que %username%
+
+# Form field labels
+form:
+    group_name: "Nom du groupe"
+    username: "Nom d'utilisateur"
+    email: "Adresse e-mail"
+    name: "Nom"
+    surname: "Nom"
+    surname_2: "Prénom"
+    current_password: "Mot de passe actuel"
+    password: "Mot de passe"
+    password_confirmation: "Retapez le mot de passe"
+    new_password: "Nouveau mot de passe"
+    new_password_confirmation: "Retapez le mot de passe"
+    profilPic: "Photo de profil"
+    gender: "Genre"
+    adresse: "Adresse"
+    ville: "Ville"
+    codepostal: "Code postal"
+    pays: "Pays"

@@ -1,27 +1,20 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: services.yml }
-    - { resource: "@SiteBundle/Resources/config/services.yml" }
-    - { resource: "@GeolocationAdminBundle/Resources/config/services.yml" }
-    - { resource: "@GeolocationUserBundle/Resources/config/services.yml" }
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
-parameters:
-    locale: fr
 
 framework:
     #esi:             ~
-    translator:      ~
+    translator:      
+        fallback: "%locale%" 
+        enabled:    true
+        logging:    true
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
-    form:            ~
+    form:            true
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
@@ -38,7 +31,7 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    
+
 # Assetic Configuration
 assetic:
     debug:                "%kernel.debug%"
@@ -56,6 +49,9 @@ assetic:
         - SwiftmailerBundle
         - DoctrineBundle
         - AsseticBundle
+        - FOSUserBundle
+        - GeolocationAdminBundle
+        - GeolocationUserBundle
     filters:
         cssrewrite: ~
 
@@ -89,7 +85,49 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# FOSUserBundle Configuration
 fos_user:
-    db_driver: orm
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Geolocation\AdminBundle\Entity\User
+    # Permet de définir quel service de mail utiliser
+    # On utilise twig_swift pour pouvoir envoyer un email en HTML
+    service:
+        mailer: fos_user.mailer.twig_swift
+    # Permet de renseigner le nouveau formulaire d'inscription
+    registration:
+        form:
+            type: geolocation_user_registration
+        # Permet la validation automatique du compte par envoi d'un email
+        confirmation:
+            template: GeolocationUserBundle:Registration:email.txt.twig
+            enabled:    true
+            from_email:
+                # Adresse de l'expediteur
+                address:        noreply@geolocation.fr
+                # Nom de l'expediteur
+                sender_name:    Geolocation
+    profile:
+        form:
+            type: geolocation_user_profile
+    resetting:
+        email:
+            from_email:
+                address:        noreply@geolocation.fr
+                sender_name:    Geolocation
+                
+services:
+    geolocation_user.registration.form.type:
+        class: Geolocation\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: geolocation_user_registration }
+    geolocation_user.profile.form.type:
+        class: Geolocation\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: geolocation_user_profile }
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }

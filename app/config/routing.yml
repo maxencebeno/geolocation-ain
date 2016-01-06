@@ -10,6 +10,6 @@ geolocation_admin:
     resource: "@GeolocationAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
     
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

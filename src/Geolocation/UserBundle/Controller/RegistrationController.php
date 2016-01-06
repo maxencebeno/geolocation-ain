@@ -85,7 +85,7 @@ class RegistrationController extends Controller
         $user = $this->get('fos_user.user_manager')->findUserByEmail($email);
 
         if (null === $user) {
-            return $this->redirect($this->generateUrl('mediamotion_site_homepage'));
+            return $this->redirect($this->generateUrl('site'));
         }
 
         return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
