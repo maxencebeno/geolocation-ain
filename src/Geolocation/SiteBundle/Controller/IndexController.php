@@ -4,10 +4,10 @@ namespace Geolocation\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class IndexController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('SiteBundle:Default:index.html.twig');
+        return $this->render('SiteBundle:Index:index.html.twig');
     }
 }

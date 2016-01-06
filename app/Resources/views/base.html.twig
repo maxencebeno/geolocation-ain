@@ -3,19 +3,28 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% stylesheets 
+        {% block stylsheets %}
+            {% stylesheets 
                    '../app/Resources/public/css/bootstrap.min.css'
-        %}
-        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-        {% endstylesheets %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+                   '../app/Resources/public/css/font-awesome.css'
+                   '../app/Resources/public/css/style.css'
+
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% endblock stylsheets %} 
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% javascripts '../app/Resources/public/js/jquery.min.js'
+    {% block header %}{% include './include/header.html.twig' %}{% endblock %}
+{% block body %}{% endblock %}
+
+{% block footer %}{% include './include/footer.html.twig' %}{% endblock %}
+{% javascripts '../app/Resources/public/js/jquery.min.js'
                        '../app/Resources/public/js/bootstrap.min.js'
-        %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-    </body>
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+</body>
 </html>
