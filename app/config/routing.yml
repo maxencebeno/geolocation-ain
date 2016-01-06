@@ -1,10 +1,10 @@
 geolocation_user:
     resource: "@GeolocationUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
 geolocation_admin:
     resource: "@GeolocationAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
