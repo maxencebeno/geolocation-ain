@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Controller managing the registration
@@ -28,10 +29,9 @@ use FOS\UserBundle\Model\UserInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class RegistrationController extends Controller
-{
-    public function registerAction(Request $request)
-    {
+class RegistrationController extends Controller {
+
+    public function registerAction(Request $request) {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -55,6 +55,23 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+
+            $userManager->updateUser($user);
+
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('fos_user_registration_confirmed');
+                $response = new RedirectResponse($url);
+            }
+
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+            if ($request->files->get('fos_user_registration_form')['fileKbis'] !== NULL) {
+                $this->uploadKbis($request->files->get('fos_user_registration_form')['fileKbis'], $user->getUsername());
+            }
+
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
@@ -71,15 +88,14 @@ class RegistrationController extends Controller
         }
 
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
-            'form' => $form->createView(),
+                    'form' => $form->createView(),
         ));
     }
 
     /**
      * Tell the user to check his email provider
      */
-    public function checkEmailAction()
-    {
+    public function checkEmailAction() {
         $email = $this->get('session')->get('fos_user_send_confirmation_email/email');
         $this->get('session')->remove('fos_user_send_confirmation_email/email');
         $user = $this->get('fos_user.user_manager')->findUserByEmail($email);
@@ -89,15 +105,14 @@ class RegistrationController extends Controller
         }
 
         return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
-            'user' => $user,
+                    'user' => $user,
         ));
     }
 
     /**
      * Receive the confirmation token from user email provider, login the user
      */
-    public function confirmAction(Request $request, $token)
-    {
+    public function confirmAction(Request $request, $token) {
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
 
@@ -131,15 +146,52 @@ class RegistrationController extends Controller
     /**
      * Tell the user his account is now confirmed
      */
-    public function confirmedAction()
-    {
+    public function confirmedAction() {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
         return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
-            'user' => $user,
+                    'user' => $user,
         ));
     }
+
+    protected function getUploadRootDir() {
+        // le chemin absolu du répertoire dans lequel sauvegarder les photos de profil
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir() {
+        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+        return 'uploads/kbis/';
+    }
+
+    public function uploadKbis(UploadedFile $file, $username) {
+        // Nous utilisons le nom de fichier original, donc il est dans la pratique 
+        // nécessaire de le nettoyer xpour éviter les problèmes de sécurité
+        // move copie le fichier présent chez le client dans le répertoire indiqué.
+        $em = $this->getDoctrine()->getManager();
+
+        $userBDD = $em->getRepository('GeolocationAdminBundle:User')
+                ->findOneBy(array(
+            'username' => $username
+        ));
+
+        if ($userBDD->getKbis() !== null) {
+            @unlink(__DIR__ . '/../../../../web/uploads/kbis/' . $userBDD->getKbis());
+        }
+
+        preg_replace('/\s+/', '_', $file->getClientOriginalName());
+        $file->move($this->getUploadRootDir(), $file->getClientOriginalName());
+
+        // On sauvegarde le nom de fichier
+        $kbis = $file->getClientOriginalName();
+
+        $userBDD->setKbis($kbis);
+
+        $em->persist($userBDD);
+        $em->flush();
+    }
+
 }

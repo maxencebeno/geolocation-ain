@@ -101,7 +101,7 @@ fos_user:
         # Permet la validation automatique du compte par envoi d'un email
         confirmation:
             template: GeolocationUserBundle:Registration:email.txt.twig
-            enabled:    true
+            enabled:    false
             from_email:
                 # Adresse de l'expediteur
                 address:        noreply@geolocation.fr

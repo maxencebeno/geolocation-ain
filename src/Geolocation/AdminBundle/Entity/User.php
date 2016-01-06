@@ -67,14 +67,14 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_creation_entreprise", type="datetime", nullable=false)
+     * @ORM\Column(name="date_creation_entreprise", type="datetime", nullable=true)
      */
     protected $dateCreationEntreprise;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_modification", type="datetime", nullable=false)
+     * @ORM\Column(name="date_modification", type="datetime", nullable=true)
      */
     protected $dateModification;
 
@@ -88,7 +88,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="kbis", type="string", length=255, nullable=false)
+     * @ORM\Column(name="kbis", type="string", length=255, nullable=true)
      */
     protected $kbis;
     
@@ -103,6 +103,11 @@ class User extends BaseUser
      * @ORM\Column(name="url", type="text", nullable=true)
      */
     protected $url;
+    
+    public function __construct() {
+        parent::__construct();
+        $this->dateCreation = new \DateTime();
+    }
     
     public function getWebPath() {
         return null === $this->kbis ? null : $this->getUploadDir() . '/' . $this->kbis;

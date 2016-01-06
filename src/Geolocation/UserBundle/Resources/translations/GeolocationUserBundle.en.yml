@@ -16,7 +16,7 @@ Bad credentials.: Invalid username or password
 # Security
 security:
     login:
-        username: "Email address"
+        username: "User name"
         password: "Password"
         remember_me: Remember me
         submit: Login

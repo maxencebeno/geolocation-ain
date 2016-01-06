@@ -14,43 +14,43 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <span class="form-register-label">{{ form_label(form.nom) }}</span>
+                                <span class="form-register-label">{{ form_label(form.nom) }} <strong class="text-danger">*</strong></span>
                                 {{ form_widget(form.nom, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.nom', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.nom) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.nom) }}</span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <span class="form-register-label">{{ form_label(form.username) }}</span>
+                                <span class="form-register-label">{{ form_label(form.username) }} <strong class="text-danger">*</strong></span>
                                 {{ form_widget(form.username, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.username', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.username) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.username) }}</span>
                             </div>
                             <div class="col-sm-6">
-                                <span class="form-register-label">{{ form_label(form.email) }}</span>
+                                <span class="form-register-label">{{ form_label(form.email) }} <strong class="text-danger">*</strong></span>
                                 {{ form_widget(form.email, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.email', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.email) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.email) }}</span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <span class="form-register-label">{{ form_label(form.adresse) }}</span>
+                                <span class="form-register-label">{{ form_label(form.adresse) }} <strong class="text-danger">*</strong></span>
                                 {{ form_widget(form.adresse, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.adresse', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.adresse) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.adresse) }}</span>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <span class="form-register-label">{{ form_label(form.codePostal) }}</span>
+                                        <span class="form-register-label">{{ form_label(form.codePostal) }} <strong class="text-danger">*</strong></span>
                                         {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                        <span class="form-error" id="error-surname">{{ form_errors(form.codePostal) }}</span>
+                                        <span class="text-danger" id="error-surname">{{ form_errors(form.codePostal) }}</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <span class="form-register-label">{{ form_label(form.ville) }}</span>
+                                        <span class="form-register-label">{{ form_label(form.ville) }} <strong class="text-danger">*</strong></span>
                                         {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                        <span class="form-error" id="error-surname">{{ form_errors(form.ville) }}</span>
+                                        <span class="text-danger" id="error-surname">{{ form_errors(form.ville) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -60,41 +60,41 @@
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.tel) }}</span>
                                 {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.tel) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-edit-label">{{ form_label(form.fileKbis) }}</span>
                                 {{ form_widget(form.fileKbis, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.fileKbis) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.fileKbis) }}</span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <span class="form-register-label">{{ form_label(form.siret) }}</span>
+                                <span class="form-register-label">{{ form_label(form.siret) }} <strong class="text-danger">*</strong></span>
                                 {{ form_widget(form.siret, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.siret', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.siret) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.siret) }}</span>
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.url) }}</span>
                                 {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.url', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.url) }}</span>
+                                <span class="text-danger" id="error-surname">{{ form_errors(form.url) }}</span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <span class="form-register-label">{{ form_label(form.plainPassword.first) }}</span>
+                                <span class="form-register-label">{{ form_label(form.plainPassword.first) }} <strong class="text-danger">*</strong></span>
                                 {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '5'}}) }}
                                 <div id="password-solidity"><div id="register-pass-status-line1" class="register-pass-status-line"></div><div id="register-pass-status-line2" class="register-pass-status-line"></div><div id="register-pass-status-line3" class="register-pass-status-line"></div><div id="register-pass-status-line4" class="register-pass-status-line"></div><div id="register-pass-status-line5" class="register-pass-status-line"></div></div>
                                 <div id="password-strength-level"></div>
                                 <div id="password-strength-message"></div>
-                                <span class="form-error" id="error-first-password">{{ form_errors(form.plainPassword.first) }}</span>
+                                <span class="text-danger" id="error-first-password">{{ form_errors(form.plainPassword.first) }}</span>
                             </div>
                             <div class="col-sm-6">
-                                <span class="form-register-label">{{ form_label(form.plainPassword.second) }}</span>
+                                <span class="form-register-label">{{ form_label(form.plainPassword.second) }} <strong class="text-danger">*</strong></span>
                                 {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
-                                <span class="form-error" id="error-second-password">{{ form_errors(form.plainPassword.second) }}</span>
+                                <span class="text-danger" id="error-second-password">{{ form_errors(form.plainPassword.second) }}</span>
                             </div>
                         </div>
 
