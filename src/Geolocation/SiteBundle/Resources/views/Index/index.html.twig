@@ -3,6 +3,36 @@
 {% block body %}
 
     <form class="form-group col-sm-4 col-sm-offset-4">
-        <input class="form-control" placeholder="Rechercher"/><i class="glyphicon glyphicon-search"></i>
+        <div class="input-group">
+
+            <input class="form-control" placeholder="Rechercher"/>
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        </div>
     </form>
+
+
+    <div id="map">
+        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="100%" height="443" src="https://maps.google.com/maps?hl=en&q=71 rue Peter Fink 01000 BOurg en Bresse&ie=UTF8&t=m&z=11&iwloc=B&output=embed"><div><small><a href="http://embedgooglemaps.com">
+                    embedgooglemaps.com
+                </a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">website traffic</a></small></div></iframe>
+    </div>
+    
+    <section id="tuileContainer">
+        <article class="tuile">
+            <div class="imgTuile"></div>
+            Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+        </article>        
+        <article class="tuile">
+            <div class="imgTuile"></div>
+            Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+
+        </article>
+        <article class="tuile">
+            <div class="imgTuile"></div>
+            Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+
+        </article>
+    </section>
+
+
 {% endblock %}
