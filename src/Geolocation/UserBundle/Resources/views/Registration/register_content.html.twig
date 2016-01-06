@@ -3,67 +3,107 @@
 <div class="bg-register">
     <div class="container">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-7">
                 <div class="register-form-block">
                     <h1>{{ 'layout.register'|trans }}</h1>
-                    <div id="form_register">
+                    <hr class="col-sm-12"
+                        <div id="form_register">
                         {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
                         {{ form_start(form, {'attr': {'onSubmit': 'javascript:return verifFormRegister();', 'novalidate': 'novalidate'}}) }}
                         {{ form_errors(form) }}
 
-                        <span class="form-register-label form-group" style="margin-bottom: 0;">{{ form_label(form.surname) }}</span>
                         <div class="row">
                             <div class="col-sm-6">
-                                {{ form_widget(form.surname, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.surname_2', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                                <span class="form-error" id="error-surname">{{ form_errors(form.surname) }}</span>
-                            </div>
-                            <div class="col-sm-6">
-                                {{ form_widget(form.name, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.name', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '2'}}) }}
-                                <span class="form-error" id="error-name">{{ form_errors(form.name) }}</span>
+                                <span class="form-register-label">{{ form_label(form.nom) }}</span>
+                                {{ form_widget(form.nom, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.nom', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.nom) }}</span>
                             </div>
                         </div>
-                        <span class="form-register-label">{{ form_label(form.username) }}</span>
-                        {{ form_widget(form.username, { 'attr': {'class': 'register-form-input form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '3'}}) }}
-                        <span class="form-error" id="error-username">{{ form_errors(form.username) }}</span>
 
-                        <span class="form-register-label">{{ form_label(form.email) }}</span>
-                        {{ form_widget(form.email, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'example@xyz.com', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '4'}}) }}
-                        <span class="form-error" id="error-email">{{ form_errors(form.email) }}</span>
-                        
-                        <span class="form-register-label">{{ form_label(form.adresse) }}</span>
-                        {{ form_widget(form.adresse, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'Adresse', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '4'}}) }}
-                        <span class="form-error" id="error-adresse">{{ form_errors(form.adresse) }}</span>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.username) }}</span>
+                                {{ form_widget(form.username, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.username', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.username) }}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.email) }}</span>
+                                {{ form_widget(form.email, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.email', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.email) }}</span>
+                            </div>
+                        </div>
 
-                        <span class="form-register-label">{{ form_label(form.plainPassword.first) }}</span>
-                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '5'}}) }}
-                        <div id="password-solidity"><div id="register-pass-status-line1" class="register-pass-status-line"></div><div id="register-pass-status-line2" class="register-pass-status-line"></div><div id="register-pass-status-line3" class="register-pass-status-line"></div><div id="register-pass-status-line4" class="register-pass-status-line"></div><div id="register-pass-status-line5" class="register-pass-status-line"></div></div>
-                        <div id="password-strength-level"></div>
-                        <div id="password-strength-message"></div>
-                        <span class="form-error" id="error-first-password">{{ form_errors(form.plainPassword.first) }}</span>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.adresse) }}</span>
+                                {{ form_widget(form.adresse, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.adresse', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.adresse) }}</span>
+                            </div>
 
-                        <span class="form-register-label">{{ form_label(form.plainPassword.second) }}</span>
-                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
-                        <span class="form-error" id="error-second-password">{{ form_errors(form.plainPassword.second) }}</span>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <span class="form-register-label">{{ form_label(form.codePostal) }}</span>
+                                        {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                        <span class="form-error" id="error-surname">{{ form_errors(form.codePostal) }}</span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span class="form-register-label">{{ form_label(form.ville) }}</span>
+                                        {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                        <span class="form-error" id="error-surname">{{ form_errors(form.ville) }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <input type="submit" value="{{ 'layout.register'|trans }}" class="submit-button-mediamotion" tabindex="7" />
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.tel) }}</span>
+                                {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.tel) }}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-edit-label">{{ form_label(form.fileKbis) }}</span>
+                                {{ form_widget(form.fileKbis, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.fileKbis) }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.siret) }}</span>
+                                {{ form_widget(form.siret, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.siret', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.siret) }}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.url) }}</span>
+                                {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.url', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                <span class="form-error" id="error-surname">{{ form_errors(form.url) }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.plainPassword.first) }}</span>
+                                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '5'}}) }}
+                                <div id="password-solidity"><div id="register-pass-status-line1" class="register-pass-status-line"></div><div id="register-pass-status-line2" class="register-pass-status-line"></div><div id="register-pass-status-line3" class="register-pass-status-line"></div><div id="register-pass-status-line4" class="register-pass-status-line"></div><div id="register-pass-status-line5" class="register-pass-status-line"></div></div>
+                                <div id="password-strength-level"></div>
+                                <div id="password-strength-message"></div>
+                                <span class="form-error" id="error-first-password">{{ form_errors(form.plainPassword.first) }}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.plainPassword.second) }}</span>
+                                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                                <span class="form-error" id="error-second-password">{{ form_errors(form.plainPassword.second) }}</span>
+                            </div>
+                        </div>
+
+                        <div class="submit-button">
+                            <input type="submit" value="{{ 'layout.register'|trans }}" class="btn btn-primary" tabindex="7" />
+                        </div>
 
                         {{ form_end(form) }}
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-sm-offset-1">
-                <div id="register-infos">
-                    <h4>Votre nom restera confidentiel</h4>
-                    <p>Votre nom sera affiché seulement pour vos amis, c'est-à-dire pour des gens en qui vous avez confiance. Il ne sera PAS affiché publiquement.</p>
-
-                    <h4>Nom d'utilisateur</h4>
-                    <p>Votre nom d'utilisateur sera public. Si vous souhaitez rester anonyme, ne mettez pas vos nom et/ou prénom dedans.</p>
-
-                    <h4>Votre compte est aussi sécurisé que votre ordinateur.</h4>
-                    <p>N'entrez jamais votre mot de passe sur un périphérique en lequel vous n'avez pas entièrement confiance. Ne vous connectez pas à votre compte sur un ordinateur partagé ou public.</p>
-                    <h4>Choisir son mot de passe</h4>
-                    <p>Afin que la sécurité de votre compte soit assurée au maximum, merci de choisir un mot de passe avec une force minimum de <strong>Moyen</strong>.
-                    Une majuscule et un chiffre sont au minimum requis pour créer un compte.</p>
                 </div>
             </div>
         </div>

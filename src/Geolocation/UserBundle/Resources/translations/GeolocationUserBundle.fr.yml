@@ -20,7 +20,7 @@ security:
         password: "Mot de passe"
         remember_me: Se souvenir de moi
         submit: Connexion
-        forgot: E-mail ou mot de passe oublié ?
+        forgot: Mot de passe oublié ?
         Bad credentials.: "Nom d'utilisateur ou mot de passe incorrect"
 
 # Profile
@@ -118,25 +118,24 @@ resetting:
 layout:
     logout: Déconnexion
     login: Connexion
-    register: Créer un compte
+    register: Inscription
     logged_in_as: Connecté en tant que %username%
 
 # Form field labels
 form:
-    group_name: "Nom du groupe"
-    username: "Nom d'utilisateur"
     email: "Adresse e-mail"
-    name: "Nom"
-    surname: "Nom"
-    surname_2: "Prénom"
+    nom: "Nom de l'entreprise"
+    username: "Nom d'utilisateur"
     current_password: "Mot de passe actuel"
     password: "Mot de passe"
-    password_confirmation: "Retapez le mot de passe"
+    password_confirmation: "Confirmation du mot de passe"
     new_password: "Nouveau mot de passe"
-    new_password_confirmation: "Retapez le mot de passe"
-    profilPic: "Photo de profil"
-    gender: "Genre"
+    new_password_confirmation: "Confirmation du mot de passe"
+    kbis: "Kbis"
     adresse: "Adresse"
     ville: "Ville"
-    codepostal: "Code postal"
+    cp: "Code postal"
     pays: "Pays"
+    tel: "Téléphone"
+    siret: "N° de SIRET"
+    url: "Lien du site web"

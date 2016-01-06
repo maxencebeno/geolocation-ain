@@ -13,3 +13,5 @@
 /app/phpunit.xml
 /nbproject/private/
 nbproject/
+/web/css/
+/web/js/

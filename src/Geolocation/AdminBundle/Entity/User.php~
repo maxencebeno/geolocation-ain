@@ -24,6 +24,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(name="name", type="text", nullable=false)
+     */
+    protected $nom;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adresse", type="text", nullable=false)
      */
     protected $adresse;
@@ -55,6 +62,13 @@ class User extends BaseUser
      * @ORM\Column(name="date_creation", type="datetime", nullable=false)
      */
     protected $dateCreation;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation_entreprise", type="datetime", nullable=false)
+     */
+    protected $dateCreationEntreprise;
 
     /**
      * @var \DateTime
@@ -298,5 +312,29 @@ class User extends BaseUser
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 }

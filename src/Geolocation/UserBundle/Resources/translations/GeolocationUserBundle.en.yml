@@ -112,24 +112,24 @@ resetting:
 layout:
     logout: Logout
     login: Login
-    register: Create an account
+    register: Register
     logged_in_as: Logged in as %username%
 
 # Form field labels
 form:
-    group_name: "Group name"
-    username: "Username"
+    nom: "Business name"
     email: "Email"
-    name: "Name"
-    surname: "Surname"
+    username: "User name"
     current_password: "Current password"
     password: "Password"
     password_confirmation: "Password again"
     new_password: "New password"
     new_password_confirmation: "New password again"
-    profilPic: "Profile picture"
-    gender: "Gender"
+    kbis: "Kbis"
     adresse: "Address"
     ville: "City"
-    codepostal: "Zip code"
+    cp: "Zip code"
     pays: "Country"
+    tel: "Phone"
+    siret: "SIRET number"
+    url: "Website link"
