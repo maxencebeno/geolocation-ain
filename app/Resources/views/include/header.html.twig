@@ -18,9 +18,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <div class="navbar-right">
-
-                    <button type="button" class="btn btn-default navbar-btn">S'inscrire</button>
-                    <button type="button" class="btn btn-default navbar-btn">Se connecter</button>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a href="{{ path('fos_user_profile_show') }}"><button type="button" class="btn btn-default navbar-btn">Mon profil</button></a>
+                        <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-default navbar-btn">Déconnexion</button></a>
+                        {% else %}
+                        <a href="{{ path('fos_user_registration_register') }}"><button type="button" class="btn btn-default navbar-btn">S'inscrire</button></a>
+                        <a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-default navbar-btn">Se connecter</button></a>
+                    {% endif %}
                 </div>
 
             </div><!-- /.navbar-collapse -->
