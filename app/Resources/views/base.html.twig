@@ -3,20 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylsheets %}
-            {% stylesheets 
+        {% stylesheets 
                    '../app/Resources/public/css/bootstrap.min.css'
                    '../app/Resources/public/css/font-awesome.css'
                    '../app/Resources/public/css/style.css'
 
-            %}
-            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-            {% endstylesheets %}
-            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        {% endblock stylsheets %} 
-    </head>
-    <body>
-    {% block header %}{% include './include/header.html.twig' %}{% endblock %}
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block stylesheets %}{% endblock stylesheets %} 
+</head>
+<body>
+{% block header %}{% include './include/header.html.twig' %}{% endblock %}
 {% block body %}{% endblock %}
 
 {% block footer %}{% include './include/footer.html.twig' %}{% endblock %}
