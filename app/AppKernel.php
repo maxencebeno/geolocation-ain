@@ -15,9 +15,15 @@ class AppKernel extends Kernel {
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+
+            // Bundles importés
+            new FOS\UserBundle\FOSUserBundle(),
+            new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+            new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
+
+            // Nos bundles
             new Geolocation\SiteBundle\SiteBundle(),
             new Geolocation\AdminBundle\GeolocationAdminBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
             new Geolocation\UserBundle\GeolocationUserBundle(),
         );
 

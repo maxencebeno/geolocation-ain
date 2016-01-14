@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Pilier creation</h1>
+
+    <form class="form-horizontal" action="{{ path('pilier_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form, {'form_type': 'horizontal'}) }}
+        <div class="control-group">
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Create</button>
+                                <a class="btn" href="{{ path('pilier') }}">
+    Back to the list
+</a>
+
+
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+

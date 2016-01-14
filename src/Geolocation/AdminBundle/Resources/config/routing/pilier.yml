@@ -1,0 +1,30 @@
+pilier:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Pilier:index" }
+
+pilier_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Pilier:show" }
+
+pilier_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Pilier:new" }
+
+pilier_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Pilier:create" }
+    requirements: { _method: post }
+
+pilier_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Pilier:edit" }
+
+pilier_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Pilier:update" }
+    requirements: { _method: post|put }
+
+pilier_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Pilier:delete" }
+    requirements: { _method: post|delete }
