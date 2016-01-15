@@ -1,4 +1,4 @@
-{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+{% extends 'GeolocationAdminBundle::layout.html.twig' %}
 
 {% block title %}
 {{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'User'}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -87,7 +87,7 @@
             <td>{% if entity.dateCreationEntreprise %}{{ entity.dateCreationEntreprise|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.dateModification %}{{ entity.dateModification|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{{ entity.siret }}</td>
-            <td>{{ entity.kbis }}</td>
+            <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}">{{ entity.kbis }}</a></td>
             <td>{{ entity.url }}</td>
             <td>
         <a class="btn btn-mini" href="{{ path('user_show', { 'id': entity.id }) }}">
