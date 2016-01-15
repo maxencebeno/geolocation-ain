@@ -125,4 +125,9 @@ class Division
     {
         return $this->affiche;
     }
+
+    public function __toString()
+    {
+        return $this->getCode() . ' : ' . $this->getLibelle();
+    }
 }

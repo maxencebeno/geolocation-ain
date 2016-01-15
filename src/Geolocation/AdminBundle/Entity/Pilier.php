@@ -93,4 +93,9 @@ class Pilier
     {
         return $this->categorie;
     }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
 }

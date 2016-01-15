@@ -16,6 +16,8 @@ class RessourcesFilterType extends AbstractType
         $builder
             ->add('besoin', 'filter_choice')
             ->add('id', 'filter_number_range')
+            ->add('user')
+            ->add('cpf')
         ;
 
         $listener = function(FormEvent $event)

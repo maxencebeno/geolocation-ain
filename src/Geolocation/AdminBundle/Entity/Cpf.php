@@ -236,4 +236,9 @@ class Cpf
     {
         return $this->souscategorie;
     }
+
+    public function __toString()
+    {
+        return $this->getSection() . ' ' . $this->getDivision() . ' ' . $this->getGroupe();
+    }
 }
