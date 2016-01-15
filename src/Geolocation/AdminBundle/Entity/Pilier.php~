@@ -94,3 +94,4 @@ class Pilier
         return $this->categorie;
     }
 }
+

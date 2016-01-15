@@ -103,6 +103,13 @@ class User extends BaseUser
      * @ORM\Column(name="url", type="text", nullable=true)
      */
     protected $url;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    protected $description;
     
     public function __construct() {
         parent::__construct();
@@ -398,5 +405,29 @@ class User extends BaseUser
     public function getDateCreationEntreprise()
     {
         return $this->dateCreationEntreprise;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
