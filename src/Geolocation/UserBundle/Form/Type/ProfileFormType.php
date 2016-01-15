@@ -67,16 +67,16 @@ class ProfileFormType extends AbstractType {
     protected function buildUserForm(FormBuilderInterface $builder, array $options) {
         $countries = Intl::getRegionBundle()->getCountryNames();
         $builder
-                ->add('surname', null, array('label' => 'form.surname', 'translation_domain' => 'GeolocationUserBundle'))
-                ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'GeolocationUserBundle'))
-                ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'GeolocationUserBundle'))
-                ->add('ville', null, array('label' => 'form.ville', 'translation_domain' => 'GeolocationUserBundle'))
-                ->add('codepostal', null, array('label' => 'form.codepostal', 'translation_domain' => 'GeolocationUserBundle'))
-                ->add('pays', 'country', array(
-                    'choices' => $countries,
-                    'translation_domain' => 'GeolocationUserBundle',
-                    'label' => 'form.pays'
-                ))
+                ->add('nom', null, array('label' => 'form.nom', 'translation_domain' => 'GeolocationUserBundle','required'=>true))
+                ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'GeolocationUserBundle','required'=>true))
+                ->add('adresse', null, array('label' => 'form.adresse', 'translation_domain' => 'GeolocationUserBundle','required'=>true))
+                ->add('ville', null, array('label' => 'form.ville', 'translation_domain' => 'GeolocationUserBundle','required'=>true))
+                ->add('codePostal', null, array('label' => 'form.cp', 'translation_domain' => 'GeolocationUserBundle','required'=>true))
+                ->add('tel', null, array('label' => 'form.tel', 'translation_domain' => 'GeolocationUserBundle'))
+                ->add('dateCreationEntreprise', null, array('label' => 'form.dateCreationEntreprise', 'translation_domain' => 'GeolocationUserBundle'))
+               ->add('siret', null, array('label' => 'form.siret', 'translation_domain' => 'GeolocationUserBundle','required'=>true))
+                ->add('kbis', null, array('label' => 'form.kbis', 'translation_domain' => 'GeolocationUserBundle'))
+               ->add('url', null, array('label' => 'form.url', 'translation_domain' => 'GeolocationUserBundle'))
                 ->add('save', 'submit', array());
     }
 

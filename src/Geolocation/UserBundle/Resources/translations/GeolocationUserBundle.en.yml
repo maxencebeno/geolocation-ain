@@ -26,16 +26,18 @@ security:
 # Profile
 profile:
     show:
-        username: Username
+        name: Company name
         email: Email
-        surname: Surname
-        name: Name
         adresse: Address
         ville: City
         codepostal: Zip code
         pays: Country
-        gender: Gender
+        telepone : Phone
+        site: Website
+        siret : SIRET
+        kbis : kbis
         title: My profile
+        date_creation_entreprise : Company creation date
         basic_infos: General information
         link_edit: Update this
         security_infos: Security
@@ -133,3 +135,4 @@ form:
     tel: "Phone"
     siret: "SIRET number"
     url: "Website link"
+    dateCreationEntreprise : "Company creation date"

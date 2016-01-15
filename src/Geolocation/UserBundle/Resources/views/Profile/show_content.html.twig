@@ -8,63 +8,58 @@
             <div class="col-sm-6">
                 <h2>{{ 'profile.show.basic_infos'|trans }}</h2>
 
-                <p><span class="show-legends">{{ 'profile.show.name'|trans }}:</span> {{ user.surname }}</p>
-                <p><span class="show-legends">{{ 'profile.show.surname'|trans }}:</span> {{ user.name }}</p>
-                <p><span class="show-legends">{{ 'profile.show.username'|trans }}:</span> {{ user.username }}</p>
-                <p><span class="show-legends">{{ 'profile.show.email'|trans }}:</span> {{ user.email }}</p>
-                {% if user.gender == '0' %}
-                    <p><span class="show-legends">{{ 'profile.show.gender'|trans }}:</span> masculin</p>
-                {% else %}
-                    <p><span class="show-legends">{{ 'profile.show.gender'|trans }}:</span> féminin</p>
-                {% endif %}
-                <p>
-                    <span class="show-legends">{{ 'profile.show.adresse'|trans }}: </span>
-                    {% if user.adresse != '' %}
-                        {{ user.adresse }}
+                <p><span class="show-legends">{{ 'profile.show.name'|trans }}:</span> {{ user.username }}</p>
+                 <p>
+                    <span class="show-legends">{{ 'profile.show.date_creation_entreprise'|trans }}: </span>
+                    {% if user.dateCreationEntreprise  != '' %}
+                        {{ user.dateCreationEntreprise  }}
                     {% else %}
                         <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-                <p>
-                    <span class="show-legends">{{ 'profile.show.ville'|trans }}: </span>
-                    {% if user.ville != '' %}
-                        {{ user.ville }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-                <p>
-                    <span class="show-legends">{{ 'profile.show.codepostal'|trans }}: </span>
-                    {% if user.codepostal != '' %}
-                        {{ user.codepostal }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-                <p>
-                    <span class="show-legends">{{ 'profile.show.pays'|trans }}: </span>
-                    {% if user.pays != '' %}
-                        {{ user.pays }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-                <p>
-                    <span class="show-legends">Type de compte :</span>
-                    {% if user.roles[0] == "ROLE_USER" %} 
-                        Compte gratuit
-                    {% else %}
-                        Compte payant
                     {% endif %}
                 </p>
                 
+                <p><span class="show-legends">{{ 'profile.show.email'|trans }}:</span> {{ user.email }}</p>
+                <p><span class="show-legends">{{ 'profile.show.adresse'|trans }}: </span> {{ user.adresse }}</p>
+                <p><span class="show-legends">{{ 'profile.show.ville'|trans }}: </span> {{ user.ville }}  </p>
+                <p><span class="show-legends">{{ 'profile.show.codepostal'|trans }}: </span>{{ user.codepostal }}</p>
+
+                <p>
+                    <span class="show-legends">{{ 'profile.show.telephone'|trans }}: </span>
+                    {% if user.tel != '' %}
+                        {{ user.tel }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
+
+                <p>
+                    <span class="show-legends">{{ 'profile.show.siret'|trans }}: </span>{{ user.siret }} </p>
+                <p>
+                    <span class="show-legends">{{ 'profile.show.kbis'|trans }}: </span>
+                    {% if user.kbis != '' %}
+                        {{ user.kbis }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
+ <p>
+                    <span class="show-legends">{{ 'profile.show.site'|trans }}: </span>
+                    {% if user.url != '' %}
+                        {{ user.url }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
+
+
+
                 <p style="margin-top: 15px;"><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a></p>
             </div>
-            <div class="col-sm-6">
-                <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
-            </div>
+            <!-- <div class="col-sm-6">
+                 <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
+             </div>-->
         </div>
-        
+
         <h2>{{ 'profile.show.security_infos'|trans }}</h2>
         <p><a href="{{ path('fos_user_change_password') }}">{{ 'profile.show.link_change_password'|trans }}</a></p>
     </div>
