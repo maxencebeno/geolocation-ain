@@ -28,3 +28,11 @@ user_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "GeolocationAdminBundle:User:delete" }
     requirements: { _method: post|delete }
+
+user_download_kbis:
+    path: /getfile/{id}
+    defaults: { _controller: "GeolocationAdminBundle:User:downloadFile" }
+
+toggle_user_activation:
+    path: /toggle-activation/{id}
+    defaults: { _controller: "GeolocationAdminBundle:User:toggleActivation" }

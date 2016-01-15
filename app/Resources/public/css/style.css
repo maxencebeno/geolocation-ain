@@ -1,17 +1,38 @@
 /*---------INDEX ----------*/
 
 
-.filtres {
+#zoneRechercheCarte {
     position: absolute;
     top: 121px;
     right: 63px;
     background: beige;
     height: 443px;
     opacity: 0.9;
+    font-size:1em;
+    overflow: hidden;
+    -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+    transition: all 1s;
+}
+
+#zoneRechercheCarte.reduire{
+    height : 50px;
+    opacity: 1;
+}
+
+#zoneRechercheCarte fieldset:hover{
+    cursor: pointer;
+}
+
+#filtreRechercheCarte span.glyphicon{
+    font-size : 0.7em;
 }
 
 input#distance {
     background-color: beige;
+}
+
+.form-group.disabled{
+    display : none;
 }
 
 
@@ -77,3 +98,4 @@ footer ul li{
     margin-bottom: 7px;
     float: left;
 }
+

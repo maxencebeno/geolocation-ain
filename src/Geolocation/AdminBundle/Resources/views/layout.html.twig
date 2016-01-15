@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ 'views.layout.bannersadmin'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{ asset('bundles/jordillonchcrudgenerator/css/bootstrap.css') }}" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="{{ asset('bundles/jordillonchcrudgenerator/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/jordillonchcrudgenerator/css/crud.css') }}" rel="stylesheet">
+    {% stylesheets
+        '../app/Resources/public/css/font-awesome.css'
+        '@GeolocationAdminBundle/Resources/public/css/style.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="{{ asset('bundles/jordillonchcrudgenerator/images/favicon.ico') }}">
+</head>
+
+<body>
+
+<div class="container">
+    {% block menu %}
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="{{ path('geolocation_admin_homepage') }}">Administration GEORIC</a>
+                    <div class="nav-collapse collapse navbar-responsive-collapse">
+                        <ul class="nav">
+                            <li><a href="{{ path('user') }}">Entreprises</a></li>
+                            <li><a href="{{ path('pilier') }}">Piliers économie circulaire</a></li>
+                            <li><a href="{{ path('ressources') }}">Ressources</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Classification des produits
+                                    française <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('section') }}">Section</a></li>
+                                    <li><a href="{{ path('classe') }}">Classe</a></li>
+                                    <li><a href="{{ path('cpf') }}">CPF</a></li>
+                                    <li><a href="{{ path('division') }}">Division</a></li>
+                                    <li><a href="{{ path('categorie') }}">Catégorie</a></li>
+                                    <li><a href="{{ path('souscategorie') }}">Sous catégorie</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.nav-collapse -->
+                </div>
+            </div><!-- /navbar-inner -->
+        </div>
+    {% endblock %}
+
+    {% for type, flashMessages in app.session.flashbag.all() %}
+        {% for flashMessage in flashMessages %}
+            <div class="alert alert-{{ type }}">
+                {{ flashMessage|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {% block page %}{% endblock %}
+
+</div>
+
+
+<script src="{{ asset('bundles/jordillonchcrudgenerator/js/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/jordillonchcrudgenerator/js/bootstrap.js') }}"></script>
+<script src="{{ asset('bundles/jordillonchcrudgenerator/js/bootstrap.js') }}"></script>
+
+{% block javascript %}{% endblock %}
+</body>
+</html>

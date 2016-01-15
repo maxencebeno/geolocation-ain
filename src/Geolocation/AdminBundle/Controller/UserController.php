@@ -3,6 +3,7 @@
 namespace Geolocation\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Pagerfanta\Pagerfanta;
@@ -37,9 +38,9 @@ class UserController extends Controller
     }
 
     /**
-    * Create filter form and process filter request.
-    *
-    */
+     * Create filter form and process filter request.
+     *
+     */
     protected function filter()
     {
         $request = $this->getRequest();
@@ -78,9 +79,9 @@ class UserController extends Controller
     }
 
     /**
-    * Get results from paginator and get paginator view.
-    *
-    */
+     * Get results from paginator and get paginator view.
+     *
+     */
     protected function paginator($queryBuilder)
     {
         // Paginator
@@ -92,8 +93,7 @@ class UserController extends Controller
 
         // Paginator - route generator
         $me = $this;
-        $routeGenerator = function($page) use ($me)
-        {
+        $routeGenerator = function ($page) use ($me) {
             return $me->generateUrl('user', array('page' => $page));
         };
 
@@ -115,7 +115,7 @@ class UserController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity  = new User();
+        $entity = new User();
         $form = $this->createForm(new UserType(), $entity);
         $form->bind($request);
 
@@ -130,7 +130,7 @@ class UserController extends Controller
 
         return $this->render('GeolocationAdminBundle:User:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -141,11 +141,11 @@ class UserController extends Controller
     public function newAction()
     {
         $entity = new User();
-        $form   = $this->createForm(new UserType(), $entity);
+        $form = $this->createForm(new UserType(), $entity);
 
         return $this->render('GeolocationAdminBundle:User:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -166,8 +166,8 @@ class UserController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('GeolocationAdminBundle:User:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),));
     }
 
     /**
@@ -188,8 +188,8 @@ class UserController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('GeolocationAdminBundle:User:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -223,8 +223,8 @@ class UserController extends Controller
         }
 
         return $this->render('GeolocationAdminBundle:User:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -261,13 +261,56 @@ class UserController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+    public function downloadFileAction(Request $request)
+    {
+        // On récupère l'utilisateur
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('GeolocationAdminBundle:User')
+            ->findOneBy(array(
+                'id' => $request->attributes->get('id')
+            ));
+
+        $path = $this->get('kernel')->getRootDir() . "/../web/uploads/kbis/" . $user->getKbis();
+        $content = file_get_contents($path);
+
+        $response = new Response();
+
+        $response->headers->set('Content-Type', 'text/pdf');
+        $response->headers->set('Content-Disposition', 'attachment;filename="' . $user->getKbis());
+
+        $response->setContent($content);
+        return $response;
+    }
+
+    public function toggleActivationAction(Request $request)
+    {
+        // On récupère l'utilisateur
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('GeolocationAdminBundle:User')
+            ->findOneBy(array(
+                'id' => $request->attributes->get('id')
+            ));
+
+
+        $user->isEnabled() ? $user->setEnabled(0) : $user->setEnabled(1);
+
+        $em->persist($user);
+        $em->flush();
+
+        $this->addFlash(
+            'notice',
+            $user->isEnabled() ? "L'utilisateur a bien été activé" : "L'utilisateur a bien été désactivé"
+        );
+
+
+        return $this->redirectToRoute('user');
     }
 }

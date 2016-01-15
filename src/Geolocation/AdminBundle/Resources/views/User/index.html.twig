@@ -1,116 +1,122 @@
-{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+{% extends 'GeolocationAdminBundle::layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'User'}, 'JordiLlonchCrudGeneratorBundle') }}
+    {{ parent() }} - liste des entreprises 'JordiLlonchCrudGeneratorBundle') }}
 {% endblock %}
 
 {% block page %}
 
-<div class="row">
-
-    <div class="span8">
-        <h1>{{ 'views.index.list'|trans({'%entity%': 'User'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
-    </div>
-    <div class="span2">
-        {% if form_errors(filterForm) %}
-        <div class="alert alert-block alert-error fade in form-errors">
-            {{ form_errors(filterForm) }}
-        </div>
-        {% endif %}
-        &nbsp;
-    </div>
-    <div class="span2">
-        <div class="filters-right">
-            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
-                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-                <span class="caret"></span>
-            </a>
-        </div>
-    </div>
-
-    <div class="span12">
-        <div id="filters" class="collapse">
-
-            <form class="well" action="{{ path('user') }}" method="get" {{ form_enctype(filterForm) }}>
-                {{ form_row(filterForm.id) }}
-                {{ form_row(filterForm.nom) }}
-                {{ form_row(filterForm.adresse) }}
-                {{ form_row(filterForm.codePostal) }}
-                {{ form_row(filterForm.ville) }}
-                {{ form_row(filterForm.tel) }}
-                {{ form_row(filterForm.dateCreation) }}
-                {{ form_row(filterForm.dateCreationEntreprise) }}
-                {{ form_row(filterForm.dateModification) }}
-                {{ form_row(filterForm.siret) }}
-                {{ form_row(filterForm.kbis) }}
-                {{ form_row(filterForm.url) }}
-                {{ form_rest(filterForm) }}
-
-                <p>
-                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
-                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <div class="span12">
-
-    <table class="table table-striped table-bordered table-condensed">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Adresse</th>
-            <th>Codepostal</th>
-            <th>Ville</th>
-            <th>Tel</th>
-            <th>Datecreation</th>
-            <th>Datecreationentreprise</th>
-            <th>Datemodification</th>
-            <th>Siret</th>
-            <th>Kbis</th>
-            <th>Url</th>
-            <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.nom }}</td>
-            <td>{{ entity.adresse }}</td>
-            <td>{{ entity.codePostal }}</td>
-            <td>{{ entity.ville }}</td>
-            <td>{{ entity.tel }}</td>
-            <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.dateCreationEntreprise %}{{ entity.dateCreationEntreprise|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.dateModification %}{{ entity.dateModification|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{{ entity.siret }}</td>
-            <td>{{ entity.kbis }}</td>
-            <td>{{ entity.url }}</td>
-            <td>
-        <a class="btn btn-mini" href="{{ path('user_show', { 'id': entity.id }) }}">
-            {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-        </a>
-        <a class="btn btn-mini" href="{{ path('user_edit', { 'id': entity.id }) }}">
-            {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-        </a>            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-    </div>
-
-    <div class="span4">
-    {{ pagerHtml|raw }}
-    </div>
+    <div class="row">
 
         <div class="span8">
-    <a class="btn btn-primary likepaginator" href="{{ path('user_new') }}">
-            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} User
-        </a>
-    </div>
+            <h1>Liste des entreprises</h1>
+        </div>
+        <div class="span2">
+            {% if form_errors(filterForm) %}
+                <div class="alert alert-block alert-error fade in form-errors">
+                    {{ form_errors(filterForm) }}
+                </div>
+            {% endif %}
+            &nbsp;
+        </div>
+        <div class="span2">
+            <div class="filters-right">
+                <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                    {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                    <span class="caret"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="span12">
+            <div id="filters" class="collapse">
+
+                <form class="well" action="{{ path('user') }}" method="get" {{ form_enctype(filterForm) }}>
+                    {{ form_row(filterForm.id) }}
+                    {{ form_row(filterForm.nom) }}
+                    {{ form_row(filterForm.adresse) }}
+                    {{ form_row(filterForm.codePostal) }}
+                    {{ form_row(filterForm.ville) }}
+                    {{ form_row(filterForm.tel) }}
+                    {{ form_row(filterForm.dateCreation) }}
+                    {{ form_row(filterForm.dateCreationEntreprise) }}
+                    {{ form_row(filterForm.siret) }}
+                    {{ form_row(filterForm.kbis) }}
+                    {{ form_row(filterForm.url) }}
+                    {{ form_rest(filterForm) }}
+
+                    <p>
+                        <button type="submit" name="filter_action"
+                                value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                        <button type="submit" name="filter_action"
+                                value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <div class="span12">
+
+            <table class="table table-striped table-bordered table-condensed">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Adresse</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                    <th>Téléphone</th>
+                    <th>Date de création de l'utilisateur</th>
+                    <th>Date de création de l'entreprise</th>
+                    <th>Siret</th>
+                    <th>Kbis</th>
+                    <th>Url</th>
+                    <th>Etat</th>
+                    <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.nom }}</td>
+                        <td>{{ entity.adresse }}</td>
+                        <td>{{ entity.codePostal }}</td>
+                        <td>{{ entity.ville }}</td>
+                        <td>{{ entity.tel }}</td>
+                        <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if entity.dateCreationEntreprise %}{{ entity.dateCreationEntreprise|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.siret }}</td>
+                        <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}">{{ entity.kbis }}</a></td>
+                        <td>{{ entity.url }}</td>
+                        {%  if entity.enabled == '1' %}
+                        <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i class="etat text-success fa fa-power-off"></i></a></td>
+                        {% else %}
+                        <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i class="etat text-error fa fa-power-off"></i></a></td>
+                        {%  endif %}
+                        <td>
+                            <a class="btn btn-mini" href="{{ path('user_show', { 'id': entity.id }) }}">
+                                {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                            </a>
+                            <a class="btn btn-mini" href="{{ path('user_edit', { 'id': entity.id }) }}">
+                                {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="span4">
+            {{ pagerHtml|raw }}
+        </div>
+
+        <div class="span8">
+            <a class="btn btn-primary likepaginator" href="{{ path('user_new') }}">
+                {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} User
+            </a>
+        </div>
     </div>
 
 {% endblock %}
