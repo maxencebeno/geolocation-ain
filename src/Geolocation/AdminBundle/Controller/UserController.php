@@ -278,15 +278,39 @@ class UserController extends Controller
                 'id' => $request->attributes->get('id')
             ));
 
-        $path = $this->get('kernel')->getRootDir(). "/../web/uploads/kbis/" . $user->getKbis();
+        $path = $this->get('kernel')->getRootDir() . "/../web/uploads/kbis/" . $user->getKbis();
         $content = file_get_contents($path);
 
         $response = new Response();
 
         $response->headers->set('Content-Type', 'text/pdf');
-        $response->headers->set('Content-Disposition', 'attachment;filename="'.$user->getKbis());
+        $response->headers->set('Content-Disposition', 'attachment;filename="' . $user->getKbis());
 
         $response->setContent($content);
         return $response;
+    }
+
+    public function toggleActivationAction(Request $request)
+    {
+        // On récupère l'utilisateur
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('GeolocationAdminBundle:User')
+            ->findOneBy(array(
+                'id' => $request->attributes->get('id')
+            ));
+
+
+        $user->isEnabled() ? $user->setEnabled(0) : $user->setEnabled(1);
+
+        $em->persist($user);
+        $em->flush();
+
+        $this->addFlash(
+            'notice',
+            $user->isEnabled() ? "L'utilisateur a bien été activé" : "L'utilisateur a bien été désactivé"
+        );
+
+
+        return $this->redirectToRoute('user');
     }
 }

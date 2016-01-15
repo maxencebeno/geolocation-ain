@@ -16,6 +16,12 @@
     </style>
     <link href="{{ asset('bundles/jordillonchcrudgenerator/css/bootstrap-responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/jordillonchcrudgenerator/css/crud.css') }}" rel="stylesheet">
+    {% stylesheets
+        '../app/Resources/public/css/font-awesome.css'
+        '@GeolocationAdminBundle/Resources/public/css/style.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -77,6 +83,7 @@
 
 
 <script src="{{ asset('bundles/jordillonchcrudgenerator/js/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/jordillonchcrudgenerator/js/bootstrap.js') }}"></script>
 <script src="{{ asset('bundles/jordillonchcrudgenerator/js/bootstrap.js') }}"></script>
 
 {% block javascript %}{% endblock %}

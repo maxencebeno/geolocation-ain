@@ -18,7 +18,6 @@ class UserType extends AbstractType
             ->add('tel')
             ->add('dateCreation')
             ->add('dateCreationEntreprise')
-            ->add('dateModification')
             ->add('siret')
             ->add('kbis')
             ->add('url')
