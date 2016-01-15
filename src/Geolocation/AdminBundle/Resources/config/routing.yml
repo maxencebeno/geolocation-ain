@@ -1,7 +1,43 @@
+geolocation_admin_souscategorie:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/souscategorie.yml"
+    prefix:   /souscategorie
+
+geolocation_admin_section:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/section.yml"
+    prefix:   /section
+
+geolocation_admin_ressources:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/ressources.yml"
+    prefix:   /ressources
+
+geolocation_admin_groupe:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/groupe.yml"
+    prefix:   /groupe
+
+geolocation_admin_division:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/division.yml"
+    prefix:   /division
+
+geolocation_admin_cpf:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/cpf.yml"
+    prefix:   /cpf
+
+geolocation_admin_classe:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/classe.yml"
+    prefix:   /classe
+
+geolocation_admin_categorie:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+
+geolocation_admin_user:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
 geolocation_admin_pilier:
     resource: "@GeolocationAdminBundle/Resources/config/routing/pilier.yml"
     prefix:   /pilier
 
 geolocation_admin_homepage:
     path:     /
-    defaults: { _controller: GeolocationAdminBundle:Default:index }
+    defaults: { _controller: GeolocationAdminBundle:Index:index }

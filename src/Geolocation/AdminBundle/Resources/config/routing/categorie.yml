@@ -1,0 +1,30 @@
+categorie:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Categorie:index" }
+
+categorie_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Categorie:show" }
+
+categorie_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Categorie:new" }
+
+categorie_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Categorie:create" }
+    requirements: { _method: post }
+
+categorie_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Categorie:edit" }
+
+categorie_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Categorie:update" }
+    requirements: { _method: post|put }
+
+categorie_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Categorie:delete" }
+    requirements: { _method: post|delete }

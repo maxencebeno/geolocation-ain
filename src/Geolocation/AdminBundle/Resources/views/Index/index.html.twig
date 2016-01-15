@@ -1,0 +1,37 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+
+{% block page %}
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="{{ path('geolocation_admin_homepage') }}">Administration GEORIC</a>
+                <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav">
+                        <li><a href="{{ path('user') }}">Entreprises</a></li>
+                        <li><a href="{{ path('pilier') }}">Piliers économie circulaire</a></li>
+                        <li><a href="{{ path('ressources') }}">Ressources</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Classification des produits française <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('section') }}">Section</a></li>
+                                <li><a href="{{ path('classe') }}">Classe</a></li>
+                                <li><a href="{{ path('cpf') }}">CPF</a></li>
+                                <li><a href="{{ path('division') }}">Division</a></li>
+                                <li><a href="{{ path('categorie') }}">Catégorie</a></li>
+                                <li><a href="{{ path('souscategorie') }}">Sous catégorie</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+            </div>
+        </div><!-- /navbar-inner -->
+    </div>
+
+{% endblock page %}

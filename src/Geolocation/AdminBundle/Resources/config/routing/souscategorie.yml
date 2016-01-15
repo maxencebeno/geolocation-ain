@@ -1,0 +1,30 @@
+souscategorie:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:SousCategorie:index" }
+
+souscategorie_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:SousCategorie:show" }
+
+souscategorie_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:SousCategorie:new" }
+
+souscategorie_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:SousCategorie:create" }
+    requirements: { _method: post }
+
+souscategorie_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:SousCategorie:edit" }
+
+souscategorie_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:SousCategorie:update" }
+    requirements: { _method: post|put }
+
+souscategorie_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:SousCategorie:delete" }
+    requirements: { _method: post|delete }

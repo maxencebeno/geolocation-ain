@@ -1,0 +1,30 @@
+groupe:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Groupe:index" }
+
+groupe_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Groupe:show" }
+
+groupe_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Groupe:new" }
+
+groupe_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Groupe:create" }
+    requirements: { _method: post }
+
+groupe_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Groupe:edit" }
+
+groupe_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Groupe:update" }
+    requirements: { _method: post|put }
+
+groupe_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Groupe:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,30 @@
+user:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:User:index" }
+
+user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:User:show" }
+
+user_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:User:new" }
+
+user_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:User:create" }
+    requirements: { _method: post }
+
+user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:User:edit" }
+
+user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:User:update" }
+    requirements: { _method: post|put }
+
+user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:User:delete" }
+    requirements: { _method: post|delete }

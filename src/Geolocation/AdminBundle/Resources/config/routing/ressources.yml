@@ -1,0 +1,30 @@
+ressources:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Ressources:index" }
+
+ressources_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Ressources:show" }
+
+ressources_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Ressources:new" }
+
+ressources_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Ressources:create" }
+    requirements: { _method: post }
+
+ressources_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Ressources:edit" }
+
+ressources_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Ressources:update" }
+    requirements: { _method: post|put }
+
+ressources_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Ressources:delete" }
+    requirements: { _method: post|delete }

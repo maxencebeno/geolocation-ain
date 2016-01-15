@@ -1,0 +1,30 @@
+cpf:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Cpf:index" }
+
+cpf_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Cpf:show" }
+
+cpf_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Cpf:new" }
+
+cpf_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Cpf:create" }
+    requirements: { _method: post }
+
+cpf_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Cpf:edit" }
+
+cpf_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Cpf:update" }
+    requirements: { _method: post|put }
+
+cpf_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Cpf:delete" }
+    requirements: { _method: post|delete }

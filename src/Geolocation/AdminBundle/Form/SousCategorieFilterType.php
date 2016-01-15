@@ -2,7 +2,6 @@
 
 namespace Geolocation\AdminBundle\Form;
 
-use Geolocation\AdminBundle\Repository\PilierRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -10,16 +9,15 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormError;
 
-class PilierFilterType extends AbstractType
+class SousCategorieFilterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('code', 'filter_text')
+            ->add('libelle', 'filter_text')
+            ->add('affiche', 'filter_choice')
             ->add('id', 'filter_number_range')
-            ->add('nom', 'filter_text')
-            ->add('categorie', 'choice', array(
-                'choices' => PilierRepository::getCategorie()
-            ))
         ;
 
         $listener = function(FormEvent $event)
@@ -43,6 +41,6 @@ class PilierFilterType extends AbstractType
 
     public function getName()
     {
-        return 'geolocation_adminbundle_pilierfiltertype';
+        return 'geolocation_adminbundle_souscategoriefiltertype';
     }
 }

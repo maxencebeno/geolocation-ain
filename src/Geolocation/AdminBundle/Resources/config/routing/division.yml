@@ -1,0 +1,30 @@
+division:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Division:index" }
+
+division_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Division:show" }
+
+division_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Division:new" }
+
+division_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Division:create" }
+    requirements: { _method: post }
+
+division_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Division:edit" }
+
+division_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Division:update" }
+    requirements: { _method: post|put }
+
+division_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Division:delete" }
+    requirements: { _method: post|delete }

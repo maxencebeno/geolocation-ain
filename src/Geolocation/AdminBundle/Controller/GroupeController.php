@@ -9,19 +9,18 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
 
-use Geolocation\AdminBundle\Entity\Pilier;
-use Geolocation\AdminBundle\Form\PilierType;
-use Geolocation\AdminBundle\Form\PilierFilterType;
-use Geolocation\AdminBundle\Repository\PilierRepository;
+use Geolocation\AdminBundle\Entity\Groupe;
+use Geolocation\AdminBundle\Form\GroupeType;
+use Geolocation\AdminBundle\Form\GroupeFilterType;
 
 /**
- * Pilier controller.
+ * Groupe controller.
  *
  */
-class PilierController extends Controller
+class GroupeController extends Controller
 {
     /**
-     * Lists all Pilier entities.
+     * Lists all Groupe entities.
      *
      */
     public function indexAction()
@@ -30,7 +29,7 @@ class PilierController extends Controller
 
         list($entities, $pagerHtml) = $this->paginator($queryBuilder);
 
-        return $this->render('GeolocationAdminBundle:Pilier:index.html.twig', array(
+        return $this->render('GeolocationAdminBundle:Groupe:index.html.twig', array(
             'entities' => $entities,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -45,13 +44,13 @@ class PilierController extends Controller
     {
         $request = $this->getRequest();
         $session = $request->getSession();
-        $filterForm = $this->createForm(new PilierFilterType());
+        $filterForm = $this->createForm(new GroupeFilterType());
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('GeolocationAdminBundle:Pilier')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('GeolocationAdminBundle:Groupe')->createQueryBuilder('e');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
-            $session->remove('PilierControllerFilter');
+            $session->remove('GroupeControllerFilter');
         }
 
         // Filter action
@@ -64,13 +63,13 @@ class PilierController extends Controller
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
                 // Save filter to session
                 $filterData = $filterForm->getData();
-                $session->set('PilierControllerFilter', $filterData);
+                $session->set('GroupeControllerFilter', $filterData);
             }
         } else {
             // Get filter from session
-            if ($session->has('PilierControllerFilter')) {
-                $filterData = $session->get('PilierControllerFilter');
-                $filterForm = $this->createForm(new PilierFilterType(), $filterData);
+            if ($session->has('GroupeControllerFilter')) {
+                $filterData = $session->get('GroupeControllerFilter');
+                $filterForm = $this->createForm(new GroupeFilterType(), $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -95,7 +94,7 @@ class PilierController extends Controller
         $me = $this;
         $routeGenerator = function($page) use ($me)
         {
-            return $me->generateUrl('pilier', array('page' => $page));
+            return $me->generateUrl('groupe', array('page' => $page));
         };
 
         // Paginator - view
@@ -111,13 +110,13 @@ class PilierController extends Controller
     }
 
     /**
-     * Creates a new Pilier entity.
+     * Creates a new Groupe entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity  = new Pilier();
-        $form = $this->createForm(new PilierType(), $entity);
+        $entity  = new Groupe();
+        $form = $this->createForm(new GroupeType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -126,71 +125,69 @@ class PilierController extends Controller
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
 
-            return $this->redirect($this->generateUrl('pilier_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('groupe_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('GeolocationAdminBundle:Pilier:new.html.twig', array(
+        return $this->render('GeolocationAdminBundle:Groupe:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Displays a form to create a new Pilier entity.
+     * Displays a form to create a new Groupe entity.
      *
      */
     public function newAction()
     {
-        $entity = new Pilier();
-        $form   = $this->createForm(new PilierType(), $entity);
+        $entity = new Groupe();
+        $form   = $this->createForm(new GroupeType(), $entity);
 
-        return $this->render('GeolocationAdminBundle:Pilier:new.html.twig', array(
+        return $this->render('GeolocationAdminBundle:Groupe:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Pilier entity.
+     * Finds and displays a Groupe entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('GeolocationAdminBundle:Pilier')->find($id);
+        $entity = $em->getRepository('GeolocationAdminBundle:Groupe')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Pilier entity.');
+            throw $this->createNotFoundException('Unable to find Groupe entity.');
         }
-
-        $entity->setCategorie(PilierRepository::getValueCategorie($entity->getCategorie()));
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('GeolocationAdminBundle:Pilier:show.html.twig', array(
+        return $this->render('GeolocationAdminBundle:Groupe:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to edit an existing Pilier entity.
+     * Displays a form to edit an existing Groupe entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('GeolocationAdminBundle:Pilier')->find($id);
+        $entity = $em->getRepository('GeolocationAdminBundle:Groupe')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Pilier entity.');
+            throw $this->createNotFoundException('Unable to find Groupe entity.');
         }
 
-        $editForm = $this->createForm(new PilierType(), $entity);
+        $editForm = $this->createForm(new GroupeType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('GeolocationAdminBundle:Pilier:edit.html.twig', array(
+        return $this->render('GeolocationAdminBundle:Groupe:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -198,21 +195,21 @@ class PilierController extends Controller
     }
 
     /**
-     * Edits an existing Pilier entity.
+     * Edits an existing Groupe entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('GeolocationAdminBundle:Pilier')->find($id);
+        $entity = $em->getRepository('GeolocationAdminBundle:Groupe')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Pilier entity.');
+            throw $this->createNotFoundException('Unable to find Groupe entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new PilierType(), $entity);
+        $editForm = $this->createForm(new GroupeType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -220,12 +217,12 @@ class PilierController extends Controller
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
 
-            return $this->redirect($this->generateUrl('pilier_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('groupe_edit', array('id' => $id)));
         } else {
             $this->get('session')->getFlashBag()->add('error', 'flash.update.error');
         }
 
-        return $this->render('GeolocationAdminBundle:Pilier:edit.html.twig', array(
+        return $this->render('GeolocationAdminBundle:Groupe:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -233,7 +230,7 @@ class PilierController extends Controller
     }
 
     /**
-     * Deletes a Pilier entity.
+     * Deletes a Groupe entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -243,10 +240,10 @@ class PilierController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('GeolocationAdminBundle:Pilier')->find($id);
+            $entity = $em->getRepository('GeolocationAdminBundle:Groupe')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Pilier entity.');
+                throw $this->createNotFoundException('Unable to find Groupe entity.');
             }
 
             $em->remove($entity);
@@ -256,11 +253,11 @@ class PilierController extends Controller
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirect($this->generateUrl('pilier'));
+        return $this->redirect($this->generateUrl('groupe'));
     }
 
     /**
-     * Creates a form to delete a Pilier entity by id.
+     * Creates a form to delete a Groupe entity by id.
      *
      * @param mixed $id The entity id
      *

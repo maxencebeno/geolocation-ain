@@ -1,0 +1,30 @@
+section:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Section:index" }
+
+section_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Section:show" }
+
+section_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Section:new" }
+
+section_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Section:create" }
+    requirements: { _method: post }
+
+section_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Section:edit" }
+
+section_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Section:update" }
+    requirements: { _method: post|put }
+
+section_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Section:delete" }
+    requirements: { _method: post|delete }

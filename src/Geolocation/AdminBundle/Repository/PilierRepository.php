@@ -19,4 +19,20 @@ class PilierRepository extends EntityRepository
             '2' => 'Demande et comportement des consommateurs'
         );
     }
+
+    public static function getValueCategorie($value) {
+        switch ($value) {
+            case '0':
+                return 'Gestion des déchets';
+            break;
+            case '1':
+                return 'Offre des acteurs économiques';
+            break;
+            case '2':
+                return 'Demande et comportement des consommateurs';
+            break;
+            default:
+                return '';
+        }
+    }
 }
