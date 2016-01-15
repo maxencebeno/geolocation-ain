@@ -4,10 +4,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% stylesheets 
-                   '../app/Resources/public/css/bootstrap.min.css'
-                   '../app/Resources/public/css/font-awesome.css'
-                   '../app/Resources/public/css/style.css'
-
+                   '../app/Resources/public/css/*'
         %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
@@ -20,7 +17,9 @@
 
 {% block footer %}{% include './include/footer.html.twig' %}{% endblock %}
 {% javascripts '../app/Resources/public/js/jquery.min.js'
-                       '../app/Resources/public/js/bootstrap.min.js'
+               '../app/Resources/public/js/bootstrap.min.js'
+               '../app/Resources/public/js/jquery-ui.min.js'
+               '../app/Resources/public/js/script.js'
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}

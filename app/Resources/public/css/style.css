@@ -1,4 +1,21 @@
+/*---------INDEX ----------*/
 
+
+.filtres {
+    position: absolute;
+    top: 121px;
+    right: 63px;
+    background: beige;
+    height: 443px;
+    opacity: 0.9;
+}
+
+input#distance {
+    background-color: beige;
+}
+
+
+/*---------FOOTER----------*/
 footer .social-link{
     background-color: grey;
     text-align: center;
@@ -39,6 +56,7 @@ footer ul li{
 
 #tuileContainer{
     text-align: center;
+    margin-top:20px;
 }
 
 .tuile{

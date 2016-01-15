@@ -16,23 +16,64 @@
                     embedgooglemaps.com
                 </a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">website traffic</a></small></div></iframe>
     </div>
-    
-    <section id="tuileContainer">
-        <article class="tuile">
-            <div class="imgTuile"></div>
-            Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
-        </article>        
-        <article class="tuile">
-            <div class="imgTuile"></div>
-            Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+    <div class="filtres col-sm-3">
+        <form role="form" class="form-horizontal col-sm-10 col-sm-offset-1">
+            <fieldset>
+                <legend>Recherche</legend>
+                <div class="form-group">
+                    <label for="ressources" class="control-label">Ressources</label>
+                    <select id="ressources" class="form-control">
+                        <option value="lait">Lait</option>
+                        <option value="oeuf">Oeufs</option>
+                        <option value="porcin">Porcins</option>
+                        <option value="volaille">Volaille</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="villes" class="control-label">Villes</label>
+                    <select id="villes" class="form-control">
+                        <option value="lAbergementClémenciat">L'Abergement-Clémenciat</option>
+                        <option value="lAbergementDeVarey">L'Abergement-de-Varey</option>
+                        <option value="AmberieuEnBugey">Ambérieu-en-Bugey</option>
+                        <option value="BourgEnBresse">Bourg-en-Bresse</option>
+                    </select>
+                </div>
 
-        </article>
-        <article class="tuile">
-            <div class="imgTuile"></div>
-            Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+                <div class="form-group">
+                    <label for="codePostal" class="control-label">Code Postal</label>
+                    <select id="codePostal" class="form-control">
+                        <option value="01000">01000</option>
+                        <option value="01001">01001</option>
+                        <option value="01002">01002</option>
+                        <option value="01003">01003</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="distance">Distance:</label>
+                    <input type="text" id="distance" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    <div id="slider-range"></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 
-        </article>
-    </section>
+    <div class="container">
+        <section id="tuileContainer" class="row">
+            <article class="col-sm-4">
+                <div class="imgTuile"></div>
+                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+            </article>        
+            <article class="col-sm-4">
+                <div class="imgTuile"></div>
+                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
 
+            </article>
+            <article class="col-sm-4">
+                <div class="imgTuile"></div>
+                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+
+            </article>
+        </section>
+    </div>
 
 {% endblock %}
