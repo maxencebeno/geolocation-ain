@@ -1,3 +1,4 @@
+/*Gestion du slider range pour le filtre de distance*/
 $(function() {
     $("#slider-range").slider({
         range: true,
@@ -9,5 +10,23 @@ $(function() {
         }
     });
     $("#distance").val($("#slider-range").slider("values", 0) +
-            "km - " + $("#slider-range").slider("values", 1)+ "km");
+            "km - " + $("#slider-range").slider("values", 1) + "km");
+});
+
+/*Afficher cacher les filtres de recherche*/
+$(function() {
+    nbClic = 0;
+    $("#filtreRechercheCarte").click(function() {
+        $(this).siblings().toggleClass("disabled");
+        $("#zoneRechercheCarte").toggleClass("reduire");
+        nbClic++;
+        if (nbClic % 2 === 0) {
+            $(this).children("span").removeClass("glyphicon-arrow-down");
+            $(this).children("span").addClass("glyphicon-arrow-up");
+        } else {
+            $(this).children("span").removeClass("glyphicon-arrow-up");
+            $(this).children("span").addClass("glyphicon-arrow-down");
+        }
+
+    });
 });
