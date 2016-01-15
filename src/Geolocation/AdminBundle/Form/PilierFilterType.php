@@ -2,6 +2,7 @@
 
 namespace Geolocation\AdminBundle\Form;
 
+use Geolocation\AdminBundle\Repository\PilierRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -16,7 +17,10 @@ class PilierFilterType extends AbstractType
         $builder
             ->add('id', 'filter_number_range')
             ->add('nom', 'filter_text')
-            ->add('categorie', 'filter_text')
+            ->add('categorie', null, array(), 'choice', array(
+                'choices' => PilierRepository::getCategorie(),
+                'label' => 'Catégorie'
+            ))
         ;
 
         $listener = function(FormEvent $event)

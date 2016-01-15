@@ -5,6 +5,7 @@ namespace Geolocation\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Geolocation\AdminBundle\Repository\PilierRepository;
 
 class PilierType extends AbstractType
 {
@@ -12,7 +13,9 @@ class PilierType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('categorie')
+            ->add('categorie', 'choice', array(
+                'choices' => PilierRepository::getCategorie()
+            ))
         ;
     }
 
