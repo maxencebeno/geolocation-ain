@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>Fiche de l'entreprise {{ user.username }}</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-7">
+                <section>
+                    <div class="row">
+                        <article class="col-sm-6">
+                            <h2>Adresse</h2>
+                            {% if user.adresse != '' %}
+                                <p>{{ user.adresse }}</p>
+                            {% else %}
+                                <p>Adresse non-renseignée</p>
+                            {% endif %}
+
+                            {% if user.codePostal != '' or user.ville != '' %}
+                                <p>{{ user.codePostal }}, {{ user.ville }}</p>
+                            {% else %}
+                                <p>Ville non-renseignée</p>
+                            {% endif %}
+
+                        </article>
+                        <article class="col-sm-6">
+                            <h2>Coordonnées</h2>
+                            {% if user.tel != '' %}
+                                <p><i class="fa fa-phone"></i> {{ user.tel }}</p>
+                            {% else %}
+                                <p><i class="fa fa-phone"></i> Téléphone non-renseigné</p>
+                            {% endif %}
+
+                            {% if user.email != '' %}
+                                <p><i class="fa fa-envelope-o"></i> {{ user.email }}</p>
+                            {% else %}
+                                <p><i class="fa fa-envelope-o"></i> Email non-renseigné</p>
+                            {% endif %}
+
+                            {% if user.url != '' %}
+                                <p><i class="fa fa-at"></i> <a href="{{ user.url }}" target="_blank">{{ user.url }}</a></p>
+                                {% else %}
+                                <p><i class="fa fa-at"></i> Site non-renseigné</p>
+                            {% endif %}
+                        </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-sm-12">
+                            <h2>Description</h2>
+                            {% if user.description != '' %}
+                                <p> {{ user.description }}</p>
+                            {% else %}
+                                <p>Description non-renseignée</p>
+                            {% endif %}
+                        </article>
+                    </div>
+                </section>
+
+                <section class="row">
+                    <h2>Ressources proposées</h2>
+                    <article class="col-sm-4">
+                        Ress 1
+                    </article>
+                    <article class="col-sm-4">
+                        Ress 2
+                    </article>
+                    <article class="col-sm-4">
+                        Ress 3
+                    </article>
+                </section>
+
+            </div>
+
+            <aside class="col-sm-5">
+                <div class="row"><A HREF="mailto:{{ user.email }}">Contacter cette entreprise</A></div>
+                <div class="row">
+                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="100%" height="400" src="https://maps.google.com/maps?hl=en&q=71 rue Peter Fink 01000 BOurg en Bresse&ie=UTF8&t=m&z=11&iwloc=B&output=embed"><div><small><a href="http://embedgooglemaps.com">
+                                embedgooglemaps.com
+                            </a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">website traffic</a></small></div></iframe>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+{% endblock %}

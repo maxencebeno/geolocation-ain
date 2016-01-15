@@ -1,3 +1,8 @@
 site_homepage:
     path:     /
     defaults: { _controller: SiteBundle:Index:index }
+
+site_details:
+    path:     /details/{id}
+    defaults: { _controller: SiteBundle:Details:details }
+
