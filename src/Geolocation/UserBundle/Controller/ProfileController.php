@@ -11,6 +11,8 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Geolocation\AdminBundle\Form\RessourcesType;
+use Geolocation\AdminBundle\Entity\Ressources;
 
 class ProfileController extends Controller {
 
@@ -36,7 +38,7 @@ class ProfileController extends Controller {
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        
+
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
@@ -74,9 +76,25 @@ class ProfileController extends Controller {
             return $response;
         }
 
+
+        $entity = new Ressources();
+        $formRessource = $this->createForm(new RessourcesType(), $entity);
+        $formRessource->bind($request);
+
+        if ($formRessource->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
+
+            return $this->redirect($this->generateUrl('ressources_show', array('id' => $entity->getId())));
+        }
+
+
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
+                    'entity' => $entity,
+                    'formRessource' => $formRessource->createView(),
         ));
     }
-
 }

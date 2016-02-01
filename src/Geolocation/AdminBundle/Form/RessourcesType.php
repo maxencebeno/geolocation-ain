@@ -12,8 +12,8 @@ class RessourcesType extends AbstractType
     {
         $builder
             ->add('besoin')
-            ->add('user', null, array('label' => 'Entreprise'))
             ->add('cpf')
+            ->add('saveRessource', 'submit', array())
         ;
     }
 

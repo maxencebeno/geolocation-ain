@@ -49,6 +49,8 @@ profile:
         title: Update my general information
         back_on_profile: Come back to my profile
         or: or
+        ressource_title: Edit my resources 
+        ressource_submit: Update
     flash:
         updated: The profile has been updated
 
