@@ -1,8 +1,8 @@
 {% trans_default_domain 'GeolocationUserBundle' %}
 
 <div class="container">
-    <div class="ro">
-        <div id="fos_user_user_edit" class="form-group col-sm-6">
+    <div class="row">
+        <div id="fos_user_user_edit" class="form-group col-sm-7">
             <h2>{{ 'profile.edit.title'|trans }}</h2>
             {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
             {{ form_start(form) }}
@@ -11,41 +11,41 @@
             <span class="form-edit-label">{{ form_label(form.nom) }}</span>
 
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     {{ form_widget(form.nom, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'disabled':'disabled'}}) }}
                     <span class="form-error" id="error-nom">{{ form_errors(form.nom) }}</span>
                 </div>
-                
+
             </div>
-
-            <span class="form-edit-label">{{ form_label(form.dateCreationEntreprise) }}</span>
-            {{ form_widget(form.dateCreationEntreprise, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-dateCreationEntreprise">{{ form_errors(form.dateCreationEntreprise) }}</span>
-
             <div class="row">
-                <div class="col-sm-6">
-                    <span class="form-edit-label">{{ form_label(form.email) }}</span>
+                <div class="col-sm-12">
+                    <span class="form-edit-label">{{ form_label(form.email) }}<strong class="text-danger">*</strong></span>
                     {{ form_widget(form.email, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                     <span class="form-error" id="error-email">{{ form_errors(form.email) }}</span>
                 </div>
-                <div class="col-sm-6">
-                    <span class="form-edit-label">{{ form_label(form.adresse) }}</span>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="form-edit-label">{{ form_label(form.adresse) }}<strong class="text-danger">*</strong></span>
                     {{ form_widget(form.adresse, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                     <span class="form-error" id="error-adresse">{{ form_errors(form.adresse) }}</span>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-xs-12">
-                    <label class="form-register-label">{{ form_label(form.ville) }}</label>
-                    {{ form_widget(form.ville, { 'attr': {'class' : 'radio-gender', 'type': 'radio', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                <div class="col-sm-6">
+                    <label class="form-register-label">{{ form_label(form.ville) }}<strong class="text-danger">*</strong></label>
+                    {{ form_widget(form.ville, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                     <span class="form-error" id="error-ville">{{ form_errors(form.ville) }}</span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-edit-label">{{ form_label(form.codePostal) }}<strong class="text-danger">*</strong></span>
+                    {{ form_widget(form.codePostal, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-codePostal">{{ form_errors(form.codePostal) }}</span>
                 </div>
             </div>
 
-            <span class="form-edit-label">{{ form_label(form.codePostal) }}</span>
-            {{ form_widget(form.codePostal, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-codePostal">{{ form_errors(form.codePostal) }}</span>
+
 
             <div class="row">
                 <div class="col-sm-6">
@@ -53,26 +53,52 @@
                     {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                     <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
                 </div>
+
+            </div>
+
+            <div class="row">
                 <div class="col-sm-6">
                     <span class="form-edit-label">{{ form_label(form.siret) }}</span>
                     {{ form_widget(form.siret, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'disabled':'disabled'}}) }}
                     <span class="form-error" id="error-siret">{{ form_errors(form.siret) }}</span>
                 </div>
+                <div class="col-sm-6">
+                    <span class="form-edit-label">{{ form_label(form.kbis) }}</span>
+                    {{ form_widget(form.kbis, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-kbis">{{ form_errors(form.kbis) }}</span>
+
+                </div>
+
             </div>
-
-            <span class="form-edit-label">{{ form_label(form.kbis) }}</span>
-            {{ form_widget(form.kbis, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-kbis">{{ form_errors(form.kbis) }}</span>
-
-            <span class="form-edit-label">{{ form_label(form.url) }}</span>
-            {{ form_widget(form.url, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-url">{{ form_errors(form.url) }}</span>
-
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="form-edit-label">{{ form_label(form.dateCreationEntreprise) }}</span>
+                    {{ form_widget(form.dateCreationEntreprise, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-dateCreationEntreprise">{{ form_errors(form.dateCreationEntreprise) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="form-edit-label">{{ form_label(form.url) }}</span>
+                    {{ form_widget(form.url, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-url">{{ form_errors(form.url) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="form-edit-label">{{ form_label(form.description) }}</span>
+                    {{ form_widget(form.description, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-description">{{ form_errors(form.description) }}</span>
+                </div>
+            </div>
             <div class="mt20"></div>
-            <span class="form-edit-label">{{ form_label(form.current_password) }}</span>
-            {{ form_widget(form.current_password, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-current_password">{{ form_errors(form.current_password) }}</span>
-
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="form-edit-label">{{ form_label(form.current_password) }}</span>
+                    {{ form_widget(form.current_password, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-current_password">{{ form_errors(form.current_password) }}</span>
+                </div>
+            </div>
             {{ form_widget(form.save, { 'attr': {'class': 'submit-button-geolocation', 'value' : ('profile.edit.submit'|trans) }}) }}
 
             {{ form_end(form) }}
