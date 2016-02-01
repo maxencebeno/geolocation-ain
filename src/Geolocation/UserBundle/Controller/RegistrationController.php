@@ -31,6 +31,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class RegistrationController extends Controller {
 
+    public function preRegisterAction (Request $request) {
+        return $this->render('GeolocationUserBundle:Registration:pre_register.html.twig', array());
+    }
+
     public function registerAction(Request $request) {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
@@ -81,7 +85,7 @@ class RegistrationController extends Controller {
 
             $this->addFlash('notice', 'Merci pour votre inscirption, votre demande sera étudiée dans les plus brefs délais');
 
-            $url = $this->generateUrl('geolocation_site');
+            $url = $this->generateUrl('site_homepage');
             $response = new RedirectResponse($url);
 
             /*if (null === $response = $event->getResponse()) {

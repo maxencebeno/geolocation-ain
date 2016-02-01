@@ -1,0 +1,13 @@
+{% extends "GeolocationUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets '@GeolocationUserBundle/Resources/public/css/register/pre_register.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block fos_user_content %}
+    {% include "GeolocationUserBundle:Registration:pre_register_content.html.twig" %}
+    {% block javascript %}
+    {% endblock javascript %}
+{% endblock fos_user_content %}

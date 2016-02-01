@@ -27,12 +27,12 @@
                             <button type="button" class="btn btn-default navbar-btn">Déconnexion</button>
                         </a>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <a href="/admin">
+                            <a href="{{ path('geolocation_admin_homepage') }}">
                                 <button type="button" class="btn btn-default navbar-btn">Administration</button>
                             </a>
                         {% endif %}
                     {% else %}
-                        <a href="{{ path('fos_user_registration_register') }}">
+                        <a href="{{ path('pre_register') }}">
                             <button type="button" class="btn btn-default navbar-btn">S'inscrire</button>
                         </a>
                         <a href="{{ path('fos_user_security_login') }}">

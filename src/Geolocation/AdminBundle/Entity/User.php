@@ -430,4 +430,9 @@ class User extends BaseUser
     {
         return $this->description;
     }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
 }
