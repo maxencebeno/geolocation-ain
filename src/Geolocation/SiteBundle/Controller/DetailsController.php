@@ -9,9 +9,21 @@ class DetailsController extends Controller
     public function detailsAction($id)
     {
     	$em = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:User');
+        $em2 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Ressources');
 
     	$user = $em->findOneBy(array('id'=>$id));
+        $ressources = $em2->findBy(array('user'=>$user->getId()));
+        
+        $cpfs = [];
+        
+        foreach ($ressources as $ressource) {
+            $cpfs[] = $ressource->getCpf();
+        }
+        
+        
+        var_dump($cpfs);
+        die();
 
-        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user));
+        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user, 'ress'=>$ressources));
     }
 }
