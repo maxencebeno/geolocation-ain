@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% stylesheets 
-                   '../app/Resources/public/css/*'
-        %}
-        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-        {% endstylesheets %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    {% block stylesheets %}{% endblock stylesheets %} 
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% stylesheets
+    '../app/Resources/public/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% block stylesheets %}{% endblock stylesheets %}
+
+    {% javascripts '../app/Resources/public/js/jquery.min.js'
+    '../app/Resources/public/js/bootstrap.min.js'
+    '../app/Resources/public/js/jquery-ui.min.js'
+    '../app/Resources/public/js/jquery-ui-touch.min.js'
+    '../app/Resources/public/js/script.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 </head>
 <body>
 {% block header %}{% include './include/header.html.twig' %}{% endblock %}
 {% block body %}{% endblock %}
 
 {% block footer %}{% include './include/footer.html.twig' %}{% endblock %}
-{% javascripts '../app/Resources/public/js/jquery.min.js'
-               '../app/Resources/public/js/bootstrap.min.js'
-               '../app/Resources/public/js/jquery-ui.min.js'
-               '../app/Resources/public/js/jquery-ui-touch.min.js'
-               '../app/Resources/public/js/script.js'
-%}
-<script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+
+{% block javascripts %}
+
+{% endblock %}
 
 </body>
 </html>

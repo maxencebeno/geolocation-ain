@@ -14,26 +14,36 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Geolocation\AdminBundle\Form\RessourcesType;
 use Geolocation\AdminBundle\Entity\Ressources;
 
-class ProfileController extends Controller {
+class ProfileController extends Controller
+{
 
     /**
      * Show the user
      */
-    public function showAction() {
+    public function showAction()
+    {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-                    'user' => $user
+            'user' => $user
         ));
     }
 
     /**
      * Edit the user
      */
-    public function editAction(Request $request) {
+    public function editAction(Request $request)
+    {
+
+        // On récupère les infos pour le formulaire en ajax
+        $em = $this->getDoctrine()->getManager();
+
+        $sections = $em->getRepository('GeolocationAdminBundle:Section')
+            ->findAll();
+
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -92,9 +102,10 @@ class ProfileController extends Controller {
 
 
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-                    'form' => $form->createView(),
-                    'entity' => $entity,
-                    'formRessource' => $formRessource->createView(),
+            'form' => $form->createView(),
+            'entity' => $entity,
+            'formRessource' => $formRessource->createView(),
+            'sections' => $sections
         ));
     }
 }

@@ -20,3 +20,7 @@ fos_user_change_password:
 pre_register:
     defaults: { _controller: GeolocationUserBundle:Registration:preRegister }
     path: /choisissez-votre-organisme
+
+ajax:
+    defaults: { _controller: GeolocationUserBundle:Ajax:getDivision }
+    path: /ajax/getDivision
