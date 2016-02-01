@@ -43,6 +43,7 @@ profile:
         security_infos: Sécurité
         link_change_password: Changer mon mot de passe
         nonrenseigne: Non renseigné
+        description: Description
     edit:
         submit: Mettre à jour
         title: Modifier mes informations générales
@@ -142,3 +143,4 @@ form:
     siret: "N° de SIRET"
     url: "Lien du site web"
     dateCreationEntreprise : "Date de création de l'entreprise"
+    description: "Description"

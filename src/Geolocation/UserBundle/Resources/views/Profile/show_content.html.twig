@@ -9,15 +9,15 @@
                 <h2>{{ 'profile.show.basic_infos'|trans }}</h2>
 
                 <p><span class="show-legends">{{ 'profile.show.name'|trans }}:</span> {{ user.username }}</p>
-                 <p>
+                <p>
                     <span class="show-legends">{{ 'profile.show.date_creation_entreprise'|trans }}: </span>
                     {% if user.dateCreationEntreprise  != '' %}
-                        {{ user.dateCreationEntreprise  }}
+                        {{ user.dateCreationEntreprise }}
                     {% else %}
                         <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
                     {% endif %}
                 </p>
-                
+
                 <p><span class="show-legends">{{ 'profile.show.email'|trans }}:</span> {{ user.email }}</p>
                 <p><span class="show-legends">{{ 'profile.show.adresse'|trans }}: </span> {{ user.adresse }}</p>
                 <p><span class="show-legends">{{ 'profile.show.ville'|trans }}: </span> {{ user.ville }}  </p>
@@ -42,7 +42,7 @@
                         <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
                     {% endif %}
                 </p>
- <p>
+                <p>
                     <span class="show-legends">{{ 'profile.show.site'|trans }}: </span>
                     {% if user.url != '' %}
                         {{ user.url }}
@@ -51,9 +51,17 @@
                     {% endif %}
                 </p>
 
+                <p>
+                    <span class="show-legends">{{ 'profile.show.description'|trans }}: </span>
+                    {% if user.description != '' %}
+                        {{ user.description }}
+                    {% else %}
+                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
+                    {% endif %}
+                </p>
 
-
-                <p style="margin-top: 15px;"><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a></p>
+                <p style="margin-top: 15px;"><a
+                            href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a></p>
             </div>
             <!-- <div class="col-sm-6">
                  <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>

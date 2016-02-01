@@ -77,6 +77,7 @@ class ProfileFormType extends AbstractType {
                ->add('siret', null, array('label' => 'form.siret', 'translation_domain' => 'GeolocationUserBundle','required'=>true))
                 ->add('kbis', null, array('label' => 'form.kbis', 'translation_domain' => 'GeolocationUserBundle'))
                ->add('url', null, array('label' => 'form.url', 'translation_domain' => 'GeolocationUserBundle'))
+            ->add('description', 'text', array('label' => 'form.description', 'translation_domain' => 'GeolocationUserBundle', 'required' => false))
                 ->add('save', 'submit', array());
     }
 
