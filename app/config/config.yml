@@ -55,6 +55,7 @@ assetic:
         - FOSUserBundle
         - GeolocationAdminBundle
         - GeolocationUserBundle
+        - SiteBundle
     filters:
         cssrewrite: ~
 

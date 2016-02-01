@@ -59,6 +59,8 @@ class RegistrationController extends Controller {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
+            $user->setEnabled(false);
+
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
@@ -77,10 +79,15 @@ class RegistrationController extends Controller {
 
             $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse()) {
+            $this->addFlash('notice', 'Merci pour votre inscirption, votre demande sera étudiée dans les plus brefs délais');
+
+            $url = $this->generateUrl('geolocation_site');
+            $response = new RedirectResponse($url);
+
+            /*if (null === $response = $event->getResponse()) {
                 $url = $this->generateUrl('fos_user_registration_confirmed');
                 $response = new RedirectResponse($url);
-            }
+            }*/
 
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 

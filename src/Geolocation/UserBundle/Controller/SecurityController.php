@@ -13,7 +13,7 @@ class SecurityController extends Controller {
         
         if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // Puis redirige vers le file manager au bon endroit
-            return $this->redirect($this->generateUrl('site'));
+            return $this->redirect($this->generateUrl('geolocation_site'));
         } else {
             /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
             $session = $request->getSession();
