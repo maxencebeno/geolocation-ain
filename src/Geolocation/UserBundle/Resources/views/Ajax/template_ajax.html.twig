@@ -1,0 +1,17 @@
+<div class="col-sm-4">
+    <span class="form-edit-label">Section</span>
+    <select id="sections" class="section form-control">
+        {% for key, section in sections %}
+            <option value="{{ key }}">{{ section }}</option>
+        {% endfor %}
+    </select>
+
+</div>
+
+<div class="col-sm-4 hide division-form">
+    <select name="division" data-placeholder="Division" title="Division"
+            class="form-control division">
+        <option label="Division" value="-1"></option>
+
+    </select>
+</div>

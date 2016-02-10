@@ -17,23 +17,7 @@
                         <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
                     </div>
 
-                    <div class="col-sm-4">
-                        <span class="form-edit-label">Section</span>
-                        <select id="sections" class="section">
-                            {% for key, section in sections %}
-                                <option value="{{ key }}">{{ section }}</option>
-                            {% endfor %}
-                        </select>
-
-                    </div>
-
-                    <div class="col-sm-4 hide division-form">
-                        <select name="division" data-placeholder="Division" title="Division"
-                                class="form-control division">
-                            <option label="Division" value="-1"></option>
-
-                        </select>
-                    </div>
+                    {% include 'GeolocationUserBundle:Ajax:template_ajax.html.twig' %}
 
                     <div class="col-sm-4 hide">
                         <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
