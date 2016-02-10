@@ -18,8 +18,11 @@ class RessourcesController extends Controller {
         $entity = new Ressources();
 
         $formRessource = $this->createForm(new RessourcesType(), $entity);
-
         $formRessource->handleRequest($request);
+        
+        $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
+            ->findAll();
+        
 
         if ($formRessource->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -30,11 +33,14 @@ class RessourcesController extends Controller {
             return $this->redirect($this->generateUrl('ressources_show', array('id' => $entity->getId())));
         }
 
+       // var_dump($ressources);
+       // die;
 
         return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
                     'entity' => $entity,
                     'form' => $formRessource->createView(),
-                    'sections' => $sections
+                    'sections' => $sections,
+                    'ressources'=> $ressources
         ));
     }
 
