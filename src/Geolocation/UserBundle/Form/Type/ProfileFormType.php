@@ -73,7 +73,18 @@ class ProfileFormType extends AbstractType {
                 ->add('ville', 'text', array('label' => 'form.ville', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
                 ->add('codePostal', null, array('label' => 'form.cp', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
                 ->add('tel', null, array('label' => 'form.tel', 'translation_domain' => 'GeolocationUserBundle'))
-                ->add('dateCreationEntreprise', null, array('label' => 'form.dateCreationEntreprise', 'translation_domain' => 'GeolocationUserBundle'))
+                ->add('dateCreationEntreprise', 'date', array(
+                    'input' => 'datetime',
+                    'label' => 'form.dateCreationEntreprise',
+                    'translation_domain' => 'GeolocationUserBundle',
+                    'format' => 'dd-MM-yyyy',
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control input-inline datepicker',
+                        'data-provide' => 'datepicker',
+                        'data-date-format' => 'D/M/Y'
+                    ]
+                ))
                 ->add('siret', null, array('label' => 'form.siret', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
                 ->add('fileKbis', null, array('label' => 'form.kbis', 'translation_domain' => 'GeolocationUserBundle'))
                 ->add('url', null, array('label' => 'form.url', 'translation_domain' => 'GeolocationUserBundle'))

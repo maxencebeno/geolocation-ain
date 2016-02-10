@@ -75,7 +75,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <span class="form-edit-label">{{ form_label(form.dateCreationEntreprise) }}</span>
-                    {{ form_widget(form.dateCreationEntreprise, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <div class='input-group date' id='datetimepicker1'>
+                        {{ form_widget(form.dateCreationEntreprise) }}
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
                     <span class="form-error"
                           id="error-dateCreationEntreprise">{{ form_errors(form.dateCreationEntreprise) }}</span>
                 </div>
@@ -137,9 +142,10 @@
                     </div>
 
                     <div class="col-sm-4 hide division-form">
-                        <select name="division" data-placeholder="Division" title="Division" class="form-control division">
+                        <select name="division" data-placeholder="Division" title="Division"
+                                class="form-control division">
                             <option label="Division" value="-1"></option>
-                            
+
                         </select>
                     </div>
 
