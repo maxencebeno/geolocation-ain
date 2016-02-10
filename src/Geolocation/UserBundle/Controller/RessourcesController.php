@@ -43,5 +43,9 @@ class RessourcesController extends Controller {
                     'ressources'=> $ressources
         ));
     }
+    
+    public function saveAction(Request $request) {
+
+    }
 
 }
