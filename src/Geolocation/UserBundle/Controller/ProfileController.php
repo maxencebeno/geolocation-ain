@@ -38,12 +38,6 @@ class ProfileController extends Controller
     public function editAction(Request $request)
     {
 
-        // On récupère les infos pour le formulaire en ajax
-        $em = $this->getDoctrine()->getManager();
-
-        $sections = $em->getRepository('GeolocationAdminBundle:Section')
-            ->findAll();
-
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -87,25 +81,8 @@ class ProfileController extends Controller
         }
 
 
-        $entity = new Ressources();
-        $formRessource = $this->createForm(new RessourcesType(), $entity);
-        $formRessource->bind($request);
-
-        if ($formRessource->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
-
-            return $this->redirect($this->generateUrl('ressources_show', array('id' => $entity->getId())));
-        }
-
-
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView(),
-            'entity' => $entity,
-            'formRessource' => $formRessource->createView(),
-            'sections' => $sections
+            'form' => $form->createView()
         ));
     }
 }
