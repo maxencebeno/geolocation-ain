@@ -77,7 +77,7 @@ class ProfileFormType extends AbstractType {
                     'input' => 'datetime',
                     'label' => 'form.dateCreationEntreprise',
                     'translation_domain' => 'GeolocationUserBundle',
-                    'format' => 'dd-MM-yyyy',
+                    'format' => 'd/M/y',
                     'widget' => 'single_text',
                     'attr' => [
                         'class' => 'form-control input-inline datepicker',
