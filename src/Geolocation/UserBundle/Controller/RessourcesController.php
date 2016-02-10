@@ -27,12 +27,63 @@ class RessourcesController extends Controller
 
 
         if ($formRessource->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+
+            $section = $em->getRepository('GeolocationAdminBundle:Section')
+                ->findOneBy(array(
+                    'id' => $request->request->get('section')
+                ));
+
+            $division = $em->getRepository('GeolocationAdminBundle:Division')
+                ->findOneBy(array(
+                    'id' => $request->request->get('division')
+                ));
+
+            $groupe = $em->getRepository('GeolocationAdminBundle:Groupe')
+                ->findOneBy(array(
+                    'id' => $request->request->get('groupe')
+                ));
+
+            $classe = $em->getRepository('GeolocationAdminBundle:Classe')
+                ->findOneBy(array(
+                    'id' => $request->request->get('classe')
+                ));
+
+            $categorie = $em->getRepository('GeolocationAdminBundle:Categorie')
+                ->findOneBy(array(
+                    'id' => $request->request->get('categorie')
+                ));
+
+            $souscategorie = $em->getRepository('GeolocationAdminBundle:SousCategorie')
+                ->findOneBy(array(
+                    'id' => $request->request->get('souscategorie')
+                ));
+
+            $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
+                ->findOneBy(array(
+                    'section' => $section,
+                    'division' => $division,
+                    'groupe' => $groupe,
+                    'classe' => $classe,
+                    'categorie' => $categorie,
+                    'souscategorie' => $souscategorie
+                ));
+
+            if ($cpf !== null) {
+                $entity->setCpf($cpf);
+            }
+            $entity->setUser($user);
+
             $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
 
-            return $this->redirect($this->generateUrl('ressources_show', array('id' => $entity->getId())));
+            return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
+                'entity' => $entity,
+                'form' => $formRessource->createView(),
+                'sections' => $sections,
+                'ressources' => $ressources
+            ));
         }
 
         // var_dump($ressources);
@@ -44,16 +95,6 @@ class RessourcesController extends Controller
             'sections' => $sections,
             'ressources' => $ressources
         ));
-    }
-
-    public function saveAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $datas = $request->request->all();
-
-        var_dump($datas);
-        die();
     }
 
 }

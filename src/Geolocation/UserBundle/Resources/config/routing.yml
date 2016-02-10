@@ -44,7 +44,3 @@ ajax_sous_categorie:
 user_ressources:
     defaults: { _controller: GeolocationUserBundle:Ressources:edit }
     path: /ressources-ajout
-
-user_save_ressources:
-    defaults: { _controller: GeolocationUserBundle:Ressources:save }
-    path: /ressources/save
