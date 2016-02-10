@@ -2,19 +2,19 @@
 
 <div class="container">
     <div class="row">
-     
 
-        {{ form_start(formRessource) }}
-        {{ form_errors(formRessource) }}
+        {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
 
         <div class="row">
             <div id="ressource_edit" class="form-group col-sm-5">
                 <h2>{{ 'profile.edit.ressource_title'|trans }}</h2>
                 <div class="row">
                     <div class="col-sm-4">
-                        <span class="form-edit-label">{{ form_label(formRessource.besoin) }}</span>
-                        {{ form_widget(formRessource.besoin, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-besoin">{{ form_errors(formRessource.besoin) }}</span>
+                        <span class="form-edit-label">{{ form_label(form.besoin) }}</span>
+                        {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
                     </div>
 
                     <div class="col-sm-4">
@@ -36,36 +36,36 @@
                     </div>
 
                     <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(formRessource.cpf) }}</span>
-                        {{ form_widget(formRessource.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(formRessource.cpf) }}</span>
+                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
                     </div>
 
                     <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(formRessource.cpf) }}</span>
-                        {{ form_widget(formRessource.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(formRessource.cpf) }}</span>
+                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
                     </div>
 
                     <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(formRessource.cpf) }}</span>
-                        {{ form_widget(formRessource.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(formRessource.cpf) }}</span>
+                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
                     </div>
 
                     <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(formRessource.cpf) }}</span>
-                        {{ form_widget(formRessource.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(formRessource.cpf) }}</span>
+                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
                     </div>
 
 
                 </div>
 
 
-                {{ form_widget(formRessource.saveRessource, { 'attr': {'class': 'submit-button-geolocation', 'value' : ('profile.edit.ressource_submit'|trans) }}) }}
+                {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation', 'value' : ('profile.edit.ressource_submit'|trans) }}) }}
 
-                {{ form_end(formRessource) }}
+                {{ form_end(form) }}
             </div>
         </div>
 

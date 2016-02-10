@@ -16,8 +16,10 @@ class RessourcesController extends Controller {
         $sections = $em->getRepository('GeolocationAdminBundle:Section')
             ->findAll();
         $entity = new Ressources();
+
         $formRessource = $this->createForm(new RessourcesType(), $entity);
-        $formRessource->bind($request);
+
+        $formRessource->handleRequest($request);
 
         if ($formRessource->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -31,7 +33,7 @@ class RessourcesController extends Controller {
 
         return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
                     'entity' => $entity,
-                    'formRessource' => $formRessource->createView(),
+                    'form' => $formRessource->createView(),
                     'sections' => $sections
         ));
     }
