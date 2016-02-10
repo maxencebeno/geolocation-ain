@@ -19,10 +19,6 @@ class DetailsController extends Controller
         foreach ($ressources as $ressource) {
             $cpfs[] = $ressource->getCpf();
         }
-        
-        
-        var_dump($cpfs);
-        die();
 
         return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user, 'ress'=>$ressources));
     }
