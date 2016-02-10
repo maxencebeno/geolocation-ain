@@ -25,6 +25,6 @@ ajax:
     defaults: { _controller: GeolocationUserBundle:Ajax:getDivision }
     path: /ajax/getDivision
     
-ressources:
+user_ressources:
     defaults: { _controller: GeolocationUserBundle:Ressources:edit }
-    path: /ressrouces
+    path: /ressources-ajout

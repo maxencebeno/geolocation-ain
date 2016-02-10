@@ -4,6 +4,8 @@ namespace Geolocation\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Geolocation\AdminBundle\Entity\Ressources;
+use Geolocation\AdminBundle\Form\RessourcesType;
 
 class RessourcesController extends Controller {
 
@@ -27,7 +29,7 @@ class RessourcesController extends Controller {
         }
 
 
-        return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
+        return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
                     'entity' => $entity,
                     'formRessource' => $formRessource->createView(),
                     'sections' => $sections
