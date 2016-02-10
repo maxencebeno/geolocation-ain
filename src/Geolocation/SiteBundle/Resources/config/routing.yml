@@ -5,4 +5,20 @@ site_homepage:
 site_details:
     path:     /details/{id}
     defaults: { _controller: SiteBundle:Details:details }
+    
+site_aide:
+    path:     /aide
+    defaults: { _controller: SiteBundle:Aide:aide }
+
+site_contact:
+    path:     /contact
+    defaults: { _controller: SiteBundle:Contact:contact }
+    
+site_partenaires:
+    path:     /partenaires
+    defaults: { _controller: SiteBundle:Partenaires:partenaires }
+    
+site_apropos:
+    path:     /apropos
+    defaults: { _controller: SiteBundle:Apropos:apropos }
 

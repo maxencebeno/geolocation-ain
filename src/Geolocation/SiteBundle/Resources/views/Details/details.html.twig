@@ -61,27 +61,38 @@
                 <section>
                     <div class="row well">
                         <h2 class="col-sm-12">Ressources proposées</h2>
+                        {% set i = 0 %}
                         {% for item in ress %}
                             {% if item.besoin == false %}
                                 <article class="col-sm-4">
-                                    {{ item.cpf.section.image }}
+                                    {{ item.cpf.section.libelle }}
                                 </article>
+                            {% else %}
+                                {% set i = i+1 %}
                             {% endif %}
                         {% endfor %}
+                        {% if i == 0 %}
+                            <p>Aucune ressource proposée</p>
+                        {% endif %}
                     </div>
                 </section>
 
                 <section>
                     <div class="row well">
                         <h2 class="col-sm-12">Ressources demandées</h2>
+                        {% set i = 0 %}
                         {% for item in ress %}
                             {% if item.besoin == true %}
                                 <article class="col-sm-4">
-                                    {{ item.cpf.section.image }}
+                                    {{ item.cpf.section.libelle }}
                                 </article>
+                            {% else %}
+                                {% set i = i+1 %}
                             {% endif %}
                         {% endfor %}
-
+                        {% if i == 0 %}
+                            <p>Aucune ressource demandée</p>
+                        {% endif %}
                     </div>
                 </section>
 
