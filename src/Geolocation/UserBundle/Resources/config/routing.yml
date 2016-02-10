@@ -21,10 +21,29 @@ pre_register:
     defaults: { _controller: GeolocationUserBundle:Registration:preRegister }
     path: /choisissez-votre-organisme
 
-ajax:
+ajax_division:
     defaults: { _controller: GeolocationUserBundle:Ajax:getDivision }
     path: /ajax/getDivision
+
+ajax_groupe:
+    defaults: { _controller: GeolocationUserBundle:Ajax:getGroupe }
+    path: /ajax/getGroupe
+
+ajax_classe:
+    defaults: { _controller: GeolocationUserBundle:Ajax:getClasse }
+    path: /ajax/getClasse
+
+ajax_categorie:
+    defaults: { _controller: GeolocationUserBundle:Ajax:getCategorie }
+    path: /ajax/getCategorie
+
+ajax_sous_categorie:
+    defaults: { _controller: GeolocationUserBundle:Ajax:getSousCategorie }
+    path: /ajax/getSousCategorie
     
 user_ressources:
     defaults: { _controller: GeolocationUserBundle:Ressources:edit }
     path: /ressources-ajout
+
+user_save_ressources:
+    defaults: { _controller: GeolocationUserBundle:Ressources:save }

@@ -1,17 +1,73 @@
-<div class="col-sm-4">
-    <span class="form-edit-label">Section</span>
-    <select id="sections" class="section form-control">
-        {% for key, section in sections %}
-            <option value="{{ key }}">{{ section }}</option>
-        {% endfor %}
-    </select>
+<div class="row">
+
+    <div class="col-sm-12">
+        <span class="form-edit-label">Section</span>
+        <select id="sections" class="section form-control">
+            {% for key, section in sections %}
+                <option value="{{ key }}">{{ section }}</option>
+            {% endfor %}
+        </select>
+
+    </div>
 
 </div>
 
-<div class="col-sm-4 hide division-form">
-    <select name="division" data-placeholder="Division" title="Division"
-            class="form-control division">
-        <option label="Division" value="-1"></option>
+<div class="row">
 
-    </select>
+    <div class="col-sm-12 hide division-form">
+        <select id="division" name="division" data-placeholder="Division" title="Division"
+                class="form-control division">
+            <option label="Division" value="-1"></option>
+
+        </select>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-12 hide groupe-form">
+        <select id="groupe" name="groupe" data-placeholder="Groupe" title="Groupe"
+                class="form-control groupe">
+            <option label="Groupe" value="-1"></option>
+
+        </select>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-12 hide classe-form">
+        <select id="classe" name="classe" data-placeholder="Classe" title="Classe"
+                class="form-control classe">
+            <option label="Classe" value="-1"></option>
+
+        </select>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-12 hide categorie-form">
+        <select id="categorie" name="categorie" data-placeholder="Catégorie" title="Catégorie"
+                class="form-control categorie">
+            <option label="Catégorie" value="-1"></option>
+
+        </select>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-12 hide sous-categorie-form">
+        <select id="souscategorie" name="souscategorie" data-placeholder="Sous Catégorie" title="Sous Catégorie"
+                class="form-control sous-categorie">
+            <option label="Sous Catégorie" value="-1"></option>
+
+        </select>
+    </div>
+
 </div>
