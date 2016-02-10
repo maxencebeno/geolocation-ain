@@ -47,3 +47,4 @@ user_ressources:
 
 user_save_ressources:
     defaults: { _controller: GeolocationUserBundle:Ressources:save }
+    path: /ressources/save

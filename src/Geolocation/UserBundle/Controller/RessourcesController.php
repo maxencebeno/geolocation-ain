@@ -7,9 +7,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Geolocation\AdminBundle\Entity\Ressources;
 use Geolocation\AdminBundle\Form\RessourcesType;
 
-class RessourcesController extends Controller {
+class RessourcesController extends Controller
+{
 
-    public function editAction(Request $request) {
+    public function editAction(Request $request)
+    {
         // On récupère les infos pour le formulaire en ajax
         $em = $this->getDoctrine()->getManager();
 
@@ -19,10 +21,10 @@ class RessourcesController extends Controller {
 
         $formRessource = $this->createForm(new RessourcesType(), $entity);
         $formRessource->handleRequest($request);
-        
+
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
             ->findAll();
-        
+
 
         if ($formRessource->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -33,19 +35,25 @@ class RessourcesController extends Controller {
             return $this->redirect($this->generateUrl('ressources_show', array('id' => $entity->getId())));
         }
 
-       // var_dump($ressources);
-       // die;
+        // var_dump($ressources);
+        // die;
 
         return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $formRessource->createView(),
-                    'sections' => $sections,
-                    'ressources'=> $ressources
+            'entity' => $entity,
+            'form' => $formRessource->createView(),
+            'sections' => $sections,
+            'ressources' => $ressources
         ));
     }
-    
-    public function saveAction(Request $request) {
 
+    public function saveAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $datas = $request->request->all();
+
+        var_dump($datas);
+        die();
     }
 
 }
