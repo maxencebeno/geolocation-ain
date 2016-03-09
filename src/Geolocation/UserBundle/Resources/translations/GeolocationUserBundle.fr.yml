@@ -44,6 +44,8 @@ profile:
         link_change_password: Changer mon mot de passe
         nonrenseigne: Non renseigné
         description: Description
+        ressources_title : Mes ressources
+        link_edit_ressources : Modifier mes ressources
     edit:
         submit: Mettre à jour
         title: Modifier mes informations générales

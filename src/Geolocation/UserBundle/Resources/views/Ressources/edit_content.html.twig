@@ -55,10 +55,10 @@
 
         <div id="ressource_delete" class="form-group col-sm-12">
             <h2>Mes ressources</h2>
-            <ul>
+            <ul id="listRessource">
                 {% for key, ressource in ressources %}
-                    <li>
-                        <ul>
+                    <li class="myRessource">
+                        <ul >
                             <li><strong>Besoin : </strong>
                                 {% if ressource.getBesoin()==true %}
                                     Oui
@@ -71,12 +71,18 @@
                                 {{ ressource.getCpf() }}
                             </li>
 
-                            <button id="" class="btn btn-danger">Supprimer</button>
+                            <a href = "{{ path('user_ressources_delete', { 'id': ressource.getId() }) }}" >
+                                <button id="  {{ ressource.getId() }}" class="btn btn-danger">Supprimer</button>
+                            </a>
                         </ul>
                     </li>
 
                 {% endfor %}
             </ul>
+            
+            <a href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
+                {{ 'profile.edit.back_on_profile'|trans }}
+            </a>
         </div>
     </div>
 

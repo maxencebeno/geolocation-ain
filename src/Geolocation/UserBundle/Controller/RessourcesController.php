@@ -96,5 +96,14 @@ class RessourcesController extends Controller
             'ressources' => $ressources
         ));
     }
+    
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+       // $ressource = $em->getRepository('GeolocationAdminBundle:Ressources')
+     //       ->findBy($id);
+        
+       return $this->redirectToRoute('user_ressources');
+    }
 
 }

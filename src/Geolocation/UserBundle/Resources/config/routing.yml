@@ -44,3 +44,9 @@ ajax_sous_categorie:
 user_ressources:
     defaults: { _controller: GeolocationUserBundle:Ressources:edit }
     path: /ressources-ajout
+
+user_ressources_delete : 
+    defaults: { _controller: GeolocationUserBundle:Ressources:delete }
+    path: /ressources-delete/{id}
+    requirements:
+        id: \d+

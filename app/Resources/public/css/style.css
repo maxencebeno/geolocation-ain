@@ -127,3 +127,8 @@ footer ul li{
 .voffset7 { margin-bottom: 80px; }
 .voffset8 { margin-bottom: 100px; }
 .voffset9 { margin-bottom: 150px; }
+
+
+/*------------Ressources-----------*/
+#listRessource ,  .myRessource ul{ padding : 0 ; margin : 0; list-style: none;}
+.myRessource { margin-bottom  : 1em;}

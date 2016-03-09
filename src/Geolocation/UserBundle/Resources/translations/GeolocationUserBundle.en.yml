@@ -44,6 +44,8 @@ profile:
         link_change_password: Change my password
         nonrenseigne: Not specified
         description: Description
+        ressources_title : My resources
+        link_edit_ressources : Change my resources
     edit:
         submit: Update
         title: Update my general information

@@ -63,6 +63,37 @@
                 <p style="margin-top: 15px;"><a
                             href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a></p>
             </div>
+            
+            <div class="col-sm-6">
+                <h2>{{ 'profile.show.ressources_title'|trans }}</h2>
+             <ul id="listRessource">
+                {% for key, ressource in ressources %}
+                    <li class="myRessource">
+                        <ul >
+                            <li><strong>Besoin : </strong>
+                                {% if ressource.getBesoin()==true %}
+                                    Oui
+                                {% else %}
+                                    Non
+                                {% endif %}
+                            </li>
+                            <li>
+                                <strong>Ressources : </strong>
+                                {{ ressource.getCpf() }}
+                            </li>
+                        </ul>
+                    </li>
+
+                {% endfor %}
+            </ul>
+            
+             <p style="margin-top: 15px;">
+                 <a href="{{ path('user_ressources') }}">
+                     {{ 'profile.show.link_edit_ressources'|trans }}
+                 </a>
+             </p>
+        </div>
+            </div>
             <!-- <div class="col-sm-6">
                  <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
              </div>-->
