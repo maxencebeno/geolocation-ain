@@ -26,12 +26,13 @@ class ProfileController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-           $em = $this->getDoctrine()->getManager();
-        $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findAll();
         
-        //$resources = new Ressources();
+        $userId = $user->getId();
+         $em = $this->getDoctrine()->getManager();
+        $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
+            ->findBy(array('user'=> $userId));
 
+       
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,
             'ressources' => $ressources,

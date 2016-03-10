@@ -66,12 +66,14 @@
             
             <div class="col-sm-6">
                 <h2>{{ 'profile.show.ressources_title'|trans }}</h2>
-             <ul id="listRessource">
-                {% for key, ressource in ressources %}
-                    <li class="myRessource">
-                        <ul >
-                            <li><strong>Besoin : </strong>
-                                {% if ressource.getBesoin()==true %}
+                
+                 {% if ressources|length > 0 %}
+                     <ul id="listRessource">
+                         {% for key, ressource in ressources %}
+                             <li class="myRessource">
+                                 <ul >
+                                     <li><strong>Besoin : </strong>
+                                         {% if ressource.getBesoin()==true %}
                                     Oui
                                 {% else %}
                                     Non
@@ -86,7 +88,11 @@
 
                 {% endfor %}
             </ul>
-            
+            {% else %}
+                <p>
+                    {{ 'profile.show.no_ressources'|trans }} 
+                </p>
+            {% endif %}
              <p style="margin-top: 15px;">
                  <a href="{{ path('user_ressources') }}">
                      {{ 'profile.show.link_edit_ressources'|trans }}

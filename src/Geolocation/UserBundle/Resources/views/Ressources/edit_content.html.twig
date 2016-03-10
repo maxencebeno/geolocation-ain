@@ -55,31 +55,37 @@
 
         <div id="ressource_delete" class="form-group col-sm-12">
             <h2>Mes ressources</h2>
-            <ul id="listRessource">
-                {% for key, ressource in ressources %}
-                    <li class="myRessource">
-                        <ul >
-                            <li><strong>Besoin : </strong>
-                                {% if ressource.getBesoin()==true %}
-                                    Oui
-                                {% else %}
-                                    Non
-                                {% endif %}
-                            </li>
-                            <li>
-                                <strong>Ressources : </strong>
-                                {{ ressource.getCpf() }}
+                {% if ressources|length > 0 %}
+                    <ul id="listRessource">
+                        {% for key, ressource in ressources %}
+                            <li class="myRessource">
+                                <ul >
+                                    <li><strong>Besoin : </strong>
+                                        {% if ressource.getBesoin()==true %}
+                                            Oui
+                                        {% else %}
+                                            Non
+                                        {% endif %}
+                                    </li>
+                                    <li>
+                                        <strong>Ressources : </strong>
+                                        {{ ressource.getCpf() }}
+                                    </li>
+                                    <a href = "{{ path('user_ressources_delete', { 'id': ressource.getId() }) }}" >
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger">Supprimer</button>
+                                    </a>
+                                </ul>
                             </li>
 
-                            <a href = "{{ path('user_ressources_delete', { 'id': ressource.getId() }) }}" >
-                                <button id="  {{ ressource.getId() }}" class="btn btn-danger">Supprimer</button>
-                            </a>
-                        </ul>
-                    </li>
-
-                {% endfor %}
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>
+                        {{ 'profile.show.no_ressources'|trans }} 
+                    </p>
+                {% endif %}
             </ul>
-            
+
             <a href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
                 {{ 'profile.edit.back_on_profile'|trans }}
             </a>

@@ -22,9 +22,11 @@ class RessourcesController extends Controller
         $formRessource = $this->createForm(new RessourcesType(), $entity);
         $formRessource->handleRequest($request);
 
+        $userId = $this->getUser()->getId();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findAll();
+            ->findBy(array('user'=> $userId));
 
+       
 
         if ($formRessource->isValid()) {
             $user = $this->get('security.token_storage')->getToken()->getUser();

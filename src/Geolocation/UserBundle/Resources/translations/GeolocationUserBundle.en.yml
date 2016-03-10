@@ -46,6 +46,7 @@ profile:
         description: Description
         ressources_title : My resources
         link_edit_ressources : Change my resources
+        no_ressources : No resources for the moment
     edit:
         submit: Update
         title: Update my general information
