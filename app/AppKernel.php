@@ -20,6 +20,7 @@ class AppKernel extends Kernel {
             new FOS\UserBundle\FOSUserBundle(),
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
 
             // Nos bundles
             new Geolocation\SiteBundle\SiteBundle(),

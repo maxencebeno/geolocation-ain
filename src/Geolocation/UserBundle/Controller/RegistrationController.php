@@ -15,6 +15,8 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
+use Geolocation\AdminBundle\Entity\User;
+use Geolocation\SiteBundle\Domain\ApiLib;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -39,6 +41,8 @@ class RegistrationController extends Controller
 
     public function registerAction(Request $request)
     {
+        $errors = [];
+        $em = $this->getDoctrine()->getManager();
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -75,6 +79,7 @@ class RegistrationController extends Controller
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
+            /** @var User $user */
             $user->setEnabled(false);
 
             $userManager->updateUser($user);
@@ -95,9 +100,62 @@ class RegistrationController extends Controller
 
             $userManager->updateUser($user);
 
-            $this->addFlash('notice', 'Merci pour votre inscirption, votre demande sera étudiée dans les plus brefs délais');
+            $this->addFlash('notice', 'Merci pour votre inscription, votre demande sera étudiée dans les plus brefs délais');
 
             $url = $this->generateUrl('site_homepage');
+
+            // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
+
+            $response = ApiLib::searchAdresse($user);
+
+            if ($response === false) {
+                $errors[] = "Votre adresse n'a pas pu être trouvée, merci de réessayer.";
+
+                return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+                    'form' => $form->createView(),
+                    'type' => $request->attributes->get('type'),
+                    'errors' => $errors
+                ));
+            } else {
+                // Geocode your request
+                $datas = $response->all();
+                if (count($datas) >= 1) {
+
+                    $verifcp = ApiLib::verifCp(strip_tags($user->getCodePostal()));
+
+                    if ($verifcp === true) {
+
+                        $data = $datas[0];
+                        $latitude = $data->getLatitude();
+                        $longitude = $data->getLongitude();
+
+                        $user->setLatitude($latitude);
+                        $user->setLongitude($longitude);
+
+                        $em->persist($user);
+
+                        $em->flush();
+
+                    } else {
+                        $errors[] = "Votre code postal est erroné, merci de le corriger.";
+
+                        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+                            'form' => $form->createView(),
+                            'type' => $request->attributes->get('type'),
+                            'errors' => $errors
+                        ));
+                    }
+                } else {
+                    $errors[] = "Votre adresse n'a pas pu être trouvée, merci de réessayer.";
+
+                    return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+                        'form' => $form->createView(),
+                        'type' => $request->attributes->get('type'),
+                        'errors' => $errors
+                    ));
+                }
+            }
+
             $response = new RedirectResponse($url);
 
             /*if (null === $response = $event->getResponse()) {
@@ -112,7 +170,8 @@ class RegistrationController extends Controller
 
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
-            'type' => $request->attributes->get('type')
+            'type' => $request->attributes->get('type'),
+            'errors' => $errors
         ));
     }
 

@@ -24,7 +24,10 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "sensio/generator-bundle": "~2.3",
-        "jordillonch/crud-generator": "dev-master"
+        "jordillonch/crud-generator": "dev-master",
+        "willdurand/geocoder-bundle": "@stable",
+        "egeloen/google-map-bundle": "^2.2",
+        "widop/http-adapter-bundle": "^1.2"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "~2.7"
