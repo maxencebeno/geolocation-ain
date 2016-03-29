@@ -2,6 +2,10 @@
 
 {% block body %}
 
+    {% stylesheets '@SiteBundle/Resources/public/css/map.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+
     <form class="form-group col-sm-4 col-sm-offset-4">
         <div class="input-group">
 
@@ -10,8 +14,10 @@
         </div>
     </form>
 
+    <div class="container-map">
+        <div id="map"></div>
+    </div>
 
-    <div id="map"></div>
     <div class="filtres col-sm-3" id="zoneRechercheCarte">
         <form role="form" class="form-horizontal col-sm-10 col-sm-offset-1">
             <fieldset>
@@ -65,20 +71,28 @@
         <section id="tuileContainer" class="row">
             <article class="col-sm-4">
                 <div class="imgTuile"></div>
-                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
-            </article>        
+                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+                quis nostrum exer v
+            </article>
             <article class="col-sm-4">
                 <div class="imgTuile"></div>
-                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+                quis nostrum exer v
 
             </article>
             <article class="col-sm-4">
                 <div class="imgTuile"></div>
-                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exer v
+                Sed ut perspiciatis unde omnis iste r sit amet, consectetur, adipisci velit, sed quia non numquam eius
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+                quis nostrum exer v
 
             </article>
         </section>
     </div>
+
+    <script src="http://maps.google.com/maps/api/js"></script>
 
     {% javascripts '@SiteBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>

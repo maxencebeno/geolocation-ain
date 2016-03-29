@@ -105,6 +105,13 @@ class User extends BaseUser
     protected $url;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="rna", type="text", nullable=true)
+     */
+    protected $rna;
+
+    /**
      * @var text
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -434,5 +441,29 @@ class User extends BaseUser
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    /**
+     * Set rna
+     *
+     * @param string $rna
+     *
+     * @return User
+     */
+    public function setRna($rna)
+    {
+        $this->rna = $rna;
+
+        return $this;
+    }
+
+    /**
+     * Get rna
+     *
+     * @return string
+     */
+    public function getRna()
+    {
+        return $this->rna;
     }
 }

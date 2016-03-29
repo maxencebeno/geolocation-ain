@@ -29,13 +29,16 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class RegistrationController extends Controller {
+class RegistrationController extends Controller
+{
 
-    public function preRegisterAction (Request $request) {
+    public function preRegisterAction(Request $request)
+    {
         return $this->render('GeolocationUserBundle:Registration:pre_register.html.twig', array());
     }
 
-    public function registerAction(Request $request) {
+    public function registerAction(Request $request)
+    {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -55,6 +58,15 @@ class RegistrationController extends Controller {
 
         $form = $formFactory->createForm();
         $form->setData($user);
+
+        switch ($request->attributes->get('type')) {
+            case 'entreprise':
+                $form->remove('rna');
+                break;
+            case 'association':
+                $form->remove('fileKbis');
+                $form->remove('siret');
+        }
 
         $form->handleRequest($request);
 
@@ -99,14 +111,16 @@ class RegistrationController extends Controller {
         }
 
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
-                    'form' => $form->createView(),
+            'form' => $form->createView(),
+            'type' => $request->attributes->get('type')
         ));
     }
 
     /**
      * Tell the user to check his email provider
      */
-    public function checkEmailAction() {
+    public function checkEmailAction()
+    {
         $email = $this->get('session')->get('fos_user_send_confirmation_email/email');
         $this->get('session')->remove('fos_user_send_confirmation_email/email');
         $user = $this->get('fos_user.user_manager')->findUserByEmail($email);
@@ -116,14 +130,15 @@ class RegistrationController extends Controller {
         }
 
         return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
-                    'user' => $user,
+            'user' => $user,
         ));
     }
 
     /**
      * Receive the confirmation token from user email provider, login the user
      */
-    public function confirmAction(Request $request, $token) {
+    public function confirmAction(Request $request, $token)
+    {
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
 
@@ -157,37 +172,41 @@ class RegistrationController extends Controller {
     /**
      * Tell the user his account is now confirmed
      */
-    public function confirmedAction() {
+    public function confirmedAction()
+    {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
         return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
-                    'user' => $user,
+            'user' => $user,
         ));
     }
 
-    protected function getUploadRootDir() {
+    protected function getUploadRootDir()
+    {
         // le chemin absolu du répertoire dans lequel sauvegarder les photos de profil
         return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
 
-    protected function getUploadDir() {
+    protected function getUploadDir()
+    {
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
         return 'uploads/kbis/';
     }
 
-    public function uploadKbis(UploadedFile $file, $username) {
+    public function uploadKbis(UploadedFile $file, $username)
+    {
         // Nous utilisons le nom de fichier original, donc il est dans la pratique 
         // nécessaire de le nettoyer xpour éviter les problèmes de sécurité
         // move copie le fichier présent chez le client dans le répertoire indiqué.
         $em = $this->getDoctrine()->getManager();
 
         $userBDD = $em->getRepository('GeolocationAdminBundle:User')
-                ->findOneBy(array(
-            'username' => $username
-        ));
+            ->findOneBy(array(
+                'username' => $username
+            ));
 
         if ($userBDD->getKbis() !== null) {
             @unlink(__DIR__ . '/../../../../web/uploads/kbis/' . $userBDD->getKbis());

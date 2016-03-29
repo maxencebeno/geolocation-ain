@@ -2,9 +2,10 @@
 
     <div class="col-sm-12">
         <span class="form-edit-label">Section</span>
-        <select id="sections" class="section form-control">
-            {% for key, section in sections %}
-                <option value="{{ key }}">{{ section }}</option>
+        <select id="sections" class="section form-control" name="section" data-placeholder="Section" title="Section">
+             <option label="Section" value="-1"></option>
+            {% for section in sections %}
+                <option value="{{ section.id }}">{{ section }}</option>
             {% endfor %}
         </select>
 
