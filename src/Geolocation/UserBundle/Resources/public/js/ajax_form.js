@@ -7,48 +7,52 @@ $(document).ready(function () {
 
     $('#sections').change(function () {
         var sectionId = $(this).val();
-
+        //Vide les autres select du form (Division & Groupe)
+        resetRessources();
+        //récupération division
         getDivision(sectionId, $('.division'));
+
 
     });
 
     $('#division').change(function () {
         var sectionId = $('#sections').val();
         var divisionId = $(this).val();
-
+        resetGroupe();
         getGroupe(sectionId, divisionId, $('.groupe'));
 
-    });
-
-    $('#groupe').change(function () {
-        var sectionId = $('#sections').val();
-        var divisionId = $('#division').val();
-        var groupId = $('#groupe').val();
-
-        getClasse(sectionId, divisionId, groupId, $('.classe'));
 
     });
 
-    $('#classe').change(function () {
-        var sectionId = $('#sections').val();
-        var divisionId = $('#division').val();
-        var groupId = $('#groupe').val();
-        var classeId = $('#classe').val();
-
-        getCategorie(sectionId, divisionId, groupId, classeId, $('.categorie'));
-
-    });
-
-    $('#categorie').change(function () {
-        var sectionId = $('#sections').val();
-        var divisionId = $('#division').val();
-        var groupId = $('#groupe').val();
-        var classeId = $('#classe').val();
-        var categorieId = $('#categorie').val();
-
-        getSousCategorie(sectionId, divisionId, groupId, classeId, categorieId, $('.sous-categorie'));
-
-    });
+    /* $('#groupe').change(function () {
+     var sectionId = $('#sections').val();
+     var divisionId = $('#division').val();
+     var groupId = $('#groupe').val();
+     
+     getClasse(sectionId, divisionId, groupId, $('.classe'));
+     
+     });
+     
+     $('#classe').change(function () {
+     var sectionId = $('#sections').val();
+     var divisionId = $('#division').val();
+     var groupId = $('#groupe').val();
+     var classeId = $('#classe').val();
+     
+     getCategorie(sectionId, divisionId, groupId, classeId, $('.categorie'));
+     
+     });
+     
+     $('#categorie').change(function () {
+     var sectionId = $('#sections').val();
+     var divisionId = $('#division').val();
+     var groupId = $('#groupe').val();
+     var classeId = $('#classe').val();
+     var categorieId = $('#categorie').val();
+     
+     getSousCategorie(sectionId, divisionId, groupId, classeId, categorieId, $('.sous-categorie'));
+     
+     });*/
 
     function getDivision(sectionId, division) {
         $.ajax({
@@ -108,5 +112,22 @@ $(document).ready(function () {
                 $('.sous-categorie-form').removeClass('hide');
             }
         });
+    }
+
+    function resetRessources() {
+        resetDivision();
+        resetGroupe();
+    }
+
+    function resetDivision() {
+        $('#division').empty();
+        $('#division').append('<option label="Division" value="-1"></option>');
+        $('#division').parent().addClass('hide');
+    }
+
+    function resetGroupe() {
+        $('#groupe').empty();
+        $('#groupe').append('<option label="Groupe" value="-1"></option>');
+        $('#groupe').parent().addClass('hide');
     }
 });
