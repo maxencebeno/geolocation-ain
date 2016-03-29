@@ -55,35 +55,35 @@
 
         <div id="ressource_delete" class="form-group col-sm-12">
             <h2>Mes ressources</h2>
-                {% if ressources|length > 0 %}
-                    <ul id="listRessource">
-                        {% for key, ressource in ressources %}
-                            <li class="myRessource">
-                                <ul >
-                                    <li><strong>Besoin : </strong>
-                                        {% if ressource.getBesoin()==true %}
-                                            Oui
-                                        {% else %}
-                                            Non
-                                        {% endif %}
-                                    </li>
-                                    <li>
-                                        <strong>Ressources : </strong>
-                                        {{ ressource.getCpf() }}
-                                    </li>
-                                    <a href = "{{ path('user_ressources_delete', { 'id': ressource.getId() }) }}" >
-                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger">Supprimer</button>
-                                    </a>
-                                </ul>
-                            </li>
+            {% if ressources|length > 0 %}
+                <ul id="listRessource">
+                    {% for key, ressource in ressources %}
+                        <li class="myRessource">
+                            <ul >
+                                <li><strong>Besoin : </strong>
+                                    {% if ressource.getBesoin()==true %}
+                                        Oui
+                                    {% else %}
+                                        Non
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    <strong>Ressources : </strong>
+                                    {{ ressource.getCpf() }}
+                                </li>
+                          
+                                    <button id="  {{ ressource.getId() }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">Supprimer</button>
+                              
+                            </ul>
+                        </li>
 
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <p>
-                        {{ 'profile.show.no_ressources'|trans }} 
-                    </p>
-                {% endif %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>
+                    {{ 'profile.show.no_ressources'|trans }} 
+                </p>
+            {% endif %}
             </ul>
 
             <a href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
@@ -93,3 +93,35 @@
     </div>
 
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+          Etes-vous sûr de vouloir supprimer cette ressource : <span></span> ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+        <a id="valid" href = "" type="button" class="btn btn-danger">Oui</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('whatever'); // Extract info from data-* attributes
+       var myressource = button.data('myressource');
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        modal.find('.modal-body span').text(myressource);
+        modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/"+id);
+    });
+</script>
