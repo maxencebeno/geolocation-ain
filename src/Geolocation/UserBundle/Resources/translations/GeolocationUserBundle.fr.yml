@@ -149,3 +149,4 @@ form:
     url: "Lien du site web"
     dateCreationEntreprise : "Date de création de l'entreprise"
     description: "Description"
+    rna: "N° RNA"

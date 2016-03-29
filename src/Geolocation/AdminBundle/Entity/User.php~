@@ -105,6 +105,13 @@ class User extends BaseUser
     protected $url;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="rna", type="text", nullable=true)
+     */
+    protected $rna;
+
+    /**
      * @var text
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -405,5 +412,34 @@ class User extends BaseUser
     public function getDateCreationEntreprise()
     {
         return $this->dateCreationEntreprise;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }
