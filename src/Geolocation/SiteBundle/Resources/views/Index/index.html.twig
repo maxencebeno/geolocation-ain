@@ -11,11 +11,7 @@
     </form>
 
 
-    <div id="map">
-        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="100%" height="443" src="https://maps.google.com/maps?hl=en&q=71 rue Peter Fink 01000 BOurg en Bresse&ie=UTF8&t=m&z=11&iwloc=B&output=embed"><div><small><a href="http://embedgooglemaps.com">
-                    embedgooglemaps.com
-                </a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">website traffic</a></small></div></iframe>
-    </div>
+    <div id="map"></div>
     <div class="filtres col-sm-3" id="zoneRechercheCarte">
         <form role="form" class="form-horizontal col-sm-10 col-sm-offset-1">
             <fieldset>
@@ -75,5 +71,9 @@
             </article>
         </section>
     </div>
+
+    {% javascripts '@SiteBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
 {% endblock %}
