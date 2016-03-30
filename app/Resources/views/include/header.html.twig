@@ -39,6 +39,11 @@
                             <button type="button" class="btn btn-default navbar-btn">Se connecter</button>
                         </a>
                     {% endif %}
+                    {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+                        <a href="{{ path('site_homepage', {'_switch_user': '_exit'}) }}">
+                            <button type="button" class="btn btn-default navbar-btn">Quitter l'utilisateur</button>
+                        </a>
+                    {% endif %}
                 </div>
 
             </div><!-- /.navbar-collapse -->

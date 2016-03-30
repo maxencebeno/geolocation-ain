@@ -16,8 +16,32 @@ class UserType extends AbstractType
             ->add('codePostal')
             ->add('ville')
             ->add('tel')
-            ->add('dateCreation')
-            ->add('dateCreationEntreprise')
+            ->add('dateCreation', 'date', array(
+                'input' => 'datetime',
+                'label' => 'form.dateCreation',
+                'translation_domain' => 'GeolocationUserBundle',
+                'format' => 'd/MM/y',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datepicker',
+                    'data-provide' => 'datepicker',
+                    'data-date-format' => 'DD/MM/Y',
+                    'id' => 'datetimepicker1'
+                ]
+            ))
+            ->add('dateCreationEntreprise', 'date', array(
+                'input' => 'datetime',
+                'label' => 'form.dateCreationEntreprise',
+                'translation_domain' => 'GeolocationUserBundle',
+                'format' => 'd/MM/y',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datepicker',
+                    'data-provide' => 'datepicker',
+                    'data-date-format' => 'DD/MM/Y',
+                    'id' => 'datetimepicker2'
+                ]
+            ))
             ->add('siret')
             ->add('kbis')
             ->add('url')

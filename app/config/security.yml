@@ -3,8 +3,8 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_FREE:        ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_USER:        ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         fos_userbundle:
@@ -29,6 +29,7 @@ security:
                 domain:   ~
             logout:       true
             anonymous:    true
+            switch_user: true
 
     access_control:
         - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -36,4 +36,13 @@ $(document).ready(function () {
         locale: "fr",
         format: "d/m/Y"
     });
+    $('#geolocation_adminbundle_user_dateCreation').datetimepicker({
+        locale: "fr",
+        format: "d/m/Y"
+    });
+
+    $('#geolocation_adminbundle_user_dateCreationEntreprise').datetimepicker({
+        locale: "fr",
+        format: "d/m/Y"
+    });
 });

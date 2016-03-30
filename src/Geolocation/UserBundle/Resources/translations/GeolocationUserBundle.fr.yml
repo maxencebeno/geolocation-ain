@@ -139,6 +139,7 @@ form:
     password_confirmation: "Confirmation du mot de passe"
     new_password: "Nouveau mot de passe"
     new_password_confirmation: "Confirmation du mot de passe"
+    dateCreation: "Date de création de l'utilisateur"
     kbis: "Kbis"
     adresse: "Adresse"
     ville: "Ville"
