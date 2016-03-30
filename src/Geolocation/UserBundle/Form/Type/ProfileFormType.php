@@ -82,7 +82,7 @@ class ProfileFormType extends AbstractType {
                     'attr' => [
                         'class' => 'form-control input-inline datepicker',
                         'data-provide' => 'datepicker',
-                        'data-date-format' => 'D/MM/Y'
+                        'data-date-format' => 'DD/MM/Y'
                     ]
                 ))
                 ->add('siret', null, array('label' => 'form.siret', 'translation_domain' => 'GeolocationUserBundle', 'required' => true, 'read_only'=>true))
