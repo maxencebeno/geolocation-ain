@@ -14,37 +14,34 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Geolocation\AdminBundle\Form\RessourcesType;
 use Geolocation\AdminBundle\Entity\Ressources;
 
-class ProfileController extends Controller
-{
+class ProfileController extends Controller {
 
     /**
      * Show the user
      */
-    public function showAction()
-    {
+    public function showAction() {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        
-        $userId = $user->getId();
-         $em = $this->getDoctrine()->getManager();
-        $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findBy(array('user'=> $userId));
 
-       
+        $userId = $user->getId();
+        $em = $this->getDoctrine()->getManager();
+        $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy(array('user' => $userId));
+
+
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user,
-            'ressources' => $ressources,
+                    'user' => $user,
+                    'ressources' => $ressources,
         ));
     }
 
     /**
      * Edit the user
      */
-    public function editAction(Request $request)
-    {
-
+    public function editAction(Request $request) {
+        /** @var Geolocation\AdminBundle\Entity\User $user */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -69,11 +66,15 @@ class ProfileController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $date = new \DateTime($request->request->get('fos_user_profile_form')['dateCreationEntreprise']);
+            // var_dump($date);
+            //die;
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-
+            $user->setDateCreation($date);
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
+
 
             $userManager->updateUser($user);
 
@@ -89,7 +90,8 @@ class ProfileController extends Controller
 
 
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
+
 }
