@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Section
  *
  * @ORM\Table(name="section")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Geolocation\AdminBundle\Repository\SectionRepository")
  */
 class Section
 {

@@ -19,7 +19,7 @@ public function findVillesLike( $term, $limit = 10 )
     $qb = $this->createQueryBuilder('v');
     $qb ->select('v.villeNomReel')
         ->where('v.villeNom LIKE :term')
-        ->setParameter('term', '%'.$term.'%')
+        ->setParameter('term', $term.'%')
         ->orderBy('v.villeNom')
         ->setMaxResults($limit);
 
@@ -31,6 +31,29 @@ public function findVillesLike( $term, $limit = 10 )
     foreach($arrayAss as $data)
     {
         $array[] = array("Ville"=>$data['villeNomReel']);
+    }
+
+    return $array;
+}
+
+public function findCodePostalLike( $term, $limit = 10 )
+{
+
+    $qb = $this->createQueryBuilder('d');
+    $qb ->select('d.villeCodePostal')
+        ->where('d.villeCodePostal LIKE :term')
+        ->setParameter('term', $term.'%')
+        ->orderBy('d.villeCodePostal')
+        ->setMaxResults($limit);
+
+    $arrayAss= $qb->getQuery()
+        ->getArrayResult();
+
+    // Transformer le tableau associatif en un tableau standard
+    $array = array();
+    foreach($arrayAss as $data)
+    {
+        $array[] = array("CodePostal"=>$data['villeCodePostal']);
     }
 
     return $array;

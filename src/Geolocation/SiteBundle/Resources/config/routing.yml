@@ -25,4 +25,16 @@ site_apropos:
 api_commun_json_villes:
     path: /json/getcities
     defaults: { _controller: SiteBundle:Index:getCities }
+    
+api_commun_json_code_postal:
+    path: /json/getcodepostal
+    defaults: { _controller: SiteBundle:Index:getCodePostal }
+    
+api_commun_json_ressources:
+    path: /json/getressources
+    defaults: { _controller: SiteBundle:Index:getRessources }
+    
+api_commun_json_entreprise:
+    path: /json/getentreprise
+    defaults: { _controller: SiteBundle:Index:getEntreprise }
 

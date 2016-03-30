@@ -23,36 +23,20 @@
             <fieldset>
                 <legend id="filtreRechercheCarte" class="active">Filtres de recherche <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> </legend>
                 <div class="form-group">
-                    <label for="ressources" class="control-label">Ressources</label>
-                    <select id="ressources" class="form-control">
-                        <option value="lait">Lait</option>
-                        <option value="oeuf">Oeufs</option>
-                        <option value="porcin">Porcins</option>
-                        <option value="volaille">Volaille</option>
-                    </select>
+                    <input type="text" id="search-ressources" class="autocomplete-search-ressources form-control" data-url="{{ path('api_commun_json_ressources') }}" name="ressources" placeholder="Ressources">
                 </div>
                 <div class="form-group">
-                    <!--<label for="villes" class="control-label">Ville</label>-->
                     <input type="text" id="search-city" class="autocomplete-search-city form-control" data-url="{{ path('api_commun_json_villes') }}" name="city" placeholder="Ville">
                 </div>
 
                 <div class="form-group">
-                    <label for="codePostal" class="control-label">Code Postal</label>
-                    <select id="codePostal" class="form-control">
-                        <option value="01000">01000</option>
-                        <option value="01001">01001</option>
-                        <option value="01002">01002</option>
-                        <option value="01003">01003</option>
-                    </select>
+                    <input type="text" id="search-cp" class="autocomplete-search-cp form-control" data-url="{{ path('api_commun_json_code_postal') }}" name="cp" placeholder="Code Postal">
                 </div>
                 
                 <div class="form-group">
-                    <label for="codePostal" class="control-label">Entreprise</label>
-                    <select id="codePostal" class="form-control">
-                        <option value="01000">Entreprise 1</option>
-                        <option value="01000">Entreprise 2</option>
-                    </select>
+                    <input type="text" id="search-entreprise" class="autocomplete-search-entreprise form-control" data-url="{{ path('api_commun_json_entreprise') }}" name="entreprise" placeholder="Entreprise">
                 </div>
+                
                 <div class="form-group">
                     <label for="distance">Distance:</label>
                     <input type="text" id="distance" readonly style="border:0; color:#f6931f; font-weight:bold;">
@@ -91,37 +75,6 @@
 
     {% javascripts '@SiteBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
-    <script>$(".autocomplete-search-city").autocomplete({
-    source: function (request, response) {
-        var objData = {};
-        var url = $(this.element).attr('data-url');
-        objData = {ville: request.term};
-
-        $.ajax({
-            url: url,
-            dataType: "json",
-            data: objData,
-            type: 'POST',
-            success: function (data) {
-                //Ajout de reponse dans le cache
-                response($.map(data, function (item) {
-                    return {
-                        label: item.Ville,
-                        value: function () {
-                            return item.Ville;
-                        }
-                    };
-                }));
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
-            }
-        });
-    },
-    minLength: 3,
-    delay: 300
-});
-    </script>
     {% endjavascripts %}
 
 {% endblock %}

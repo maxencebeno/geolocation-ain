@@ -10,7 +10,7 @@ a:hover{
     top: 121px;
     right: 63px;
     background: beige;
-    height: 443px;
+    height: 420px;
     opacity: 0.9;
     font-size:1em;
     overflow: hidden;
@@ -30,6 +30,7 @@ a:hover{
 #filtreRechercheCarte span.glyphicon{
     font-size : 0.7em;
 }
+
 
 input#distance {
     background-color: beige;
