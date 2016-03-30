@@ -25,7 +25,7 @@ $(".autocomplete-search-city").autocomplete({
             }
         });
     },
-    minLength: 3,
+    minLength: 2,
     delay: 300
 });
 
@@ -57,7 +57,7 @@ $(".autocomplete-search-cp").autocomplete({
             }
         });
     },
-    minLength: 3,
+    minLength: 2,
     delay: 300
 });
 
