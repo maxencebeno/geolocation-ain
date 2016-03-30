@@ -12,7 +12,7 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    {{ form_widget(form.nom, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'disabled':'disabled'}}) }}
+                    {{ form_widget(form.nom, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                     <span class="form-error" id="error-nom">{{ form_errors(form.nom) }}</span>
                 </div>
 
@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <span class="form-edit-label">{{ form_label(form.siret) }}</span>
-                    {{ form_widget(form.siret, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'disabled':'disabled'}}) }}
+                    {{ form_widget(form.siret, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false' }}) }}
                     <span class="form-error" id="error-siret">{{ form_errors(form.siret) }}</span>
                 </div>
                 <div class="col-sm-6">

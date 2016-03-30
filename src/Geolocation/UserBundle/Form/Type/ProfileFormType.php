@@ -67,7 +67,7 @@ class ProfileFormType extends AbstractType {
     protected function buildUserForm(FormBuilderInterface $builder, array $options) {
         $countries = Intl::getRegionBundle()->getCountryNames();
         $builder
-                ->add('nom', null, array('label' => 'form.nom', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
+                ->add('nom', null, array('label' => 'form.nom', 'translation_domain' => 'GeolocationUserBundle', 'required' => true, 'read_only'=>true))
                 ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
                 ->add('adresse', 'text', array('label' => 'form.adresse', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
                 ->add('ville', 'text', array('label' => 'form.ville', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
@@ -77,15 +77,15 @@ class ProfileFormType extends AbstractType {
                     'input' => 'datetime',
                     'label' => 'form.dateCreationEntreprise',
                     'translation_domain' => 'GeolocationUserBundle',
-                    'format' => 'd/M/y',
+                    'format' => 'd/MM/y',
                     'widget' => 'single_text',
                     'attr' => [
                         'class' => 'form-control input-inline datepicker',
                         'data-provide' => 'datepicker',
-                        'data-date-format' => 'D/M/Y'
+                        'data-date-format' => 'D/MM/Y'
                     ]
                 ))
-                ->add('siret', null, array('label' => 'form.siret', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
+                ->add('siret', null, array('label' => 'form.siret', 'translation_domain' => 'GeolocationUserBundle', 'required' => true, 'read_only'=>true))
                 ->add('fileKbis', null, array('label' => 'form.kbis', 'translation_domain' => 'GeolocationUserBundle'))
                 ->add('url', null, array('label' => 'form.url', 'translation_domain' => 'GeolocationUserBundle'))
                 ->add('description', 'textarea', array('label' => 'form.description', 'translation_domain' => 'GeolocationUserBundle', 'required' => false))

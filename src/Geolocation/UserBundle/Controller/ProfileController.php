@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Geolocation\AdminBundle\Form\RessourcesType;
 use Geolocation\AdminBundle\Entity\Ressources;
+use Geolocation\AdminBundle\Domain\Api\ApiLib;
 
 class ProfileController extends Controller {
 
@@ -29,7 +30,10 @@ class ProfileController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findBy(array('user' => $userId));
-
+        
+        /** @var \DateTime $date */
+        $date = $user->getDateCreationEntreprise();
+        $user->setDateCreationEntreprise($date->format('d/m/Y'));
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
                     'user' => $user,
@@ -66,12 +70,14 @@ class ProfileController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $date = new \DateTime($request->request->get('fos_user_profile_form')['dateCreationEntreprise']);
+            $dateCreationEntrepriseString = $request->request->get('fos_user_profile_form')['dateCreationEntreprise'];
+            $dateCreationEntreprise = ApiLib::dateToMySQL($dateCreationEntrepriseString);
+
+            $user->setDateCreationEntreprise($dateCreationEntreprise);
             // var_dump($date);
             //die;
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-            $user->setDateCreation($date);
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
 
