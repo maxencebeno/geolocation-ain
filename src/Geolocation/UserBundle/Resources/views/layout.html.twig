@@ -2,14 +2,6 @@
 
 {% block body %}
     <div id="wrapper">
-        {% for type, messages in app.session.flashbag.all() %}
-            {% for key, message in messages %}
-                <div class="flash-{{ type }} op_message">
-                    {{ message|trans({}, 'GeolocationUserBundle') }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-
         {% block fos_user_content %}
         {% endblock fos_user_content %}
     </div>

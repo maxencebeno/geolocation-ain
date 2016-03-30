@@ -33,7 +33,7 @@ class RegistrationFormType extends BaseType
                 'attr' => [
                     'class' => 'form-control input-inline datepicker',
                     'data-provide' => 'datepicker',
-                    'data-date-format' => 'D/MM/Y'
+                    'data-date-format' => 'DD/MM/Y'
                 ]
             ))
             ->add('siret', 'text', array('label' => 'form.siret', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'))

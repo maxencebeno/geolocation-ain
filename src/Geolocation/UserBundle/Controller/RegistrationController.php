@@ -160,7 +160,7 @@ class RegistrationController extends Controller
 
             $this->addFlash('notice', 'Merci pour votre inscription, votre demande sera étudiée dans les plus brefs délais');
 
-            $url = $this->generateUrl('user_ressources');
+            $url = $this->generateUrl('site_homepage');
 
             $response = new RedirectResponse($url);
 
