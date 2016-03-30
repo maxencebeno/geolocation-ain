@@ -21,4 +21,8 @@ site_partenaires:
 site_apropos:
     path:     /apropos
     defaults: { _controller: SiteBundle:Apropos:apropos }
+    
+api_commun_json_villes:
+    path: /json/getcities
+    defaults: { _controller: SiteBundle:Index:getCities }
 

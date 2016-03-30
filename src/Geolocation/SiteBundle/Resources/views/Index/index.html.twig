@@ -32,13 +32,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="villes" class="control-label">Ville</label>
-                    <select id="villes" class="form-control">
-                        <option value="lAbergementClémenciat">L'Abergement-Clémenciat</option>
-                        <option value="lAbergementDeVarey">L'Abergement-de-Varey</option>
-                        <option value="AmberieuEnBugey">Ambérieu-en-Bugey</option>
-                        <option value="BourgEnBresse">Bourg-en-Bresse</option>
-                    </select>
+                    <!--<label for="villes" class="control-label">Ville</label>-->
+                    <input type="text" id="search-city" class="autocomplete-search-city form-control" data-url="{{ path('api_commun_json_villes') }}" name="city" placeholder="Ville">
                 </div>
 
                 <div class="form-group">
@@ -96,6 +91,37 @@
 
     {% javascripts '@SiteBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script>$(".autocomplete-search-city").autocomplete({
+    source: function (request, response) {
+        var objData = {};
+        var url = $(this.element).attr('data-url');
+        objData = {ville: request.term};
+
+        $.ajax({
+            url: url,
+            dataType: "json",
+            data: objData,
+            type: 'POST',
+            success: function (data) {
+                //Ajout de reponse dans le cache
+                response($.map(data, function (item) {
+                    return {
+                        label: item.Ville,
+                        value: function () {
+                            return item.Ville;
+                        }
+                    };
+                }));
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    },
+    minLength: 3,
+    delay: 300
+});
+    </script>
     {% endjavascripts %}
 
 {% endblock %}
