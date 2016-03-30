@@ -67,14 +67,14 @@
                                     <div class="col-sm-6">
                                         <span class="form-register-label">{{ form_label(form.codePostal) }} <strong
                                                     class="text-danger">*</strong></span>
-                                        {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                                        {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6', 'data-url': path('api_commun_json_code_postal'), 'name': 'cp'}}) }}
                                         <span class="text-danger"
                                               id="error-surname">{{ form_errors(form.codePostal) }}</span>
                                     </div>
                                     <div class="col-sm-6">
                                         <span class="form-register-label">{{ form_label(form.ville) }} <strong
                                                     class="text-danger">*</strong></span>
-                                        {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7'}}) }}
+                                        {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
                                         <span class="text-danger"
                                               id="error-surname">{{ form_errors(form.ville) }}</span>
                                     </div>

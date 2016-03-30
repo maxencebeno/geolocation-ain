@@ -2,12 +2,15 @@
 
 {% block stylesheets %}
     {% stylesheets '@GeolocationUserBundle/Resources/public/css/register/register.css' %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 {% endblock %}
 
 {% block fos_user_content %}
-        {% include "GeolocationUserBundle:Registration:register_content.html.twig" %}
-        {% block javascript %}
-        {% endblock javascript %}
+    {% include "GeolocationUserBundle:Registration:register_content.html.twig" %}
+    {% block javascript %}
+        {% javascripts '@SiteBundle/Resources/public/js/autocomplete.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock javascript %}
 {% endblock fos_user_content %}

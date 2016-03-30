@@ -138,6 +138,7 @@ footer ul li{
 .flash-success, .flash-error, .flash-notice{
     display: table;
     margin: 0px auto;
+    margin-bottom: 15px;
     text-align: center;
     font-weight: bold;
     padding: 10px 50px;

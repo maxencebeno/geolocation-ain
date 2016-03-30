@@ -2,6 +2,7 @@
 
 namespace Geolocation\UserBundle\Controller;
 
+use Geolocation\AdminBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\FOSUserEvents;
@@ -21,6 +22,7 @@ class ProfileController extends Controller {
      * Show the user
      */
     public function showAction() {
+        /** @var User $user */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -32,8 +34,10 @@ class ProfileController extends Controller {
                 ->findBy(array('user' => $userId));
         
         /** @var \DateTime $date */
-        $date = $user->getDateCreationEntreprise();
-        $user->setDateCreationEntreprise($date->format('d/m/Y'));
+        if ($user->getDateCreationEntreprise() !== null) {
+            $date = $user->getDateCreationEntreprise();
+            $user->setDateCreationEntreprise($date->format('d/m/Y'));
+        }
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
                     'user' => $user,
@@ -45,7 +49,7 @@ class ProfileController extends Controller {
      * Edit the user
      */
     public function editAction(Request $request) {
-        /** @var Geolocation\AdminBundle\Entity\User $user */
+        /** @var User $user */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');

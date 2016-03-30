@@ -24,6 +24,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
 /**
  * Controller managing the registration
@@ -31,7 +32,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class RegistrationController extends Controller
+class RegistrationController extends BaseController
 {
 
     public function preRegisterAction(Request $request)
@@ -135,7 +136,7 @@ class RegistrationController extends Controller
             }
 
             $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+            //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
             /** @var User $user */
             $user->setEnabled(false);
@@ -147,14 +148,14 @@ class RegistrationController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             if ($request->files->get('fos_user_registration_form')['fileKbis'] !== NULL) {
                 $this->uploadKbis($request->files->get('fos_user_registration_form')['fileKbis'], $user->getUsername());
             }
 
             $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+            //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
             $userManager->updateUser($user);
 
@@ -169,7 +170,7 @@ class RegistrationController extends Controller
                 $response = new RedirectResponse($url);
             }*/
 
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;
         }

@@ -38,13 +38,13 @@
                 <div class="col-sm-6">
                     <label class="form-register-label">{{ form_label(form.ville) }}<strong
                             class="text-danger">*</strong></label>
-                    {{ form_widget(form.ville, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
                     <span class="form-error" id="error-ville">{{ form_errors(form.ville) }}</span>
                 </div>
                 <div class="col-sm-6">
                     <span class="form-edit-label">{{ form_label(form.codePostal) }}<strong
                             class="text-danger">*</strong></span>
-                    {{ form_widget(form.codePostal, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6', 'data-url': path('api_commun_json_code_postal'), 'name': 'cp'}}) }}
                     <span class="form-error" id="error-codePostal">{{ form_errors(form.codePostal) }}</span>
                 </div>
             </div>
