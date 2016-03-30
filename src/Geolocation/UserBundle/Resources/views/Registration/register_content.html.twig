@@ -26,6 +26,17 @@
                                 {{ form_widget(form.nom, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.nom', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.nom) }}</span>
                             </div>
+                            <div class="col-sm-6">
+                                <span class="form-edit-label">{{ form_label(form.dateCreationEntreprise) }}</span>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    {{ form_widget(form.dateCreationEntreprise) }}
+                                    <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                                </div>
+                    <span class="form-error"
+                          id="error-dateCreationEntreprise">{{ form_errors(form.dateCreationEntreprise) }}</span>
+                            </div>
                         </div>
 
                         <div class="row">

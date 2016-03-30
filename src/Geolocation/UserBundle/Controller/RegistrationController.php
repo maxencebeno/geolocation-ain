@@ -50,6 +50,7 @@ class RegistrationController extends Controller
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
+        /** @var User $user */
         $user = $userManager->createUser();
         $user->setEnabled(true);
 
@@ -75,6 +76,11 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            $dateCreationEntrepriseString = $request->request->get('fos_user_registration_form')['dateCreationEntreprise'];
+            $dateCreationEntreprise = ApiLib::dateToMySQL($dateCreationEntrepriseString);
+
+            $user->setDateCreationEntreprise($dateCreationEntreprise);
 
             // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
 

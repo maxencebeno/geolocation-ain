@@ -24,6 +24,18 @@ class RegistrationFormType extends BaseType
                     'required' => true,
                     'translation_domain' => 'GeolocationUserBundle')
             )
+            ->add('dateCreationEntreprise', 'date', array(
+                'input' => 'datetime',
+                'label' => 'form.dateCreationEntreprise',
+                'translation_domain' => 'GeolocationUserBundle',
+                'format' => 'd/MM/y',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datepicker',
+                    'data-provide' => 'datepicker',
+                    'data-date-format' => 'D/MM/Y'
+                ]
+            ))
             ->add('siret', 'text', array('label' => 'form.siret', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'))
             ->add('url', 'text', array('label' => 'form.url', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'))
             ->add('plainPassword', 'repeated', array(

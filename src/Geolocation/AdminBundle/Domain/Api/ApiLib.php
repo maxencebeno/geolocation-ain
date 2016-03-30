@@ -26,4 +26,16 @@ class ApiLib
             return false;
         }
     }
+
+    public static function dateToMySQL ($date) {
+        $day = substr($date,0,2);
+        $month = substr($date,3,2);
+        $year = substr($date,6,4);
+        $hour = substr($date,11,2);
+        $minute = substr($date,14,2);
+        $second = substr($date,17,2);
+        $timestamp= mktime($hour,$minute,$second,$month,$day,$year);
+        $date = date('Y-m-d H:i:s',$timestamp);
+        return new \DateTime($date);
+    }
 }

@@ -30,3 +30,10 @@ $(function() {
 
     });
 });
+
+$(document).ready(function () {
+    $('#datetimepicker1').datetimepicker({
+        locale: "fr",
+        format: "d/m/Y"
+    });
+});

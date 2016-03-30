@@ -1,10 +1,5 @@
 $(document).ready(function () {
 
-    $('#datetimepicker1').datetimepicker({
-        locale: "fr",
-        format: "d/m/Y"
-    });
-
     $('#sections').change(function () {
         var sectionId = $(this).val();
         //Vide les autres select du form (Division & Groupe)
