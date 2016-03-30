@@ -1,6 +1,6 @@
 <?php
 
-namespace Geolocation\SiteBundle\Domain;
+namespace Geolocation\AdminBundle\Domain\Api;
 
 
 use Geocoder\Provider\GoogleMaps;
