@@ -3,7 +3,7 @@
 <div class="bg-register">
     <div class="container">
         <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-8 col-sm-offset-2">
                 <div class="register-form-block">
                     <h1>{{ 'layout.register'|trans }}</h1>
                     <hr class="col-sm-12">
@@ -110,7 +110,8 @@
                                 </div>
                             {% else %}
                                 <div class="col-sm-6">
-                                    <span class="form-register-label">{{ form_label(form.rna) }}</span>
+                                    <span class="form-register-label">{{ form_label(form.rna) }} <strong
+                                                class="text-danger">*</strong></span>
                                     {{ form_widget(form.rna, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.rna', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.rna) }}</span>
                                 </div>

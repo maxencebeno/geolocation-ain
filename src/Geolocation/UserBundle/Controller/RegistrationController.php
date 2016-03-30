@@ -76,34 +76,6 @@ class RegistrationController extends Controller
 
         if ($form->isValid()) {
 
-            $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
-            /** @var User $user */
-            $user->setEnabled(false);
-
-            $userManager->updateUser($user);
-
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_registration_confirmed');
-                $response = new RedirectResponse($url);
-            }
-
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
-            if ($request->files->get('fos_user_registration_form')['fileKbis'] !== NULL) {
-                $this->uploadKbis($request->files->get('fos_user_registration_form')['fileKbis'], $user->getUsername());
-            }
-
-            $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
-            $userManager->updateUser($user);
-
-            $this->addFlash('notice', 'Merci pour votre inscription, votre demande sera étudiée dans les plus brefs délais');
-
-            $url = $this->generateUrl('site_homepage');
-
             // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
 
             $response = ApiLib::searchAdresse($user);
@@ -155,6 +127,34 @@ class RegistrationController extends Controller
                     ));
                 }
             }
+
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+
+            /** @var User $user */
+            $user->setEnabled(false);
+
+            $userManager->updateUser($user);
+
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('fos_user_registration_confirmed');
+                $response = new RedirectResponse($url);
+            }
+
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+            if ($request->files->get('fos_user_registration_form')['fileKbis'] !== NULL) {
+                $this->uploadKbis($request->files->get('fos_user_registration_form')['fileKbis'], $user->getUsername());
+            }
+
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+
+            $userManager->updateUser($user);
+
+            $this->addFlash('notice', 'Merci pour votre inscription, votre demande sera étudiée dans les plus brefs délais');
+
+            $url = $this->generateUrl('user_ressources');
 
             $response = new RedirectResponse($url);
 

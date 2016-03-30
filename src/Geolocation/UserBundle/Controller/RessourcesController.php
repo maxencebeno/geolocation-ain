@@ -27,7 +27,7 @@ class RessourcesController extends Controller {
 
 
         if ($formRessource->isValid()) {
-            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $user = $this->getUser();
 
             $section = $em->getRepository('GeolocationAdminBundle:Section')
                     ->findOneBy(array(

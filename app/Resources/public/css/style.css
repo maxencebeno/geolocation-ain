@@ -132,3 +132,28 @@ footer ul li{
 /*------------Ressources-----------*/
 #listRessource ,  .myRessource ul{ padding : 0 ; margin : 0; list-style: none;}
 .myRessource { margin-bottom  : 1em;}
+
+/* Flash messages */
+.flash-success, .flash-error, .flash-notice{
+    display: table;
+    margin: 0px auto;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 50px;
+    border-radius: 30px;
+}
+
+.flash-success{
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+}
+
+.flash-notice{
+    color: #ffaa00;
+    border: 2px solid #ffaa00;
+}
+
+.flash-error{
+    color: #F44336;
+    border: 2px solid #F44336;
+}

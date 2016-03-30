@@ -52,7 +52,7 @@ profile:
         title: Modifier mes informations générales
         back_on_profile: Revenir à mon profil
         or: ou
-        ressource_title: Modifier mes ressources 
+        ressource_title: Ajouter / Modifier mes ressources
         ressourrce_submit: Mettre à jour
     flash:
         updated: Le profil a été mis à jour
