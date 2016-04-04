@@ -108,8 +108,13 @@ function searchCpfromCity(city){
         },
         type: 'POST',
         success: function (data) {
-            console.log(data[0].CodePostal);
-            $('#search-cp').val(data[0].CodePostal);
+            var codePostal = "";
+            if(data[0].CodePostal.includes("-")){
+                codePostal = data[0].CodePostal.substr(0, 2)+"000";
+            }else{
+                codePostal = data[0].CodePostal;
+            }
+            $('#search-cp').val(codePostal);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
