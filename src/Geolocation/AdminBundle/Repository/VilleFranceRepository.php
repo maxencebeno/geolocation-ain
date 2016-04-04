@@ -37,5 +37,28 @@ public function findVillesLike( $term, $limit = 10 )
 }
 
 
+public function findCodePostalFromCity( $term )
+{
+    
+    $qb = $this->createQueryBuilder('v');
+    $qb ->select('v.villeCodePostal')
+        ->where('v.villeNomReel LIKE :term')
+        ->setParameter('term', $term.'%')
+        ->orderBy('v.villeNom');
+
+    $arrayAss= $qb->getQuery()
+        ->getArrayResult();
+
+    // Transformer le tableau associatif en un tableau standard
+    $array = array();
+    foreach($arrayAss as $data)
+    {
+        $array[] = array("CodePostal"=>$data['villeCodePostal']);
+    }
+
+    return $array;
+
+}
+
     
 }

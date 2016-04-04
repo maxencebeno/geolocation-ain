@@ -75,5 +75,18 @@ class IndexController extends Controller {
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
+    
+    public function getCodepostalFromCityAction(Request $request) {
+        if ($request->isXmlHttpRequest()) {
+            $array = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('GeolocationAdminBundle:VilleFrance')
+                    ->findCodePostalFromCity($request->request->get('city'));
+
+            $response = new Response(json_encode($array));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
+        }
+    }
 
 }

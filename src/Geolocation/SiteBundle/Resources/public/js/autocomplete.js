@@ -25,6 +25,12 @@ $(".autocomplete-search-city").autocomplete({
             }
         });
     },
+    change: function( event, ui) {
+        searchCpfromCity(ui.item.label);
+    },
+    select: function( event, ui) {
+        searchCpfromCity(ui.item.label);
+    },
     minLength: 2,
     delay: 300
 });
@@ -91,3 +97,22 @@ $(".autocomplete-search-entreprise").autocomplete({
     minLength: 3,
     delay: 300
 });
+
+
+function searchCpfromCity(city){
+    $.ajax({
+        url: baseUrl+'json/getcodepostalfromcity',
+        dataType: "json",
+        data: {
+            city: city
+        },
+        type: 'POST',
+        success: function (data) {
+            console.log(data[0].CodePostal);
+            $('#search-cp').val(data[0].CodePostal);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
