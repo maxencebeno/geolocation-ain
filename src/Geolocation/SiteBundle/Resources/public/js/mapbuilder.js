@@ -1,3 +1,11 @@
+ var latlngCentre = new google.maps.LatLng(46.204960, 5.225797);
+        var options = {
+            center: latlngCentre,
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+var carte = new google.maps.Map(document.getElementById("map"), options);
+
 $(document).ready(function () {
     var carte;
     var infowindow = new Array();
@@ -5,26 +13,32 @@ $(document).ready(function () {
 
     function initialize() {
 
-        var latlng = new google.maps.LatLng(46.204960, 5.225797);
+        var latlngCentre = new google.maps.LatLng(46.204960, 5.225797);
         var options = {
-            center: latlng,
+            center: latlngCentre,
             zoom: 12,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        var carte = new google.maps.Map(document.getElementById("map"), options);
-
+        var latlng = new Array();
+        var markers = new Array();
+        var contentString = "";
+        alert("test");
         //chargement des données 1 seule fois
         google.maps.event.addListenerOnce(carte, 'idle', function () {
             //appel de l'action pour charger les markers
             $.ajax({
                 url: '/app_dev.php/json/markers',
                 success: function (data) {
+                        alert(data.lenght);
 
                 }
             });
         });
     }
+    
+    initialize();
+    
 
     /*var latlng2 = new Array();
      var markers = new Array();
@@ -74,7 +88,6 @@ $(document).ready(function () {
      });
      }*/
 
-    initialize();
 
 
 });

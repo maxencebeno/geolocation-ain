@@ -5,59 +5,71 @@ namespace Geolocation\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
-class IndexController extends Controller
-{
-    public function indexAction()
-    {
+class IndexController extends Controller {
+
+    public function indexAction() {
         return $this->render('SiteBundle:Index:index.html.twig');
     }
-    
-    public function getCitiesAction(Request $request)
-    {
+
+    public function getCitiesAction(Request $request) {
         if ($request->isXmlHttpRequest()) {
             $term = $request->request->get('ville');
             $array = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('GeolocationAdminBundle:VilleFrance')
-                ->findVillesLike($term);
+                    ->getManager()
+                    ->getRepository('GeolocationAdminBundle:VilleFrance')
+                    ->findVillesLike($term);
 
             $response = new Response(json_encode($array));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
         }
     }
-    
-    public function getRessourcesAction(Request $request)
-    {
+
+    public function getRessourcesAction(Request $request) {
         if ($request->isXmlHttpRequest()) {
             $term = $request->request->get('ressources');
             $array = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('GeolocationAdminBundle:Categorie')
-                ->findRessourcesLike($term);
+                    ->getManager()
+                    ->getRepository('GeolocationAdminBundle:Categorie')
+                    ->findRessourcesLike($term);
 
             $response = new Response(json_encode($array));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
         }
     }
-    
-    public function getEntrepriseAction(Request $request)
-    {
+
+    public function getEntrepriseAction(Request $request) {
         if ($request->isXmlHttpRequest()) {
             $term = $request->request->get('entreprise');
             $array = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('GeolocationAdminBundle:User')
-                ->findEntrepriseLike($term);
+                    ->getManager()
+                    ->getRepository('GeolocationAdminBundle:User')
+                    ->findEntrepriseLike($term);
 
             $response = new Response(json_encode($array));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
         }
     }
+
+    public function loadMarkersAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $array = $em->getRepository('GeolocationAdminBundle:User')
+                ->findByEnabled(1);
+        
+        $normalizer = new GetSetMethodNormalizer();
+        $serializer = new Serializer(array($normalizer), array('array' => new JsonEncoder()));
+        
+        $jsonContent = $serializer->serialize($array, 'json');
+        
+        $response = new Response($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
 }
-
-
-
