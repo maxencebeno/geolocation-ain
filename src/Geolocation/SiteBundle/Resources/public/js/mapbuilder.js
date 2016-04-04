@@ -18,6 +18,7 @@ $(document).ready(function () {
         var contentString = "";
         latlng2.push(new google.maps.LatLng(45.7578, 4.8400));
         latlng2.push(new google.maps.LatLng(45.771633, 4.890169));
+
         for (index = 0; index < latlng2.length; ++index) {
 
             markers.push(new google.maps.Marker({
