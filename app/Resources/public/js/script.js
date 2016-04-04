@@ -1,3 +1,5 @@
+/*Variables globales*/
+var baseUrl = "/app_dev.php/";
 /*Gestion du slider range pour le filtre de distance*/
 $(function() {
     $("#slider-range").slider({

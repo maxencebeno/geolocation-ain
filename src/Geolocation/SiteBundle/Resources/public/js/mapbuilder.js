@@ -1,3 +1,5 @@
+
+
 var latlngCentre = new google.maps.LatLng(46.204960, 5.225797);
 var options = {
     center: latlngCentre,
@@ -6,16 +8,17 @@ var options = {
 };
 var carte = new google.maps.Map(document.getElementById("map"), options);
 
+
+var infowindow = new Array();
 //chargement des données 1 seule fois
 google.maps.event.addListenerOnce(carte, 'idle', function () {
     var latlng = new Array();
     var markers = new Array();
     var contentString = "";
-    var infowindow = new Array();
 
     //appel de l'action pour charger les markers
     $.ajax({
-        url: '/app_dev.php/json/markers',
+        url: baseUrl + 'json/markers',
         success: function (data) {
             var i;
             var index = 0;
@@ -29,14 +32,23 @@ google.maps.event.addListenerOnce(carte, 'idle', function () {
                 }));
                 contentString =
                         '<div id="content">' +
-                        '<h2>Nom de l\'entreprise ' + data[i].name + '</h2>' +
-                        'adresse & contact' +
-                        'lien vers la fiche entreprise' +
+                        '<h2>' + data[i].nom + '</h2>' +
+                        data[i].adresse + '<br>' +
+                        data[i].codePostal + ' '+ data[i].ville + '<br>'+
+                        '<a href = "' + baseUrl + 'details\\' + data[i].id + '">Plus d\'informations<a>' +
                         '</div>';
 
                 infowindow[index] = new google.maps.InfoWindow({
                     content: contentString
                 });
+
+                google.maps.event.addListener(markers[index], 'click', function (index) {
+                    return function () {
+                        closeWindowInfos(); //fermer toutes les infoWindows ouvertes
+                        infowindow[index].open(carte, markers[index]);
+                    }
+                }(index));
+
                 index++;
 
             }
@@ -46,6 +58,20 @@ google.maps.event.addListenerOnce(carte, 'idle', function () {
         }
     });
 });
+
+function closeWindowInfos() {
+    for (var i = 0; i < infowindow.length; i++)
+    {
+        infowindow[i].close();
+    }
+}
+
+function bindInfoWindow(marker, content) {
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(content);
+        infowindow.open(carte, marker);
+    });
+}
 
 $(document).ready(function () {
 
@@ -60,8 +86,6 @@ $(document).ready(function () {
     }
 
     initialize();
-
-
     /*var latlng2 = new Array();
      var markers = new Array();
      var contentString = "";
