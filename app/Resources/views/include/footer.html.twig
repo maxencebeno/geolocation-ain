@@ -1,29 +1,31 @@
-{# empty Twig template #}
-
-<footer>
-    
-    <ul>
+    <footer class="footer">
+      <div class="container">
+        <ul>
         <li><a href="{{ path('site_apropos') }}">A propos</a></li>
         <li><a href="{{ path('site_partenaires') }}">Partenaires</a></li>
         <li><a href="{{ path('site_aide') }}">Aide en ligne</a></li>
         <li><a href="{{ path('site_contact') }}">Contact</a></li>
     </ul>
     
-    <div class="social-link">
+    <ul>
+        <li>
+            <a class="btn btn-social-icon btn-lg btn-twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-social-icon btn-lg btn-facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-social-icon btn-lg btn-linkedin">
+                <i class="fa fa-linkedin"></i>
+            </a>
+        </li>
+    </ul>
+    
 
-        <a class="btn btn-social-icon btn-lg btn-twitter">
-            <i class="fa fa-twitter"></i>
-        </a>
 
-        <a class="btn btn-social-icon btn-lg btn-facebook">
-            <i class="fa fa-facebook"></i>
-        </a>
-
-        <a class="btn btn-social-icon btn-lg btn-linkedin">
-            <i class="fa fa-linkedin"></i>
-        </a>
-        
-
-    </div>
-
-</footer>
+      </div>
+    </footer>

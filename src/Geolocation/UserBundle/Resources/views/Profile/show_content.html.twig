@@ -3,109 +3,137 @@
 <div class="container">
     <div id="fos_user_user_show">
         <h1>{{ 'profile.show.title'|trans }}</h1>
+        <hr>
 
         <div class="row">
             <div class="col-sm-6">
-                <h2>{{ 'profile.show.basic_infos'|trans }}</h2>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3>{{ 'profile.show.basic_infos'|trans }}</h3></div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>{{ 'profile.show.name'|trans }}</dt>
+                            <dd>{{ user.username }}</dd>
 
-                <p><span class="show-legends">{{ 'profile.show.name'|trans }}:</span> {{ user.username }}</p>
-                <p>
-                    <span class="show-legends">{{ 'profile.show.date_creation_entreprise'|trans }}: </span>
-                    {% if user.dateCreationEntreprise  != '' %}
-                        {{ user.dateCreationEntreprise }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-
-                <p><span class="show-legends">{{ 'profile.show.email'|trans }}:</span> {{ user.email }}</p>
-                <p><span class="show-legends">{{ 'profile.show.adresse'|trans }}: </span> {{ user.adresse }}</p>
-                <p><span class="show-legends">{{ 'profile.show.ville'|trans }}: </span> {{ user.ville }}  </p>
-                <p><span class="show-legends">{{ 'profile.show.codepostal'|trans }}: </span>{{ user.codepostal }}</p>
-
-                <p>
-                    <span class="show-legends">{{ 'profile.show.telephone'|trans }}: </span>
-                    {% if user.tel != '' %}
-                        {{ user.tel }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-
-                <p>
-                    <span class="show-legends">{{ 'profile.show.siret'|trans }}: </span>{{ user.siret }} </p>
-                <p>
-                    <span class="show-legends">{{ 'profile.show.kbis'|trans }}: </span>
-                    {% if user.kbis != '' %}
-                        {{ user.kbis }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-                <p>
-                    <span class="show-legends">{{ 'profile.show.site'|trans }}: </span>
-                    {% if user.url != '' %}
-                        {{ user.url }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-
-                <p>
-                    <span class="show-legends">{{ 'profile.show.description'|trans }}: </span>
-                    {% if user.description != '' %}
-                        {{ user.description }}
-                    {% else %}
-                        <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
-                    {% endif %}
-                </p>
-
-                <p style="margin-top: 15px;"><a
-                            href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a></p>
-            </div>
-            
-            <div class="col-sm-6">
-                <h2>{{ 'profile.show.ressources_title'|trans }}</h2>
-                
-                 {% if ressources|length > 0 %}
-                     <ul id="listRessource">
-                         {% for key, ressource in ressources %}
-                             <li class="myRessource">
-                                 <ul >
-                                     <li><strong>Besoin : </strong>
-                                         {% if ressource.getBesoin()==true %}
-                                    Oui
+                            <dt>{{ 'profile.show.date_creation_entreprise'|trans }}</dt>
+                            <dd>
+                                {% if user.dateCreationEntreprise  != '' %}
+                                    {{ user.dateCreationEntreprise }}
                                 {% else %}
-                                    Non
+                                    {{ 'profile.show.nonrenseigne'|trans }}
                                 {% endif %}
-                            </li>
-                            <li>
-                                <strong>Ressources : </strong>
-                                {{ ressource.getCpf() }}
-                            </li>
-                        </ul>
-                    </li>
+                            </dd>
 
-                {% endfor %}
-            </ul>
-            {% else %}
-                <p>
-                    {{ 'profile.show.no_ressources'|trans }} 
-                </p>
-            {% endif %}
-             <p style="margin-top: 15px;">
-                 <a href="{{ path('user_ressources') }}">
-                     {{ 'profile.show.link_edit_ressources'|trans }}
-                 </a>
-             </p>
-        </div>
+                            <dt>{{ 'profile.show.email'|trans }}</dt>
+                            <dd>{{ user.email }}</dd>
+
+                            <dt>{{ 'profile.show.adresse'|trans }}</dt>
+                            <dd>{{ user.adresse }}</dd>
+
+                            <dt>{{ 'profile.show.ville'|trans }}</dt>
+                            <dd>{{ user.ville }}</dd>
+
+                            <dt>{{ 'profile.show.codepostal'|trans }}</dt>
+                            <dd>{{ user.codepostal }}</dd>
+
+                            <dt>{{ 'profile.show.telephone'|trans }}</dt>
+                            <dd>
+                                {% if user.tel != '' %}
+                                    {{ user.tel }}
+                                {% else %}
+                                    {{ 'profile.show.nonrenseigne'|trans }}
+                                {% endif %}
+                            </dd>
+
+                            <dt>{{ 'profile.show.siret'|trans }}</dt>
+                            <dd>{{ user.siret }}</dd>
+
+                            <dt>{{ 'profile.show.kbis'|trans }}</dt>
+                            <dd>
+                                {% if user.kbis != '' %}
+                                    {{ user.kbis }}
+                                {% else %}
+                                    {{ 'profile.show.nonrenseigne'|trans }}
+                                {% endif %}
+                            </dd>
+
+                            <dt>{{ 'profile.show.site'|trans }}</dt>
+                            <dd>
+                                {% if user.url != '' %}
+                                    <a href="{{ user.url }}">{{ user.url }}</a>
+                                {% else %}
+                                    {{ 'profile.show.nonrenseigne'|trans }}
+                                {% endif %}
+                            </dd>
+
+                            <dt>{{ 'profile.show.description'|trans }}</dt>
+                            <dd>
+                                {% if user.description != '' %}
+                                    {{ user.description }}
+                                {% else %}
+                                    {{ 'profile.show.nonrenseigne'|trans }}
+                                {% endif %}
+                            </dd>   
+                        </dl>
+                        <div class="text-center">       
+                            <a class="btn btn-info btn-lg text-center" href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="col-sm-6">
-                 <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
-             </div>-->
-        </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3>{{ 'profile.show.ressources_title'|trans }}</h3></div>
+                    <div class="panel-body">
+                        {% if ressources|length > 0 %}
+                            <ul id="listRessource">
+                                {% for key, ressource in ressources %}
+                                    <li class="myRessource">
+                                        <ul >
+                                            <li><strong>Besoin : </strong>
+                                                {% if ressource.getBesoin()==true %}
+                                                    Oui
+                                                {% else %}
+                                                    Non
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                <strong>Ressources : </strong>
+                                                {{ ressource.getCpf() }}
+                                            </li>
+                                        </ul>
+                                    </li>
 
-        <h2>{{ 'profile.show.security_infos'|trans }}</h2>
-        <p><a href="{{ path('fos_user_change_password') }}">{{ 'profile.show.link_change_password'|trans }}</a></p>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>
+                                {{ 'profile.show.no_ressources'|trans }} 
+                            </p>
+                        {% endif %}
+                        <div class="text-center"> 
+                            <a class="btn btn-info btn-lg" href="{{ path('user_ressources') }}">
+                                {{ 'profile.show.link_edit_ressources'|trans }}
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-sm-6">
+             <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
+         </div>-->
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>{{ 'profile.show.security_infos'|trans }}</h3></div>
+                <div class="panel-body">
+                    <div class="text-center"> 
+                        <a class="btn btn-info btn-lg" href="{{ path('fos_user_change_password') }}">{{ 'profile.show.link_change_password'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -20,9 +20,11 @@
                     <div class="social_icon"></div>
                     
                     <h1>{{ 'layout.login'|trans }}</h1>
-                    <hr class="col-sm-12">
+                    <hr>
                     {% if error %}
-                        <div class="flash-error" role="alert">
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
                             {{ error.messageKey|trans(error.messageData, 'security') }}
                         </div>
                     {% endif %}

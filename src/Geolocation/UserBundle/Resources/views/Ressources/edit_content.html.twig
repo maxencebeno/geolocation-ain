@@ -1,115 +1,129 @@
 {% trans_default_domain 'GeolocationUserBundle' %}
 
 <div class="container">
+
+    {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
     <div class="row">
+        <div id="ressource_edit" class="form-group col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>{{ 'profile.edit.ressource_title'|trans }}</h3></div>
+                <div class="panel-body">
 
-        {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
-        {{ form_start(form) }}
-        {{ form_errors(form) }}
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <span class="form-edit-label">{{ form_label(form.besoin) }}</span>
+                            {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                            <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
+                        </div>
 
-        <div class="row">
-            <div id="ressource_edit" class="form-group col-sm-5">
-                <h2>{{ 'profile.edit.ressource_title'|trans }}</h2>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <span class="form-edit-label">{{ form_label(form.besoin) }}</span>
-                        {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
+                        {% include 'GeolocationUserBundle:Ajax:template_ajax.html.twig' %}
+                        <div class="row">
+                            <div class="col-sm-4 hide">
+                                <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                                {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                                <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                            </div>
+
+                            <div class="col-sm-4 hide">
+                                <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                                {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                                <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                            </div>
+
+                            <div class="col-sm-4 hide">
+                                <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                                {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                                <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                            </div>
+
+                            <div class="col-sm-4 hide">
+                                <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                                {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                                <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                            </div>
+                        </div>
+
                     </div>
 
-                    {% include 'GeolocationUserBundle:Ajax:template_ajax.html.twig' %}
 
-                    <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
-                    </div>
+                    {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.ressource_submit'|trans) }}) }}
 
-                    <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
-                    </div>
-
-                    <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
-                    </div>
-
-                    <div class="col-sm-4 hide">
-                        <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                        {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
-                    </div>
-
+                    {{ form_end(form) }}
 
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row">
+        <div id="ressource_delete" class="form-group col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>Mes ressources</h3></div>
+                <div class="panel-body">
+                    {% if ressources|length > 0 %}
+                        <ul id="listRessource">
+                            {% for key, ressource in ressources %}
+                                <li class="myRessource">
+                                    <ul >
+                                        <li><strong>Besoin : </strong>
+                                            {% if ressource.getBesoin()==true %}
+                                                Oui
+                                            {% else %}
+                                                Non
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            <strong>Ressources : </strong>
+                                            {{ ressource.getCpf() }}
+                                        </li>
 
-                {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation', 'value' : ('profile.edit.ressource_submit'|trans) }}) }}
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">Supprimer</button>
 
-                {{ form_end(form) }}
+                                    </ul>
+                                </li>
+
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>
+                            {{ 'profile.show.no_ressources'|trans }} 
+                        </p>
+                    {% endif %}
+                    </ul>
+
+                </div>
             </div>
         </div>
 
-        <div id="ressource_delete" class="form-group col-sm-12">
-            <h2>Mes ressources</h2>
-            {% if ressources|length > 0 %}
-                <ul id="listRessource">
-                    {% for key, ressource in ressources %}
-                        <li class="myRessource">
-                            <ul >
-                                <li><strong>Besoin : </strong>
-                                    {% if ressource.getBesoin()==true %}
-                                        Oui
-                                    {% else %}
-                                        Non
-                                    {% endif %}
-                                </li>
-                                <li>
-                                    <strong>Ressources : </strong>
-                                    {{ ressource.getCpf() }}
-                                </li>
-                          
-                                    <button id="  {{ ressource.getId() }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">Supprimer</button>
-                              
-                            </ul>
-                        </li>
+        <a class="btn btn-default" href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+            {{ 'profile.edit.back_on_profile'|trans }}
+        </a>
 
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>
-                    {{ 'profile.show.no_ressources'|trans }} 
-                </p>
-            {% endif %}
-            </ul>
-
-            <a href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
-                {{ 'profile.edit.back_on_profile'|trans }}
-            </a>
-        </div>
     </div>
-
 </div>
 
+
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Confirmation</h4>
-      </div>
-      <div class="modal-body">
-          Etes-vous sûr de vouloir supprimer cette ressource : <span></span> ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
-        <a id="valid" href = "" type="button" class="btn btn-danger">Oui</a>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Etes-vous sûr de vouloir supprimer cette ressource : <span></span> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                <a id="valid" href = "" type="button" class="btn btn-danger">Oui</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
@@ -117,11 +131,11 @@
     $('#myModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var id = button.data('whatever'); // Extract info from data-* attributes
-       var myressource = button.data('myressource');
-// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var myressource = button.data('myressource');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
         modal.find('.modal-body span').text(myressource);
-        modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/"+id);
+        modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/" + id);
     });
 </script>
