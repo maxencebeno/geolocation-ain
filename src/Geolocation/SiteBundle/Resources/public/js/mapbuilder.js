@@ -23,7 +23,9 @@ $(document).ready(function () {
         var latlng = new Array();
         var markers = new Array();
         var contentString = "";
-        alert("test");
+      
+        url = "/app_dev.php/json/markers";
+          //alert(url);
         //chargement des données 1 seule fois
         google.maps.event.addListenerOnce(carte, 'idle', function () {
             //appel de l'action pour charger les markers
