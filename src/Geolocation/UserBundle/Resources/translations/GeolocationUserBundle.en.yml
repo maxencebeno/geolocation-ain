@@ -143,3 +143,10 @@ form:
     url: "Website link"
     dateCreationEntreprise : "Company creation date"
     description: "Description"
+
+#Ressources
+ressources:
+    flash:
+        create:
+            success: "The resource has been added"
+            fail: "Please select an item for each field"

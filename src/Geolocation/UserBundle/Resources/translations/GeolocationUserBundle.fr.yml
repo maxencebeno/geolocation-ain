@@ -154,8 +154,7 @@ form:
     
 #Ressources
 ressources:
-    edit:
-        flash:
-            create:
-                sucess: "La ressource a bien été ajoutée"
-                fail: "Veuillez choisir un élément pour chaque champ"
+    flash:
+        create:
+            success: "La ressource a bien été ajoutée"
+            fail: "Veuillez choisir un élément pour chaque champ"
