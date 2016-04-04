@@ -5,6 +5,46 @@
             <!--<div class="form-group">
                     <input type="text" id="search-ressources" class="autocomplete-search-ressources form-control" data-url="{{ path('api_commun_json_ressources') }}" name="ressources" placeholder="Ressources">
                 </div>-->
+
+            <div class="form-group">
+
+                <div class="col-sm-12">
+                    <span class="form-edit-label">Section</span>
+                    <select id="sections" class="section form-control" name="section" data-placeholder="Section" title="Section">
+                        <option label="Section" value="-1"></option>
+                        {% for section in sections %}
+                            <option value="{{ section.id }}">{{ section }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-sm-12 hide division-form">
+                    <select id="division" name="division" data-placeholder="Division" title="Division"
+                            class="form-control division">
+                        <option label="Division" value="-1"></option>
+
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-sm-12 hide groupe-form">
+                    <select id="groupe" name="groupe" data-placeholder="Groupe" title="Groupe"
+                            class="form-control groupe">
+                        <option label="Groupe" value="-1"></option>
+
+                    </select>
+                </div>
+
+            </div>
+
             <div class="form-group">
                 <input type="text" id="search-city" class="autocomplete-search-city form-control" data-url="{{ path('api_commun_json_villes') }}" name="city" placeholder="Ville">
             </div>
