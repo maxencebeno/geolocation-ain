@@ -3,8 +3,8 @@ site_homepage:
     defaults: { _controller: SiteBundle:Index:index }
 
 site_api_filter_ajax_ressources:
-    path:     /ajax/json/get-entreprise-by-ressources
-    defaults: { _controller: SiteBundle:Filtres:getEntrepriseByRessources }
+    path:     /ajax/filtres/get-entreprises-by-filters
+    defaults: { _controller: SiteBundle:Filtres:getEntreprisesByFilters }
 
 site_details:
     path:     /details/{id}

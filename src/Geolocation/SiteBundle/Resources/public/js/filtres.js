@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     function getDivision(sectionId, division) {
         $.ajax({
-            url: baseUrl + 'ajax/filtres/getDivision?id=' + sectionId,
+            url: baseUrl + 'ajax/getDivision?id=' + sectionId,
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     division.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
@@ -33,7 +33,7 @@ $(document).ready(function () {
 
     function getGroupe(sectionId, divisionId, groupe) {
         $.ajax({
-            url: baseUrl + 'ajax/filtres/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId,
+            url: baseUrl + 'ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId,
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     groupe.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
@@ -59,4 +59,23 @@ $(document).ready(function () {
         $('#groupe').append('<option label="Groupe" value="-1"></option>');
         $('#groupe').parent().addClass('hide');
     }
+
+    $('#form-filters').submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log($(this));
+
+        $.ajax({
+            url: baseUrl + 'ajax/filtres/get-entreprises-by-filters',
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+            }
+        });
+
+        return false;
+    });
 });

@@ -9,7 +9,8 @@ use Ivory\HttpAdapter\CurlHttpAdapter;
 
 class ApiLib
 {
-    public static function searchAdresse(User $user) {
+    public static function searchAdresse(User $user)
+    {
         $curl = new CurlHttpAdapter();
         $geocoder = new GoogleMaps($curl);
         try {
@@ -19,7 +20,8 @@ class ApiLib
         }
     }
 
-    public static function verifCp($cp) {
+    public static function verifCp($cp)
+    {
         if (preg_match("/^[0-9]{5,5}$/", $cp)) {
             return true;
         } else {
@@ -27,15 +29,21 @@ class ApiLib
         }
     }
 
-    public static function dateToMySQL ($date) {
-        $day = substr($date,0,2);
-        $month = substr($date,3,2);
-        $year = substr($date,6,4);
-        $hour = substr($date,11,2);
-        $minute = substr($date,14,2);
-        $second = substr($date,17,2);
-        $timestamp= mktime($hour,$minute,$second,$month,$day,$year);
-        $date = date('Y-m-d H:i:s',$timestamp);
+    public static function dateToMySQL($date)
+    {
+        $day = substr($date, 0, 2);
+        $month = substr($date, 3, 2);
+        $year = substr($date, 6, 4);
+        $hour = substr($date, 11, 2);
+        $minute = substr($date, 14, 2);
+        $second = substr($date, 17, 2);
+        $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
+        $date = date('Y-m-d H:i:s', $timestamp);
         return new \DateTime($date);
+    }
+
+    public static function slugifyCity($str)
+    {
+        return str_replace(' ', '-', trim(strtolower($str)));
     }
 }
