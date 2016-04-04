@@ -45,7 +45,7 @@
                 <p>
                     <span class="show-legends">{{ 'profile.show.site'|trans }}: </span>
                     {% if user.url != '' %}
-                        {{ user.url }}
+                        <a href="{{ user.url }}">{{ user.url }}</a>
                     {% else %}
                         <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
                     {% endif %}
