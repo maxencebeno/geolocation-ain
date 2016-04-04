@@ -143,6 +143,7 @@ form:
     url: "Website link"
     dateCreationEntreprise : "Company creation date"
     description: "Description"
+    valider: "Update"
 
 #Ressources
 ressources:

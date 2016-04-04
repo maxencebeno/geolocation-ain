@@ -151,6 +151,7 @@ form:
     dateCreationEntreprise : "Date de création de l'entreprise"
     description: "Description"
     rna: "N° RNA"
+    valider: "Mettre à jour"
     
 #Ressources
 ressources:

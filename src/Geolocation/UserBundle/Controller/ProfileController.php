@@ -144,5 +144,25 @@ class ProfileController extends Controller {
         $em->persist($userBDD);
         $em->flush();
     }
+    
+    public function downloadFileAction(Request $request)
+    {
+        // On récupère l'utilisateur
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('GeolocationAdminBundle:User')
+            ->findOneBy(array(
+                'id' => $request->attributes->get('id')
+            ));
+
+        $path = $this->get('kernel')->getRootDir() . "/../web/uploads/kbis/" . $user->getKbis();
+        $content = file_get_contents($path);
+
+        $response = new Response();
+
+        $response->headers->set('Content-Type', 'text/pdf');
+        
+        $response->setContent($content);
+        return $response;
+    }
 
 }

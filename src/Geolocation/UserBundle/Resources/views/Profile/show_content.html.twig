@@ -37,7 +37,7 @@
                 <p>
                     <span class="show-legends">{{ 'profile.show.kbis'|trans }}: </span>
                     {% if user.kbis != '' %}
-                        {{ user.kbis }}
+                        <a href="{{ path('user_kbis', {'id': user.id}) }}" target="_blank">{{ user.kbis }}</a>
                     {% else %}
                         <span class="non-renseigne">{{ 'profile.show.nonrenseigne'|trans }}</span>
                     {% endif %}
