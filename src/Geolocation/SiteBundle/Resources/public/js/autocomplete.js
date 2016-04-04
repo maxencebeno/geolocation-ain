@@ -26,7 +26,12 @@ $(".autocomplete-search-city").autocomplete({
         });
     },
     change: function( event, ui) {
-        searchCpfromCity(ui.item.label);
+        if(ui.item == null){
+            $('#search-cp').val("");
+        }else{
+            searchCpfromCity(ui.item.label);
+        }
+        
     },
     select: function( event, ui) {
         searchCpfromCity(ui.item.label);
