@@ -50,3 +50,9 @@ user_ressources_delete :
     path: /ressources-delete/{id}
     requirements:
         id: \d+
+        
+user_kbis:
+    defaults: { _controller: GeolocationUserBundle:Ressources:downloadFile }
+    path: /profile/getfile/{id}
+    requirements:
+        id: \d+

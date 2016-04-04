@@ -2,6 +2,10 @@ site_homepage:
     path:     /
     defaults: { _controller: SiteBundle:Index:index }
 
+site_api_filter_ajax_ressources:
+    path:     /ajax/json/get-entreprise-by-ressources
+    defaults: { _controller: SiteBundle:Filtres:getEntrepriseByRessources }
+
 site_details:
     path:     /details/{id}
     defaults: { _controller: SiteBundle:Details:details }
@@ -26,10 +30,6 @@ api_commun_json_villes:
     path: /json/getcities
     defaults: { _controller: SiteBundle:Index:getCities }
     
-api_commun_json_code_postal:
-    path: /json/getcodepostal
-    defaults: { _controller: SiteBundle:Index:getCodePostal }
-    
 api_commun_json_ressources:
     path: /json/getressources
     defaults: { _controller: SiteBundle:Index:getRessources }
@@ -45,7 +45,3 @@ api_markers:
 searchCPfromCity:
     path: /json/getcodepostalfromcity
     defaults: { _controller: SiteBundle:Index:getCodepostalFromCity }
-    
-site_get_ressources_from_userId:
-    defaults: { _controller: SiteBundle:Index:getRessourcesByUserId }
-    path: /get-ressources-user

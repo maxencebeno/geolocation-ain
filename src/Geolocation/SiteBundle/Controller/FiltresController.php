@@ -9,7 +9,11 @@
 namespace Geolocation\SiteBundle\Controller;
 
 
+use Symfony\Component\HttpFoundation\Request;
+
 class FiltresController
 {
-    
+    public function getEntrepriseByRessourcesAction (Request $request) {
+        
+    }
 }

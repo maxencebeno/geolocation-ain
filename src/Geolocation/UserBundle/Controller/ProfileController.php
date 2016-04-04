@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Geolocation\AdminBundle\Form\RessourcesType;
 use Geolocation\AdminBundle\Entity\Ressources;
 use Geolocation\AdminBundle\Domain\Api\ApiLib;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProfileController extends Controller {
 
@@ -32,7 +33,7 @@ class ProfileController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findBy(array('user' => $userId));
-        
+
         /** @var \DateTime $date */
         if ($user->getDateCreationEntreprise() !== null) {
             $date = $user->getDateCreationEntreprise();
@@ -85,6 +86,9 @@ class ProfileController extends Controller {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
 
+            if ($request->files->get('fos_user_profile_form')['fileKbis'] !== NULL) {
+                $this->uploadKbis($request->files->get('fos_user_profile_form')['fileKbis'], $user->getUsername());
+            }
 
             $userManager->updateUser($user);
 
@@ -102,6 +106,63 @@ class ProfileController extends Controller {
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
                     'form' => $form->createView()
         ));
+    }
+
+    protected function getUploadRootDir() {
+        // le chemin absolu du répertoire dans lequel sauvegarder les photos de profil
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir() {
+        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+        return 'uploads/kbis/';
+    }
+
+    public function uploadKbis(UploadedFile $file, $username) {
+        // Nous utilisons le nom de fichier original, donc il est dans la pratique 
+        // nécessaire de le nettoyer xpour éviter les problèmes de sécurité
+        // move copie le fichier présent chez le client dans le répertoire indiqué.
+        $em = $this->getDoctrine()->getManager();
+
+        $userBDD = $em->getRepository('GeolocationAdminBundle:User')
+                ->findOneBy(array(
+            'username' => $username
+        ));
+
+        if ($userBDD->getKbis() !== null) {
+            @unlink(__DIR__ . '/../../../../web/uploads/kbis/' . $userBDD->getKbis());
+        }
+
+        preg_replace('/\s+/', '_', $file->getClientOriginalName());
+        $file->move($this->getUploadRootDir(), $file->getClientOriginalName());
+
+        // On sauvegarde le nom de fichier
+        $kbis = $file->getClientOriginalName();
+
+        $userBDD->setKbis($kbis);
+
+        $em->persist($userBDD);
+        $em->flush();
+    }
+    
+    public function downloadFileAction(Request $request)
+    {
+        // On récupère l'utilisateur
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('GeolocationAdminBundle:User')
+            ->findOneBy(array(
+                'id' => $request->attributes->get('id')
+            ));
+
+        $path = $this->get('kernel')->getRootDir() . "/../web/uploads/kbis/" . $user->getKbis();
+        $content = file_get_contents($path);
+
+        $response = new Response();
+
+        $response->headers->set('Content-Type', 'text/pdf');
+        
+        $response->setContent($content);
+        return $response;
     }
 
 }

@@ -44,7 +44,7 @@
                 <div class="col-sm-6">
                     <span class="form-edit-label">{{ form_label(form.codePostal) }}<strong
                             class="text-danger">*</strong></span>
-                    {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6', 'data-url': path('api_commun_json_code_postal'), 'name': 'cp'}}) }}
+                    {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6', 'name': 'cp'}}) }}
                     <span class="form-error" id="error-codePostal">{{ form_errors(form.codePostal) }}</span>
                 </div>
             </div>

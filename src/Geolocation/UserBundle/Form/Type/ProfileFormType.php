@@ -89,7 +89,7 @@ class ProfileFormType extends AbstractType {
                 ->add('fileKbis', null, array('label' => 'form.kbis', 'translation_domain' => 'GeolocationUserBundle'))
                 ->add('url', null, array('label' => 'form.url', 'translation_domain' => 'GeolocationUserBundle'))
                 ->add('description', 'textarea', array('label' => 'form.description', 'translation_domain' => 'GeolocationUserBundle', 'required' => false))
-                ->add('save', 'submit', array());
+                ->add('save', 'submit', array('label' => 'form.valider', 'translation_domain' => 'GeolocationUserBundle'));
     }
 
 }

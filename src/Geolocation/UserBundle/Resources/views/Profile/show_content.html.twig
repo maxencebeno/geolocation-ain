@@ -29,6 +29,7 @@
                             <dt>{{ 'profile.show.adresse'|trans }}</dt>
                             <dd>{{ user.adresse }}</dd>
 
+
                             <dt>{{ 'profile.show.ville'|trans }}</dt>
                             <dd>{{ user.ville }}</dd>
 
@@ -50,7 +51,7 @@
                             <dt>{{ 'profile.show.kbis'|trans }}</dt>
                             <dd>
                                 {% if user.kbis != '' %}
-                                    {{ user.kbis }}
+                                    <a href="{{ path('user_kbis', {'id': user.id}) }}" target="_blank">{{ user.kbis }}</a>
                                 {% else %}
                                     {{ 'profile.show.nonrenseigne'|trans }}
                                 {% endif %}
