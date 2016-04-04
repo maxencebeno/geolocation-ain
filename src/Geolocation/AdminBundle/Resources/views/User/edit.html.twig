@@ -6,7 +6,7 @@
 
 {% block page %}
 
-<h1>{{ 'views.edit.edit'|trans({'%entity%': 'User'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+<h1>{{ 'views.edit.edit'|trans({'%entity%': 'Entreprise'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
 
 <form class="well" action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     <input type="hidden" name="_method" value="PUT" />
@@ -22,7 +22,7 @@
             {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
     </div>
-    <div class="float-left">
+    <div class="row">
         <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
