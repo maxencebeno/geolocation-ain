@@ -12,7 +12,11 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 class IndexController extends Controller {
 
     public function indexAction() {
-        return $this->render('SiteBundle:Index:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $sections = $em->getRepository('GeolocationAdminBundle:Section')
+            ->findAll();
+
+        return $this->render('SiteBundle:Index:index.html.twig', ['sections' => $sections]);
     }
 
     public function getCitiesAction(Request $request) {
