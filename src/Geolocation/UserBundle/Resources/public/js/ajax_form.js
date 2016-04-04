@@ -51,7 +51,7 @@ $(document).ready(function () {
 
     function getDivision(sectionId, division) {
         $.ajax({
-            url: '/app_dev.php/ajax/getDivision?id=' + sectionId,
+            url: baseUrl + 'ajax/getDivision?id=' + sectionId,
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     division.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
     function getGroupe(sectionId, divisionId, groupe) {
         $.ajax({
-            url: '/app_dev.php/ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId,
+            url: baseUrl + 'ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId,
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     groupe.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
@@ -75,7 +75,7 @@ $(document).ready(function () {
 
     function getClasse(sectionId, divisionId, groupeId, classe) {
         $.ajax({
-            url: '/app_dev.php/ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId + '&groupeid=' + groupeId,
+            url: baseUrl + 'ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId + '&groupeid=' + groupeId,
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     classe.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
@@ -87,7 +87,7 @@ $(document).ready(function () {
 
     function getCategorie(sectionId, divisionId, groupeId, classeId, categorie) {
         $.ajax({
-            url: '/app_dev.php/ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId + '&groupeid=' + groupeId + '&classeid=' + classeId,
+            url: baseUrl + 'ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId + '&groupeid=' + groupeId + '&classeid=' + classeId,
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     categorie.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
@@ -99,7 +99,7 @@ $(document).ready(function () {
 
     function getSousCategorie(sectionId, divisionId, groupeId, classeId, categorieId, souscategorie) {
         $.ajax({
-            url: '/app_dev.php/ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId + '&groupeid=' + groupeId + '&classeid=' + classeId + '&categorieid=' + categorieId,
+            url: baseUrl + 'ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId + '&groupeid=' + groupeId + '&classeid=' + classeId + '&categorieid=' + categorieId,
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     souscategorie.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
