@@ -87,7 +87,7 @@
                         <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if entity.dateCreationEntreprise %}{{ entity.dateCreationEntreprise|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ entity.siret }}</td>
-                        <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}">{{ entity.kbis }}</a></td>
+                        <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}" traget="_blank">{{ entity.kbis }}</a></td>
                         <td>{{ entity.url }}</td>
                         {%  if entity.enabled == '1' %}
                         <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i class="etat text-success fa fa-power-off"></i></a></td>

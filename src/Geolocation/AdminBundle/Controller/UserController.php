@@ -283,9 +283,8 @@ class UserController extends Controller
 
         $response = new Response();
 
-        $response->headers->set('Content-Type', 'text/pdf');
-        $response->headers->set('Content-Disposition', 'attachment;filename="' . $user->getKbis());
-
+        $response->headers->set('Content-Type', 'application/pdf');
+        
         $response->setContent($content);
         return $response;
     }

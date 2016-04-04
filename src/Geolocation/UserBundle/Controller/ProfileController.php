@@ -5,6 +5,7 @@ namespace Geolocation\UserBundle\Controller;
 use Geolocation\AdminBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -159,7 +160,7 @@ class ProfileController extends Controller {
 
         $response = new Response();
 
-        $response->headers->set('Content-Type', 'text/pdf');
+        $response->headers->set('Content-Type', 'application/pdf');
         
         $response->setContent($content);
         return $response;
