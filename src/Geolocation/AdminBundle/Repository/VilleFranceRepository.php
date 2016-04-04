@@ -36,27 +36,6 @@ public function findVillesLike( $term, $limit = 10 )
     return $array;
 }
 
-public function findCodePostalLike( $term, $limit = 10 )
-{
 
-    $qb = $this->createQueryBuilder('d');
-    $qb ->select('d.villeCodePostal')
-        ->where('d.villeCodePostal LIKE :term')
-        ->setParameter('term', $term.'%')
-        ->orderBy('d.villeCodePostal')
-        ->setMaxResults($limit);
-
-    $arrayAss= $qb->getQuery()
-        ->getArrayResult();
-
-    // Transformer le tableau associatif en un tableau standard
-    $array = array();
-    foreach($arrayAss as $data)
-    {
-        $array[] = array("CodePostal"=>$data['villeCodePostal']);
-    }
-
-    return $array;
-}
     
 }

@@ -30,37 +30,6 @@ $(".autocomplete-search-city").autocomplete({
 });
 
 
-$(".autocomplete-search-cp").autocomplete({
-    source: function (request, response) {
-        var objData = {};
-        var url = $(this.element).attr('data-url');
-        objData = {cp: request.term};
-
-        $.ajax({
-            url: url,
-            dataType: "json",
-            data: objData,
-            type: 'POST',
-            success: function (data) {
-                //Ajout de reponse dans le cache
-                response($.map(data, function (item) {
-                    return {
-                        label: item.CodePostal,
-                        value: function () {
-                            return item.CodePostal;
-                        }
-                    };
-                }));
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
-            }
-        });
-    },
-    minLength: 2,
-    delay: 300
-});
-
 $(".autocomplete-search-ressources").autocomplete({
     source: function (request, response) {
         var objData = {};

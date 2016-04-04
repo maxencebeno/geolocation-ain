@@ -28,21 +28,6 @@ class IndexController extends Controller
         }
     }
     
-    public function getCodePostalAction(Request $request)
-    {
-        if ($request->isXmlHttpRequest()) {
-            $term = $request->request->get('cp');
-            $array = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('GeolocationAdminBundle:VilleFrance')
-                ->findCodePostalLike($term);
-
-            $response = new Response(json_encode($array));
-            $response->headers->set('Content-Type', 'application/json');
-            return $response;
-        }
-    }
-    
     public function getRessourcesAction(Request $request)
     {
         if ($request->isXmlHttpRequest()) {
