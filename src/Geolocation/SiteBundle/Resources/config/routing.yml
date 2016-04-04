@@ -45,3 +45,7 @@ api_markers:
 searchCPfromCity:
     path: /json/getcodepostalfromcity
     defaults: { _controller: SiteBundle:Index:getCodepostalFromCity }
+    
+site_get_ressources_from_userId:
+    defaults: { _controller: SiteBundle:Index:getRessourcesByUserId }
+    path: /get-ressources-user

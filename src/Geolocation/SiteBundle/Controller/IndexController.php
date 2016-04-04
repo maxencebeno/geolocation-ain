@@ -88,5 +88,20 @@ class IndexController extends Controller {
             return $response;
         }
     }
+    
+    public function getRessourcesByUserIdAction(Request $request){
+         $em = $this->getDoctrine()->getManager();
+         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy(array('user' => $request->query->get('id')));
+         
+        $normalizer = new GetSetMethodNormalizer();
+        $serializer = new Serializer(array($normalizer), array('ressources' => new JsonEncoder()));
+        
+        $jsonContent = $serializer->serialize($ressources, 'json');
+        
+        $response = new Response($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+         return $response;
+    }
 
 }
