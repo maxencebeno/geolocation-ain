@@ -151,3 +151,11 @@ form:
     dateCreationEntreprise : "Date de création de l'entreprise"
     description: "Description"
     rna: "N° RNA"
+    
+#Ressources
+ressources:
+    edit:
+        flash:
+            create:
+                sucess: "La ressource a bien été ajoutée"
+                fail: "Veuillez choisir un élément pour chaque champ"

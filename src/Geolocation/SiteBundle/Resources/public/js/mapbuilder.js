@@ -94,15 +94,6 @@ function bindInfoWindow(marker, content) {
 
 $(document).ready(function () {
 
-    function initialize() {
-        var latlngCentre = new google.maps.LatLng(46.204960, 5.225797);
-        var options = {
-            center: latlngCentre,
-            zoom: 12,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-    }
-
-    initialize();
+    
 });
 

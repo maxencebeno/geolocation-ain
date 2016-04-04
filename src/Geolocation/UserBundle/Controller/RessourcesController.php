@@ -79,13 +79,19 @@ class RessourcesController extends Controller {
 
             if ($cpf !== null) {
                 $entity->setCpf($cpf);
+
+                $entity->setUser($user);
+
+                $em->persist($entity);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
+
+                $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId));
+            }else{
+                 $this->get('session')->getFlashBag()->add('error', 'flash.create.fail');
+
             }
-            $entity->setUser($user);
-
-            $em->persist($entity);
-            $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
-
             return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
                         'entity' => $entity,
                         'form' => $formRessource->createView(),
