@@ -45,9 +45,9 @@ class DetailsController extends Controller
                     'affiche' => $ressource->getCpf()->getDivision()->getAffiche()
                 ],
                 'souscategorie' => [
-                    'code' => $ressource->getCpf()->getSousCategorie()->getCode(),
-                    'libelle' => $ressource->getCpf()->getSousCategorie()->getLibelle(),
-                    'affiche' => $ressource->getCpf()->getSousCategorie()->getAffiche()
+                    'code' => $ressource->getCpf()->getSouscategorie()->getCode(),
+                    'libelle' => $ressource->getCpf()->getSouscategorie()->getLibelle(),
+                    'affiche' => $ressource->getCpf()->getSouscategorie()->getAffiche()
                 ]
             ];
         }
