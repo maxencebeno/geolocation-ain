@@ -15,8 +15,9 @@ class DetailsController extends Controller
         $ressources = $em2->findBy(array('user'=>$user->getId()));
         
         $cpfs = [];
-        
         foreach ($ressources as $ressource) {
+            var_dump($ressource->getId());
+            var_dump($ressource->getCpf()->getCategorie()->getCode());
             $cpfs[$ressource->getCpf()->getId()] = [
                 'categorie' => [
                     'code' => $ressource->getCpf()->getCategorie()->getCode(),
@@ -51,6 +52,7 @@ class DetailsController extends Controller
                 ]
             ];
         }
+        die();
         
         return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user, 'ress'=>$ressources));
     }

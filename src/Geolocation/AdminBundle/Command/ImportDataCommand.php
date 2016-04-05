@@ -41,22 +41,31 @@ class ImportDataCommand extends ContainerAwareCommand {
                 $data = array_map('utf8_encode', $data);
                 $data = array_map('trim', $data);
 
-                $sous_categorie = $em->getRepository("GeolocationAdminBundle:SousCategorie")->findOneBy(array('code' => $data[0]));
-                $categorie = $em->getRepository("GeolocationAdminBundle:Categorie")->findOneBy(array('code' => $data[1]));
-                $classe = $em->getRepository("GeolocationAdminBundle:Classe")->findOneBy(array('code' => $data[2]));
-                $groupe = $em->getRepository("GeolocationAdminBundle:Groupe")->findOneBy(array('code' => $data[3]));
-                $division = $em->getRepository("GeolocationAdminBundle:Division")->findOneBy(array('code' => $data[4]));
-                $section = $em->getRepository("GeolocationAdminBundle:Section")->findOneBy(array('code' => $data[5]));
+                $sous_categorie = $em->getRepository("GeolocationAdminBundle:SousCategorie")->findOneBy(array('code' => trim($data[0])));
+                $categorie = $em->getRepository("GeolocationAdminBundle:Categorie")->findOneBy(array('code' => trim($data[1])));
+                $classe = $em->getRepository("GeolocationAdminBundle:Classe")->findOneBy(array('code' => trim($data[2])));
+                $groupe = $em->getRepository("GeolocationAdminBundle:Groupe")->findOneBy(array('code' => trim($data[3])));
+                $division = $em->getRepository("GeolocationAdminBundle:Division")->findOneBy(array('code' => trim($data[4])));
+                $section = $em->getRepository("GeolocationAdminBundle:Section")->findOneBy(array('code' => trim($data[5])));
 
-                $cpf = new Cpf();
-                $cpf->setSection($section);
-                $cpf->setGroupe($groupe);
-                $cpf->setClasse($classe);
-                $cpf->setDivision($division);
-                $cpf->setCategorie($categorie);
-                $cpf->setSouscategorie($sous_categorie);
+                if ($sous_categorie !== null && $categorie !== null && $classe !== null && $groupe !== null && $division !== null && $section !== null) {
+                    $cpf = new Cpf();
+                    $cpf->setSection($section);
+                    $cpf->setGroupe($groupe);
+                    $cpf->setClasse($classe);
+                    $cpf->setDivision($division);
+                    $cpf->setCategorie($categorie);
+                    $cpf->setSouscategorie($sous_categorie);
 
-                $em->persist($cpf);
+                    $em->persist($cpf);
+                } else {
+                    echo "section : $data[5]\n";
+                    echo "division : $data[4]\n";
+                    echo "groupe : $data[3]\n";
+                    echo "classe : $data[2]\n";
+                    echo "categorie : $data[1]\n";
+                    echo "sous categorie : $data[0]\n";
+                }
             }
 
             $em->flush();

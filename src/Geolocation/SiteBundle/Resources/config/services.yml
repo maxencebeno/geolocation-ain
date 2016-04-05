@@ -1,16 +1,16 @@
 services:
-    filter_by_cpf:
+    site_bundle.filter_by_cpf:
         class: Geolocation\AdminBundle\Domain\Services\FilterByCpf
         arguments: ["@doctrine"]
 
-    filter_by_city:
+    site_bundle.filter_by_city:
         class: Geolocation\AdminBundle\Domain\Services\FilterByCity
         arguments: ["@doctrine"]
 
-    filter_by_code_postal:
+    site_bundle.filter_by_code_postal:
         class: Geolocation\AdminBundle\Domain\Services\FilterByCodePostal
         arguments: ["@doctrine"]
 
-    filter_by_nom_entreprise:
+    site_bundle.filter_by_nom_entreprise:
         class: Geolocation\AdminBundle\Domain\Services\FilterByNomEntreprise
         arguments: ["@doctrine"]

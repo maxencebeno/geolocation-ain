@@ -4,6 +4,8 @@ namespace Geolocation\AdminBundle\Domain\Services;
 
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Geolocation\AdminBundle\Entity\Cpf;
+use Geolocation\AdminBundle\Entity\Ressources;
 use Symfony\Component\HttpFoundation\Request;
 
 class FilterByCpf
@@ -16,15 +18,18 @@ class FilterByCpf
         $this->doctrine = $doctrine;
     }
     
-    public function filterByCpf(Request $request) {
-        $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')
-            ->findBy([
-                'section' => $request->request->get('section'),
-                'groupe' => $request->request->get('groupe'),
-                'division' => $request->request->get('division')
-            ]);
+    public function filterByCpf(array $datas = [], Request $request) {
 
-        $datas = [];
+        if ($request->request->get('section') === "-1") {
+            $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')->findAll();
+        } else {
+            $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')
+                ->findBy([
+                    'section' => $request->request->get('section'),
+                    'groupe' => $request->request->get('groupe'),
+                    'division' => $request->request->get('division')
+                ]);
+        }
 
         /** @var Cpf $value */
         foreach ($cpf as $value) {

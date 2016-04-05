@@ -8,8 +8,6 @@
 
 namespace Geolocation\SiteBundle\Controller;
 
-use Geolocation\AdminBundle\Entity\Cpf;
-use Geolocation\AdminBundle\Entity\Ressources;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,20 +21,23 @@ class FiltresController extends Controller
     {
         
         if ($request->request->get('entreprise') !== null) {
-            $filterByNomEntreprise = $this->get('filter_by_nom_entreprise');
-            $datas = $filterByNomEntreprise->filterByNomEntreprise($request);
+            $filterByNomEntreprise = $this->get('site_bundle.filter_by_nom_entreprise');
+            $datas = $filterByNomEntreprise->filterByNomEntreprise([], $request);
         }
 
-        $filterByCpf = $this->get('filter_by_cpf');
+        $filterByCpf = $this->get('site_bundle.filter_by_cpf');
 
-        $datas = $filterByCpf->filterByCpf($request);
+        $datas = $filterByCpf->filterByCpf($datas, $request);
 
-        if ($request->request->get('city') !== null) {
-            $filterByCity = $this->get('filter_by_city');
+        if ($request->request->get('city') !== "") {
+            $filterByCity = $this->get('site_bundle.filter_by_city');
             $datas = $filterByCity->filterByCity($datas, $request);
         }
-        if ($request->request->get('cp') !== null) {
-            $filterByCodePostal = $this->get('filter_by_code_postal');
+
+        var_dump(count($datas));
+        die();
+        if ($request->request->get('cp') !== "") {
+            $filterByCodePostal = $this->get('site_bundle.filter_by_code_postal');
             $datas = $filterByCodePostal->filterByCodePostal($datas, $request);
         }
 

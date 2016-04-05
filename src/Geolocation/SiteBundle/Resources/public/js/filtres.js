@@ -63,14 +63,12 @@ $(document).ready(function () {
     $('#form-filters').submit(function (e) {
         e.preventDefault();
         e.stopPropagation();
-        
-        console.log($(this));
 
         $.ajax({
             url: baseUrl + 'ajax/filtres/get-entreprises-by-filters',
             method: "POST",
             data: $(this).serialize(),
-            dataType: 'json',
+            //dataType: 'json',
             success: function (data) {
                 console.log(data);
             }
