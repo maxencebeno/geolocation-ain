@@ -38,10 +38,12 @@ class FilterByCpf
                     'cpf' => $value->getId()
                 ]);
 
-            if (count($ressources) > 0) {
+            if (count($ressources) > 0 && count($datas) === 0) {
                 /** @var Ressources $ressource */
                 foreach ($ressources as $ressource) {
-                    $datas[$ressource->getUser()->getId()] = [];
+                    if (!isset($datas[$ressource->getUser()->getId()])) {
+                        $datas[$ressource->getUser()->getId()] = [];
+                    }
                 }
             }
         }

@@ -52,7 +52,6 @@ class FilterByNomEntreprise
             }
 
         }
-        
         return $datas;
     }
 }

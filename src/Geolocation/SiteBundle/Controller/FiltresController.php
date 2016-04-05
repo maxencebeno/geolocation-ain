@@ -20,7 +20,7 @@ class FiltresController extends Controller
     public function getEntreprisesByFiltersAction(Request $request)
     {
         $datas = [];
-        if ($request->request->get('entreprise') !== null) {
+        if ($request->request->get('entreprise') !== "") {
             $filterByNomEntreprise = $this->get('site_bundle.filter_by_nom_entreprise');
             $datas = $filterByNomEntreprise->filterByNomEntreprise([], $request);
         }
