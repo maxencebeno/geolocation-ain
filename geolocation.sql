@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.9
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost:3306
--- Généré le :  Ven 15 Janvier 2016 à 09:26
--- Version du serveur :  5.5.42
--- Version de PHP :  5.6.10
+-- Client :  127.0.0.1
+-- Généré le :  Mar 05 Avril 2016 à 13:45
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données :  `geolocation`
@@ -26,12 +26,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `categorie`
 --
 
-CREATE TABLE `categorie` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `affiche` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15221 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `affiche` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15221 ;
 
 --
 -- Contenu de la table `categorie`
@@ -653,7 +654,8 @@ INSERT INTO `categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (14609, '28.30.4', 'Tondeuses à gazon', 0),
 (14610, '28.30.5', 'Matériel de récolte', 0),
 (14611, '28.30.6', 'Pulvérisateurs et poudreuses agricoles et horticoles', 0),
-(14612, '28.30.7', 'Remorques autochargeuses et autodéchargeuses et semi-remorques agricoles', 0),
+(14612, '28.30.7', 'Remorques autochargeuses et autodéchargeuses et semi-remorques agricoles', 0);
+INSERT INTO `categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (14613, '28.30.8', 'Autre matériel agricole', 0),
 (14614, '28.30.9', 'Parties de matériel agricole ', 0),
 (14615, '28.41.3', 'Autres machines-outils pour l''usinage des métaux', 0),
@@ -666,8 +668,7 @@ INSERT INTO `categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (14622, '28.91.9', 'Opérations sous-traitées intervenant dans la fabrication de machines pour la métallurgie', 0),
 (14623, '28.92.1', 'Matériel de mines', 0),
 (14624, '28.92.2', 'Autres machines et appareils de terrassement, nivellement, décapage, excavation, compactage, extraction de la terre, des minéraux ou minerais, autopropulsés (y compris bouteurs, pelles mécaniques et rouleaux compresseurs)', 0),
-(14625, '28.92.3', 'Autres matériels de travaux publics', 0);
-INSERT INTO `categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
+(14625, '28.92.3', 'Autres matériels de travaux publics', 0),
 (14626, '28.92.4', 'Machines à trier, broyer, mélanger la terre, la pierre, les minerais et d''autres substances minérales', 0),
 (14627, '28.92.5', 'Tracteurs de chantier', 0),
 (14628, '28.92.6', 'Parties de machines pour l''extraction ou la construction', 0),
@@ -1270,12 +1271,13 @@ INSERT INTO `categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 -- Structure de la table `classe`
 --
 
-CREATE TABLE `classe` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `classe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `affiche` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1577 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `affiche` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1577 ;
 
 --
 -- Contenu de la table `classe`
@@ -1842,15 +1844,22 @@ INSERT INTO `classe` (`id`, `code`, `libelle`, `affiche`) VALUES
 -- Structure de la table `cpf`
 --
 
-CREATE TABLE `cpf` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cpf` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `section_id` int(11) DEFAULT NULL,
   `groupe_id` int(11) DEFAULT NULL,
   `classe_id` int(11) DEFAULT NULL,
   `division_id` int(11) DEFAULT NULL,
   `categorie_id` int(11) DEFAULT NULL,
-  `souscategorie_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3219 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `souscategorie_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3E3E11F0D823E37A` (`section_id`),
+  KEY `IDX_3E3E11F07A45358C` (`groupe_id`),
+  KEY `IDX_3E3E11F08F5EA509` (`classe_id`),
+  KEY `IDX_3E3E11F041859289` (`division_id`),
+  KEY `IDX_3E3E11F0BCF5E72D` (`categorie_id`),
+  KEY `IDX_3E3E11F0A27126E0` (`souscategorie_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3219 ;
 
 --
 -- Contenu de la table `cpf`
@@ -5084,12 +5093,13 @@ INSERT INTO `cpf` (`id`, `section_id`, `groupe_id`, `classe_id`, `division_id`, 
 -- Structure de la table `division`
 --
 
-CREATE TABLE `division` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `division` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `affiche` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `affiche` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=207 ;
 
 --
 -- Contenu de la table `division`
@@ -5182,12 +5192,13 @@ INSERT INTO `division` (`id`, `code`, `libelle`, `affiche`) VALUES
 -- Structure de la table `groupe`
 --
 
-CREATE TABLE `groupe` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `groupe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `affiche` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `affiche` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=247 ;
 
 --
 -- Contenu de la table `groupe`
@@ -5447,11 +5458,12 @@ INSERT INTO `groupe` (`id`, `code`, `libelle`, `affiche`) VALUES
 -- Structure de la table `pilier`
 --
 
-CREATE TABLE `pilier` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pilier` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `categorie` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `categorie` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `pilier`
@@ -5472,12 +5484,35 @@ INSERT INTO `pilier` (`id`, `nom`, `categorie`) VALUES
 -- Structure de la table `ressources`
 --
 
-CREATE TABLE `ressources` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ressources` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `besoin` tinyint(1) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `cpf_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `cpf_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_6A2CD5C7A76ED395` (`user_id`),
+  KEY `IDX_6A2CD5C7413D8865` (`cpf_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
+
+--
+-- Contenu de la table `ressources`
+--
+
+INSERT INTO `ressources` (`id`, `besoin`, `user_id`, `cpf_id`) VALUES
+(9, 0, 4, 3181),
+(10, 1, 4, 2537),
+(11, 1, 5, 187),
+(12, 0, 5, 2014),
+(14, 0, 6, 2647),
+(15, 0, 6, 2657),
+(16, 1, 6, 2993),
+(17, 0, 7, 2315),
+(18, 0, 9, 661),
+(19, 1, 9, 648),
+(20, 1, 8, 1249),
+(21, 0, 10, 129),
+(22, 0, 11, 1004),
+(23, 1, 10, 2014);
 
 -- --------------------------------------------------------
 
@@ -5485,13 +5520,14 @@ CREATE TABLE `ressources` (
 -- Structure de la table `section`
 --
 
-CREATE TABLE `section` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `section` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `affiche` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `affiche` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
 -- Contenu de la table `section`
@@ -5522,12 +5558,13 @@ INSERT INTO `section` (`id`, `code`, `libelle`, `image`, `affiche`) VALUES
 -- Structure de la table `sous_categorie`
 --
 
-CREATE TABLE `sous_categorie` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sous_categorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `affiche` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2965 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `affiche` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2965 ;
 
 --
 -- Contenu de la table `sous_categorie`
@@ -6178,7 +6215,8 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (644, '16.29.21', 'Liège naturel, écroûté ou simplement équarri, ou en cubes, plaques, feuilles ou bandes ', 0),
 (645, '16.29.23', 'Blocs, plaques, feuilles, bandes, dalles, cylindres, en liège aggloméré', 0),
 (646, '16.29.24', 'Liège aggloméré ', 0),
-(647, '16.29.91', 'Services liés à la fabrication d''article en bois et en liège, à l''exclusion de meubles, et façons de vannerie et de sparterie', 0),
+(647, '16.29.91', 'Services liés à la fabrication d''article en bois et en liège, à l''exclusion de meubles, et façons de vannerie et de sparterie', 0);
+INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (648, '16.29.99', 'Opérations sous-traitées intervenant dans la fabrication d''autres objets en bois et d''objets en liège, sparterie et vannerie', 0),
 (649, '17.11.11', 'Pâtes chimiques de bois, à dissoudre', 0),
 (650, '17.11.12', 'Pâtes chimiques de bois, à la soude ou au sulfate, autres qu''à dissoudre', 0),
@@ -6192,8 +6230,7 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (658, '17.12.31', 'Papiers kraftliner, non blanchis, ni couchés, ni enduits', 0),
 (659, '17.12.32', 'Papiers kraftliner blanchis et couchés ou enduits', 0),
 (660, '17.12.33', 'Papiers fluting mi-chimiques', 0),
-(661, '17.12.34', 'Papiers fluting recyclés et autres', 0);
-INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
+(661, '17.12.34', 'Papiers fluting recyclés et autres', 0),
 (662, '17.12.35', 'Papiers testliner (fibres récupérées)', 0),
 (663, '17.12.41', 'Papiers kraft, non couchés, ni enduits ', 0),
 (664, '17.12.43', 'Papier et carton filtre ', 0),
@@ -6712,7 +6749,8 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (1177, '25.99.23', 'Mécanismes pour reliure de feuillets mobiles ou pour classeurs, attache-lettres et articles de bureau similaires, agrafes présentées en barrettes, en métaux communs', 0),
 (1178, '25.99.24', 'Statuettes et autres objets d''ornement, cadres et miroirs, en métaux communs', 0),
 (1179, '25.99.25', 'Fermoirs, montures-fermoirs, boucles, boucles-fermoirs, agrafes, crochets, œillets et articles similaires, en métaux communs, pour vêtements, chaussures, bâches, maroquinerie ou pour toutes confections ou équipements ', 0),
-(1180, '25.99.29', 'Autres articles en métaux communs n.c.a.', 0),
+(1180, '25.99.29', 'Autres articles en métaux communs n.c.a.', 0);
+INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (1181, '25.99.99', 'Opérations sous-traitées intervenant dans la fabrication d''autres produits métalliques n.c.a.', 0),
 (1182, '26.11.11', 'Tubes cathodiques pour récepteurs de télévision ', 0),
 (1183, '26.11.21', 'Diodes ', 0),
@@ -6738,8 +6776,7 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (1203, '26.20.40', 'Parties et accessoires pour matériel informatique', 0),
 (1204, '26.20.91', 'Fabrication d''ordinateurs et d''équipements périphériques', 0),
 (1205, '26.20.99', 'Opérations sous-traitées intervenant dans la fabrication d''ordinateurs et d''équipements périphériques', 0),
-(1206, '26.30.11', 'Appareils d''émission incorporant un appareil de réception', 0);
-INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
+(1206, '26.30.11', 'Appareils d''émission incorporant un appareil de réception', 0),
 (1207, '26.30.12', 'Appareils d''émission sans appareil de réception', 0),
 (1208, '26.30.13', 'Caméras de télévision', 0),
 (1209, '26.30.21', 'Postes téléphoniques d''usager fixes à combinés sans fil', 0),
@@ -7263,7 +7300,8 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (1727, '33.13.13', 'Réparation et entretien de matériel optique et photographique professionnel', 0),
 (1728, '33.13.19', 'Réparation et entretien d''autres équipements électroniques professionnels', 0),
 (1729, '33.14.11', 'Réparation et entretien de moteurs, génératrices et transformateurs électriques et de matériel de distribution et de commande électrique', 0),
-(1730, '33.14.19', 'Réparation et entretien d''autres équipements électriques professionnels', 0),
+(1730, '33.14.19', 'Réparation et entretien d''autres équipements électriques professionnels', 0);
+INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (1731, '33.15.10', 'Réparation et entretien de navires et bateaux', 0),
 (1732, '33.16.10', 'Réparation et entretien d''aéronefs et d''engins spatiaux', 0),
 (1733, '33.17.11', 'Réparation et entretien de matériel ferroviaire roulant', 0),
@@ -7307,8 +7345,7 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (1771, '37.00.20', 'Boues d''épuration', 0),
 (1772, '38.11.11', 'Collecte des déchets municipaux recyclables non dangereux', 0),
 (1773, '38.11.19', 'Collecte des autres déchets recyclables non dangereux', 0),
-(1774, '38.11.21', 'Collecte des déchets municipaux non recyclables non dangereux', 0);
-INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
+(1774, '38.11.21', 'Collecte des déchets municipaux non recyclables non dangereux', 0),
 (1775, '38.11.29', 'Collecte des autres déchets non recyclables non dangereux', 0),
 (1776, '38.11.31', 'Déchets municipaux non recyclables non dangereux', 0),
 (1777, '38.11.39', 'Autres déchets non recyclables non dangereux', 0),
@@ -7860,7 +7897,8 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (2323, '58.19.19', 'Autres imprimés', 0),
 (2324, '58.19.21', 'Contenus en ligne pour adultes', 0),
 (2325, '58.19.29', 'Autres contenus en ligne n.c.a.', 0),
-(2326, '58.19.30', 'Services de licence pour les autres imprimés', 0),
+(2326, '58.19.30', 'Services de licence pour les autres imprimés', 0);
+INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (2327, '58.21.10', 'Jeux électroniques, sur support physique', 0),
 (2328, '58.21.20', 'Jeux électroniques, en téléchargement', 0),
 (2329, '58.21.30', 'Jeux en ligne', 0),
@@ -7921,8 +7959,7 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (2384, '61.10.13', 'Services de réseaux privés pour les systèmes de télécommunications filaires', 0),
 (2385, '61.10.20', 'Services de portage pour télécommunications filaires', 0),
 (2386, '61.10.30', 'Services de transmission de données via des réseaux de télécommunications filaires', 0),
-(2387, '61.10.41', 'Services de dorsales pour l''internet', 0);
-INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
+(2387, '61.10.41', 'Services de dorsales pour l''internet', 0),
 (2388, '61.10.42', 'Services d''accès à l''internet à bande étroite par des réseaux filaires', 0),
 (2389, '61.10.43', 'Services d''accès à l''internet à large bande par des réseaux filaires', 0),
 (2390, '61.10.49', 'Autres services de télécommunications par l''internet filaire', 0),
@@ -8482,7 +8519,8 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (2944, '96.02.11', 'Services de coiffure pour femmes et fillettes', 0),
 (2945, '96.02.12', 'Services de coiffure pour hommes et garçonnets', 0),
 (2946, '96.02.13', 'Soins esthétiques, de manucure et de pédicure', 0),
-(2947, '96.02.14', 'Services de coiffure, de soins esthétiques, de manucure et de pédicure à domicile', 0),
+(2947, '96.02.14', 'Services de coiffure, de soins esthétiques, de manucure et de pédicure à domicile', 0);
+INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 (2948, '96.02.19', 'Autres soins de beauté', 0),
 (2949, '96.02.20', 'Cheveux humains, non travaillés', 0),
 (2950, '96.03.11', 'Pompes funèbres et services de crémation', 0),
@@ -8507,8 +8545,8 @@ INSERT INTO `sous_categorie` (`id`, `code`, `libelle`, `affiche`) VALUES
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `adresse` longtext COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `code_postal` int(11) NOT NULL,
@@ -8535,145 +8573,32 @@ CREATE TABLE `user` (
   `credentials_expired` tinyint(1) NOT NULL,
   `credentials_expire_at` datetime DEFAULT NULL,
   `name` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `date_creation_entreprise` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `date_creation_entreprise` datetime DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
+  `rna` longtext COLLATE utf8_unicode_ci,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D64992FC23A8` (`username_canonical`),
+  UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `adresse`, `email`, `code_postal`, `ville`, `tel`, `date_creation`, `date_modification`, `siret`, `kbis`, `url`, `username`, `username_canonical`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `name`, `date_creation_entreprise`) VALUES
-(2, '76 rue bossuet', 'test@test.com', 69006, 'LYON', NULL, '2016-01-06 17:31:06', NULL, 'test', 'Canon-in-D-Arr.-Lee-Galloway-Piano-Lee-Galloway.pdf', NULL, 'test', 'test', 'test@test.com', 1, 'e8moi6bcevwwsg40gogkwgw4gs4gsoc', 'eaVYSmUCPdJtI7oq/lbgkUHHq7eTPgMos8bLckiR2wTQDQqBAor/nRLocO/t1BmmdyMOkXOZDH/Ws0cIaTy4gQ==', '2016-01-06 17:31:27', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'Maxence Beno', NULL),
-(3, 'test', 'maxence@maxence.com', 543453, 'test', NULL, '2016-01-14 16:44:41', NULL, 'test', NULL, NULL, 'maxence', 'maxence', 'maxence@maxence.com', 1, 'tejee7o5hhwo80w4cg08k8wkk80s4ks', 'N6VCpi6CcTVFYDZ3ym6i43h2jvYowv4FJog0MZqXRpqCzEjImboDpDhR1sKyU9j/WCHCifrwTCnRKc8SVt/Alw==', '2016-01-15 06:25:24', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 0, NULL, 'test', NULL);
+INSERT INTO `user` (`id`, `adresse`, `email`, `code_postal`, `ville`, `tel`, `date_creation`, `date_modification`, `siret`, `kbis`, `url`, `username`, `username_canonical`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `name`, `date_creation_entreprise`, `description`, `rna`, `latitude`, `longitude`) VALUES
+(2, '76 rue bossuet', 'test@test.com', 69006, 'LYON', NULL, '2016-01-06 17:31:06', NULL, 'test', 'Canon-in-D-Arr.-Lee-Galloway-Piano-Lee-Galloway.pdf', NULL, 'test', 'test', 'test@test.com', 0, 'e8moi6bcevwwsg40gogkwgw4gs4gsoc', 'eaVYSmUCPdJtI7oq/lbgkUHHq7eTPgMos8bLckiR2wTQDQqBAor/nRLocO/t1BmmdyMOkXOZDH/Ws0cIaTy4gQ==', '2016-01-06 17:31:27', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'test', NULL, 'Entreprise de recyclage', NULL, NULL, NULL),
+(3, 'test', 'maxence@maxence.com', 543453, 'test', '0606060606', '2016-01-14 16:44:41', NULL, 'test', NULL, 'http://www.toto.fr', 'maxence', 'maxence', 'maxence@maxence.com', 1, 'tejee7o5hhwo80w4cg08k8wkk80s4ks', 'N6VCpi6CcTVFYDZ3ym6i43h2jvYowv4FJog0MZqXRpqCzEjImboDpDhR1sKyU9j/WCHCifrwTCnRKc8SVt/Alw==', '2016-01-15 06:25:24', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 0, NULL, 'Maxence Beno', NULL, 'Entreprise de recyclage', NULL, NULL, NULL),
+(4, '5 rue lazare Carnot', 'vanessa@gmail.com', 1000, 'Bourg-en-Bresse', NULL, '2016-06-01 00:00:00', NULL, '1561651651', NULL, NULL, 'Vanessa', 'vanessa', 'vanessa@gmail.com', 1, 'oraek6fas2880scgo80c4g88wk084g0', 'LZCd9inMghyr/HCjCy1DtM2vHuQFOfcRDgTnGsSoj6NXDAi8X+nnuOF83LIU4vL+sGhj+6GX49OLa0fDslAlsA==', '2016-03-30 08:20:10', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'Vanessa', '2016-01-07 00:00:00', 'Ceci est une page de test 2', NULL, NULL, NULL),
+(5, '71 rue Peter Fink', 'geo@gmail.com', 1000, 'Bourg-en-Bresse', NULL, '2016-03-30 11:25:57', NULL, '00000000000', 'Analyse Doodle_Lehnert-Vanessa_Nallet-Judicaelle_Ouali-Farida_Baillivy-gregory.pdf', 'http://geolocation.dev/app_dev.php/', 'Georic', 'georic', 'geo@gmail.com', 1, 'h9h0zqzs968s0g4koso0c4c400cc848', 'akMIL8TalocE4KsQ7fiJZKo685rS51hWtOl1zJViDWQh2vh2aeIJiCxmOV/++h1y2R0M+50a29fuuBQXJm6BEQ==', '2016-04-04 08:51:38', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'GEORIC', '2015-10-30 00:00:00', NULL, NULL, 46.2153648, 5.2415621),
+(6, '78 RUE OLIVIER DE SERRES', 'test1@gmail.com', 75015, 'Paris', NULL, '2016-04-04 16:51:51', NULL, '00000000000', NULL, NULL, 'test2', 'test2', 'test1@gmail.com', 1, '20regoj0v65ckwk0ccwokkgsgw0wkgs', '1g5dXHPYMzv6NSEYQlXwt5ZT17XUih4iGob70aqE2IyWx3m/kmUvaGloiE/1DIHl7vtsSsDq4ESmBayo1PsEqg==', '2016-04-04 16:53:41', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'Orange', '1999-11-30 00:00:00', NULL, NULL, 48.8332122, 2.2942155),
+(7, '12 RUE DUPHOT', 'test3@gmail.com', 75001, 'Paris', NULL, '2016-04-04 17:00:32', NULL, '000000000000', NULL, NULL, 'test3', 'test3', 'test3@gmail.com', 1, 'dnb33pbcbvkg880kgwg4ggw48sscw88', 'UDp1kpn3XEIbrDUXPLOai7x1iBIIC7qbGT8PW37pxkuqnXhzO8mBegjr7+CmQMRDujUAA/mPOwgx471/5wHszA==', '2016-04-04 17:02:05', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'CHANEL COORDINATION', '1999-11-30 00:00:00', NULL, NULL, 48.8682547, 2.3257654),
+(8, '235 ROUTE DE THIL', 'test4@gamil.com', 1120, 'MONTLUEL', NULL, '2016-04-04 17:08:01', NULL, '000000', NULL, NULL, 'test4', 'test4', 'test4@gamil.com', 1, 'hn1wn26b34g8ssgc8s80ck00swo8k8o', 'oGqB+mmTHCVQbtphB/P/KXsFWbK0M4FJhUxCz5PY1N4XovVgILCZkSz5Mf7XCZt9FAkGbHuuTnyoUxAKmGm/gA==', '2016-04-04 17:11:49', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'CARRIER', '1999-11-30 00:00:00', NULL, NULL, 45.8461656, 5.0511076),
+(9, '8 COURS DE VERDUN', 'test5@gmail.Com', 1100, 'Oyonnax', NULL, '2016-04-04 17:09:48', NULL, '00000', NULL, NULL, 'test5', 'test5', 'test5@gmail.com', 1, '5uccamqosq4ogo04cc8cs4c0cowc40c', 'saW2EqSJAM4RUHgGQ5CxbEJCPHEGuU2rgBo7kK+s/IGEQdlej1MyAXNWHJI1xY+j9HUxtGMPlXjw0y59jjY/Cw==', '2016-04-04 17:11:20', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'EMIN LEYDIER', '1999-11-30 00:00:00', NULL, NULL, 46.269637, 5.6587532),
+(10, 'RD 933', 'test6@gmlklk.com', 1570, 'MANZIAT', NULL, '2016-04-04 17:19:51', NULL, '00000', NULL, NULL, 'test6', 'test6', 'test6@gmlklk.com', 1, 'ljces7l26jkgw8w0kk0swokc88wswcs', 'g/AlzboP5bKeMqBI7nKAH2PfAGixbtPQDDVy+jwFRXGED6RHnOGYDan5Bc062EPyh/VWg7lS4/hFEXLKTySzkA==', '2016-04-04 17:23:21', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'TERRE DE FRANCE', '1999-11-30 00:00:00', NULL, NULL, 46.3411153, 4.8939765),
+(11, '285 IMPASSE DES PEUPLIERS', 'test7@gmail.com', 1100, 'BELLIGNAT', NULL, '2016-04-04 17:20:46', NULL, '000', NULL, NULL, 'test7', 'test7', 'test7@gmail.com', 1, 'irqdoy017g0sw0ocwowsgocwo8os8o8', 'EGn2WlKP6ik3763OjF0TK76qjG+9OS9yh4jQ2lVHfJPZPFf6fTU/yryN2PJpztbNosuRHSfOV7txj8Dg0mPwxw==', '2016-04-04 17:23:31', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'CONCEPTION REALISATION PLASTIQUE ADDUXI', '1999-11-30 00:00:00', NULL, NULL, 46.23864, 5.6226065);
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `categorie`
---
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `classe`
---
-ALTER TABLE `classe`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `cpf`
---
-ALTER TABLE `cpf`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_3E3E11F0D823E37A` (`section_id`),
-  ADD KEY `IDX_3E3E11F07A45358C` (`groupe_id`),
-  ADD KEY `IDX_3E3E11F08F5EA509` (`classe_id`),
-  ADD KEY `IDX_3E3E11F041859289` (`division_id`),
-  ADD KEY `IDX_3E3E11F0BCF5E72D` (`categorie_id`),
-  ADD KEY `IDX_3E3E11F0A27126E0` (`souscategorie_id`);
-
---
--- Index pour la table `division`
---
-ALTER TABLE `division`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `groupe`
---
-ALTER TABLE `groupe`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `pilier`
---
-ALTER TABLE `pilier`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `ressources`
---
-ALTER TABLE `ressources`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_6A2CD5C7A76ED395` (`user_id`),
-  ADD KEY `IDX_6A2CD5C7413D8865` (`cpf_id`);
-
---
--- Index pour la table `section`
---
-ALTER TABLE `section`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `sous_categorie`
---
-ALTER TABLE `sous_categorie`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_8D93D64992FC23A8` (`username_canonical`),
-  ADD UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `categorie`
---
-ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15221;
---
--- AUTO_INCREMENT pour la table `classe`
---
-ALTER TABLE `classe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1577;
---
--- AUTO_INCREMENT pour la table `cpf`
---
-ALTER TABLE `cpf`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3219;
---
--- AUTO_INCREMENT pour la table `division`
---
-ALTER TABLE `division`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=207;
---
--- AUTO_INCREMENT pour la table `groupe`
---
-ALTER TABLE `groupe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=247;
---
--- AUTO_INCREMENT pour la table `pilier`
---
-ALTER TABLE `pilier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT pour la table `ressources`
---
-ALTER TABLE `ressources`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `section`
---
-ALTER TABLE `section`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT pour la table `sous_categorie`
---
-ALTER TABLE `sous_categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2965;
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Contraintes pour les tables exportées
 --
