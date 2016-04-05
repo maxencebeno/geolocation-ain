@@ -86,23 +86,35 @@
                     <div class="panel-heading"><h3>{{ 'profile.show.ressources_title'|trans }}</h3></div>
                     <div class="panel-body">
                         {% if ressources|length > 0 %}
-                            <ul id="listRessource">
+                            {% set cpt = 0 %}
+                            <h4>Besoin</h4>
+                            <ul id="listBesoin">
                                 {% for key, ressource in ressources %}
-                                    <li class="myRessource">
-                                        <ul >
-                                            <li><strong>Besoin : </strong>
-                                                {% if ressource.getBesoin()==true %}
-                                                    Oui
-                                                {% else %}
-                                                    Non
-                                                {% endif %}
-                                            </li>
-                                            <li>
-                                                <strong>Ressources : </strong>
-                                                {{ ressource.getCpf() }}
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    {% if ressource.getBesoin()==true %}
+                                        <li class="myRessource"><strong>Ressources : </strong>
+                                            {{ ressource.getCpf() }}
+                                        </li>
+                                        {% set cpt = 1 %}
+                                    {% endif %}
+                                    {% if cpt==0 %}
+                                        <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
+                                    {% endif %}   
+                                    {% endfor %}
+                            </ul>
+
+                             {% set cpt = 0 %}
+                            <h4>Proposition</h4>
+                            <ul id="listProposition">
+                                {% for key, ressource in ressources %}
+                                    {% if ressource.getBesoin()==false %}
+                                        <li class="myRessource"> <strong>Ressources : </strong>
+                                            {{ ressource.getCpf() }}
+                                        </li>
+                                         {% set cpt = 1 %}
+                                    {% endif %}
+                                    {% if cpt==0 %}
+                                        <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
+                                    {% endif %}
 
                                 {% endfor %}
                             </ul>

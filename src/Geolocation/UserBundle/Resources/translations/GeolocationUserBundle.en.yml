@@ -47,6 +47,8 @@ profile:
         ressources_title : My resources
         link_edit_ressources : Change my resources
         no_ressources : No resources for the moment
+        no_besoins : No needs for the moment
+        no_propositions : No resources proposed
     edit:
         submit: Update
         title: Update my general information

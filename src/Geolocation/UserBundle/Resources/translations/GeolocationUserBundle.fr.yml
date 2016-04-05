@@ -47,6 +47,8 @@ profile:
         ressources_title : Mes ressources
         link_edit_ressources : Modifier mes ressources
         no_ressources : Aucune ressources choisies
+        no_besoins : Aucun besoins choisis
+        no_propositions : Aucune ressources proposées
     edit:
         submit: Mettre à jour
         title: Modifier mes informations générales
