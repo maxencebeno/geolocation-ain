@@ -33,6 +33,7 @@ class FilterByCity
                 unset($datas[$key]);
             }
         }
+        
         return $datas;
     }
 }

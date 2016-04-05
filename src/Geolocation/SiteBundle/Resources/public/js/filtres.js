@@ -72,6 +72,7 @@ $(document).ready(function () {
             success: function (data) {
                 clearMarker();
                 initMarker(data);
+                centerMap(data.ville.lat, data.ville.lng);
             }
         });
 

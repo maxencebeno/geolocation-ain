@@ -19,7 +19,7 @@ class FiltresController extends Controller
 {
     public function getEntreprisesByFiltersAction(Request $request)
     {
-        
+        $datas = [];
         if ($request->request->get('entreprise') !== null) {
             $filterByNomEntreprise = $this->get('site_bundle.filter_by_nom_entreprise');
             $datas = $filterByNomEntreprise->filterByNomEntreprise([], $request);
@@ -29,13 +29,22 @@ class FiltresController extends Controller
 
         $datas = $filterByCpf->filterByCpf($datas, $request);
 
-        if ($request->request->get('city') !== "") {
-            $filterByCity = $this->get('site_bundle.filter_by_city');
-            $datas = $filterByCity->filterByCity($datas, $request);
-        }
         if ($request->request->get('cp') !== "") {
             $filterByCodePostal = $this->get('site_bundle.filter_by_code_postal');
             $datas = $filterByCodePostal->filterByCodePostal($datas, $request);
+        }
+        if ($request->request->get('city') !== "") {
+            $ville = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:VilleFrance')->findOneBy([
+                'villeNomReel' => $request->request->get('city')
+            ]);
+            $filterByCity = $this->get('site_bundle.filter_by_city');
+            $datas = $filterByCity->filterByCity($datas, $request);
+            if ($ville !== null) {
+                $datas['ville'] = [
+                    'lat' => $ville->getVilleLatitudeDeg(),
+                    'lng' => $ville->getVilleLongitudeDeg()
+                ];
+            }
         }
 
         $ignoredAttributes = array('user');

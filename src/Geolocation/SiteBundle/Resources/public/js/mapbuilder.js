@@ -53,42 +53,49 @@ function clearMarker() {
 function initMarker(data) {
     var i;
     var index = 0;
+    var bounds = new google.maps.LatLngBounds();
     for (i in data) {
-        latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
-        markers.push(new google.maps.Marker({
-            position: latlng[index],
-            map: carte,
-            title: 'Test ' + index
-        }));
-        contentString =
+        if (i !== "ville") {
+            latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
+            markers.push(new google.maps.Marker({
+                position: latlng[index],
+                map: carte,
+                title: 'Test ' + index
+            }));
+
+            bounds.extend(markers[index].position);
+
+            contentString =
                 '<div id="content">' +
                 '<h2>' + data[i].user.nom + '</h2>' +
                 data[i].user.adresse + '<br>' +
                 data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
                 '<h3>Ressources</h3>';
 
-        if (data[i].besoin !== null) {
-            contentString += '<h4>Besoin</h4><p>' + data[i].besoin.cpf.groupe.libelle + '</p>';
-        }
-
-        if (data[i].proposition !== null) {
-            contentString += '<h4>Proposition</h4><p>' + data[i].proposition.cpf.groupe.libelle + '</p>';
-        }
-
-        contentString += '<a href = "' + baseUrl + 'details\\' + data[i].user.id + '">Plus d\'informations<a>' +
-                '</div>';
-        infowindow[index] = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        google.maps.event.addListener(markers[index], 'click', function (index) {
-            return function () {
-                closeWindowInfos(); //fermer toutes les infoWindows ouvertes
-                infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
+            if (data[i].besoin !== null) {
+                contentString += '<h4>Besoin</h4><p>' + data[i].besoin.cpf.groupe.libelle + '</p>';
             }
-        }(index));
-        index++;
+
+            if (data[i].proposition !== null) {
+                contentString += '<h4>Proposition</h4><p>' + data[i].proposition.cpf.groupe.libelle + '</p>';
+            }
+
+            contentString += '<a href = "' + baseUrl + 'details\\' + data[i].user.id + '">Plus d\'informations<a>' +
+                '</div>';
+            infowindow[index] = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            google.maps.event.addListener(markers[index], 'click', function (index) {
+                return function () {
+                    closeWindowInfos(); //fermer toutes les infoWindows ouvertes
+                    infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
+                }
+            }(index));
+            index++;
+        }
     }
+    carte.fitBounds(bounds);
 }
 
 //fermeture de toutes les infosWindows
@@ -105,6 +112,14 @@ function bindInfoWindow(marker, content) {
         infowindow.setContent(content);
         infowindow.open(carte, marker);
     });
+}
+
+function centerMap(lat, lng) {
+    var pos = {
+        lat: lat,
+        lng: lng
+    };
+    carte.setCenter(pos);
 }
 
 $(document).ready(function () {
