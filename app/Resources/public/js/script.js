@@ -47,4 +47,9 @@ $(document).ready(function () {
         locale: "fr",
         format: "d/m/Y"
     });
+    
+    $('#fos_user_registration_form_url').on('focus', function() {
+        $(this).val('http://');
+    });
 });
+

@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.url) }}</span>
-                                    {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.url', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '12'}}) }}
+                                    {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'http://', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '12'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.url) }}</span>
                                 </div>
                             {% else %}
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.url) }}</span>
-                                    {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.url', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '14'}}) }}
+                                    {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'http://', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '14'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.url) }}</span>
                                 </div>
                             {% endif %}
