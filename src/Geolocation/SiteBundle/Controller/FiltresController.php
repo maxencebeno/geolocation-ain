@@ -33,9 +33,6 @@ class FiltresController extends Controller
             $filterByCity = $this->get('site_bundle.filter_by_city');
             $datas = $filterByCity->filterByCity($datas, $request);
         }
-
-        var_dump(count($datas));
-        die();
         if ($request->request->get('cp') !== "") {
             $filterByCodePostal = $this->get('site_bundle.filter_by_code_postal');
             $datas = $filterByCodePostal->filterByCodePostal($datas, $request);

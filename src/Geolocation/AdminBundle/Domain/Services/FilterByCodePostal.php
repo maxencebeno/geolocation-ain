@@ -33,8 +33,8 @@ class FilterByCodePostal
                 ->findOneBy([
                     'villeNomReel' => ApiLib::slugifyCity($user->getVille())
                 ]);
-
-            if ($ville !== null && strpos($ville->getVilleCodePostal(), $request->request->get('cp')) === false) {
+            
+            if ($ville !== null && (strpos(substr($ville->getVilleCodePostal(), 0, 2), substr($request->request->get('cp'), 0, 2)) === false)) {
                 unset($datas[$key]);
             }
         }

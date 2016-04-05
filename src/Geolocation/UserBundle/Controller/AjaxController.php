@@ -179,10 +179,10 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
-            if ($cpf->getSousCategorie() !== null) {
-                if (!in_array($cpf->getSousCategorie()->getId(), $done)) {
-                    $sousCategories[] = $cpf->getSousCategorie();
-                    $done[] = $cpf->getSousCategorie()->getId();
+            if ($cpf->getSouscategorie() !== null) {
+                if (!in_array($cpf->getSouscategorie()->getId(), $done)) {
+                    $sousCategories[] = $cpf->getSouscategorie();
+                    $done[] = $cpf->getSouscategorie()->getId();
                 }
             }
         }

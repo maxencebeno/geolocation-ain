@@ -12,53 +12,50 @@ use Doctrine\ORM\EntityRepository;
  */
 class VilleFranceRepository extends EntityRepository
 {
-    
-public function findVillesLike( $term, $limit = 10 )
-{
 
-    $qb = $this->createQueryBuilder('v');
-    $qb ->select('v.villeNomReel')
-        ->where('v.villeNom LIKE :term')
-        ->setParameter('term', $term.'%')
-        ->orderBy('v.villeNom')
-        ->setMaxResults($limit);
-
-    $arrayAss= $qb->getQuery()
-        ->getArrayResult();
-
-    // Transformer le tableau associatif en un tableau standard
-    $array = array();
-    foreach($arrayAss as $data)
+    public function findVillesLike($term, $limit = 10)
     {
-        $array[] = array("Ville"=>$data['villeNomReel']);
+
+        $qb = $this->createQueryBuilder('v');
+        $qb->select('v.villeNomReel')
+            ->where('v.villeNom LIKE :term')
+            ->orWhere('v.villeNom LIKE :termNoSpace')
+            ->setParameters(['term' => '%' . $term . '%', 'termNoSpace' => '%' . str_replace(' ', '-', $term) . '%'])
+            ->orderBy('v.villePopulation2012', 'DESC')
+            ->setMaxResults($limit);
+
+        $arrayAss = $qb->getQuery()
+            ->getArrayResult();
+
+        // Transformer le tableau associatif en un tableau standard
+        $array = array();
+        foreach ($arrayAss as $data) {
+            $array[] = array("Ville" => $data['villeNomReel']);
+        }
+
+        return $array;
     }
 
-    return $array;
-}
 
-
-public function findCodePostalFromCity( $term )
-{
-    
-    $qb = $this->createQueryBuilder('v');
-    $qb ->select('v.villeCodePostal')
-        ->where('v.villeNomReel LIKE :term')
-        ->setParameter('term', $term.'%')
-        ->orderBy('v.villeNom');
-
-    $arrayAss= $qb->getQuery()
-        ->getArrayResult();
-
-    // Transformer le tableau associatif en un tableau standard
-    $array = array();
-    foreach($arrayAss as $data)
+    public function findCodePostalFromCity($term)
     {
-        $array[] = array("CodePostal"=>$data['villeCodePostal']);
+        $qb = $this->createQueryBuilder('v');
+        $qb->select('v.villeCodePostal')
+            ->where('v.villeNomReel LIKE :term')
+            ->setParameter('term', $term . '%')
+            ->orderBy('v.villeNom');
+
+        $arrayAss = $qb->getQuery()
+            ->getArrayResult();
+
+        // Transformer le tableau associatif en un tableau standard
+        $array = array();
+        foreach ($arrayAss as $data) {
+            $array[] = array("CodePostal" => $data['villeCodePostal']);
+        }
+
+        return $array;
     }
 
-    return $array;
 
-}
-
-    
 }
