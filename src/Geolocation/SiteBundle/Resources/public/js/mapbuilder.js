@@ -7,6 +7,21 @@ var options = {
 };
 var carte = new google.maps.Map(document.getElementById("map"), options);
 
+//Géolocalisation de l'utilisateur
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+        carte.setCenter(pos);
+    });
+} else {
+    // Browser doesn't support Geolocation
+    alert("Votre navigateur ne supporte pas la géolocalisation.");
+}
+
+
 //initialisation des variables de la carte
 var infowindow = new Array();
 var latlng = new Array();
@@ -34,7 +49,7 @@ function clearMarker() {
     latlng = [];
 }
 
-//initialiser les marker en fonctions de la requete ajax
+//initialiser les marker en fonctions de la requête ajax
 function initMarker(data) {
     var i;
     var index = 0;
@@ -60,7 +75,7 @@ function initMarker(data) {
             contentString += '<h4>Proposition</h4><p>' + data[i].proposition.cpf.groupe.libelle + '</p>';
         }
 
-        contentString += '<a href = "' + baseUrl + 'details\\' + data[i].id + '">Plus d\'informations<a>' +
+        contentString += '<a href = "' + baseUrl + 'details\\' + data[i].user.id + '">Plus d\'informations<a>' +
                 '</div>';
         infowindow[index] = new google.maps.InfoWindow({
             content: contentString
@@ -69,7 +84,7 @@ function initMarker(data) {
         google.maps.event.addListener(markers[index], 'click', function (index) {
             return function () {
                 closeWindowInfos(); //fermer toutes les infoWindows ouvertes
-                infowindow[index].open(carte, markers[index]);
+                infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
             }
         }(index));
         index++;
@@ -94,6 +109,6 @@ function bindInfoWindow(marker, content) {
 
 $(document).ready(function () {
 
-    
+
 });
 
