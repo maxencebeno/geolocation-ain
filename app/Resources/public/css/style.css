@@ -4,7 +4,6 @@ a:hover{
 }
 /*---------INDEX ----------*/
 
-
 #zoneRechercheCarte {
     position: absolute;
     top: 121px;
@@ -120,6 +119,11 @@ footer ul li{
     border-color: #b2dba1;
 }
 
+
+.big-checkbox{
+    height:30px;
+    width:30px;
+}
 
 /*********/
 
