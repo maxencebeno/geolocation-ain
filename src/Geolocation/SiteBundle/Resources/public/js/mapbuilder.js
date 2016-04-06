@@ -41,7 +41,7 @@ function initMarker(data, centerMarkers) {
     var index = 0;
     var bounds = new google.maps.LatLngBounds();
     for (i in data) {
-        if (i !== "ville" && i !== "connectedUser") {
+        if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
             latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
             markers.push(new google.maps.Marker({
                 position: latlng[index],
@@ -88,6 +88,20 @@ function initMarker(data, centerMarkers) {
     }
     if (typeof data.connectedUser !== 'undefined') {
         centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
+        /*Gestion du slider range pour le filtre de distance*/
+        $(function() {
+            $("#slider-range").slider({
+                range: true,
+                min: data.distances.min,
+                max: data.distances.max,
+                values: [data.distances.min, data.distances.max],
+                slide: function(event, ui) {
+                    $("#distance").val(ui.values[ 0 ] + " - " + ui.values[ 1 ] + "");
+                }
+            });
+            $("#distance").val($("#slider-range").slider("values", 0) +
+                "km - " + $("#slider-range").slider("values", 1) + "km");
+        });
     } else {
         //Géolocalisation de l'utilisateur
         if (navigator.geolocation) {

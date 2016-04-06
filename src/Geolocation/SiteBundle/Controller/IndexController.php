@@ -85,8 +85,18 @@ class IndexController extends Controller {
 
         if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
             $ressources['connectedUser'] = $user;
+            
+            $distanceService = $this->get('site_bundle.calculate_distance_from_position');
+
+            $minDistance = $distanceService->getMinDistance($ressources, $user);
+            $maxDistance = $distanceService->getMaxDistance($ressources, $user);
+            
+            $ressources['distances'] = [
+                'min' => $minDistance,
+                'max' => $maxDistance
+            ];
         }
-        
+
         $ignoredAttributes = array('user');
         $normalizer = new GetSetMethodNormalizer();
         $normalizer->setIgnoredAttributes($ignoredAttributes);
