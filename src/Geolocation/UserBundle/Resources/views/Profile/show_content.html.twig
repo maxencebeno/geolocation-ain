@@ -96,10 +96,10 @@
                                         </li>
                                         {% set cpt = 1 %}
                                     {% endif %}
-                                    {% if cpt==0 %}
-                                        <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
-                                    {% endif %}   
                                     {% endfor %}
+                                      {% if cpt==0 %}
+                                        <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
+                                    {% endif %}  
                             </ul>
 
                              {% set cpt = 0 %}
@@ -112,11 +112,10 @@
                                         </li>
                                          {% set cpt = 1 %}
                                     {% endif %}
-                                    {% if cpt==0 %}
+                                {% endfor %}
+                                 {% if cpt==0 %}
                                         <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
                                     {% endif %}
-
-                                {% endfor %}
                             </ul>
                         {% else %}
                             <p>
