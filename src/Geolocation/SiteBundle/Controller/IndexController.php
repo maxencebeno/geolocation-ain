@@ -78,6 +78,14 @@ class IndexController extends Controller {
                         'user'=>$user
                            );
         }
+
+        $user = $this->getUser();
+
+        $auth_checker = $this->get('security.authorization_checker');
+
+        if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
+            $ressources['connectedUser'] = $user;
+        }
         
         $ignoredAttributes = array('user');
         $normalizer = new GetSetMethodNormalizer();

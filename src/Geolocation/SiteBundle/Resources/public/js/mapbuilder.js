@@ -7,21 +7,6 @@ var options = {
 };
 var carte = new google.maps.Map(document.getElementById("map"), options);
 
-//Géolocalisation de l'utilisateur
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        };
-        carte.setCenter(pos);
-    });
-} else {
-    // Browser doesn't support Geolocation
-    alert("Votre navigateur ne supporte pas la géolocalisation.");
-}
-
-
 //initialisation des variables de la carte
 var infowindow = new Array();
 var latlng = new Array();
@@ -56,7 +41,7 @@ function initMarker(data, centerMarkers) {
     var index = 0;
     var bounds = new google.maps.LatLngBounds();
     for (i in data) {
-        if (i !== "ville") {
+        if (i !== "ville" && i !== "connectedUser") {
             latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
             markers.push(new google.maps.Marker({
                 position: latlng[index],
@@ -100,6 +85,23 @@ function initMarker(data, centerMarkers) {
     }
     if (centerMarkers === true) {
         carte.fitBounds(bounds);
+    }
+    if (typeof data.connectedUser !== 'undefined') {
+        centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
+    } else {
+        //Géolocalisation de l'utilisateur
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                carte.setCenter(pos);
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            alert("Votre navigateur ne supporte pas la géolocalisation.");
+        }
     }
 }
 
