@@ -33,4 +33,14 @@ class ClasseRepository extends \Doctrine\ORM\EntityRepository
 
         return $array;
     }
+
+    public function findByUserExist()
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->join('GeolocationAdminBundle:Cpf', 'cp', 'WITH', 'c.id = cp.section')
+            ->join('GeolocationAdminBundle:Ressources', 'r', 'WITH', 'cp.id = r.cpf')
+            ->groupBy('c.id');
+
+        return $qb->getQuery()->getResult();
+    }
 }

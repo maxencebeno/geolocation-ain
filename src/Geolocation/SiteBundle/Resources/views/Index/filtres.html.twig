@@ -42,13 +42,15 @@
                        data-url="{{ path('api_commun_json_entreprise') }}" name="entreprise" placeholder="Entreprise">
             </div>
 
-            <div class="form-group">
-                <label for="distance">Distance:</label>
-                <input type="text" id="distance" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                <div id="slider-range"></div>
-            </div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div class="form-group">
+                    <label for="distance">Distance:</label>
+                    <input type="text" id="distance" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    <div id="slider-range"></div>
+                </div>
+            {% endif %}
 
-            <input type="submit" class="btn btn-default" />
+            <input type="submit" class="btn btn-default"/>
         </fieldset>
     </form>
 </div>

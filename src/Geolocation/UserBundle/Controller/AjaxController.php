@@ -31,7 +31,11 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
-            if ($cpf->getDivision() !== null) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
+            if ($cpf->getDivision() !== null && count($users) > 0) {
                 if (!in_array($cpf->getDivision()->getId(), $done)) {
                     $divisions[] = $cpf->getDivision();
                     $done[] = $cpf->getDivision()->getId();
@@ -65,7 +69,11 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
-            if ($cpf->getGroupe() !== null) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
+            if ($cpf->getGroupe() !== null && count($users) > 0) {
                 if (!in_array($cpf->getGroupe()->getId(), $done)) {
                     $groupes[] = $cpf->getGroupe();
                     $done[] = $cpf->getGroupe()->getId();
@@ -101,7 +109,11 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
-            if ($cpf->getClasse() !== null) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
+            if ($cpf->getClasse() !== null && count($users) > 0) {
                 if (!in_array($cpf->getClasse()->getId(), $done)) {
                     $classes[] = $cpf->getClasse();
                     $done[] = $cpf->getClasse()->getId();
@@ -139,7 +151,11 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
-            if ($cpf->getCategorie() !== null) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
+            if ($cpf->getCategorie() !== null && count($users) > 0) {
                 if (!in_array($cpf->getCategorie()->getId(), $done)) {
                     $categories[] = $cpf->getCategorie();
                     $done[] = $cpf->getCategorie()->getId();
@@ -179,7 +195,11 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
-            if ($cpf->getSouscategorie() !== null) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
+            if ($cpf->getSouscategorie() !== null && count($users) > 0) {
                 if (!in_array($cpf->getSouscategorie()->getId(), $done)) {
                     $sousCategories[] = $cpf->getSouscategorie();
                     $done[] = $cpf->getSouscategorie()->getId();

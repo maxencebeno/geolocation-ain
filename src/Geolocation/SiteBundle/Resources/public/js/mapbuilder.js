@@ -50,7 +50,8 @@ function clearMarker() {
 }
 
 //initialiser les marker en fonctions de la requête ajax
-function initMarker(data, centerMarkers = true) {
+function initMarker(data, centerMarkers) {
+    centerMarkers = typeof centerMarkers === 'undefined';
     var i;
     var index = 0;
     var bounds = new google.maps.LatLngBounds();

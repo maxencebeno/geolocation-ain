@@ -77,14 +77,9 @@ class Categorie
     {
         return $this->id;
     }
+    
     /**
-     * @var string
-     */
-    private $lbelle;
-
-
-    /**
-     * Set lbelle
+     * Set libelle
      *
      * @param string $libelle
      *
@@ -92,7 +87,7 @@ class Categorie
      */
     public function setLibelle($libelle)
     {
-        $this->lbelle = $libelle;
+        $this->libelle = $libelle;
 
         return $this;
     }

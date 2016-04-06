@@ -4,9 +4,11 @@ $(document).ready(function () {
         var sectionId = $(this).val();
         //Vide les autres select du form (Division & Groupe)
         resetRessources();
-        //récupération division
-        getDivision(sectionId, $('.division'));
 
+        if (sectionId !== "-1") {
+            //récupération division
+            getDivision(sectionId, $('.division'));
+        }
 
     });
 
