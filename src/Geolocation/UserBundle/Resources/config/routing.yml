@@ -56,3 +56,7 @@ user_kbis:
     path: /profile/getfile/{id}
     requirements:
         id: \d+
+        
+user_show_site:
+    defaults: { _controller: GeolocationUserBundle:Site:edit }
+    path: /profile/get-site        

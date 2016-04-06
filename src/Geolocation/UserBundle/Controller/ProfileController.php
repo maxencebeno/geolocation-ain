@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Geolocation\AdminBundle\Form\RessourcesType;
 use Geolocation\AdminBundle\Entity\Ressources;
+use Geolocation\AdminBundle\Entity\Adresse;
+use Geolocation\AdminBundle\Entity\AdresseRepository;
 use Geolocation\AdminBundle\Domain\Api\ApiLib;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -34,6 +36,9 @@ class ProfileController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findBy(array('user' => $userId));
+        
+        $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
+                ->findBy(array('userId' => $userId));
 
         /** @var \DateTime $date */
         if ($user->getDateCreationEntreprise() !== null) {
@@ -44,6 +49,7 @@ class ProfileController extends Controller {
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
                     'user' => $user,
                     'ressources' => $ressources,
+                    'sites'=>$sites
         ));
     }
 

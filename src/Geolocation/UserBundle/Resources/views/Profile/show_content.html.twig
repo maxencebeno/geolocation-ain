@@ -96,13 +96,13 @@
                                         </li>
                                         {% set cpt = 1 %}
                                     {% endif %}
-                                    {% endfor %}
-                                      {% if cpt==0 %}
-                                        <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
+                                {% endfor %}
+                                {% if cpt==0 %}
+                                    <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
                                     {% endif %}  
                             </ul>
 
-                             {% set cpt = 0 %}
+                            {% set cpt = 0 %}
                             <h4>Proposition</h4>
                             <ul id="listProposition">
                                 {% for key, ressource in ressources %}
@@ -110,11 +110,11 @@
                                         <li class="myRessource"> <strong>Ressources : </strong>
                                             {{ ressource.getCpf() }}
                                         </li>
-                                         {% set cpt = 1 %}
+                                        {% set cpt = 1 %}
                                     {% endif %}
                                 {% endfor %}
-                                 {% if cpt==0 %}
-                                        <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
+                                {% if cpt==0 %}
+                                    <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
                                     {% endif %}
                             </ul>
                         {% else %}
@@ -147,5 +147,27 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>{{ 'profile.show.site_secondary'|trans }}</h3></div>
+                <div class="panel-body">
+                    {% if sites|length > 0 %}
+                        <ul>
+                            {% for site in sites %}
+                                <li class="mySite">
+                                    {{ site.adresse }} - {{ site.ville }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ 'site.edit.no_sites'|trans }}
+                    {% endif %}
+                    <div class="text-center"> 
+                        <a class="btn btn-info btn-lg" href="{{ path('user_show_site') }}">{{ 'profile.show.link_site_secondary'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>

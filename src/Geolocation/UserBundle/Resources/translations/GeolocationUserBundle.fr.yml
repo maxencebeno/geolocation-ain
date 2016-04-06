@@ -49,6 +49,8 @@ profile:
         no_ressources : Aucune ressources choisies
         no_besoins : Aucun besoins choisis
         no_propositions : Aucune ressources proposées
+        site_secondary: Mes sites
+        link_site_secondary: Modifier mes sites
     edit:
         submit: Mettre à jour
         title: Modifier mes informations générales
@@ -154,6 +156,9 @@ form:
     description: "Description"
     rna: "N° RNA"
     valider: "Mettre à jour"
+    main: "Adresse principale"
+    public: "Rendre public"
+    valider_site: Enregistrer
     
 #Ressources
 ressources:
@@ -161,3 +166,14 @@ ressources:
         create:
             success: "La ressource a bien été ajoutée"
             fail: "Veuillez choisir un élément pour chaque champ"
+
+#Site
+site:
+    edit:
+        title_ajout: "Ajouter des sites"
+        title_modification: "Modifier mes sites"
+        no_sites: "Pas de sites ajoutés"
+    flash:
+        create:
+            success: "Le site a bien été ajouté"
+            fail: "Un champ est invalide"

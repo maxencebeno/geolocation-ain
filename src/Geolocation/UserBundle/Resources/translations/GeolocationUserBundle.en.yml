@@ -49,6 +49,8 @@ profile:
         no_ressources : No resources for the moment
         no_besoins : No needs for the moment
         no_propositions : No resources proposed
+        site_secondary: My site
+        link_site_secondary: Change my sites
     edit:
         submit: Update
         title: Update my general information
@@ -146,6 +148,9 @@ form:
     dateCreationEntreprise : "Company creation date"
     description: "Description"
     valider: "Update"
+    main: "Main address"
+    public: "Publish"
+    valider_site: "Save"
 
 #Ressources
 ressources:
@@ -153,3 +158,14 @@ ressources:
         create:
             success: "The resource has been added"
             fail: "Please select an item for each field"
+
+#Site
+site:
+    edit:
+        title_ajout: "Add site"
+        title_modification: "Modify my sites"
+        no_sites: "No sites added"
+    flash:
+        create:
+            success: "The site has been added"
+            fail: "An invalid field"
