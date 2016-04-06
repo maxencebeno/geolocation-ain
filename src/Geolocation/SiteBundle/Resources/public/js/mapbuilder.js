@@ -35,7 +35,7 @@ google.maps.event.addListenerOnce(carte, 'idle', function () {
         url: baseUrl + 'json/markers',
         success: function (data) {
             clearMarker();
-            initMarker(data);
+            initMarker(data, false);
         }
     });
 });
@@ -50,7 +50,7 @@ function clearMarker() {
 }
 
 //initialiser les marker en fonctions de la requête ajax
-function initMarker(data) {
+function initMarker(data, centerMarkers = true) {
     var i;
     var index = 0;
     var bounds = new google.maps.LatLngBounds();
@@ -63,7 +63,9 @@ function initMarker(data) {
                 title: 'Test ' + index
             }));
 
-            bounds.extend(markers[index].position);
+            if (centerMarkers === true) {
+                bounds.extend(markers[index].position);
+            }
 
             contentString =
                 '<div id="content">' +
@@ -95,7 +97,9 @@ function initMarker(data) {
             index++;
         }
     }
-    carte.fitBounds(bounds);
+    if (centerMarkers === true) {
+        carte.fitBounds(bounds);
+    }
 }
 
 //fermeture de toutes les infosWindows
