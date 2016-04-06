@@ -1,3 +1,13 @@
+/*---------GENERAL------------*/
+.clear{
+    clear: both;
+    display: block;
+}
+
+body{
+    position : relative!important;
+}
+
 /*---------MENU------------*/
 a:hover{
     text-decoration: none;
@@ -39,6 +49,36 @@ input#distance {
     display : none;
 }
 
+/*---------TUILE INDEX------------*/
+#tuileContainer{
+    text-align: center;
+    margin-top:20px;
+}
+
+#tuileContainer:after {
+    content:"";
+    clear:both;
+    display:block;
+}
+
+.tuile{
+    width:400px;
+    height:200px;
+    margin:20px;
+    padding:10px;
+    background-color: red;
+    display: inline-block;
+    text-align: justify;
+}
+
+.imgTuile{
+    width:100px;
+    height:100px;
+    background-color: green;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    float: left;
+}
 
 /*---------FOOTER----------*/
 .footer {
@@ -87,32 +127,6 @@ footer ul li{
     display: inline-block;
 }
 
-
-/* ---------------------------------------- */
-
-#tuileContainer{
-    text-align: center;
-    margin-top:20px;
-}
-
-.tuile{
-    width:400px;
-    height:200px;
-    margin:20px;
-    padding:10px;
-    background-color: red;
-    display: inline-block;
-    text-align: justify;
-}
-
-.imgTuile{
-    width:100px;
-    height:100px;
-    background-color: green;
-    margin-right: 10px;
-    margin-bottom: 7px;
-    float: left;
-}
 
 .alert-notice {
     background-image: -webkit-linear-gradient(top,#dff0d8 0,#c8e5bc 100%);
