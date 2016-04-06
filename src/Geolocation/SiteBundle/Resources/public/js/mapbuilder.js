@@ -92,15 +92,15 @@ function initMarker(data, centerMarkers) {
         $(function() {
             $("#slider-range").slider({
                 range: true,
-                min: data.distances.min,
-                max: data.distances.max,
-                values: [data.distances.min, data.distances.max],
+                min: data.distances.min.value,
+                max: data.distances.max.value,
+                values: [data.distances.min.value, data.distances.max.value],
                 slide: function(event, ui) {
                     $("#distance").val(ui.values[ 0 ] + " - " + ui.values[ 1 ] + "");
                 }
             });
-            $("#distance").val($("#slider-range").slider("values", 0) +
-                "km - " + $("#slider-range").slider("values", 1) + "km");
+            $("#distance").val(data.distances.min.string +
+                " - " + data.distances.max.string);
         });
     } else {
         //Géolocalisation de l'utilisateur

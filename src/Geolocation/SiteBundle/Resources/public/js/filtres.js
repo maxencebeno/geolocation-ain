@@ -74,7 +74,21 @@ $(document).ready(function () {
             success: function (data) {
                 clearMarker();
                 initMarker(data);
-                centerMap(data.ville.lat, data.ville.lng);
+                /*if (typeof data.ville !== 'undefined') {
+                    centerMap(data.ville.lat, data.ville.lng);
+                } else {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            var pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            centerMap(pos.lat, pos.lng);
+                        });
+                    } else {
+                        centerMap(46.204960, 5.225797);
+                    }
+                }*/
             }
         });
 

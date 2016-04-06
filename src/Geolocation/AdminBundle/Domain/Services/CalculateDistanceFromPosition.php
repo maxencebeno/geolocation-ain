@@ -76,7 +76,7 @@ class CalculateDistanceFromPosition
                 }
             }
         }
-        return $min !== 999999 && $minString !== "" ? $min : 0;
+        return $min !== 999999 && $minString !== "" ? ['value' => $min, 'string' => $minString] : ['value' => 0, 'string' => "0 km"];
     }
 
     public function getMaxDistance($datas = [], $user) {
@@ -121,6 +121,6 @@ class CalculateDistanceFromPosition
                 }
             }
         }
-        return $max !== 0 && $maxString !== "" ? $max : 0;
+        return $max !== 0 && $maxString !== "" ? ['value' => $max, 'string' => $maxString] : ['value' => 0, 'string' => "0 km"];
     }
 }
