@@ -70,17 +70,17 @@ function initMarker(data, centerMarkers) {
 
             contentString =
                 '<div id="content">' +
-                '<h2>' + data[i].user.nom + '</h2>' +
+                '<h3>' + data[i].user.nom + '</h3>' +
                 data[i].user.adresse + '<br>' +
                 data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
-                '<h3>Ressources</h3>';
+                '<h4>Ressources</h4>';
 
             if (data[i].besoin !== null) {
-                contentString += '<h4>Besoin</h4><p>' + data[i].besoin.cpf.groupe.libelle + '</p>';
+                contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.groupe.libelle + '</p>';
             }
 
             if (data[i].proposition !== null) {
-                contentString += '<h4>Proposition</h4><p>' + data[i].proposition.cpf.groupe.libelle + '</p>';
+                contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.groupe.libelle + '</p>';
             }
 
             contentString += '<a href = "' + baseUrl + 'details\\' + data[i].user.id + '">Plus d\'informations<a>' +
