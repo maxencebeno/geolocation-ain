@@ -242,7 +242,7 @@ footer ul li{
     padding: 0;
 }
 
-#distance{
-    background-color: none;
+input#distance{
+    background-color: transparent;
     color:white;
 }
