@@ -237,3 +237,12 @@ footer ul li{
     background-image: -webkit-linear-gradient(top,#E6F7FF 0,#FDFFFD 100%);
     background-image: -webkit-gradient(linear,left top,left bottom,from(#E6F7FF),to(#FDFFFD));
 }
+
+.navbar-brand{
+    padding: 0;
+}
+
+#distance{
+    background-color: none;
+    color:white;
+}
