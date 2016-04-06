@@ -48,11 +48,6 @@ $(document).ready(function () {
         format: "d/m/Y"
     });
     
-    $('#fos_user_registration_form_url').on('focus', function() {
-        $(this).val('http://');
-    });
-    $('#fos_user_registration_form_url').on('blur', function() {
-        $(this).val('');
-    });
+
 });
 
