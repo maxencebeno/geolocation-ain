@@ -26,9 +26,11 @@ class SiteController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
                 ->findBy(array('userId' => $userId));
-
+        //$iso = new Iso(); 
         $entity = new Adresse();
         $form = $this->createForm(new AdresseType(), $entity);
+        $iso = $em->getRepository('GeolocationAdminBundle:Iso')->findAll();
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -41,6 +43,7 @@ class SiteController extends Controller {
                 return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                             'sites' => $sites,
                             'form' => $form->createView(),
+                            'iso' => $iso
                 ));
             } else {
                 // Geocode your request
@@ -58,6 +61,8 @@ class SiteController extends Controller {
                         $entity->setLatitude($latitude);
                         $entity->setLongitude($longitude);
                         $entity->setUserId($userId);
+                        var_dump($request->request->get('geolocation_adminbundle_adresse'));
+                        die;
                         $em->persist($entity);
                         $em->flush();
                         $this->addFlash('success', 'site.flash.create.success');
@@ -65,6 +70,7 @@ class SiteController extends Controller {
                         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                                     'sites' => $sites,
                                     'form' => $form->createView(),
+                                    'iso' => $iso
                         ));
                     } else {
                         $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
@@ -72,6 +78,7 @@ class SiteController extends Controller {
                         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                                     'sites' => $sites,
                                     'form' => $form->createView(),
+                                    'iso' => $iso
                         ));
                     }
                 } else {
@@ -80,6 +87,7 @@ class SiteController extends Controller {
                     return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                                 'sites' => $sites,
                                 'form' => $form->createView(),
+                                'iso' => $iso
                     ));
                 }
             }
@@ -87,6 +95,7 @@ class SiteController extends Controller {
         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                     'sites' => $sites,
                     'form' => $form->createView(),
+                    'iso' => $iso
         ));
     }
 

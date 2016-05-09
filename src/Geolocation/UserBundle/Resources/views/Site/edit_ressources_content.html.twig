@@ -10,9 +10,9 @@
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
 
-                <span class="form-edit-label">{{ form_label(form.main) }}</span><br>
+                {#<span class="form-edit-label">{{ form_label(form.main) }}</span><br>
                 {{ form_widget(form.main, { 'attr': {'class': 'edit-form-site big-checkbox', 'spellcheck': 'false', 'tabindex': '1'}}) }}
-                <span class="form-error" id="error-besoin">{{ form_errors(form.main) }}</span>
+                <span class="form-error" id="error-besoin">{{ form_errors(form.main) }}</span>#}
 
                 <div class="form-group">
                     <span class="form-edit-label">{{ form_label(form.adresse) }}<strong

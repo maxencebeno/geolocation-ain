@@ -12,8 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Adresse
 {
-    private $iso;
-    
     /**
      * @var integer
      *
@@ -312,14 +310,4 @@ class Adresse
     {
         return $this->longitude;
     }
-    
-    function getIso() {
-        return $this->iso;
-    }
-
-    function setIso($iso) {
-        $this->iso = $iso;
-    }
-
-
 }

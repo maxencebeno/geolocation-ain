@@ -48,6 +48,12 @@ class Ressources
      */
     private $cpf;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="adresse_id", type="integer", nullable=false)
+     */
+    private $adresse_id;
 
 
     /**
@@ -130,5 +136,29 @@ class Ressources
     public function getCpf()
     {
         return $this->cpf;
+    }
+
+    /**
+     * Set adresseId
+     *
+     * @param integer $adresseId
+     *
+     * @return Ressources
+     */
+    public function setAdresseId($adresseId)
+    {
+        $this->adresse_id = $adresseId;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseId
+     *
+     * @return integer
+     */
+    public function getAdresseId()
+    {
+        return $this->adresse_id;
     }
 }

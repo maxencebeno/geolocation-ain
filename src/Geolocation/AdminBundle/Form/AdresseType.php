@@ -14,7 +14,7 @@ class AdresseType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('main', null, array('label' => 'form.main', 'translation_domain' => 'GeolocationUserBundle'))
+                /*->add('main', null, array('label' => 'form.main', 'translation_domain' => 'GeolocationUserBundle'))*/
                 ->add('adresse', 'text', array('label' => 'form.adresse', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
                 ->add('ville', 'text', array('label' => 'form.ville', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
                 ->add('codePostal', 'text', array('label' => 'form.cp', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
