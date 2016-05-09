@@ -55,7 +55,7 @@ class AjaxController extends Controller
                 }
             }
         }
-
+        
         $normalizer = new GetSetMethodNormalizer();
         $serializer = new Serializer(array($normalizer), array('division' => new JsonEncoder()));
         $jsonContent = $serializer->serialize($divisions, 'json');

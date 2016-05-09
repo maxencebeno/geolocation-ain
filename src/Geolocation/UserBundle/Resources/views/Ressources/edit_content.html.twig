@@ -12,8 +12,6 @@
             <div class="panel-heading"><h3>{{ 'profile.edit.ressource_title'|trans }}</h3></div>
             <div class="panel-body">
 
-
-
                 <span class="form-edit-label">{{ form_label(form.besoin) }}</span><br>
                 {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names big-checkbox', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                 <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
@@ -76,6 +74,7 @@
                                         <li class="myRessource"><strong>Ressources : </strong>
                                             {{ ressource.getCpf() }}
                                         </li>
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">Supprimer</button>
                                         {% set cpt = 1 %}
                                     {% endif %}
                                       
@@ -93,6 +92,7 @@
                                         <li class="myRessource"> <strong>Ressources : </strong>
                                             {{ ressource.getCpf() }}
                                         </li>
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">Supprimer</button>
                                          {% set cpt = 1 %}
                                     {% endif %}
                                 {% endfor %}

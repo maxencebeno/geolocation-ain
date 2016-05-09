@@ -98,12 +98,12 @@ $(document).ready(function () {
         $.ajax({
             url: baseUrl + 'ajax/filtres/get-entreprises-by-filters',
             method: "POST",
-            data: $(this).serialize(),
-            //dataType: 'json',
+            data: $('#form-filters').serialize(),
+            dataType: 'json',
             success: function (data) {
                 clearMarker();
                 initMarker(data);
-                /*if (typeof data.ville !== 'undefined') {
+                if (typeof data.ville !== 'undefined') {
                     centerMap(data.ville.lat, data.ville.lng);
                 } else {
                     if (navigator.geolocation) {
@@ -117,7 +117,7 @@ $(document).ready(function () {
                     } else {
                         centerMap(46.204960, 5.225797);
                     }
-                }*/
+                }
             }
         });
 
