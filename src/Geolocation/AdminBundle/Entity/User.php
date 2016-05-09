@@ -21,6 +21,16 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var \Geolocation\AdminBundle\Entity\Pilier
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Pilier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pilier", referencedColumnName="id")
+     * })
+     */
+    private $pilier;
     
     /**
      * @var string
@@ -112,7 +122,7 @@ class User extends BaseUser
     protected $rna;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
@@ -527,5 +537,29 @@ class User extends BaseUser
     public function getLongitude()
     {
         return $this->longitude;
+    }
+
+    /**
+     * Set pilier
+     *
+     * @param \Geolocation\AdminBundle\Entity\Pilier $pilier
+     *
+     * @return User
+     */
+    public function setPilier(\Geolocation\AdminBundle\Entity\Pilier $pilier = null)
+    {
+        $this->pilier = $pilier;
+
+        return $this;
+    }
+
+    /**
+     * Get pilier
+     *
+     * @return \Geolocation\AdminBundle\Entity\Pilier
+     */
+    public function getPilier()
+    {
+        return $this->pilier;
     }
 }

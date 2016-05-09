@@ -136,6 +136,21 @@
 
                         <div class="row">
                             <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.description) }}</span>
+                                {{ form_widget(form.description, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.description', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                                <span class="text-danger"
+                                      id="error-surname">{{ form_errors(form.description) }}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-register-label">{{ form_label(form.pilier) }}</span>
+                                {{ form_widget(form.pilier, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.pilier', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
+                                <span class="text-danger"
+                                      id="error-surname">{{ form_errors(form.pilier) }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.plainPassword.first) }} <strong
                                             class="text-danger">*</strong></span>
                                 {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '14'}}) }}

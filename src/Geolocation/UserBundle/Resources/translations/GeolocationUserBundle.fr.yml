@@ -1,3 +1,4 @@
+
 # Group
 group:
     edit:
@@ -156,6 +157,7 @@ form:
     description: "Description"
     rna: "N° RNA"
     valider: "Mettre à jour"
+    pilier: "Pilier de l'économie circulaire"
     main: "Adresse principale"
     public: "Rendre public"
     valider_site: Enregistrer

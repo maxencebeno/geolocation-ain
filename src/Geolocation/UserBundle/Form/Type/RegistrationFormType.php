@@ -2,6 +2,7 @@
 
 namespace Geolocation\UserBundle\Form\Type;
 
+use Geolocation\AdminBundle\Form\PilierType;
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
 
@@ -46,6 +47,12 @@ class RegistrationFormType extends BaseType
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
+            ->add('description', 'textarea', array(
+                    'label' => 'form.description',
+                    'required' => true,
+                    'translation_domain' => 'GeolocationUserBundle')
+            )
+            ->add('pilier', null, ['label' => 'form.pilier', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'])
             ->add('rna', 'text', array('label' => 'form.rna', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'));
 
     }
