@@ -1,3 +1,7 @@
+geolocation_admin_admin_iso:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/iso.yml"
+    prefix:   /iso
+
 geolocation_admin_souscategorie:
     resource: "@GeolocationAdminBundle/Resources/config/routing/souscategorie.yml"
     prefix:   /souscategorie

@@ -1,0 +1,30 @@
+admin_iso:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Iso:index" }
+
+admin_iso_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Iso:show" }
+
+admin_iso_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Iso:new" }
+
+admin_iso_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Iso:create" }
+    requirements: { _method: post }
+
+admin_iso_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Iso:edit" }
+
+admin_iso_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Iso:update" }
+    requirements: { _method: post|put }
+
+admin_iso_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Iso:delete" }
+    requirements: { _method: post|delete }
