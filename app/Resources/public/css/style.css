@@ -18,6 +18,10 @@ body{
     display : block;
 }
 
+h1,h2,h3,h4,h5,h6{
+    font-family: "Exo";
+}
+
 /*---------MENU------------*/
 a:hover{
     text-decoration: none;
@@ -226,10 +230,6 @@ background-color: #2B85A0;
 
 .navbar-brand{
     padding: 0;
-}
-
-.navbar-brand a:hover{
-    color:#525252;
 }
 
 input#distance{
