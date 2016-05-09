@@ -32,7 +32,7 @@ a:hover{
     position: absolute;
     top: 49px;
     right: 63px;
-    background-color: #4A6086;
+    background-color: #374a5d;
     height: 420px;
     opacity: 0.9;
     font-size:1em;
@@ -98,7 +98,7 @@ input#distance {
 .footer {
   width: 100%;
   /* Set the fixed height of the footer here */
-  background-color: #4A6086;
+  background-color: #374a5d;
   padding-bottom:10px;
   position: absolute;
     left: 0;
@@ -134,9 +134,7 @@ footer li a{
 }
 
 footer a:hover{
-    background-color: #2682aa;
-    text-decoration: none;
-    color:white;
+    color:#54b59a;
 }
 
 footer ul li{
@@ -192,7 +190,7 @@ footer ul li{
 
 .flash-success{
     color: #4CAF50;
-    border: 2px solid #4CAF50;
+    border: 2px solid #667682;
 }
 
 .flash-notice{
@@ -209,7 +207,7 @@ footer ul li{
 /*SURCHARGE BOOSTRAP - THEME PERSO*/
 
 .container-fluid{
-    background-color: #4A6086;
+    background-color: #374a5d;
 }
 
 .navbar-default .navbar-brand{
@@ -224,25 +222,36 @@ footer ul li{
     color:white;
 }
 
-.btn-default{
-    background-color: #2682aa;
+.btn-default, .btn-primary{
+    background-color: #4E9C6D;
     border-color: #525252;
     color:white;
     text-shadow: none;
     font-weight: bold;
 }
 
-.panel-default>.panel-heading{
-    background-image: linear-gradient(to bottom,#E6F7FF 0,#FDFFFD 100%);
-    background-image: -webkit-linear-gradient(top,#E6F7FF 0,#FDFFFD 100%);
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#E6F7FF),to(#FDFFFD));
+.btn-info{
+background-color: #2B85A0;
 }
+
 
 .navbar-brand{
     padding: 0;
 }
 
+.navbar-brand a:hover{
+    color:#525252;
+}
+
 input#distance{
     background-color: transparent;
     color:white;
+}
+
+.navbar-brand{
+    color:white;
+    font-size:34px;
+    font-family: "Candal";
+    padding-left: 10px;
+    padding-top: 10px;
 }

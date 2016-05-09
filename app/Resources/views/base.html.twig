@@ -26,8 +26,10 @@
 {% block header %}{% include './include/header.html.twig' %}{% endblock %}
 {% for type, messages in app.session.flashbag.all() %}
     {% for key, message in messages %}
-        <div class="alert alert-{{ type }} op_message">
-            {{ message|trans({}, 'GeolocationUserBundle') }}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 alert alert-{{ type }} op_message">
+                {{ message|trans({}, 'GeolocationUserBundle') }}
+            </div>
         </div>
     {% endfor %}
 {% endfor %}
