@@ -99,7 +99,11 @@
 
                             {% else %}
                                 <div class="col-sm-12">
-                                    <span class="form-register-label">{{ form_label(form.tel) }}</span>
+                                    <span class="form-register-label">{{ form_label(form.tel) }} <strong
+                                                class="text-danger">*</strong> <i
+                                                class="glyphicon glyphicon-question-sign" data-toggle="tooltip"
+                                                data-placement="right"
+                                                title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
                                     {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '10'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
                                 </div>

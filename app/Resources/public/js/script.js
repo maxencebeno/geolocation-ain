@@ -33,7 +33,10 @@ $(document).ready(function () {
         locale: "fr",
         format: "d/m/Y"
     });
-    
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
 });
 
