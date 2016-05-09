@@ -68,6 +68,9 @@ function initMarker(data, centerMarkers) {
                 contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.groupe.libelle + '</p>';
             }
 
+            if(data[i].proposition === null && data[i].proposition === null){
+                    contentString += '<p>Pas de ressources pour le moment</p>';
+            }
             contentString += '<a href = "' + baseUrl + 'details\\' + data[i].user.id + '">Plus d\'informations<a>' +
                 '</div>';
             infowindow[index] = new google.maps.InfoWindow({
