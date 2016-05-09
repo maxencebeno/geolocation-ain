@@ -65,46 +65,50 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h3>Mes ressources</h3></div>
                 <div class="panel-body">
-                   {% if ressources|length > 0 %}
-                            {% set cpt = 0 %}
-                            <h4>Besoin</h4>
-                            <ul id="listBesoin">
-                                {% for key, ressource in ressources %}
-                                    {% if ressource.getBesoin()==true %}
-                                        <li class="myRessource"><strong>Ressources : </strong>
-                                            {{ ressource.getCpf() }}
-                                        </li>
-                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">Supprimer</button>
-                                        {% set cpt = 1 %}
-                                    {% endif %}
-                                      
-                                {% endfor %}
-                                {% if cpt==0 %}
-                                    <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
-                                {% endif %} 
-                            </ul>
+                    {% if ressources|length > 0 %}
+                        {% set cpt = 0 %}
+                        <h4>Besoin</h4>
+                        <ul id="listBesoin">
+                            {% for key, ressource in ressources %}
+                                {% if ressource.getBesoin()==true %}
+                                    <li class="myRessource"><strong>Ressources : </strong>
+                                        {{ ressource.getCpf() }}
 
-                             {% set cpt = 0 %}
-                            <h4>Proposition</h4>
-                            <ul id="listProposition">
-                                {% for key, ressource in ressources %}
-                                    {% if ressource.getBesoin()==false %}
-                                        <li class="myRessource"> <strong>Ressources : </strong>
-                                            {{ ressource.getCpf() }}
-                                        </li>
-                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">Supprimer</button>
-                                         {% set cpt = 1 %}
-                                    {% endif %}
-                                {% endfor %}
-                                {% if cpt==0 %}
-                                        <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
-                                    {% endif %}
-                            </ul>
-                        {% else %}
-                            <p>
-                                {{ 'profile.show.no_ressources'|trans }} 
-                            </p>
-                        {% endif %}
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}"><i class="
+glyphicon glyphicon-remove"></i></button>
+                                    </li>
+                                    {% set cpt = 1 %}
+                                {% endif %}
+
+                            {% endfor %}
+                            {% if cpt==0 %}
+                                <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
+                                {% endif %} 
+                        </ul>
+
+                        {% set cpt = 0 %}
+                        <h4>Proposition</h4>
+                        <ul id="listProposition">
+                            {% for key, ressource in ressources %}
+                                {% if ressource.getBesoin()==false %}
+                                    <li class="myRessource"> <strong>Ressources : </strong>
+                                        {{ ressource.getCpf() }}
+
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}"><i class="
+glyphicon glyphicon-remove"></i></button>
+                                    </li>
+                                    {% set cpt = 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if cpt==0 %}
+                                <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
+                                {% endif %}
+                        </ul>
+                    {% else %}
+                        <p>
+                            {{ 'profile.show.no_ressources'|trans }} 
+                        </p>
+                    {% endif %}
                     </ul>
 
                 </div>
