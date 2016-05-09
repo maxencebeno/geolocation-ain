@@ -188,21 +188,6 @@ footer ul li{
     border-radius: 30px;
 }
 
-.flash-success{
-    color: #4CAF50;
-    border: 2px solid #667682;
-}
-
-.flash-notice{
-    color: #ffaa00;
-    border: 2px solid #ffaa00;
-}
-
-.flash-error{
-    color: #F44336;
-    border: 2px solid #F44336;
-}
-
 
 /*SURCHARGE BOOSTRAP - THEME PERSO*/
 
@@ -228,6 +213,10 @@ footer ul li{
     color:white;
     text-shadow: none;
     font-weight: bold;
+}
+
+.btn-default:hover{
+    color:#525252;
 }
 
 .btn-info{
