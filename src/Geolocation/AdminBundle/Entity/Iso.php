@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Iso
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Geolocation\AdminBundle\Entity\IsoRepository")
+ * @ORM\Entity(repositoryClass="Geolocation\AdminBundle\Repository\IsoRepository")
  */
 class Iso
 {
