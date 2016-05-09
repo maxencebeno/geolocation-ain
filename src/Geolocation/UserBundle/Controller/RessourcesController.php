@@ -89,7 +89,7 @@ class RessourcesController extends Controller {
                 $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
                         ->findBy(array('user' => $userId));
             }else{
-                 $this->addFlash('error', 'ressources.flash.create.fail');
+                 $this->addFlash('danger', 'ressources.flash.create.fail');
 
             }
             return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(

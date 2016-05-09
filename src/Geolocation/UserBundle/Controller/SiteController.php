@@ -37,7 +37,7 @@ class SiteController extends Controller {
 
             if ($response == false) {
 
-                $this->addFlash('error', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
+                $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
                 return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                             'sites' => $sites,
                             'form' => $form->createView(),
@@ -67,7 +67,7 @@ class SiteController extends Controller {
                                     'form' => $form->createView(),
                         ));
                     } else {
-                        $this->addFlash('error', "Votre code postal est erroné, merci de le corriger.");
+                        $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
 
                         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                                     'sites' => $sites,
@@ -75,7 +75,7 @@ class SiteController extends Controller {
                         ));
                     }
                 } else {
-                    $this->addFlash('error', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
+                    $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
 
                     return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                                 'sites' => $sites,

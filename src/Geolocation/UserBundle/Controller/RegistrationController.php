@@ -159,7 +159,7 @@ class RegistrationController extends BaseController
 
             $userManager->updateUser($user);
 
-            $this->addFlash('notice', 'Merci pour votre inscription, votre demande sera étudiée dans les plus brefs délais');
+            $this->addFlash('info', 'Merci pour votre inscription, votre demande sera étudiée dans les plus brefs délais');
 
             $url = $this->generateUrl('site_homepage');
 
