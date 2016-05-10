@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>C'est tout cassé ! Une erreur est survenue</h1>
+            <h2>Le code d'erreur est "{{ status_code }} {{ status_text }}".</h2>
+
+            <div class="alert alert-danger">
+                La page que vous cherchez n'existe pas.
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
