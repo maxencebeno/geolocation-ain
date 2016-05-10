@@ -24,11 +24,14 @@ class Adresse
     private $id;
 
     /**
-     * @var integer
+     * @var \Geolocation\AdminBundle\Entity\User
      *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user", referencedColumnName="id")
+     * })
      */
-    private $userId;
+    private $user;
 
     /**
      * @var boolean
@@ -43,6 +46,13 @@ class Adresse
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
      */
     private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siren", type="string", length=255, nullable=false)
+     */
+    private $siren;
 
     /**
      * @var string
@@ -322,4 +332,52 @@ class Adresse
     }
 
 
+
+    /**
+     * Set siren
+     *
+     * @param string $siren
+     *
+     * @return Adresse
+     */
+    public function setSiren($siren)
+    {
+        $this->siren = $siren;
+
+        return $this;
+    }
+
+    /**
+     * Get siren
+     *
+     * @return string
+     */
+    public function getSiren()
+    {
+        return $this->siren;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Geolocation\AdminBundle\Entity\User $user
+     *
+     * @return Adresse
+     */
+    public function setUser(\Geolocation\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Geolocation\AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

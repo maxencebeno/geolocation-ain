@@ -16,6 +16,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Geolocation\AdminBundle\Domain\Api\ApiLib;
+use Geolocation\AdminBundle\Entity\Adresse;
 use Geolocation\AdminBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -112,6 +113,18 @@ class RegistrationController extends BaseController
                         $user->setLongitude($longitude);
 
                         $em->persist($user);
+                        
+                        $adresse = new Adresse();
+                        
+                        $adresse->setAdresse($user->getAdresse());
+                        $adresse->setCodePostal($user->getCodePostal());
+                        $adresse->setLatitude($latitude);
+                        $adresse->setLongitude($longitude);
+                        $adresse->setTel($user->getTel());
+                        $adresse->setIsPublic(true);
+                        $adresse->setUser($user);
+
+                        $em->persist($adresse);
 
                         $em->flush();
 

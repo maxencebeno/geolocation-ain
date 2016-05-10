@@ -24,11 +24,14 @@ class Adresse
     private $id;
 
     /**
-     * @var integer
+     * @var \Geolocation\AdminBundle\Entity\User
      *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user", referencedColumnName="id")
+     * })
      */
-    private $userId;
+    private $user;
 
     /**
      * @var boolean
@@ -43,6 +46,13 @@ class Adresse
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
      */
     private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siren", type="string", length=255, nullable=false)
+     */
+    private $siren;
 
     /**
      * @var string
