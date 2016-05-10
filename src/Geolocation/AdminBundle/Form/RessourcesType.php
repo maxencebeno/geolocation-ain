@@ -11,10 +11,17 @@ class RessourcesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('besoin')
+            ->add('besoin', 'choice', [
+                'label' => 'Besoin',
+                'choices' =>
+                    [
+                        '0' => 'Je propose',
+                        '1' => 'J\'ai besoin'
+                    ],
+                'expanded' => true,
+                'multiple' => false])
             ->add('cpf')
-            ->add('saveRessource', 'submit', array())
-        ;
+            ->add('saveRessource', 'submit', array());
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
