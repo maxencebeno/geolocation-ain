@@ -33,6 +33,20 @@ class IndexController extends Controller {
         }
     }
 
+    public function getCodeNafAction(Request $request) {
+        if ($request->isXmlHttpRequest()) {
+            $term = $request->request->get('codeNaf');
+            $array = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('GeolocationAdminBundle:Cpf')
+                ->findCodeNafLike($term);
+
+            $response = new Response(json_encode($array));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
+        }
+    }
+
     public function getRessourcesAction(Request $request) {
         if ($request->isXmlHttpRequest()) {
             $term = $request->request->get('ressources');

@@ -15,6 +15,7 @@ class CpfFilterType extends AbstractType
     {
         $builder
             ->add('id', 'filter_number_range')
+            ->add('nom')
         ;
 
         $listener = function(FormEvent $event)

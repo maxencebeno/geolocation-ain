@@ -31,10 +31,41 @@ $(".autocomplete-search-city").autocomplete({
         }else{
             searchCpfromCity(ui.item.label);
         }
-        
+
     },
     select: function( event, ui) {
         searchCpfromCity(ui.item.label);
+    },
+    minLength: 2,
+    delay: 300
+});
+
+$(".autocomplete-search-code-naf").autocomplete({
+    source: function (request, response) {
+        var objData = {};
+        var url = $(this.element).attr('data-url');
+        objData = {codeNaf: request.term};
+
+        $.ajax({
+            url: url,
+            dataType: "json",
+            data: objData,
+            type: 'POST',
+            success: function (data) {
+                //Ajout de reponse dans le cache
+                response($.map(data, function (item) {
+                    return {
+                        label: item.Codes,
+                        value: function () {
+                            return item.Codes;
+                        }
+                    };
+                }));
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
     },
     minLength: 2,
     delay: 300

@@ -63,7 +63,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="tel", type="string", length=255, nullable=true)
+     * @ORM\Column(name="tel", type="string", length=255, nullable=false)
      */
     protected $tel;
 
@@ -537,5 +537,29 @@ class User extends BaseUser
     public function getLongitude()
     {
         return $this->longitude;
+    }
+
+    /**
+     * Set pilier
+     *
+     * @param \Geolocation\AdminBundle\Entity\Pilier $pilier
+     *
+     * @return User
+     */
+    public function setPilier(\Geolocation\AdminBundle\Entity\Pilier $pilier = null)
+    {
+        $this->pilier = $pilier;
+
+        return $this;
+    }
+
+    /**
+     * Get pilier
+     *
+     * @return \Geolocation\AdminBundle\Entity\Pilier
+     */
+    public function getPilier()
+    {
+        return $this->pilier;
     }
 }

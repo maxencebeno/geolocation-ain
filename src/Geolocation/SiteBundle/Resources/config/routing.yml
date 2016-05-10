@@ -29,6 +29,10 @@ site_apropos:
 api_commun_json_villes:
     path: /json/getcities
     defaults: { _controller: SiteBundle:Index:getCities }
+
+api_commun_json_codes_naf:
+    path: /json/get-codes-naf
+    defaults: { _controller: SiteBundle:Index:getCodeNaf }
     
 api_commun_json_ressources:
     path: /json/getressources

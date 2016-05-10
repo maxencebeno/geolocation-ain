@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Cpf
  *
  * @ORM\Table(name="cpf", indexes={@ORM\Index(name="IDX_3E3E11F0D823E37A", columns={"section_id"}), @ORM\Index(name="IDX_3E3E11F07A45358C", columns={"groupe_id"}), @ORM\Index(name="IDX_3E3E11F08F5EA509", columns={"classe_id"}), @ORM\Index(name="IDX_3E3E11F041859289", columns={"division_id"}), @ORM\Index(name="IDX_3E3E11F0BCF5E72D", columns={"categorie_id"}), @ORM\Index(name="IDX_3E3E11F0A27126E0", columns={"souscategorie_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Geolocation\AdminBundle\Repository\CpfRepository")
  */
 class Cpf
 {
@@ -20,6 +20,13 @@ class Cpf
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     */
+    private $nom;
 
     /**
      * @var \Geolocation\AdminBundle\Entity\Categorie
@@ -240,5 +247,29 @@ class Cpf
     public function __toString()
     {
         return $this->getSection() . ' ' . $this->getDivision() . ' ' . $this->getGroupe();
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Cpf
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 }
