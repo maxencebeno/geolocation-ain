@@ -61,19 +61,19 @@
                 <section>
                     <div class="row well">
                         <h2 class="col-sm-12">Ressources proposées</h2>
-                        {% set i = 0 %}
-                        {% for item in ress %}
-                            {% if item.besoin == false %}
-                                <article class="col-sm-4">
-                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
-                                    {{ item.cpf.section.libelle }}
-                                </article>
-                            {% else %}
-                                {% set i = i+1 %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if i == 0 %}
+                        {% if ress|length == 0 %}
                             <p>Aucune ressource proposée</p>
+                        {% else %}
+                            {% for item in ress %}
+                                {% if item.besoin == false %}
+                                    <article class="col-sm-4">
+                                        <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
+                                        {{ item.cpf.souscategorie.libelle }}
+                                    </article>
+                                {% else %}
+                                    {% set i = i+1 %}
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
                     </div>
                 </section>
@@ -81,19 +81,19 @@
                 <section>
                     <div class="row well">
                         <h2 class="col-sm-12">Ressources demandées</h2>
-                        {% set i = 0 %}
+                        {% if ress|length == 0 %}
+                            <p>Aucune ressource proposée</p>
+                        {% else %}
                         {% for item in ress %}
                             {% if item.besoin == true %}
                                 <article class="col-sm-4">
                                     <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
-                                    {{ item.cpf.section.libelle }}
+                                    {{ item.cpf.souscategorie.libelle }}
                                 </article>
                             {% else %}
                                 {% set i = i+1 %}
                             {% endif %}
                         {% endfor %}
-                        {% if i == 0 %}
-                            <p>Aucune ressource demandée</p>
                         {% endif %}
                     </div>
                 </section>

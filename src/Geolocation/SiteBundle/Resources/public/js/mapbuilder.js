@@ -16,6 +16,8 @@ var contentString = "";
 //chargement des données 1 seule fois
 google.maps.event.addListenerOnce(carte, 'idle', function () {
     //appel de l'action pour charger les markers
+    var params = jQuery.deparam.querystring();
+    var codeNaf = typeof params.codeNaf === 'undefined' ? '' : params.codeNaf;
     $.ajax({
         url: baseUrl + 'json/markers',
         success: function (data) {
@@ -61,11 +63,11 @@ function initMarker(data, centerMarkers) {
                 '<h4>Ressources</h4>';
 
             if (data[i].besoin !== null) {
-                contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.groupe.libelle + '</p>';
+                contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.souscategorie.libelle + '</p>';
             }
 
             if (data[i].proposition !== null) {
-                contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.groupe.libelle + '</p>';
+                contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.souscategorie.libelle + '</p>';
             }
 
             if(data[i].proposition === null && data[i].proposition === null){

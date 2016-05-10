@@ -80,11 +80,7 @@
         {% include "GeolocationUserBundle:Ressources:edit_content.html.twig" %}            
 
 
-        <button id="  {{ adresse.adresseId }}" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-whatever="{{ adresse.adresseId }}" data-myaddress="{{ adresse.lieu }}">Supprimer</button>
-
-
-
-
+        <button id="{{ adresse.adresseId }}" class="btn btn-danger" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ adresse.adresseId }}" data-myaddress="{{ adresse.lieu }}">Supprimer</button>
 
     </div>
     <a href="{{ path('user_show_site') }}"
@@ -95,7 +91,7 @@
 </div>
 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="modalSiteProduction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -115,9 +111,9 @@
 
 
 <script>
-    $('#myModal').on('show.bs.modal', function (event) {
+    $('#modalSiteProduction').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
-        var id = button.data('whatever'); // Extract info from data-* attributes
+        //var id = button.data('whatever'); // Extract info from data-* attributes
         var myaddress = button.data('myaddress');
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.

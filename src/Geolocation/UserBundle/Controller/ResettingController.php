@@ -88,14 +88,6 @@ class ResettingController extends Controller {
         $dispatcher = $this->get('event_dispatcher');
 
         $user = $userManager->findUserByConfirmationToken($token);
-        
-        $user->setTryConnect(1);
-        if ($user->isLocked() == true) {
-            $user->setLocked(0);
-        }
-        if ($user->isEnabled() == false) {
-            $user->setEnabled(1);
-        }
 
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));

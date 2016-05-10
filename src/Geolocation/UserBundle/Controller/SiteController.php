@@ -77,7 +77,7 @@ class SiteController extends Controller {
                         $em->flush();
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
-                                echo $i[0];
+
                                 $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
                                         ->findOneBy(array('adresse' => $adr['adresse']));
                                 $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
@@ -90,7 +90,9 @@ class SiteController extends Controller {
                             $em->flush();
                         }
                         $this->addFlash('success', 'site.flash.create.success');
-
+                        
+                        $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
+                                ->findBy(array('userId' => $userId));
                         return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
                                     'sites' => $sites,
                                     'form' => $form->createView()
@@ -131,10 +133,8 @@ class SiteController extends Controller {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-
         $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
-
 
         $entity = $em->getRepository('GeolocationAdminBundle:Adresse')
                 ->findOneBy(array('id' => $id));
@@ -160,8 +160,6 @@ class SiteController extends Controller {
 
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findBy(array('adresse_id' => $id));
-        
-     
 
         if ($formRessource->isValid()) {
             $user = $this->getUser();
@@ -229,16 +227,16 @@ class SiteController extends Controller {
             } else {
                 $this->addFlash('danger', 'ressources.flash.create.fail');
             }
-           return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
-                            'adresse' => array(
-                                'adresseId' => $id,
-                                'lieu' => $entity->getAdresse()
-                            ),
-                            'form1' => $form->createView(),
-                            'form' => $formRessource->createView(),
-                            'sections' => $sections,
-                            'ressources' => $ressources,
-                ));
+            return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
+                        'adresse' => array(
+                            'adresseId' => $id,
+                            'lieu' => $entity->getAdresse()
+                        ),
+                        'form1' => $form->createView(),
+                        'form' => $formRessource->createView(),
+                        'sections' => $sections,
+                        'ressources' => $ressources,
+            ));
         }
 
         if ($form->isValid()) {
@@ -355,22 +353,26 @@ class SiteController extends Controller {
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findBy(array('adresse_id' => $id));
 
-        foreach ($ressources as $r) {
-            $em->remove($r);
+        if ($ressources !== null) {
+            foreach ($ressources as $r) {
+                $em->remove($r);
+            }
         }
 
         //suppression des iso
         $iso = $em->getRepository('GeolocationAdminBundle:SiteIso')
-                ->findBy(array('site_id' => $id));
+                ->findBy(array('siteId' => $id));
 
-        foreach ($iso as $i) {
-            $em->remove($i);
+        if ($iso !== null) {
+            foreach ($iso as $i) {
+                $em->remove($i);
+            }
         }
-
         //suppression de du site
         $em->remove($site);
         $em->flush();
 
+        $this->addFlash('success', "Le site a été supprimé avec succès");
         return $this->redirectToRoute('user_show_site');
     }
 

@@ -35,7 +35,7 @@ class ProfileController extends Controller {
         $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $userId));
+                ->findBy(array('user' => $userId, 'adresse_id'=>0));
         
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
                 ->findBy(array('userId' => $userId));

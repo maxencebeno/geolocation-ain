@@ -13,8 +13,10 @@ use Doctrine\ORM\EntityRepository;
 class CpfRepository extends EntityRepository
 {
     public function findCodeNafLike($term, $limit = 25) {
+        $term = strtr($term, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
+        $term = strtr($term, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
         $qb = $this->createQueryBuilder('c');
-        $qb->select('c.nom, s.libelle')
+        $qb->select('c.nom, s.libelle, c.id')
             ->innerJoin('Geolocation\AdminBundle\Entity\SousCategorie', 's', 'WITH', 'c.souscategorie = s.id')
             ->where('c.nom LIKE :term')
             ->orWhere('c.nom LIKE :termNoPoint')
@@ -28,7 +30,7 @@ class CpfRepository extends EntityRepository
         // Transformer le tableau associatif en un tableau standard
         $array = array();
         foreach ($arrayAss as $data) {
-            $array[] = array("Codes" => $data['nom'] . ' ' . $data['libelle']);
+            $array[] = array("Codes" => ['libelle' => $data['nom'] . ' ' . $data['libelle'], 'id' => $data['id']]);
         }
 
         return $array;

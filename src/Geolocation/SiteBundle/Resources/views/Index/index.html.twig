@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 
-    <form class="form-group col-sm-4 col-sm-offset-4">
+    <form class="form-group col-sm-4 col-sm-offset-4" id="search-code-naf-form">
         <div class="input-group">
-
-            <input class="form-control autocomplete-search-code-naf" name="codeNaf" data-url="{{ path('api_commun_json_codes_naf') }}" placeholder="Entrer le code NAF"/>
+            <input class="form-control autocomplete-search-code-naf" data-url="{{ path('api_commun_json_codes_naf') }}" placeholder="Entrer le code NAF"/>
+            <input id="search-code-naf-input" value="-1" type="hidden" name="codeNaf" />
             <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
         </div>
     </form>
