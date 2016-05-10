@@ -4,5 +4,10 @@
 {% endblock %}
 
 {% block fos_user_content %}
-{% include "GeolocationUserBundle:Resetting:reset_content.html.twig" %}
+    {% include "GeolocationUserBundle:Resetting:reset_content.html.twig" %}
+    {% block javascript %}
+        {% javascripts '@GeolocationUserBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock javascript %}
 {% endblock fos_user_content %}
