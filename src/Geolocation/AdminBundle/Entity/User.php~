@@ -538,4 +538,28 @@ class User extends BaseUser
     {
         return $this->pilier;
     }
+
+    /**
+     * Set siren
+     *
+     * @param string $siren
+     *
+     * @return User
+     */
+    public function setSiren($siren)
+    {
+        $this->siren = $siren;
+
+        return $this;
+    }
+
+    /**
+     * Get siren
+     *
+     * @return string
+     */
+    public function getSiren()
+    {
+        return $this->siren;
+    }
 }

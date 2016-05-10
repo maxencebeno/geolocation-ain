@@ -22,7 +22,7 @@ class UserFilterType extends AbstractType
             ->add('tel', 'filter_text')
             ->add('dateCreation', 'filter_date_range')
             ->add('dateCreationEntreprise', 'filter_date_range')
-            ->add('siret', 'filter_text')
+            ->add('siren', 'filter_text')
             ->add('kbis', 'filter_text')
             ->add('url', 'filter_text')
         ;
