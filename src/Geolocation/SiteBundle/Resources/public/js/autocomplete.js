@@ -25,15 +25,15 @@ $(".autocomplete-search-city").autocomplete({
             }
         });
     },
-    change: function( event, ui) {
-        if(ui.item == null){
+    change: function (event, ui) {
+        if (ui.item == null) {
             $('#search-cp').val("");
-        }else{
+        } else {
             searchCpfromCity(ui.item.label);
         }
 
     },
-    select: function( event, ui) {
+    select: function (event, ui) {
         searchCpfromCity(ui.item.label);
     },
     minLength: 2,
@@ -54,11 +54,10 @@ $(".autocomplete-search-code-naf").autocomplete({
             success: function (data) {
                 //Ajout de reponse dans le cache
                 response($.map(data, function (item) {
+                    $('#search-code-naf-input').val(item.Codes.id);
                     return {
-                        label: item.Codes,
-                        value: function () {
-                            return item.Codes;
-                        }
+                        label: item.Codes.libelle,
+                        value: item.Codes.libelle,
                     };
                 }));
             },
@@ -134,10 +133,40 @@ $(".autocomplete-search-entreprise").autocomplete({
     delay: 300
 });
 
+$('#search-code-naf-form').submit(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-function searchCpfromCity(city){
+    var idCpf = $('#search-code-naf-input').val();
+
     $.ajax({
-        url: baseUrl+'json/getcodepostalfromcity',
+        url: baseUrl + 'json/markers/' + idCpf,
+        method: "GET",
+        success: function (data) {
+            console.log(data);
+            clearMarker();
+            initMarker(data);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    centerMap(pos.lat, pos.lng);
+                });
+            } else {
+                centerMap(46.204960, 5.225797);
+            }
+        }
+    });
+
+    return false;
+});
+
+
+function searchCpfromCity(city) {
+    $.ajax({
+        url: baseUrl + 'json/getcodepostalfromcity',
         dataType: "json",
         data: {
             city: city
@@ -145,9 +174,9 @@ function searchCpfromCity(city){
         type: 'POST',
         success: function (data) {
             var codePostal = "";
-            if(data[0].CodePostal.includes("-")){
-                codePostal = data[0].CodePostal.substr(0, 2)+"000";
-            }else{
+            if (data[0].CodePostal.includes("-")) {
+                codePostal = data[0].CodePostal.substr(0, 2) + "000";
+            } else {
                 codePostal = data[0].CodePostal;
             }
             $('#search-cp').val(codePostal);

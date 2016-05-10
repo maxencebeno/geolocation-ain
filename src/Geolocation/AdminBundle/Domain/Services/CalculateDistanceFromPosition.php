@@ -65,10 +65,12 @@ class CalculateDistanceFromPosition
 
                             $elements = $item->getElements();
                             foreach ($elements as $element) {
-                                $distance = $element->getDistance()->getValue();
-                                if ($distance < $min) {
-                                    $min = $distance;
-                                    $minString = $element->getDistance()->getText();
+                                if ($element->getDistance()->getValue() !== null) {
+                                    $distance = $element->getDistance()->getValue();
+                                    if ($distance < $min) {
+                                        $min = $distance;
+                                        $minString = $element->getDistance()->getText();
+                                    }
                                 }
                             }
                         }

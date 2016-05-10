@@ -15,7 +15,8 @@ class VilleFranceRepository extends EntityRepository
 
     public function findVillesLike($term, $limit = 10)
     {
-
+        $term = strtr($term, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
+        $term = strtr($term, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
         $qb = $this->createQueryBuilder('v');
         $qb->select('v.villeNomReel')
             ->where('v.villeNom LIKE :term')
@@ -39,6 +40,8 @@ class VilleFranceRepository extends EntityRepository
 
     public function findCodePostalFromCity($term)
     {
+        $term = strtr($term, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
+        $term = strtr($term, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
         $qb = $this->createQueryBuilder('v');
         $qb->select('v.villeCodePostal')
             ->where('v.villeNomReel LIKE :term')

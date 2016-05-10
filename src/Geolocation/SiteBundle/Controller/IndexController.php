@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 class IndexController extends Controller {
 
-    public function indexAction() {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $sections = $em->getRepository('GeolocationAdminBundle:Section')
                 ->findByUserExist();
@@ -78,19 +78,47 @@ class IndexController extends Controller {
     public function loadMarkersAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $array = $em->getRepository('GeolocationAdminBundle:User')
-                ->findByEnabled(1);
+                ->findBy([
+                    'enabled' => true
+                ]);
 
-        $ressources = array();
-        foreach ($array as $user) {
-            $besoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findOneBy(array('user' => $user->getId(), 'besoin'=> true));
-            $proposition =  $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findOneBy(array('user' => $user->getId(), 'besoin'=> false));
-            $ressources[$user->getId()] = 
+        if ($idCpf = $request->attributes->get('codeNaf')) {
+            $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
+                ->findOneBy([
+                    'id' => $idCpf
+                ]);
+
+            if ($cpf !== null) {
+                $ressources = array();
+                foreach ($array as $user) {
+                    $besoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'cpf' => $cpf));
+                    $proposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf));
+
+                    if ($besoin !== null || $proposition !== null) {
+                        $ressources[$user->getId()] =
+                            array('besoin' => $besoin,
+                                'proposition' => $proposition,
+                                'user' => $user
+                            );
+                    }
+                }
+            }
+        } else {
+
+            $ressources = array();
+            foreach ($array as $user) {
+                $besoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                    ->findOneBy(array('user' => $user->getId(), 'besoin' => true));
+                $proposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                    ->findOneBy(array('user' => $user->getId(), 'besoin' => false));
+                $ressources[$user->getId()] =
                     array('besoin' => $besoin,
-                        'proposition'=>$proposition,
-                        'user'=>$user
-                           );
+                        'proposition' => $proposition,
+                        'user' => $user
+                    );
+            }
         }
 
         $user = $this->getUser();
@@ -100,14 +128,14 @@ class IndexController extends Controller {
         if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
             $ressources['connectedUser'] = $user;
             
-            $distanceService = $this->get('site_bundle.calculate_distance_from_position');
+            /*$distanceService = $this->get('site_bundle.calculate_distance_from_position');
 
             $minDistance = $distanceService->getMinDistance($ressources, $user);
-            $maxDistance = $distanceService->getMaxDistance($ressources, $user);
+            $maxDistance = $distanceService->getMaxDistance($ressources, $user);*/
             
             $ressources['distances'] = [
-                'min' => $minDistance,
-                'max' => $maxDistance
+                'min' => 0,
+                'max' => 1000
             ];
         }
 

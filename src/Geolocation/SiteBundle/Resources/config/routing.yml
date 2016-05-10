@@ -43,8 +43,8 @@ api_commun_json_entreprise:
     defaults: { _controller: SiteBundle:Index:getEntreprise }
 
 api_markers:
-    path: /json/markers
-    defaults: { _controller: SiteBundle:Index:loadMarkers, _format: json }
+    path: /json/markers/{codeNaf}
+    defaults: { _controller: SiteBundle:Index:loadMarkers, _format: json, codeNaf: null }
     
 searchCPfromCity:
     path: /json/getcodepostalfromcity
