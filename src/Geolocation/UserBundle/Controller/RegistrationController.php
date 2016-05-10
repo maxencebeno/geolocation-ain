@@ -71,7 +71,7 @@ class RegistrationController extends BaseController
                 break;
             case 'association':
                 $form->remove('fileKbis');
-                $form->remove('siret');
+                $form->remove('siren');
         }
 
         $form->handleRequest($request);

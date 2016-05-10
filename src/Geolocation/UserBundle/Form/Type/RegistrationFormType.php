@@ -37,7 +37,7 @@ class RegistrationFormType extends BaseType
                     'data-date-format' => 'DD/MM/Y'
                 ]
             ))
-            ->add('siret', 'text', array('label' => 'form.siret', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'))
+            ->add('siren', 'text', array('label' => 'form.siren', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'))
             ->add('url', 'text', array('label' => 'form.url', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',

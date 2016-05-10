@@ -33,7 +33,7 @@ class FiltresController extends Controller
             $filterByCodePostal = $this->get('site_bundle.filter_by_code_postal');
             $datas = $filterByCodePostal->filterByCodePostal($datas, $request);
         }
-        if ($request->request->get('city') !== "") {
+        if ($request->request->get('city')) {
             $ville = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:VilleFrance')->findOneBy([
                 'villeNomReel' => $request->request->get('city')
             ]);

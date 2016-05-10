@@ -92,7 +92,7 @@ class ProfileFormType extends AbstractType
                 ]
             ))
             ->add('pilier', null, ['label' => 'form.pilier', 'translation_domain' => 'GeolocationUserBundle', 'required' => false])
-            ->add('siret', null, array('label' => 'form.siret', 'translation_domain' => 'GeolocationUserBundle', 'required' => true, 'read_only' => true))
+            ->add('siren', null, array('label' => 'form.siren', 'translation_domain' => 'GeolocationUserBundle', 'required' => true, 'read_only' => true))
             ->add('fileKbis', null, array('label' => 'form.kbis', 'translation_domain' => 'GeolocationUserBundle'))
             ->add('url', null, array('label' => 'form.url', 'translation_domain' => 'GeolocationUserBundle'))
             ->add('description', 'textarea', array('label' => 'form.description', 'translation_domain' => 'GeolocationUserBundle', 'required' => false))

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * SiteIso
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Geolocation\AdminBundle\Entity\SiteIsoRepository")
+ * @ORM\Entity(repositoryClass="Geolocation\AdminBundle\Repository\SiteIsoRepository")
  */
 class SiteIso
 {
