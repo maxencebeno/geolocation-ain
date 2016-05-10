@@ -75,7 +75,7 @@
                                         {{ ressource.getCpf() }}
 
                                         <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}"><i class="
-glyphicon glyphicon-remove"></i></button>
+                                                                                                                                                                                                        glyphicon glyphicon-remove"></i></button>
                                     </li>
                                     {% set cpt = 1 %}
                                 {% endif %}
@@ -95,7 +95,7 @@ glyphicon glyphicon-remove"></i></button>
                                         {{ ressource.getCpf() }}
 
                                         <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}"><i class="
-glyphicon glyphicon-remove"></i></button>
+                                                                                                                                                                                                        glyphicon glyphicon-remove"></i></button>
                                     </li>
                                     {% set cpt = 1 %}
                                 {% endif %}
@@ -152,6 +152,11 @@ glyphicon glyphicon-remove"></i></button>
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
         modal.find('.modal-body span').text(myressource);
-        modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/" + id);
+        var pathname = window.location.pathname; //récuération du chemin pour savoir sur quel page on est; car le template est appelé à plusieurs endroit
+        if (pathname.search("get-site") > -1) {
+            modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/" + id+ "?page=edit-site");
+        } else {
+            modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/" + id);
+        }
     });
 </script>

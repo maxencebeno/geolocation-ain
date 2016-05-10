@@ -88,9 +88,8 @@ class RessourcesController extends Controller {
 
                 $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
                         ->findBy(array('user' => $userId));
-            }else{
-                 $this->addFlash('danger', 'ressources.flash.create.fail');
-
+            } else {
+                $this->addFlash('danger', 'ressources.flash.create.fail');
             }
             return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
                         'entity' => $entity,
@@ -111,15 +110,19 @@ class RessourcesController extends Controller {
         ));
     }
 
-    public function deleteAction($id) {
+    public function deleteAction(Request $request) {
+        $id= $request->attributes->get('id');
         $em = $this->getDoctrine()->getManager();
         $ressource = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->find($id);
 
         $em->remove($ressource);
         $em->flush();
-
-        return $this->redirectToRoute('user_ressources');
+        if ($request->query->get('page')){
+            return $this->redirectToRoute('user_edit_site',array('id'=>$this->getUser()->getId()));
+        } else{
+            return $this->redirectToRoute('user_ressources');
+        }
     }
 
 }

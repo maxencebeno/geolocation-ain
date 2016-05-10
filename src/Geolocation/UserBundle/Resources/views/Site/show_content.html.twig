@@ -51,21 +51,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <span class="form-edit-label">{{ form_label(form.tel) }}<strong class="text-danger">*</strong></span>
-                            {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '5'}}) }}
-                            <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <span class="form-edit-label">{{ form_label(form.isPublic) }}</span>
-                            {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-site form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
-                            <span class="form-error" id="error-tel">{{ form_errors(form.isPublic) }}</span>
-                        </div>
-
-                    </div>
-                </div>
                 <div class="form-group">   
                     {{ form_widget(form.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '7' }}) }}
                     {{ form_end(form) }}
@@ -84,6 +69,8 @@
                             <li class="mySite">
                                 {{ site.adresse }} - {{ site.ville }} 
                                 <a href="{{ path('user_edit_site', {'id': site.id}) }}" id="{{ site.id }} " class="btn btn-info">Modifier</a>
+                                <button id="{{site.id}}" class="btn btn-danger" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">Supprimer</button>
+
                             </li>
                         {% endfor %}
                     </ul>
@@ -101,3 +88,37 @@
 
     </div>
 </div>
+        
+        
+        
+<div class="modal fade" id="modalSiteProduction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Etes-vous sûr de vouloir supprimer ce site : <span></span> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                <a id="valid" href = "" type="button" class="btn btn-danger">Oui</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#modalSiteProduction').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('whatever'); // Extract info from data-* attributes
+        var myaddress = button.data('myaddress');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        modal.find('.modal-body span').text(myaddress);
+        modal.find('.modal-footer #valid').attr('href', "/app_dev.php/profile/delete-site/"+id);
+    });
+</script>
