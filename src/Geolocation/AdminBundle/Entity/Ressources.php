@@ -49,9 +49,12 @@ class Ressources
     private $cpf;
 
     /**
-     * @var integer
+     * @var \Geolocation\AdminBundle\Entity\Adresse
      *
-     * @ORM\Column(name="adresse_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Adresse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
+     * })
      */
     private $adresse_id;
 
@@ -141,11 +144,11 @@ class Ressources
     /**
      * Set adresseId
      *
-     * @param integer $adresseId
+     * @param \Geolocation\AdminBundle\Entity\Adresse $adresseId
      *
      * @return Ressources
      */
-    public function setAdresseId($adresseId)
+    public function setAdresseId(\Geolocation\AdminBundle\Entity\Adresse $adresseId = null)
     {
         $this->adresse_id = $adresseId;
 
@@ -155,7 +158,7 @@ class Ressources
     /**
      * Get adresseId
      *
-     * @return integer
+     * @return \Geolocation\AdminBundle\Entity\Adresse
      */
     public function getAdresseId()
     {

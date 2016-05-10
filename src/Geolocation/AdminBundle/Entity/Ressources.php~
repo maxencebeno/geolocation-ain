@@ -49,116 +49,13 @@ class Ressources
     private $cpf;
 
     /**
-     * @var integer
+     * @var \Geolocation\AdminBundle\Entity\Adresse
      *
-     * @ORM\Column(name="adresse_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Adresse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
+     * })
      */
     private $adresse_id;
 
-
-    /**
-     * Set besoin
-     *
-     * @param boolean $besoin
-     *
-     * @return Ressources
-     */
-    public function setBesoin($besoin)
-    {
-        $this->besoin = $besoin;
-
-        return $this;
-    }
-
-    /**
-     * Get besoin
-     *
-     * @return boolean
-     */
-    public function getBesoin()
-    {
-        return $this->besoin;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Geolocation\AdminBundle\Entity\User $user
-     *
-     * @return Ressources
-     */
-    public function setUser(\Geolocation\AdminBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Geolocation\AdminBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set cpf
-     *
-     * @param \Geolocation\AdminBundle\Entity\Cpf $cpf
-     *
-     * @return Ressources
-     */
-    public function setCpf(\Geolocation\AdminBundle\Entity\Cpf $cpf = null)
-    {
-        $this->cpf = $cpf;
-
-        return $this;
-    }
-
-    /**
-     * Get cpf
-     *
-     * @return \Geolocation\AdminBundle\Entity\Cpf
-     */
-    public function getCpf()
-    {
-        return $this->cpf;
-    }
-
-    /**
-     * Set adresseId
-     *
-     * @param integer $adresseId
-     *
-     * @return Ressources
-     */
-    public function setAdresseId($adresseId)
-    {
-        $this->adresse_id = $adresseId;
-
-        return $this;
-    }
-
-    /**
-     * Get adresseId
-     *
-     * @return integer
-     */
-    public function getAdresseId()
-    {
-        return $this->adresse_id;
-    }
 }

@@ -330,4 +330,28 @@ class Adresse
     {
         return $this->user;
     }
+
+    /**
+     * Set siret
+     *
+     * @param string $siret
+     *
+     * @return Adresse
+     */
+    public function setSiret($siret)
+    {
+        $this->siret = $siret;
+
+        return $this;
+    }
+
+    /**
+     * Get siret
+     *
+     * @return string
+     */
+    public function getSiret()
+    {
+        return $this->siret;
+    }
 }
