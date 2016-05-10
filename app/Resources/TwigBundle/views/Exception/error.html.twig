@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Erreur {{ status_text }}</title>
-  </head>
-  <body>
-    <h1>C'est tout cassé ! Une erreur est survenue</h1>
-    <h2>Le code d'erreur est "{{ status_code }} {{ status_text }}".</h2>
+{% extends '::base.html.twig' %}
 
-    <div class="alert alert-danger">
-      La page que vous cherchez n'existe pas.
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <h1>C'est tout cassé ! Une erreur est survenue</h1>
+            <h2>Le code d'erreur est "{{ status_code }} {{ status_text }}".</h2>
+
+            <div class="alert alert-danger">
+                La page que vous cherchez n'existe pas.
+            </div>
+        </div>
     </div>
-  </body>
-</html>
+
+{% endblock %}

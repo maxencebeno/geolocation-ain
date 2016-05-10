@@ -244,3 +244,7 @@ input#distance{
     padding-left: 10px;
     padding-top: 10px;
 }
+
+.navbar-default .navbar-brand:hover{
+    color:#4E9C6D;
+}
