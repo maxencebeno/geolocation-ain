@@ -1,0 +1,16 @@
+{% extends "GeolocationUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block fos_user_content %}
+    {% include "GeolocationUserBundle:Site:show_content.html.twig" %}
+
+
+    {% block javascript %}
+        {% javascripts '@GeolocationUserBundle/Resources/public/js/*'
+                        '@SiteBundle/Resources/public/js/autocomplete.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock javascript %}
+{% endblock fos_user_content %}

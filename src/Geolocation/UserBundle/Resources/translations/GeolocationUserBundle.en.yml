@@ -165,7 +165,12 @@ site:
         title_ajout: "Add site"
         title_modification: "Modify my sites"
         no_sites: "No sites added"
+        title_edit: "Edit site"
+        back_on_site: "Come back to my site"
     flash:
         create:
             success: "The site has been added"
             fail: "An invalid field"
+        edit:
+            bad_site: "Error. You can't modify this site."
+            success: "Update of the site was a success"

@@ -175,7 +175,12 @@ site:
         title_ajout: "Ajouter des sites"
         title_modification: "Modifier mes sites"
         no_sites: "Pas de sites ajoutés"
+        title_edit: "Editer ce site"
+        back_on_site: "Revenir sur mes sites"
     flash:
         create:
             success: "Le site a bien été ajouté"
             fail: "Un champ est invalide"
+        edit:
+            bad_site: "Erreur. Vous ne pouvez pas modifier ce site."
+            success: "Le site a bien été mis à jour"
