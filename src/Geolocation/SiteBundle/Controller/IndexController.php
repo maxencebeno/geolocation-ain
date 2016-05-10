@@ -83,6 +83,7 @@ class IndexController extends Controller {
                 ]);
 
         if ($idCpf = $request->attributes->get('codeNaf')) {
+            
             $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
                 ->findOneBy([
                     'id' => $idCpf
