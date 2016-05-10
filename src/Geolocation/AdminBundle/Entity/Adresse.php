@@ -50,9 +50,9 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="siren", type="string", length=255, nullable=false)
+     * @ORM\Column(name="siret", type="string", length=255, nullable=false)
      */
-    private $siren;
+    private $siret;
 
     /**
      * @var string
@@ -105,30 +105,6 @@ class Adresse
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set userId
-     *
-     * @param integer $userId
-     *
-     * @return Adresse
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return integer
-     */
-    public function getUserId()
-    {
-        return $this->userId;
     }
 
     /**
@@ -331,32 +307,6 @@ class Adresse
         $this->iso = $iso;
     }
 
-
-
-    /**
-     * Set siren
-     *
-     * @param string $siren
-     *
-     * @return Adresse
-     */
-    public function setSiren($siren)
-    {
-        $this->siren = $siren;
-
-        return $this;
-    }
-
-    /**
-     * Get siren
-     *
-     * @return string
-     */
-    public function getSiren()
-    {
-        return $this->siren;
-    }
-
     /**
      * Set user
      *
@@ -379,5 +329,29 @@ class Adresse
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set siret
+     *
+     * @param string $siret
+     *
+     * @return Adresse
+     */
+    public function setSiret($siret)
+    {
+        $this->siret = $siret;
+
+        return $this;
+    }
+
+    /**
+     * Get siret
+     *
+     * @return string
+     */
+    public function getSiret()
+    {
+        return $this->siret;
     }
 }
