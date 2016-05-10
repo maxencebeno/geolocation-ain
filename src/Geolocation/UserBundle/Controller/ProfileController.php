@@ -31,14 +31,12 @@ class ProfileController extends Controller {
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-
-        $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $userId, 'adresse_id'=>0));
+                ->findBy(array('user' => $user, 'adresse_id'=>0));
         
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-                ->findBy(array('userId' => $userId));
+                ->findBy(array('user' => $user));
 
         /** @var \DateTime $date */
         if ($user->getDateCreationEntreprise() !== null) {
