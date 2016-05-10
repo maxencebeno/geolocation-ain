@@ -18,6 +18,10 @@ body{
     display : block;
 }
 
+#wrapper{
+    min-height: 725px;
+}
+
 h1,h2,h3,h4,h5,h6{
     font-family: "Exo";
 }
@@ -107,7 +111,6 @@ input#distance {
   position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
     width: 100%;
 }
 
