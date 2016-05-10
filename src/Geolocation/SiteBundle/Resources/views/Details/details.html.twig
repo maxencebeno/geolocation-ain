@@ -65,6 +65,7 @@
                         {% for item in ress %}
                             {% if item.besoin == false %}
                                 <article class="col-sm-4">
+                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
                                     {{ item.cpf.section.libelle }}
                                 </article>
                             {% else %}
@@ -84,6 +85,7 @@
                         {% for item in ress %}
                             {% if item.besoin == true %}
                                 <article class="col-sm-4">
+                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
                                     {{ item.cpf.section.libelle }}
                                 </article>
                             {% else %}
