@@ -3,6 +3,7 @@
 namespace Geolocation\AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -21,6 +22,8 @@ class RessourcesType extends AbstractType
                 'expanded' => true,
                 'multiple' => false])
             ->add('cpf')
+            ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => ['placeholder' => "Description complémentaire du produit"]])
+            ->add('remarque', TextareaType::class, ['label' => 'Remarques / observations', 'attr' => ['placeholder' => "Précisez ici toutes les informations qui permettront de faciliter la transaction"]])
             ->add('saveRessource', 'submit', array());
     }
 

@@ -16,6 +16,14 @@
                 {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                 <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
 
+                <span class="form-edit-label">{{ form_label(form.description) }}</span><br>
+                {{ form_widget(form.description, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                <span class="form-error" id="error-description">{{ form_errors(form.description) }}</span>
+
+                <span class="form-edit-label">{{ form_label(form.remarque) }}</span><br>
+                {{ form_widget(form.remarque, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                <span class="form-error" id="error-remarque">{{ form_errors(form.remarque) }}</span>
+
                 <div class="from-group voffset1">
 
                     {% include 'GeolocationUserBundle:Ajax:template_ajax.html.twig' %}

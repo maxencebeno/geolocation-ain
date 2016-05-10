@@ -58,6 +58,19 @@ class Ressources
      */
     private $adresse_id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarque", type="text", nullable=true)
+     */
+    private $remarque;
 
     /**
      * Set besoin
@@ -163,5 +176,53 @@ class Ressources
     public function getAdresseId()
     {
         return $this->adresse_id;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Ressources
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set remarque
+     *
+     * @param string $remarque
+     *
+     * @return Ressources
+     */
+    public function setRemarque($remarque)
+    {
+        $this->remarque = $remarque;
+
+        return $this;
+    }
+
+    /**
+     * Get remarque
+     *
+     * @return string
+     */
+    public function getRemarque()
+    {
+        return $this->remarque;
     }
 }

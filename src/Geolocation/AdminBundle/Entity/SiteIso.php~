@@ -47,4 +47,86 @@ class SiteIso
      * @ORM\Column(name="autre", type="string", length=255, nullable=true)
      */
     private $autre;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set autre
+     *
+     * @param string $autre
+     *
+     * @return SiteIso
+     */
+    public function setAutre($autre)
+    {
+        $this->autre = $autre;
+
+        return $this;
+    }
+
+    /**
+     * Get autre
+     *
+     * @return string
+     */
+    public function getAutre()
+    {
+        return $this->autre;
+    }
+
+    /**
+     * Set isoId
+     *
+     * @param \Geolocation\AdminBundle\Entity\Iso $isoId
+     *
+     * @return SiteIso
+     */
+    public function setIsoId(\Geolocation\AdminBundle\Entity\Iso $isoId = null)
+    {
+        $this->isoId = $isoId;
+
+        return $this;
+    }
+
+    /**
+     * Get isoId
+     *
+     * @return \Geolocation\AdminBundle\Entity\Iso
+     */
+    public function getIsoId()
+    {
+        return $this->isoId;
+    }
+
+    /**
+     * Set siteId
+     *
+     * @param \Geolocation\AdminBundle\Entity\Adresse $siteId
+     *
+     * @return SiteIso
+     */
+    public function setSiteId(\Geolocation\AdminBundle\Entity\Adresse $siteId = null)
+    {
+        $this->siteId = $siteId;
+
+        return $this;
+    }
+
+    /**
+     * Get siteId
+     *
+     * @return \Geolocation\AdminBundle\Entity\Adresse
+     */
+    public function getSiteId()
+    {
+        return $this->siteId;
+    }
 }
