@@ -43,6 +43,7 @@ function initMarker(data, centerMarkers) {
     centerMarkers = typeof centerMarkers === 'undefined';
     var i;
     var index = 0;
+    var index2 = 0;
     var bounds = new google.maps.LatLngBounds();
     for (i in data) {
         if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
@@ -50,10 +51,11 @@ function initMarker(data, centerMarkers) {
                 for (var j in data[i].sites) {
                     latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
                     markers.push(new google.maps.Marker({
-                        position: latlng[index],
+                        position: latlng[index2],
                         map: carte,
-                        title: 'Test ' + index
+                        title: 'Test ' + index2
                     }));
+                    console.log(latlng[index2]);
 
                     contentString =
                             '<div id="content">' +
@@ -75,18 +77,18 @@ function initMarker(data, centerMarkers) {
                     }
                     contentString += '<a href = "' + baseUrl + 'details\\' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
                             '</div>';
-                    infowindow[index] = new google.maps.InfoWindow({
+                    infowindow[index2] = new google.maps.InfoWindow({
                         content: contentString
                     });
 
-                    google.maps.event.addListener(markers[index], 'click', function (index) {
+                    google.maps.event.addListener(markers[index2], 'click', function (index2) {
                         return function () {
                             closeWindowInfos(); //fermer toutes les infoWindows ouvertes
-                            infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
+                            infowindow[index2].open(carte, markers[index2]); //ouverture de l'infobulle du point choisi
                         }
-                    }(index));
+                    }(index2));
+                    index2++;
                 }
-                index++;
             }
 
             latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
