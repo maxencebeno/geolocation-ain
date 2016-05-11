@@ -364,4 +364,28 @@ class Adresse
     {
         return $this->siret;
     }
+
+    /**
+     * Set pilier
+     *
+     * @param \Geolocation\AdminBundle\Entity\Pilier $pilier
+     *
+     * @return Adresse
+     */
+    public function setPilier(\Geolocation\AdminBundle\Entity\Pilier $pilier = null)
+    {
+        $this->pilier = $pilier;
+
+        return $this;
+    }
+
+    /**
+     * Get pilier
+     *
+     * @return \Geolocation\AdminBundle\Entity\Pilier
+     */
+    public function getPilier()
+    {
+        return $this->pilier;
+    }
 }

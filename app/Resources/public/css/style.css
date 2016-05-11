@@ -48,6 +48,23 @@ a:hover{
     cursor: pointer;
 }
 
+@media screen and (max-width: 750px) {
+    #zoneRechercheCarte {
+        display:block;
+        position: relative;
+        top:initial;
+        right:initial;
+        margin:10px;
+    }
+    #map{
+        display: block;
+    }
+    
+    .container-map{
+        margin-bottom:420px !important;
+    }
+}   
+
 #filtreRechercheCarte span.glyphicon{
     font-size : 0.7em;
 }
@@ -94,10 +111,10 @@ input#distance {
 
 /*---------FOOTER----------*/
 .footer {
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  background-color: #374a5d;
-  padding-bottom:10px;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    background-color: #374a5d;
+    padding-bottom:10px;
 }
 
 footer .social-link{
@@ -213,7 +230,7 @@ footer ul li{
 }
 
 .btn-info{
-background-color: #2B85A0;
+    background-color: #2B85A0;
 }
 
 
@@ -236,4 +253,8 @@ input#distance{
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:focus{
     color:#4E9C6D;
+}
+
+.myressource li{
+    list-style-type:none;
 }
