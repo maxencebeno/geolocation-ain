@@ -51,27 +51,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
                                 <span class="form-edit-label">{{ form_label(form.tel) }}<strong
                                         class="text-danger">*</strong></span>
                                 {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '5'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
                             </div>
-                            <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
                                 <span class="form-edit-label">{{ form_label(form.isPublic) }}</span>
                                 {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-site form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form.isPublic) }}</span>
                             </div>
-
                         </div>
                     </div>
 
-                </div>
+
+
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <span class="form-edit-label">{{ form_label(form.iso) }}</span>
                             {{ form_widget(form.iso, { 'attr': {'class': 'edit-form-site', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
                             <span class="form-error" id="error-iso">{{ form_errors(form.iso) }}</span>
@@ -87,6 +90,7 @@
             </div>
         </div>
     </div>
+
     <div id="user_site_edit" class="col-sm-6">
         <div class="panel panel-default">
             <div class="panel-heading"><h3>{{ 'site.edit.title_modification'|trans }}</h3></div>
@@ -110,8 +114,8 @@
             </div>
         </div>
     </div>
-
 </div>
+
 
 
 <a href="{{ path('fos_user_profile_show') }}"
@@ -119,6 +123,8 @@
     <i class="glyphicon glyphicon-arrow-left"></i>
     {{ 'profile.edit.back_on_profile'|trans }}
 </a>
+
+</div>
 
 <div class="modal fade" id="modalSiteProduction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
