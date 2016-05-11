@@ -59,7 +59,7 @@ class GenerateArrayRessources
                             $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                                 ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf, 'adresse_id' => $adress));
                             if ($besoin !== null || $propositionSite !== null) {
-                                $ressources[$user->getId()]['sites'] = [
+                                $ressources[$user->getId()]['sites'][] = [
                                     'adresse' => $adress,
                                     'besoin' => $besoinSite,
                                     'proposition' => $propositionSite
@@ -93,7 +93,7 @@ class GenerateArrayRessources
                         $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'adresse_id' => $adress));
                         if ($besoinSite !== null || $propositionSite !== null) {
-                            $ressources[$user->getId()]['sites'] = [
+                            $ressources[$user->getId()]['sites'][] = [
                                 'adresse' => $adress,
                                 'besoin' => $besoinSite,
                                 'proposition' => $propositionSite
