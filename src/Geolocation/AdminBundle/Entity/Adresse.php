@@ -34,6 +34,16 @@ class Adresse
     private $user;
 
     /**
+     * @var \Geolocation\AdminBundle\Entity\Pilier
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Pilier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pilier", referencedColumnName="id")
+     * })
+     */
+    private $pilier;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="main", type="boolean")
@@ -353,5 +363,29 @@ class Adresse
     public function getSiret()
     {
         return $this->siret;
+    }
+
+    /**
+     * Set pilier
+     *
+     * @param \Geolocation\AdminBundle\Entity\Pilier $pilier
+     *
+     * @return Adresse
+     */
+    public function setPilier(\Geolocation\AdminBundle\Entity\Pilier $pilier = null)
+    {
+        $this->pilier = $pilier;
+
+        return $this;
+    }
+
+    /**
+     * Get pilier
+     *
+     * @return \Geolocation\AdminBundle\Entity\Pilier
+     */
+    public function getPilier()
+    {
+        return $this->pilier;
     }
 }

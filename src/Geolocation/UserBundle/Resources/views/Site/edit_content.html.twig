@@ -20,6 +20,13 @@
                     </div>
 
                     <div class="form-group">
+                        <span class="form-edit-label">{{ form_label(form1.pilier) }}<strong
+                                    class="text-danger">*</strong></span>
+                        {{ form_widget(form1.pilier, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '2'}}) }}
+                        <span class="form-error" id="error-pilier">{{ form_errors(form1.pilier) }}</span>
+                    </div>
+
+                    <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="form-edit-label">{{ form_label(form1.ville) }}<strong class="text-danger">*</strong></label>

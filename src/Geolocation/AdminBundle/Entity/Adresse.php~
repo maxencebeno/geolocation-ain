@@ -34,6 +34,16 @@ class Adresse
     private $user;
 
     /**
+     * @var \Geolocation\AdminBundle\Entity\Pilier
+     *
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Pilier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pilier", referencedColumnName="id")
+     * })
+     */
+    private $pilier;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="main", type="boolean")
@@ -50,7 +60,7 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="siret", type="string", length=255, nullable=false)
+     * @ORM\Column(name="siret", type="string", length=255, nullable=true)
      */
     private $siret;
 

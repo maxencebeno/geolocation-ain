@@ -48,7 +48,7 @@ class SiteIso
      */
     private $autre;
 
-<<<<<<< HEAD
+
     /**
      * @var \DateTime
      *
@@ -71,9 +71,6 @@ class SiteIso
     private $en_cours_certification;
     
     
-
-=======
->>>>>>> origin/master
     /**
      * Get id
      *
