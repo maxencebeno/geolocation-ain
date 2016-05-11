@@ -47,9 +47,9 @@ class User extends BaseUser
     protected $adresse;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="code_postal", type="integer", nullable=false)
+     * @ORM\Column(name="code_postal", type="string", length=255, nullable=false)
      */
     protected $codePostal;
 

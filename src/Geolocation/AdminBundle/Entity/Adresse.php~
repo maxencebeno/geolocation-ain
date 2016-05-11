@@ -74,7 +74,7 @@ class Adresse {
     /**
      * @var integer
      *
-     * @ORM\Column(name="code_postal", type="integer", nullable=false)
+     * @ORM\Column(name="code_postal", type="string", length=255, nullable=false)
      */
     private $codePostal;
 
@@ -373,4 +373,28 @@ class Adresse {
         return $this->pilier;
     }
 
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Adresse
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
 }
