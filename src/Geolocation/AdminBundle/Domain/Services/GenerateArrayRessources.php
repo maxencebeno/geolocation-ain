@@ -48,7 +48,8 @@ class GenerateArrayRessources
                     }
                     $adresses = $em->getRepository('GeolocationAdminBundle:Adresse')
                         ->findBy([
-                            'user' => $user
+                            'user' => $user,
+                            'isPublic' => true
                         ]);
                     if (count($adresses) > 0) {
                         foreach ($adresses as $adress) {
@@ -58,9 +59,7 @@ class GenerateArrayRessources
                                 ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf, 'adresse_id' => $adress));
                             if ($besoin !== null || $propositionSite !== null) {
                                 $ressources[$user->getId()] =
-                                    array('besoin' => $besoin,
-                                        'proposition' => $proposition,
-                                        'user' => $user,
+                                    array(
                                         'sites' => [
                                             'adresse' => $adress,
                                             'besoin' => $besoinSite,
@@ -97,9 +96,7 @@ class GenerateArrayRessources
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'adresse_id' => $adress));
                         if ($besoinSite !== null || $propositionSite !== null) {
                             $ressources[$user->getId()] =
-                                array('besoin' => $besoin,
-                                    'proposition' => $proposition,
-                                    'user' => $user,
+                                array(
                                     'sites' => [
                                         'adresse' => $adress,
                                         'besoin' => $besoinSite,

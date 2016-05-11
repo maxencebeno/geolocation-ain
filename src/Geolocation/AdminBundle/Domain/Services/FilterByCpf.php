@@ -17,8 +17,9 @@ class FilterByCpf
     {
         $this->doctrine = $doctrine;
     }
-    
-    public function filterByCpf(array $datas = [], Request $request) {
+
+    public function filterByCpf(array $datas = [], Request $request)
+    {
 
         if ($request->request->get('section') === "-1") {
             $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')->findAll();
@@ -43,7 +44,9 @@ class FilterByCpf
                 /** @var Ressources $ressource */
                 foreach ($ressources as $ressource) {
                     if (!isset($datas[$ressource->getUser()->getId()])) {
-                        $datas[$ressource->getUser()->getId()] = [];
+                        $datas[$ressource->getUser()->getId()] = [
+                            'sites' => []
+                        ];
                     }
                 }
             }
@@ -52,7 +55,7 @@ class FilterByCpf
         foreach ($datas as $key => $data) {
             $user = $this->doctrine->getRepository('GeolocationAdminBundle:User')
                 ->findOneBy([
-                    'id' => $key
+                    'id' => $key,
                 ]);
 
             if ($user !== null) {
@@ -73,6 +76,37 @@ class FilterByCpf
                     'proposition' => $proposition,
                     'user' => $user
                 ];
+
+                $adresses = $this->doctrine->getRepository('GeolocationAdminBundle:Adresse')
+                    ->findBy([
+                        'user' => $user
+                    ]);
+
+                foreach ($adresses as $adress) {
+                    $besoinSite = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findOneBy([
+                            'user' => $user,
+                            'besoin' => true,
+                            'adresse_id' => $adress
+                        ]);
+
+                    $propositionSite = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findOneBy([
+                            'user' => $user,
+                            'besoin' => false,
+                            'adresse_id' => $adress
+                        ]);
+
+                    if ($besoinSite !== null || $propositionSite !== null) {
+                        $datas[$key] = [
+                            'sites' => [
+                                'adresse' => $adress,
+                                'besoin' => $besoinSite,
+                                'proposition' => $propositionSite
+                            ]
+                        ];
+                    }
+                }
             }
         }
 

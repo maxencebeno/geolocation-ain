@@ -78,13 +78,14 @@ class SiteController extends Controller {
                         $em->flush();
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
-
+                                $iso = $em->getRepository('GeolocationAdminBundle:Iso')
+                                    ->findOneBy(['id' => $i[0]]);
                                 $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
                                         ->findOneBy(array('adresse' => $adr['adresse']));
                                 $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
 
-                                $siteIso->setIsoId($i[0]);
-                                $siteIso->setSiteId($siteId->getId());
+                                $siteIso->setIsoId($iso);
+                                $siteIso->setSiteId($siteId);
                                 if ($request->request->get('certifie-' . $i) === "oui") {
                                     $siteIso->setCertifie(true);
                                     $siteIso->setEnCoursCertification(false);
@@ -231,13 +232,13 @@ class SiteController extends Controller {
             if ($cpf !== null) {
                 $ressource->setCpf($cpf);
                 $ressource->setUser($user);
-                $ressource->setAdresseId($id);
+                $ressource->setAdresseId($entity);
 
                 $em->persist($ressource);
                 $em->flush();
 
                 $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('adresse_id' => $id));
+                        ->findBy(array('adresse_id' => $entity));
 
                 $this->addFlash('success', 'ressources.flash.create.success');
             } else {
@@ -302,9 +303,11 @@ class SiteController extends Controller {
 
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
+                                $iso = $em->getRepository('GeolocationAdminBundle:Iso')
+                                    ->findOneBy(['id' => $i[0]]);
                                 $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
-                                $siteIso->setIsoId($i[0]);
-                                $siteIso->setSiteId($id);
+                                $siteIso->setIsoId($iso);
+                                $siteIso->setSiteId($entity);
                                 if ($request->request->get('certifie-' . $i) === "oui") {
                                     $siteIso->setCertifie(true);
                                     $siteIso->setEnCoursCertification(false);
@@ -385,7 +388,7 @@ class SiteController extends Controller {
 
         //suppression des iso
         $iso = $em->getRepository('GeolocationAdminBundle:SiteIso')
-                ->findBy(array('siteId' => $id));
+                ->findBy(array('siteId' => $site));
 
         if ($iso !== null) {
             foreach ($iso as $i) {
