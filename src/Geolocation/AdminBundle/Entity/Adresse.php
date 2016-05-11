@@ -50,7 +50,7 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="siret", type="string", length=255, nullable=false)
+     * @ORM\Column(name="siret", type="string", length=255, nullable=true)
      */
     private $siret;
 

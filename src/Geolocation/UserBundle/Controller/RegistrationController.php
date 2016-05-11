@@ -123,6 +123,7 @@ class RegistrationController extends BaseController
                         $adresse->setTel($user->getTel());
                         $adresse->setIsPublic(true);
                         $adresse->setUser($user);
+                        $adresse->setVille($user->getVille());
 
                         $em->persist($adresse);
 
