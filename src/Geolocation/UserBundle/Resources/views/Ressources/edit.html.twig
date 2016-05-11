@@ -4,8 +4,9 @@
 {% endblock %}
 
 {% block fos_user_content %}
-    {% include "GeolocationUserBundle:Ressources:edit_content.html.twig" %}
-
+    <div class="container">
+        {% include "GeolocationUserBundle:Ressources:edit_content.html.twig" %}
+    </div>
 
     {% block javascript %}
         {% javascripts '@GeolocationUserBundle/Resources/public/js/*' %}

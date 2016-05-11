@@ -102,8 +102,8 @@
                             <li class="mySite">
                                 {{ site.adresse }} - {{ site.ville }}
                                 <a href="{{ path('user_edit_site', {'id': site.id}) }}" id="{{ site.id }} "
-                                   class="btn btn-info">Modifier</a>
-                                <button id="{{ site.id }}" class="btn btn-danger" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">Supprimer</button>
+                                   class="btn btn-info btn-sm">Modifier</a>
+                                <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">Supprimer</button>
 
                             </li>
                         {% endfor %}
