@@ -82,45 +82,9 @@ class IndexController extends Controller {
                     'enabled' => true
                 ]);
 
-        if ($idCpf = $request->attributes->get('codeNaf')) {
-            
-            $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
-                ->findOneBy([
-                    'id' => $idCpf
-                ]);
+        $generationService = $this->get('site_bundle.generate_array_ressources');
 
-            if ($cpf !== null) {
-                $ressources = array();
-                foreach ($array as $user) {
-                    $besoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'cpf' => $cpf));
-                    $proposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf));
-
-                    if ($besoin !== null || $proposition !== null) {
-                        $ressources[$user->getId()] =
-                            array('besoin' => $besoin,
-                                'proposition' => $proposition,
-                                'user' => $user
-                            );
-                    }
-                }
-            }
-        } else {
-
-            $ressources = array();
-            foreach ($array as $user) {
-                $besoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findOneBy(array('user' => $user->getId(), 'besoin' => true));
-                $proposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findOneBy(array('user' => $user->getId(), 'besoin' => false));
-                $ressources[$user->getId()] =
-                    array('besoin' => $besoin,
-                        'proposition' => $proposition,
-                        'user' => $user
-                    );
-            }
-        }
+        $ressources = $generationService->generate($array, $request->attributes->get('codeNaf'));
 
         $user = $this->getUser();
 

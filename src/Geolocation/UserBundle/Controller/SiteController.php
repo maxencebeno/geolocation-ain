@@ -26,10 +26,9 @@ class SiteController extends Controller {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-                ->findBy(array('userId' => $userId));
+                ->findBy(array('user' => $user));
 
         $entity = new Adresse();
         $form = $this->createForm(new AdresseType(), $entity);
@@ -64,7 +63,7 @@ class SiteController extends Controller {
 
                         $entity->setLatitude($latitude);
                         $entity->setLongitude($longitude);
-                        $entity->setUserId($userId);
+                        $entity->setUser($user);
 
                         $adr = $request->request->get('geolocation_adminbundle_adresse');
 
@@ -107,7 +106,7 @@ class SiteController extends Controller {
                         $this->addFlash('success', 'site.flash.create.success');
 
                         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-                                ->findBy(array('userId' => $userId));
+                                ->findBy(array('user' => $user));
                         
                         return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
                                     'sites' => $sites,
@@ -155,7 +154,7 @@ class SiteController extends Controller {
         $entity = $em->getRepository('GeolocationAdminBundle:Adresse')
                 ->findOneBy(array('id' => $id));
 
-        if ($entity->getUserId() != $user->getId()) {
+        if ($entity->getUser()->getId() != $user->getId()) {
 
             $this->addFlash('danger', 'site.flash.edit.bad_site');
             return $this->redirectToRoute('user_show_site');
@@ -287,7 +286,7 @@ class SiteController extends Controller {
 
                         $entity->setLatitude($latitude);
                         $entity->setLongitude($longitude);
-                        $entity->setUserId($userId);
+                        $entity->setUser($user);
 
                         $adr = $request->request->get('geolocation_adminbundle_adresse');
 

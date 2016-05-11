@@ -16,5 +16,9 @@ services:
         arguments: ["@doctrine"]
 
     site_bundle.calculate_distance_from_position:
-            class: Geolocation\AdminBundle\Domain\Services\CalculateDistanceFromPosition
-            arguments: ["@doctrine"]
+        class: Geolocation\AdminBundle\Domain\Services\CalculateDistanceFromPosition
+        arguments: ["@doctrine"]
+
+    site_bundle.generate_array_ressources:
+        class: Geolocation\AdminBundle\Domain\Services\GenerateArrayRessources
+        arguments: ["@doctrine"]
