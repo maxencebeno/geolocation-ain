@@ -152,6 +152,7 @@ form:
     public: "Publish"
     valider_site: "Save"
     valider_ressource: "Save"
+    nom_site: "Site name"
 
 #Ressources
 ressources:

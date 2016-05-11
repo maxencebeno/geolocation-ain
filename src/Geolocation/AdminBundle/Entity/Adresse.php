@@ -106,6 +106,14 @@ class Adresse {
      */
     private $isPublic;
 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     */
+    private $nom;
+    
     /**
      * Get id
      *
@@ -365,4 +373,28 @@ class Adresse {
         return $this->pilier;
     }
 
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Adresse
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
 }

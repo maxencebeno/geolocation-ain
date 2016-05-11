@@ -10,7 +10,12 @@
                     {{ form_start(form1) }}
                     {{ form_errors(form1) }}
 
-
+                    <div class="form-group">
+                        <span class="form-edit-label">{{ form_label(form1.nom) }}<strong
+                                class="text-danger">*</strong></span>
+                        {{ form_widget(form1.nom, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                        <span class="form-error" id="error-nom">{{ form_errors(form1.nom) }}</span>
+                    </div>
 
                     <div class="form-group">
                         <span class="form-edit-label">{{ form_label(form1.adresse) }}<strong
@@ -21,8 +26,8 @@
 
                     <div class="form-group">
                         <span class="form-edit-label">{{ form_label(form1.pilier) }}<strong
-                                    class="text-danger">*</strong></span>
-                        {{ form_widget(form1.pilier, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '2'}}) }}
+                                class="text-danger">*</strong></span>
+                        {{ form_widget(form1.pilier, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '3'}}) }}
                         <span class="form-error" id="error-pilier">{{ form_errors(form1.pilier) }}</span>
                     </div>
 
@@ -30,12 +35,12 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="form-edit-label">{{ form_label(form1.ville) }}<strong class="text-danger">*</strong></label>
-                                {{ form_widget(form1.ville, { 'attr': {'class': 'site-form-input form-control autocomplete-search-city', 'placeholder': 'form1.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '3', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
+                                {{ form_widget(form1.ville, { 'attr': {'class': 'site-form-input form-control autocomplete-search-city', 'placeholder': 'form1.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '4', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
                                 <span class="form-error" id="error-ville">{{ form_errors(form1.ville) }}</span>
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-edit-label">{{ form_label(form1.codePostal) }}<strong class="text-danger">*</strong></span>
-                                {{ form_widget(form1.codePostal, { 'attr': {'class': 'site-form-input form-control autocomplete-search-cp', 'placeholder': 'form1.cp', 'spellcheck': 'false', 'tabindex': '4', 'name': 'cp'}}) }}
+                                {{ form_widget(form1.codePostal, { 'attr': {'class': 'site-form-input form-control autocomplete-search-cp', 'placeholder': 'form1.cp', 'spellcheck': 'false', 'tabindex': '5', 'name': 'cp'}}) }}
                                 <span class="form-error" id="error-codePostal">{{ form_errors(form1.codePostal) }}</span>
                             </div>
                         </div>
@@ -44,12 +49,12 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-edit-label">{{ form_label(form1.tel) }}<strong class="text-danger">*</strong></span>
-                                {{ form_widget(form1.tel, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '5'}}) }}
+                                {{ form_widget(form1.tel, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '6'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form1.tel) }}</span>
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-edit-label">{{ form_label(form1.isPublic) }}</span>
-                                {{ form_widget(form1.isPublic, { 'attr': {'class': 'edit-form-site form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                                {{ form_widget(form1.isPublic, { 'attr': {'class': 'edit-form-site form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form1.isPublic) }}</span>
                             </div>
                         </div>
@@ -60,12 +65,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <span class="form-edit-label">{{ form_label(form1.iso) }}</span>
-                            {{ form_widget(form1.iso, { 'attr': {'class': 'edit-form-site', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                            {{ form_widget(form1.iso, { 'attr': {'class': 'edit-form-site', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '8'}}) }}
                             <span class="form-error" id="error-iso">{{ form_errors(form1.iso) }}</span>
                         </div>
                     </div>
                     <div class="form-group">   
-                        {{ form_widget(form1.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '7' }}) }}
+                        {{ form_widget(form1.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '9' }}) }}
                         {{ form_end(form1) }}
 
                     </div>
