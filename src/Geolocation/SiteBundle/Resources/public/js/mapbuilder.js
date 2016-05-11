@@ -46,6 +46,49 @@ function initMarker(data, centerMarkers) {
     var bounds = new google.maps.LatLngBounds();
     for (i in data) {
         if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
+            if (typeof data[i].sites !== 'undefined') {
+                for (var j in data[i].sites) {
+                    latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
+                    markers.push(new google.maps.Marker({
+                        position: latlng[index],
+                        map: carte,
+                        title: 'Test ' + index
+                    }));
+
+                    contentString =
+                            '<div id="content">' +
+                            '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
+                            data[i].sites[j].adresse.adresse + '<br>' +
+                            data[i].sites[j].adresse.codePostal + ' ' + data[i].sites[j].adresse.ville + '<br>' +
+                            '<h4>Ressources</h4>';
+
+                    if (data[i].sites[j].besoin !== null) {
+                        contentString += '<h5>Besoin</h5><p>' + data[i].sites[j].besoin.cpf.souscategorie.libelle + '</p>';
+                    }
+
+                    if (data[i].sites[j].proposition !== null) {
+                        contentString += '<h5>Proposition</h5><p>' + data[i].sites[j].proposition.cpf.souscategorie.libelle + '</p>';
+                    }
+
+                    if (data[i].sites[j].proposition === null && data[i].sites[j].besoin === null) {
+                        contentString += '<p>Pas de ressources pour le moment</p>';
+                    }
+                    contentString += '<a href = "' + baseUrl + 'details\\' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
+                            '</div>';
+                    infowindow[index] = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    google.maps.event.addListener(markers[index], 'click', function (index) {
+                        return function () {
+                            closeWindowInfos(); //fermer toutes les infoWindows ouvertes
+                            infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
+                        }
+                    }(index));
+                }
+                index++;
+            }
+
             latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
             markers.push(new google.maps.Marker({
                 position: latlng[index],
@@ -58,11 +101,11 @@ function initMarker(data, centerMarkers) {
             }
 
             contentString =
-                '<div id="content">' +
-                '<h3>' + data[i].user.nom + '</h3>' +
-                data[i].user.adresse + '<br>' +
-                data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
-                '<h4>Ressources</h4>';
+                    '<div id="content">' +
+                    '<h3>' + data[i].user.nom + '</h3>' +
+                    data[i].user.adresse + '<br>' +
+                    data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
+                    '<h4>Ressources</h4>';
 
             if (data[i].besoin !== null) {
                 contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.souscategorie.libelle + '</p>';
@@ -72,11 +115,11 @@ function initMarker(data, centerMarkers) {
                 contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.souscategorie.libelle + '</p>';
             }
 
-            if(data[i].proposition === null && data[i].besoin === null){
-                    contentString += '<p>Pas de ressources pour le moment</p>';
+            if (data[i].proposition === null && data[i].besoin === null) {
+                contentString += '<p>Pas de ressources pour le moment</p>';
             }
             contentString += '<a href = "' + baseUrl + 'details\\' + data[i].user.id + '">Plus d\'informations<a>' +
-                '</div>';
+                    '</div>';
             infowindow[index] = new google.maps.InfoWindow({
                 content: contentString
             });
@@ -96,18 +139,18 @@ function initMarker(data, centerMarkers) {
     if (typeof data.connectedUser !== 'undefined') {
         centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
         /*Gestion du slider range pour le filtre de distance*/
-        $(function() {
+        $(function () {
             $("#slider-range").slider({
                 range: true,
                 min: data.distances.min.value,
                 max: data.distances.max.value,
                 values: [data.distances.min.value, data.distances.max.value],
-                slide: function(event, ui) {
+                slide: function (event, ui) {
                     $("#distance").val(ui.values[ 0 ] + " - " + ui.values[ 1 ] + "");
                 }
             });
             $("#distance").val(data.distances.min.string +
-                " - " + data.distances.max.string);
+                    " - " + data.distances.max.string);
         });
     } else {
         //Géolocalisation de l'utilisateur
