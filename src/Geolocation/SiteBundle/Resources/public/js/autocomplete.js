@@ -54,10 +54,10 @@ $(".autocomplete-search-code-naf").autocomplete({
             success: function (data) {
                 //Ajout de reponse dans le cache
                 response($.map(data, function (item) {
-                    $('#search-code-naf-input').val(item.Codes.id);
                     return {
                         label: item.Codes.libelle,
                         value: item.Codes.libelle,
+                        id: item.Codes.id
                     };
                 }));
             },
@@ -65,6 +65,9 @@ $(".autocomplete-search-code-naf").autocomplete({
                 console.log(textStatus, errorThrown);
             }
         });
+    },
+    select: function (event, ui) {
+        $('#search-code-naf-input').val(ui.item.id);
     },
     minLength: 2,
     delay: 300

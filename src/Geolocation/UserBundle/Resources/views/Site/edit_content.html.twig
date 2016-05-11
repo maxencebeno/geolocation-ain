@@ -5,48 +5,49 @@
         <div id="user_site_edit" class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading"><h3>{{ 'site.edit.title_edit'|trans }}</h3></div>
+                <div class="panel-body">
+                    {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
+                    {{ form_start(form1) }}
+                    {{ form_errors(form1) }}
 
-                {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
-                {{ form_start(form1) }}
-                {{ form_errors(form1) }}
 
 
+                    <div class="form-group">
+                        <span class="form-edit-label">{{ form_label(form1.adresse) }}<strong
+                                class="text-danger">*</strong></span>
+                        {{ form_widget(form1.adresse, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '2'}}) }}
+                        <span class="form-error" id="error-adresse">{{ form_errors(form1.adresse) }}</span>
+                    </div>
 
-                <div class="form-group">
-                    <span class="form-edit-label">{{ form_label(form1.adresse) }}<strong
-                            class="text-danger">*</strong></span>
-                    {{ form_widget(form1.adresse, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '2'}}) }}
-                    <span class="form-error" id="error-adresse">{{ form_errors(form1.adresse) }}</span>
-                </div>
-
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label class="form-edit-label">{{ form_label(form1.ville) }}<strong class="text-danger">*</strong></label>
-                            {{ form_widget(form1.ville, { 'attr': {'class': 'site-form-input form-control autocomplete-search-city', 'placeholder': 'form1.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '3', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
-                            <span class="form-error" id="error-ville">{{ form_errors(form1.ville) }}</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <span class="form-edit-label">{{ form_label(form1.codePostal) }}<strong class="text-danger">*</strong></span>
-                            {{ form_widget(form1.codePostal, { 'attr': {'class': 'site-form-input form-control autocomplete-search-cp', 'placeholder': 'form1.cp', 'spellcheck': 'false', 'tabindex': '4', 'name': 'cp'}}) }}
-                            <span class="form-error" id="error-codePostal">{{ form_errors(form1.codePostal) }}</span>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="form-edit-label">{{ form_label(form1.ville) }}<strong class="text-danger">*</strong></label>
+                                {{ form_widget(form1.ville, { 'attr': {'class': 'site-form-input form-control autocomplete-search-city', 'placeholder': 'form1.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '3', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
+                                <span class="form-error" id="error-ville">{{ form_errors(form1.ville) }}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-edit-label">{{ form_label(form1.codePostal) }}<strong class="text-danger">*</strong></span>
+                                {{ form_widget(form1.codePostal, { 'attr': {'class': 'site-form-input form-control autocomplete-search-cp', 'placeholder': 'form1.cp', 'spellcheck': 'false', 'tabindex': '4', 'name': 'cp'}}) }}
+                                <span class="form-error" id="error-codePostal">{{ form_errors(form1.codePostal) }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <span class="form-edit-label">{{ form_label(form1.tel) }}<strong class="text-danger">*</strong></span>
-                            {{ form_widget(form1.tel, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '5'}}) }}
-                            <span class="form-error" id="error-tel">{{ form_errors(form1.tel) }}</span>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span class="form-edit-label">{{ form_label(form1.tel) }}<strong class="text-danger">*</strong></span>
+                                {{ form_widget(form1.tel, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '5'}}) }}
+                                <span class="form-error" id="error-tel">{{ form_errors(form1.tel) }}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-edit-label">{{ form_label(form1.isPublic) }}</span>
+                                {{ form_widget(form1.isPublic, { 'attr': {'class': 'edit-form-site form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                                <span class="form-error" id="error-tel">{{ form_errors(form1.isPublic) }}</span>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <span class="form-edit-label">{{ form_label(form1.isPublic) }}</span>
-                            {{ form_widget(form1.isPublic, { 'attr': {'class': 'edit-form-site form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
-                            <span class="form-error" id="error-tel">{{ form_errors(form1.isPublic) }}</span>
-                        </div>
-
                     </div>
+
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -56,13 +57,12 @@
                             <span class="form-error" id="error-iso">{{ form_errors(form1.iso) }}</span>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">   
-                    {{ form_widget(form1.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '7' }}) }}
-                    {{ form_end(form1) }}
+                    <div class="form-group">   
+                        {{ form_widget(form1.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '7' }}) }}
+                        {{ form_end(form1) }}
 
+                    </div>
                 </div>
-
             </div>
         </div>
 
@@ -71,15 +71,12 @@
 
         <button id="{{ adresse.adresseId }}" class="btn btn-danger" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ adresse.adresseId }}" data-myaddress="{{ adresse.lieu }}">Supprimer</button>
 
-
-        <a href="{{ path('user_show_site') }}"
-           class="submit-button-geolocation-light btn btn-default">
-            <i class="glyphicon glyphicon-arrow-left"></i> 
-            {{ 'site.edit.back_on_site'|trans }}
-        </a>
-
-
     </div>
+    <a href="{{ path('user_show_site') }}"
+       class="submit-button-geolocation-light btn btn-default">
+        <i class="glyphicon glyphicon-arrow-left"></i> 
+        {{ 'profile.edit.back_on_site'|trans }}
+    </a>
 </div>
 
 

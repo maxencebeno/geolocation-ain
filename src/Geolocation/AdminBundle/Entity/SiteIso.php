@@ -22,16 +22,22 @@ class SiteIso
     private $id;
 
     /**
-     * @var integer
+     * @var \Geolocation\AdminBundle\Entity\Iso
      *
-     * @ORM\Column(name="iso_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Iso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="iso_id", referencedColumnName="id")
+     * })
      */
     private $isoId;
 
     /**
-     * @var integer
+     * @var \Geolocation\AdminBundle\Entity\Adresse
      *
-     * @ORM\Column(name="site_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Adresse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
+     * })
      */
     private $siteId;
 
@@ -41,6 +47,7 @@ class SiteIso
      * @ORM\Column(name="autre", type="string", length=255, nullable=true)
      */
     private $autre;
+
 
     /**
      * @var \DateTime
@@ -64,7 +71,6 @@ class SiteIso
     private $en_cours_certification;
     
     
-
     /**
      * Get id
      *
@@ -73,54 +79,6 @@ class SiteIso
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set isoId
-     *
-     * @param integer $isoId
-     *
-     * @return SiteIso
-     */
-    public function setIsoId($isoId)
-    {
-        $this->isoId = $isoId;
-
-        return $this;
-    }
-
-    /**
-     * Get isoId
-     *
-     * @return integer
-     */
-    public function getIsoId()
-    {
-        return $this->isoId;
-    }
-
-    /**
-     * Set siteId
-     *
-     * @param integer $siteId
-     *
-     * @return SiteIso
-     */
-    public function setSiteId($siteId)
-    {
-        $this->siteId = $siteId;
-
-        return $this;
-    }
-
-    /**
-     * Get siteId
-     *
-     * @return integer
-     */
-    public function getSiteId()
-    {
-        return $this->siteId;
     }
 
     /**
@@ -145,6 +103,54 @@ class SiteIso
     public function getAutre()
     {
         return $this->autre;
+    }
+
+    /**
+     * Set isoId
+     *
+     * @param \Geolocation\AdminBundle\Entity\Iso $isoId
+     *
+     * @return SiteIso
+     */
+    public function setIsoId(\Geolocation\AdminBundle\Entity\Iso $isoId = null)
+    {
+        $this->isoId = $isoId;
+
+        return $this;
+    }
+
+    /**
+     * Get isoId
+     *
+     * @return \Geolocation\AdminBundle\Entity\Iso
+     */
+    public function getIsoId()
+    {
+        return $this->isoId;
+    }
+
+    /**
+     * Set siteId
+     *
+     * @param \Geolocation\AdminBundle\Entity\Adresse $siteId
+     *
+     * @return SiteIso
+     */
+    public function setSiteId(\Geolocation\AdminBundle\Entity\Adresse $siteId = null)
+    {
+        $this->siteId = $siteId;
+
+        return $this;
+    }
+
+    /**
+     * Get siteId
+     *
+     * @return \Geolocation\AdminBundle\Entity\Adresse
+     */
+    public function getSiteId()
+    {
+        return $this->siteId;
     }
 
     /**

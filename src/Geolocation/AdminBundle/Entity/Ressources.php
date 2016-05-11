@@ -49,12 +49,28 @@ class Ressources
     private $cpf;
 
     /**
-     * @var integer
+     * @var \Geolocation\AdminBundle\Entity\Adresse
      *
-     * @ORM\Column(name="adresse_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Adresse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
+     * })
      */
     private $adresse_id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remarque", type="text", nullable=true)
+     */
+    private $remarque;
 
     /**
      * Set besoin
@@ -141,11 +157,11 @@ class Ressources
     /**
      * Set adresseId
      *
-     * @param integer $adresseId
+     * @param \Geolocation\AdminBundle\Entity\Adresse $adresseId
      *
      * @return Ressources
      */
-    public function setAdresseId($adresseId)
+    public function setAdresseId(\Geolocation\AdminBundle\Entity\Adresse $adresseId = null)
     {
         $this->adresse_id = $adresseId;
 
@@ -155,10 +171,58 @@ class Ressources
     /**
      * Get adresseId
      *
-     * @return integer
+     * @return \Geolocation\AdminBundle\Entity\Adresse
      */
     public function getAdresseId()
     {
         return $this->adresse_id;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Ressources
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set remarque
+     *
+     * @param string $remarque
+     *
+     * @return Ressources
+     */
+    public function setRemarque($remarque)
+    {
+        $this->remarque = $remarque;
+
+        return $this;
+    }
+
+    /**
+     * Get remarque
+     *
+     * @return string
+     */
+    public function getRemarque()
+    {
+        return $this->remarque;
     }
 }

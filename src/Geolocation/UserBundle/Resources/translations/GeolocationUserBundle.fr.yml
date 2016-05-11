@@ -35,7 +35,7 @@ profile:
         pays: Pays
         telephone : Téléphone
         site: Site web
-        siret : SIRET
+        siren : SIREN
         kbis : kbis
         date_creation_entreprise : Date de Création de l'entreprise
         title: Mon profil
@@ -151,7 +151,7 @@ form:
     cp: "Code postal"
     pays: "Pays"
     tel: "Téléphone"
-    siret: "N° de SIRET"
+    siren: "N° de SIREN"
     url: "Lien du site web"
     dateCreationEntreprise : "Date de création de l'entreprise"
     description: "Description"

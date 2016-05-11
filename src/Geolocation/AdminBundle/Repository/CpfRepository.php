@@ -12,6 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class CpfRepository extends EntityRepository
 {
+
+    public function findByCpf(array $params = []) {
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.section = :section');
+        if ($params['groupe'] !== "-1") {
+            $qb->andWhere('c.groupe = :groupe');
+            $qb->setParameter('groupe', $params['groupe']);
+        }
+        if ($params['division'] !== "-1") {
+            $qb->andWhere('c.division = :division');
+            $qb->setParameter('division', $params['division']);
+        }
+        
+        $qb->setParameter('section', $params['section']);
+        
+        return $qb->getQuery()->getResult();
+    }
+
     public function findCodeNafLike($term, $limit = 25) {
         $term = strtr($term, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
         $term = strtr($term, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');

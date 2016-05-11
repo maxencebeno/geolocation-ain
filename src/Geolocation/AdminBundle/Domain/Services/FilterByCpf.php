@@ -23,8 +23,9 @@ class FilterByCpf
         if ($request->request->get('section') === "-1") {
             $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')->findAll();
         } else {
+
             $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')
-                ->findBy([
+                ->findByCpf([
                     'section' => $request->request->get('section'),
                     'groupe' => $request->request->get('groupe'),
                     'division' => $request->request->get('division')
@@ -38,7 +39,7 @@ class FilterByCpf
                     'cpf' => $value->getId()
                 ]);
 
-            if (count($ressources) > 0 && count($datas) === 0) {
+            if (count($ressources) > 0) {
                 /** @var Ressources $ressource */
                 foreach ($ressources as $ressource) {
                     if (!isset($datas[$ressource->getUser()->getId()])) {

@@ -91,9 +91,9 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="siret", type="string", length=255, nullable=true)
+     * @ORM\Column(name="siren", type="string", length=255, nullable=true)
      */
-    protected $siret;
+    protected $siren;
 
     /**
      * @var string
@@ -319,30 +319,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set siret
-     *
-     * @param string $siret
-     *
-     * @return User
-     */
-    public function setSiret($siret)
-    {
-        $this->siret = $siret;
-
-        return $this;
-    }
-
-    /**
-     * Get siret
-     *
-     * @return string
-     */
-    public function getSiret()
-    {
-        return $this->siret;
-    }
-
-    /**
      * Set kbis
      *
      * @param string $kbis
@@ -561,5 +537,29 @@ class User extends BaseUser
     public function getPilier()
     {
         return $this->pilier;
+    }
+
+    /**
+     * Set siren
+     *
+     * @param string $siren
+     *
+     * @return User
+     */
+    public function setSiren($siren)
+    {
+        $this->siren = $siren;
+
+        return $this;
+    }
+
+    /**
+     * Get siren
+     *
+     * @return string
+     */
+    public function getSiren()
+    {
+        return $this->siren;
     }
 }

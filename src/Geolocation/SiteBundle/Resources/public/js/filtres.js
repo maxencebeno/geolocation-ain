@@ -101,6 +101,7 @@ $(document).ready(function () {
             data: $('#form-filters').serialize(),
             dataType: 'json',
             success: function (data) {
+                console.log(data);
                 clearMarker();
                 initMarker(data);
                 if (typeof data.ville !== 'undefined') {

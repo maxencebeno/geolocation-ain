@@ -35,14 +35,14 @@
         </div>
     {% endfor %}
 {% endfor %}
-<div class="wrapper">
+<div id="wrapper">
     {% block body %}
 
     {% endblock %}
 
-
-{% block footer %}{% include './include/footer.html.twig' %}{% endblock %}
 </div>
+{% block footer %}{% include './include/footer.html.twig' %}{% endblock %}
+
 {% block javascripts %}
 
 {% endblock %}
