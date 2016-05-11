@@ -81,57 +81,87 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 myressource">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3>{{ 'profile.show.ressources_title'|trans }}</h3></div>
-                    <div class="panel-body">
-                        {% if ressources|length > 0 %}
-                            {% set cpt = 0 %}
-                            <h4>Besoin</h4>
-                            <ul id="listBesoin">
-                                {% for key, ressource in ressources %}
-                                    {% if ressource.getBesoin()==true %}
-                                        <li class="myRessource">
-                                            <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
-                                        {{ ressource.cpf.souscategorie.libelle }}
-                                        </li>
-                                        {% set cpt = 1 %}
-                                    {% endif %}
-                                {% endfor %}
-                                {% if cpt==0 %}
-                                    <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
-                                    {% endif %}  
-                            </ul>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-12 myressource">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h3>{{ 'profile.show.ressources_title'|trans }}</h3></div>
+                            <div class="panel-body">
+                                {% if ressources|length > 0 %}
+                                    {% set cpt = 0 %}
+                                    <h4>Besoin</h4>
+                                    <ul id="listBesoin">
+                                        {% for key, ressource in ressources %}
+                                            {% if ressource.getBesoin()==true %}
+                                                <li class="myRessource">
+                                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {{ ressource.cpf.souscategorie.libelle }}
+                                                </li>
+                                                {% set cpt = 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if cpt==0 %}
+                                            <li class="myRessource"> {{ 'profile.show.no_besoins'|trans }} </li>
+                                            {% endif %}  
+                                    </ul>
 
-                            {% set cpt = 0 %}
-                            <h4>Proposition</h4>
-                            <ul id="listProposition">
-                                {% for key, ressource in ressources %}
-                                    {% if ressource.getBesoin()==false %}
-                                        <li class="myRessource">
-                                            <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
-                                        {{ ressource.cpf.souscategorie.libelle }}
-                                        </li>
-                                        {% set cpt = 1 %}
-                                    {% endif %}
-                                {% endfor %}
-                                {% if cpt==0 %}
-                                    <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
-                                    {% endif %}
-                            </ul>
-                        {% else %}
-                            <p>
-                                {{ 'profile.show.no_ressources'|trans }} 
-                            </p>
-                        {% endif %}
-                        <div class="text-center"> 
-                            <a class="btn btn-info btn-lg" href="{{ path('user_ressources') }}">
-                                {{ 'profile.show.link_edit_ressources'|trans }}
-                            </a>
+                                    {% set cpt = 0 %}
+                                    <h4>Proposition</h4>
+                                    <ul id="listProposition">
+                                        {% for key, ressource in ressources %}
+                                            {% if ressource.getBesoin()==false %}
+                                                <li class="myRessource">
+                                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {{ ressource.cpf.souscategorie.libelle }}
+                                                </li>
+                                                {% set cpt = 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if cpt==0 %}
+                                            <li class="myRessource"> {{ 'profile.show.no_propositions'|trans }} </li>
+                                            {% endif %}
+                                    </ul>
+                                {% else %}
+                                    <p>
+                                        {{ 'profile.show.no_ressources'|trans }} 
+                                    </p>
+                                {% endif %}
+                                <div class="text-center"> 
+                                    <a class="btn btn-info btn-lg" href="{{ path('user_ressources') }}">
+                                        {{ 'profile.show.link_edit_ressources'|trans }}
+                                    </a>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h3>{{ 'profile.show.site_secondary'|trans }}</h3></div>
+                            <div class="panel-body">
+                                {% if sites|length > 0 %}
+                                    <ul>
+                                        {% for site in sites %}
+                                            <li class="mySite">
+                                                {{ site.adresse }} - {{ site.ville }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    {{ 'site.edit.no_sites'|trans }}
+                                {% endif %}
+                                <div class="text-center"> 
+                                    <a class="btn btn-info btn-lg" href="{{ path('user_show_site') }}">{{ 'profile.show.link_site_secondary'|trans }}</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
         <!-- <div class="col-sm-6">
@@ -145,27 +175,6 @@
                 <div class="panel-body">
                     <div class="text-center"> 
                         <a class="btn btn-info btn-lg" href="{{ path('fos_user_change_password') }}">{{ 'profile.show.link_change_password'|trans }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>{{ 'profile.show.site_secondary'|trans }}</h3></div>
-                <div class="panel-body">
-                    {% if sites|length > 0 %}
-                        <ul>
-                            {% for site in sites %}
-                                <li class="mySite">
-                                    {{ site.adresse }} - {{ site.ville }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        {{ 'site.edit.no_sites'|trans }}
-                    {% endif %}
-                    <div class="text-center"> 
-                        <a class="btn btn-info btn-lg" href="{{ path('user_show_site') }}">{{ 'profile.show.link_site_secondary'|trans }}</a>
                     </div>
                 </div>
             </div>
