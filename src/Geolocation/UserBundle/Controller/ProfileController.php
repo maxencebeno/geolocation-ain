@@ -36,7 +36,7 @@ class ProfileController extends Controller {
                 ->findBy(array('user' => $user, 'adresse_id'=>0));
         
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-                ->findBy(array('user' => $user));
+                ->findBy(array('user' => $user, 'main'=>false));
 
         /** @var \DateTime $date */
         if ($user->getDateCreationEntreprise() !== null) {

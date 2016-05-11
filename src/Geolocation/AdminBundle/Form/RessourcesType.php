@@ -24,7 +24,7 @@ class RessourcesType extends AbstractType
             ->add('cpf')
             ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => ['placeholder' => "Description complémentaire du produit"]])
             ->add('remarque', TextareaType::class, ['label' => 'Remarques / observations', 'attr' => ['placeholder' => "Précisez ici toutes les informations qui permettront de faciliter la transaction"]])
-            ->add('saveRessource', 'submit', array());
+            ->add('saveRessource', 'submit', array('label' => 'form.valider_ressource', 'translation_domain' => 'GeolocationUserBundle'));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

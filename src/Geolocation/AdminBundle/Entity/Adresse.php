@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Geolocation\AdminBundle\Repository\AdresseRepository")
  */
-class Adresse
-{
+class Adresse {
+
     private $iso;
-    
+
     /**
      * @var integer
      *
@@ -48,7 +48,7 @@ class Adresse
      *
      * @ORM\Column(name="main", type="boolean")
      */
-    //private $main;
+    private $main;
 
     /**
      * @var string
@@ -106,14 +106,12 @@ class Adresse
      */
     private $isPublic;
 
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -124,22 +122,20 @@ class Adresse
      *
      * @return Adresse
      */
-    /*public function setMain($main)
-    {
+    public function setMain($main) {
         $this->main = $main;
 
         return $this;
-    }*/
+    }
 
     /**
      * Get main
      *
      * @return boolean
      */
-   /* public function getMain()
-    {
+    public function getMain() {
         return $this->main;
-    }*/
+    }
 
     /**
      * Set adresse
@@ -148,8 +144,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setAdresse($adresse)
-    {
+    public function setAdresse($adresse) {
         $this->adresse = $adresse;
 
         return $this;
@@ -160,8 +155,7 @@ class Adresse
      *
      * @return string
      */
-    public function getAdresse()
-    {
+    public function getAdresse() {
         return $this->adresse;
     }
 
@@ -172,8 +166,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setVille($ville)
-    {
+    public function setVille($ville) {
         $this->ville = $ville;
 
         return $this;
@@ -184,8 +177,7 @@ class Adresse
      *
      * @return string
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
 
@@ -196,8 +188,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setCodePostal($codePostal)
-    {
+    public function setCodePostal($codePostal) {
         $this->codePostal = $codePostal;
 
         return $this;
@@ -208,8 +199,7 @@ class Adresse
      *
      * @return integer
      */
-    public function getCodePostal()
-    {
+    public function getCodePostal() {
         return $this->codePostal;
     }
 
@@ -220,8 +210,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setTel($tel)
-    {
+    public function setTel($tel) {
         $this->tel = $tel;
 
         return $this;
@@ -232,8 +221,7 @@ class Adresse
      *
      * @return string
      */
-    public function getTel()
-    {
+    public function getTel() {
         return $this->tel;
     }
 
@@ -244,8 +232,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setLatitude($latitude)
-    {
+    public function setLatitude($latitude) {
         $this->latitude = $latitude;
 
         return $this;
@@ -256,8 +243,7 @@ class Adresse
      *
      * @return float
      */
-    public function getLatitude()
-    {
+    public function getLatitude() {
         return $this->latitude;
     }
 
@@ -268,8 +254,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setLongitude($longitude)
-    {
+    public function setLongitude($longitude) {
         $this->longitude = $longitude;
 
         return $this;
@@ -280,20 +265,18 @@ class Adresse
      *
      * @return boolean
      */
-    public function getIsPublic()
-    {
+    public function getIsPublic() {
         return $this->isPublic;
     }
-    
-       /**
+
+    /**
      * Set isPublic
      *
      * @param boolean $isPublic
      *
      * @return Adresse
      */
-    public function setIsPublic($isPublic)
-    {
+    public function setIsPublic($isPublic) {
         $this->isPublic = $isPublic;
 
         return $this;
@@ -304,11 +287,10 @@ class Adresse
      *
      * @return float
      */
-    public function getLongitude()
-    {
+    public function getLongitude() {
         return $this->longitude;
     }
-    
+
     function getIso() {
         return $this->iso;
     }
@@ -324,8 +306,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setUser(\Geolocation\AdminBundle\Entity\User $user = null)
-    {
+    public function setUser(\Geolocation\AdminBundle\Entity\User $user = null) {
         $this->user = $user;
 
         return $this;
@@ -336,8 +317,7 @@ class Adresse
      *
      * @return \Geolocation\AdminBundle\Entity\User
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
 
@@ -348,8 +328,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setSiret($siret)
-    {
+    public function setSiret($siret) {
         $this->siret = $siret;
 
         return $this;
@@ -360,8 +339,7 @@ class Adresse
      *
      * @return string
      */
-    public function getSiret()
-    {
+    public function getSiret() {
         return $this->siret;
     }
 
@@ -372,8 +350,7 @@ class Adresse
      *
      * @return Adresse
      */
-    public function setPilier(\Geolocation\AdminBundle\Entity\Pilier $pilier = null)
-    {
+    public function setPilier(\Geolocation\AdminBundle\Entity\Pilier $pilier = null) {
         $this->pilier = $pilier;
 
         return $this;
@@ -384,8 +361,8 @@ class Adresse
      *
      * @return \Geolocation\AdminBundle\Entity\Pilier
      */
-    public function getPilier()
-    {
+    public function getPilier() {
         return $this->pilier;
     }
+
 }

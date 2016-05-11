@@ -151,6 +151,7 @@ form:
     main: "Main address"
     public: "Publish"
     valider_site: "Save"
+    valider_ressource: "Save"
 
 #Ressources
 ressources:

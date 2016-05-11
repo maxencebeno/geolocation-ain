@@ -161,6 +161,7 @@ form:
     main: "Adresse principale"
     public: "Rendre public"
     valider_site: Enregistrer
+    valider_ressource: Enregistrer
     
 #Ressources
 ressources:
