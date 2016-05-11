@@ -98,13 +98,12 @@ class FilterByCpf
                         ]);
 
                     if ($besoinSite !== null || $propositionSite !== null) {
-                        $datas[$key] = [
-                            'sites' => [
+                        $datas[$key]['sites'] =  [
                                 'adresse' => $adress,
                                 'besoin' => $besoinSite,
                                 'proposition' => $propositionSite
                             ]
-                        ];
+                        ;
                     }
                 }
             }

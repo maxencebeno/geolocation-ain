@@ -74,7 +74,7 @@ class Adresse {
     /**
      * @var integer
      *
-     * @ORM\Column(name="code_postal", type="integer", nullable=false)
+     * @ORM\Column(name="code_postal", type="string", length=255, nullable=false)
      */
     private $codePostal;
 

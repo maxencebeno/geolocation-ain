@@ -22,6 +22,7 @@ google.maps.event.addListenerOnce(carte, 'idle', function () {
     $.ajax({
         url: baseUrl + 'json/markers',
         success: function (data) {
+            console.log(data);
             clearMarker();
             initMarker(data, false);
         }

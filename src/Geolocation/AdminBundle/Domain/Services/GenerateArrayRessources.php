@@ -20,10 +20,11 @@ class GenerateArrayRessources
     {
         $this->doctrine = $doctrine;
     }
-    
-    public function generate($users, $requestCodeNaf) {
+
+    public function generate($users, $requestCodeNaf)
+    {
         $em = $this->doctrine->getManager();
-        
+
         if ($idCpf = $requestCodeNaf) {
 
             $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
@@ -58,14 +59,11 @@ class GenerateArrayRessources
                             $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                                 ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf, 'adresse_id' => $adress));
                             if ($besoin !== null || $propositionSite !== null) {
-                                $ressources[$user->getId()] =
-                                    array(
-                                        'sites' => [
-                                            'adresse' => $adress,
-                                            'besoin' => $besoinSite,
-                                            'proposition' => $propositionSite
-                                        ]
-                                    );
+                                $ressources[$user->getId()]['sites'] = [
+                                    'adresse' => $adress,
+                                    'besoin' => $besoinSite,
+                                    'proposition' => $propositionSite
+                                ];
                             }
                         }
                     }
@@ -95,14 +93,11 @@ class GenerateArrayRessources
                         $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'adresse_id' => $adress));
                         if ($besoinSite !== null || $propositionSite !== null) {
-                            $ressources[$user->getId()] =
-                                array(
-                                    'sites' => [
-                                        'adresse' => $adress,
-                                        'besoin' => $besoinSite,
-                                        'proposition' => $propositionSite
-                                    ]
-                                );
+                            $ressources[$user->getId()]['sites'] = [
+                                'adresse' => $adress,
+                                'besoin' => $besoinSite,
+                                'proposition' => $propositionSite
+                            ];
                         }
                     }
                 }

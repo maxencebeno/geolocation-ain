@@ -29,7 +29,8 @@ class FilterByCity
         foreach ($datas as $key => $data) {
             /** @var User $user */
             $user = $data['user'];
-            if (ApiLib::slugifyCity($user->getVille()) !== ApiLib::slugifyCity($request->request->get('city'))) {
+
+            if (strtolower(ApiLib::slugifyCity($user->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
                 unset($datas[$key]);
             }
         }
