@@ -22,7 +22,7 @@ class RessourcesController extends Controller {
 
         $userId = $this->getUser()->getId();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $userId));
+                ->findBy(array('user' => $userId, 'adresse_id'=>0));
 
 
 

@@ -42,6 +42,28 @@ class SiteIso
      */
     private $autre;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_certification", type="datetime", nullable=true)
+     */
+    private $date_certification;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="certifie", type="boolean")
+     */
+    private $certifie;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="en_cours_certification", type="boolean")
+     */
+    private $en_cours_certification;
+    
+    
 
     /**
      * Get id
@@ -123,5 +145,77 @@ class SiteIso
     public function getAutre()
     {
         return $this->autre;
+    }
+
+    /**
+     * Set dateCertification
+     *
+     * @param \DateTime $dateCertification
+     *
+     * @return SiteIso
+     */
+    public function setDateCertification($dateCertification)
+    {
+        $this->date_certification = $dateCertification;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCertification
+     *
+     * @return \DateTime
+     */
+    public function getDateCertification()
+    {
+        return $this->date_certification;
+    }
+
+    /**
+     * Set certifie
+     *
+     * @param boolean $certifie
+     *
+     * @return SiteIso
+     */
+    public function setCertifie($certifie)
+    {
+        $this->certifie = $certifie;
+
+        return $this;
+    }
+
+    /**
+     * Get certifie
+     *
+     * @return boolean
+     */
+    public function getCertifie()
+    {
+        return $this->certifie;
+    }
+
+    /**
+     * Set enCoursCertification
+     *
+     * @param boolean $enCoursCertification
+     *
+     * @return SiteIso
+     */
+    public function setEnCoursCertification($enCoursCertification)
+    {
+        $this->en_cours_certification = $enCoursCertification;
+
+        return $this;
+    }
+
+    /**
+     * Get enCoursCertification
+     *
+     * @return boolean
+     */
+    public function getEnCoursCertification()
+    {
+        return $this->en_cours_certification;
     }
 }

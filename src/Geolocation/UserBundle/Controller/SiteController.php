@@ -38,6 +38,7 @@ class SiteController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
             // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
             $response = ApiLib::searchAdresse($user);
 
@@ -84,18 +85,33 @@ class SiteController extends Controller {
 
                                 $siteIso->setIsoId($i[0]);
                                 $siteIso->setSiteId($siteId->getId());
+                                if ($request->request->get('certifie-' . $i) === "oui") {
+                                    $siteIso->setCertifie(true);
+                                    $siteIso->setEnCoursCertification(false);
+                                    if ($request->request->get('date_certification-' . $i) !== null) {
+                                        $siteIso->setDateCertification(ApiLib::dateToMySQL($request->request->get('date_certification-' . $i)));
+                                    }
+                                } else {
+                                    $siteIso->setCertifie(false);
+                                    $siteIso->setEnCoursCertification(true);
+                                }
+
+                                if ($request->request->get('other')) {
+                                    $siteIso->setAutre($request->request->get('other'));
+                                }
 
                                 $em->persist($siteIso);
                             }
                             $em->flush();
                         }
                         $this->addFlash('success', 'site.flash.create.success');
-                        
+
                         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
                                 ->findBy(array('userId' => $userId));
+                        
                         return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
                                     'sites' => $sites,
-                                    'form' => $form->createView()
+                                    'form' => new AdresseType()
                         ));
                     } else {
                         $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
@@ -285,22 +301,30 @@ class SiteController extends Controller {
                         $em->flush();
 
                         if (array_key_exists('iso', $adr)) {
-
                             foreach ($adr['iso'] as $i) {
-
-                                $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
-                                        ->findOneBy(array('adresse' => $adr['adresse'], 'codePostal' => $adr['codePostal']));
                                 $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
-
                                 $siteIso->setIsoId($i[0]);
-                                $siteIso->setSiteId($siteId->getId());
-
+                                $siteIso->setSiteId($id);
+                                if ($request->request->get('certifie-' . $i) === "oui") {
+                                    $siteIso->setCertifie(true);
+                                    $siteIso->setEnCoursCertification(false);
+                                    if ($request->request->get('date_certification-' . $i) !== null) {
+                                        $siteIso->setDateCertification(ApiLib::dateToMySQL($request->request->get('date_certification-' . $i)));
+                                    }
+                                } else {
+                                    $siteIso->setCertifie(false);
+                                    $siteIso->setEnCoursCertification(true);
+                                }
+                                if ($request->request->get('other')) {
+                                    $siteIso->setAutre($request->request->get('other'));
+                                }
                                 $em->persist($siteIso);
-                                $em->flush();
                             }
+                            $em->flush();
                         }
 
                         $this->addFlash('success', 'site.flash.edit.success');
+                        
                         return $this->redirectToRoute('user_show_site');
                     } else {
                         $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
