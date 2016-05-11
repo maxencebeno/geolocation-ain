@@ -7,78 +7,97 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3>{{ 'profile.show.basic_infos'|trans }}</h3></div>
-                    <div class="panel-body">
-                        <dl class="dl-horizontal">
-                            <dt>{{ 'profile.show.name'|trans }}</dt>
-                            <dd>{{ user.nom }}</dd>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h3>{{ 'profile.show.basic_infos'|trans }}</h3></div>
+                            <div class="panel-body">
+                                <dl class="dl-horizontal">
+                                    <dt>{{ 'profile.show.name'|trans }}</dt>
+                                    <dd>{{ user.nom }}</dd>
 
-                            <dt>{{ 'profile.show.date_creation_entreprise'|trans }}</dt>
-                            <dd>
-                                {% if user.dateCreationEntreprise  != '' %}
-                                    {{ user.dateCreationEntreprise }}
-                                {% else %}
-                                    {{ 'profile.show.nonrenseigne'|trans }}
-                                {% endif %}
-                            </dd>
+                                    <dt>{{ 'profile.show.date_creation_entreprise'|trans }}</dt>
+                                    <dd>
+                                        {% if user.dateCreationEntreprise  != '' %}
+                                            {{ user.dateCreationEntreprise }}
+                                        {% else %}
+                                            {{ 'profile.show.nonrenseigne'|trans }}
+                                        {% endif %}
+                                    </dd>
 
-                            <dt>{{ 'profile.show.email'|trans }}</dt>
-                            <dd>{{ user.email }}</dd>
+                                    <dt>{{ 'profile.show.email'|trans }}</dt>
+                                    <dd>{{ user.email }}</dd>
 
-                            <dt>{{ 'profile.show.adresse'|trans }}</dt>
-                            <dd>{{ user.adresse }}</dd>
+                                    <dt>{{ 'profile.show.adresse'|trans }}</dt>
+                                    <dd>{{ user.adresse }}</dd>
 
 
-                            <dt>{{ 'profile.show.ville'|trans }}</dt>
-                            <dd>{{ user.ville }}</dd>
+                                    <dt>{{ 'profile.show.ville'|trans }}</dt>
+                                    <dd>{{ user.ville }}</dd>
 
-                            <dt>{{ 'profile.show.codepostal'|trans }}</dt>
-                            <dd>{{ user.codepostal }}</dd>
+                                    <dt>{{ 'profile.show.codepostal'|trans }}</dt>
+                                    <dd>{{ user.codepostal }}</dd>
 
-                            <dt>{{ 'profile.show.telephone'|trans }}</dt>
-                            <dd>
-                                {% if user.tel != '' %}
-                                    {{ user.tel }}
-                                {% else %}
-                                    {{ 'profile.show.nonrenseigne'|trans }}
-                                {% endif %}
-                            </dd>
+                                    <dt>{{ 'profile.show.telephone'|trans }}</dt>
+                                    <dd>
+                                        {% if user.tel != '' %}
+                                            {{ user.tel }}
+                                        {% else %}
+                                            {{ 'profile.show.nonrenseigne'|trans }}
+                                        {% endif %}
+                                    </dd>
 
-                            <dt>{{ 'profile.show.siren'|trans }}</dt>
-                            <dd>{{ user.siren }}</dd>
+                                    <dt>{{ 'profile.show.siren'|trans }}</dt>
+                                    <dd>{{ user.siren }}</dd>
 
-                            <dt>{{ 'profile.show.kbis'|trans }}</dt>
-                            <dd>
-                                {% if user.kbis != '' %}
-                                    <a href="{{ path('user_kbis', {'id': user.id}) }}" target="_blank">{{ user.kbis }}</a>
-                                {% else %}
-                                    {{ 'profile.show.nonrenseigne'|trans }}
-                                {% endif %}
-                            </dd>
+                                    <dt>{{ 'profile.show.kbis'|trans }}</dt>
+                                    <dd>
+                                        {% if user.kbis != '' %}
+                                            <a href="{{ path('user_kbis', {'id': user.id}) }}" target="_blank">{{ user.kbis }}</a>
+                                        {% else %}
+                                            {{ 'profile.show.nonrenseigne'|trans }}
+                                        {% endif %}
+                                    </dd>
 
-                            <dt>{{ 'profile.show.site'|trans }}</dt>
-                            <dd>
-                                {% if user.url != '' %}
-                                    <a href="{{ user.url }}">{{ user.url }}</a>
-                                {% else %}
-                                    {{ 'profile.show.nonrenseigne'|trans }}
-                                {% endif %}
-                            </dd>
+                                    <dt>{{ 'profile.show.site'|trans }}</dt>
+                                    <dd>
+                                        {% if user.url != '' %}
+                                            <a href="{{ user.url }}">{{ user.url }}</a>
+                                        {% else %}
+                                            {{ 'profile.show.nonrenseigne'|trans }}
+                                        {% endif %}
+                                    </dd>
 
-                            <dt>{{ 'profile.show.description'|trans }}</dt>
-                            <dd>
-                                {% if user.description != '' %}
-                                    {{ user.description }}
-                                {% else %}
-                                    {{ 'profile.show.nonrenseigne'|trans }}
-                                {% endif %}
-                            </dd>   
-                        </dl>
-                        <div class="text-center">       
-                            <a class="btn btn-info btn-lg text-center" href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a>
+                                    <dt>{{ 'profile.show.description'|trans }}</dt>
+                                    <dd>
+                                        {% if user.description != '' %}
+                                            {{ user.description }}
+                                        {% else %}
+                                            {{ 'profile.show.nonrenseigne'|trans }}
+                                        {% endif %}
+                                    </dd>   
+                                </dl>
+                                <div class="text-center">       
+                                    <a class="btn btn-info btn-lg text-center" href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h3>{{ 'profile.show.security_infos'|trans }}</h3></div>
+                                <div class="panel-body">
+                                    <div class="text-center"> 
+                                        <a class="btn btn-info btn-lg" href="{{ path('fos_user_change_password') }}">{{ 'profile.show.link_change_password'|trans }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             <div class="col-sm-6">
@@ -163,22 +182,15 @@
 
 
             </div>
-        </div>
-        <!-- <div class="col-sm-6">
-             <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
-         </div>-->
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>{{ 'profile.show.security_infos'|trans }}</h3></div>
-                <div class="panel-body">
-                    <div class="text-center"> 
-                        <a class="btn btn-info btn-lg" href="{{ path('fos_user_change_password') }}">{{ 'profile.show.link_change_password'|trans }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
+            <!-- <div class="col-sm-6">
+                 <div style="background-image: url('/profile-picture/{{ user.username }}'); width: 100px; height: 100px;"></div>
+             </div>-->
+
+
+
+
+        </div>
+
+    </div>
 </div>
