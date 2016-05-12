@@ -4,19 +4,28 @@ namespace Geolocation\AdminBundle\Domain\Api;
 
 
 use Geocoder\Provider\GoogleMaps;
+use Geolocation\AdminBundle\Entity\Adresse;
 use Geolocation\AdminBundle\Entity\User;
 use Ivory\HttpAdapter\CurlHttpAdapter;
 
 class ApiLib
 {
-    public static function searchAdresse(User $user)
+    public static function searchAdresse(User $user = null, Adresse $adresse = null)
     {
         $curl = new CurlHttpAdapter();
         $geocoder = new GoogleMaps($curl);
-        try {
-            return $geocoder->geocode($user->getAdresse() . ', ' . $user->getCodePostal() . ', ' . $user->getVille());
-        } catch (\Exception $e) {
-            return false;
+        if ($user !== null) {
+            try {
+                return $geocoder->geocode($user->getAdresse() . ', ' . $user->getCodePostal() . ', ' . $user->getVille());
+            } catch (\Exception $e) {
+                return false;
+            }
+        } else {
+            try {
+                return $geocoder->geocode($adresse->getAdresse() . ', ' . $adresse->getCodePostal() . ', ' . $adresse->getVille());
+            } catch (\Exception $e) {
+                return false;
+            }
         }
     }
 

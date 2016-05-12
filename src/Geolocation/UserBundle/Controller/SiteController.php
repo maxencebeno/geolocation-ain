@@ -38,8 +38,14 @@ class SiteController extends Controller {
 
         if ($form->isValid()) {
 
+            $adr = $request->request->get('geolocation_adminbundle_adresse');
+
+            $entity->setAdresse($adr['adresse']);
+            $entity->setVille($adr['ville']);
+            $entity->setCodePostal($adr['codePostal']);
+
             // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
-            $response = ApiLib::searchAdresse($user);
+            $response = ApiLib::searchAdresse(null, $entity);
 
             if ($response == false) {
 
@@ -64,12 +70,6 @@ class SiteController extends Controller {
                         $entity->setLatitude($latitude);
                         $entity->setLongitude($longitude);
                         $entity->setUser($user);
-
-                        $adr = $request->request->get('geolocation_adminbundle_adresse');
-
-                        $entity->setAdresse($adr['adresse']);
-                        $entity->setVille($adr['ville']);
-                        $entity->setCodePostal($adr['codePostal']);
                         $entity->setTel($adr['tel']);
                         $entity->setMain(false);
 
@@ -253,8 +253,15 @@ class SiteController extends Controller {
         }
 
         if ($form->isValid()) {
+
+            $adr = $request->request->get('geolocation_adminbundle_adresse');
+
+            $entity->setAdresse($adr['adresse']);
+            $entity->setVille($adr['ville']);
+            $entity->setCodePostal($adr['codePostal']);
+            
             // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
-            $response = ApiLib::searchAdresse($user);
+            $response = ApiLib::searchAdresse(null, $entity);
 
             if ($response == false) {
 
@@ -285,12 +292,6 @@ class SiteController extends Controller {
                         $entity->setLatitude($latitude);
                         $entity->setLongitude($longitude);
                         $entity->setUser($user);
-
-                        $adr = $request->request->get('geolocation_adminbundle_adresse');
-
-                        $entity->setAdresse($adr['adresse']);
-                        $entity->setVille($adr['ville']);
-                        $entity->setCodePostal($adr['codePostal']);
                         $entity->setTel($adr['tel']);
 
 

@@ -43,55 +43,13 @@ function initMarker(data, centerMarkers) {
     centerMarkers = typeof centerMarkers === 'undefined';
     var i;
     var index = 0;
-    var index2 = 0;
     var bounds = new google.maps.LatLngBounds();
+    // On affiche les maisons meres
     for (i in data) {
         if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
-            if (typeof data[i].sites !== 'undefined') {
-                for (var j in data[i].sites) {
-                    latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
-                    markers.push(new google.maps.Marker({
-                        position: latlng[index2],
-                        map: carte,
-                        title: 'Test ' + index2
-                    }));
-                    console.log(latlng[index2]);
-
-                    contentString =
-                            '<div id="content">' +
-                            '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
-                            data[i].sites[j].adresse.adresse + '<br>' +
-                            data[i].sites[j].adresse.codePostal + ' ' + data[i].sites[j].adresse.ville + '<br>' +
-                            '<h4>Ressources</h4>';
-
-                    if (data[i].sites[j].besoin !== null) {
-                        contentString += '<h5>Besoin</h5><p>' + data[i].sites[j].besoin.cpf.souscategorie.libelle + '</p>';
-                    }
-
-                    if (data[i].sites[j].proposition !== null) {
-                        contentString += '<h5>Proposition</h5><p>' + data[i].sites[j].proposition.cpf.souscategorie.libelle + '</p>';
-                    }
-
-                    if (data[i].sites[j].proposition === null && data[i].sites[j].besoin === null) {
-                        contentString += '<p>Pas de ressources pour le moment</p>';
-                    }
-                    contentString += '<a href = "' + baseUrl + 'details\\' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
-                            '</div>';
-                    infowindow[index2] = new google.maps.InfoWindow({
-                        content: contentString
-                    });
-
-                    google.maps.event.addListener(markers[index2], 'click', function (index2) {
-                        return function () {
-                            closeWindowInfos(); //fermer toutes les infoWindows ouvertes
-                            infowindow[index2].open(carte, markers[index2]); //ouverture de l'infobulle du point choisi
-                        }
-                    }(index2));
-                    index2++;
-                }
-            }
-
             latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
+            console.log(data[i].user.latitude);
+            console.log(data[i].user.longitude);
             markers.push(new google.maps.Marker({
                 position: latlng[index],
                 map: carte,
@@ -132,7 +90,59 @@ function initMarker(data, centerMarkers) {
                     infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
                 }
             }(index));
+
             index++;
+            console.log(index);
+        }
+    }
+
+    // On affiche les sites de production
+    for (i in data) {
+        if (typeof data[i].sites !== 'undefined') {
+            for (var j in data[i].sites) {
+                console.log(data[i].sites[j].adresse.latitude);
+                console.log(data[i].sites[j].adresse.longitude);
+                latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
+                console.log(latlng[index]);
+                markers.push(new google.maps.Marker({
+                    position: latlng[index],
+                    map: carte,
+                    title: 'Test ' + index
+                }));
+
+                contentString =
+                    '<div id="content">' +
+                    '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
+                    data[i].sites[j].adresse.adresse + '<br>' +
+                    data[i].sites[j].adresse.codePostal + ' ' + data[i].sites[j].adresse.ville + '<br>' +
+                    '<h4>Ressources</h4>';
+
+                if (data[i].sites[j].besoin !== null) {
+                    contentString += '<h5>Besoin</h5><p>' + data[i].sites[j].besoin.cpf.souscategorie.libelle + '</p>';
+                }
+
+                if (data[i].sites[j].proposition !== null) {
+                    contentString += '<h5>Proposition</h5><p>' + data[i].sites[j].proposition.cpf.souscategorie.libelle + '</p>';
+                }
+
+                if (data[i].sites[j].proposition === null && data[i].sites[j].besoin === null) {
+                    contentString += '<p>Pas de ressources pour le moment</p>';
+                }
+                contentString += '<a href = "' + baseUrl + 'details\\' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
+                    '</div>';
+                infowindow[index] = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                google.maps.event.addListener(markers[index], 'click', function (index) {
+                    return function () {
+                        closeWindowInfos(); //fermer toutes les infoWindows ouvertes
+                        infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
+                    }
+                }(index));
+                index++;
+                console.log(index);
+            }
         }
     }
     if (centerMarkers === true) {
