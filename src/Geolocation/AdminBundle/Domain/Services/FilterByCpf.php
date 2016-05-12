@@ -59,6 +59,11 @@ class FilterByCpf
                 ]);
 
             if ($user !== null) {
+                $adresse = $this->doctrine->getManager()->getRepository('GeolocationAdminBundle:Adresse')
+                    ->findOneBy([
+                        'user' => $user,
+                        'main' => true
+                    ]);
                 $besoin = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
                     ->findOneBy([
                         'user' => $user,
@@ -74,7 +79,8 @@ class FilterByCpf
                 $datas[$key] = [
                     'besoin' => $besoin,
                     'proposition' => $proposition,
-                    'user' => $user
+                    'user' => $user,
+                    'adresse' => $adresse
                 ];
 
                 $adresses = $this->doctrine->getRepository('GeolocationAdminBundle:Adresse')

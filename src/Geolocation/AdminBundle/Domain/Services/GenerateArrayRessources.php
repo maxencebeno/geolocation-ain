@@ -10,6 +10,7 @@ namespace Geolocation\AdminBundle\Domain\Services;
 
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Geolocation\AdminBundle\Entity\User;
 
 class GenerateArrayRessources
 {
@@ -34,7 +35,13 @@ class GenerateArrayRessources
 
             if ($cpf !== null) {
                 $ressources = array();
+                /** @var User $user */
                 foreach ($users as $user) {
+                    $adresse = $em->getRepository('GeolocationAdminBundle:Adresse')
+                        ->findOneBy([
+                            'user' => $user->getId(),
+                            'main' => true
+                        ]);
                     $besoin = $em->getRepository('GeolocationAdminBundle:Ressources')
                         ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'cpf' => $cpf));
                     $proposition = $em->getRepository('GeolocationAdminBundle:Ressources')
@@ -44,7 +51,8 @@ class GenerateArrayRessources
                         $ressources[$user->getId()] =
                             array('besoin' => $besoin,
                                 'proposition' => $proposition,
-                                'user' => $user
+                                'user' => $user,
+                                'adresse' => $adresse
                             );
                     }
                     $adresses = $em->getRepository('GeolocationAdminBundle:Adresse')
@@ -73,6 +81,11 @@ class GenerateArrayRessources
 
             $ressources = array();
             foreach ($users as $user) {
+                $adresse = $em->getRepository('GeolocationAdminBundle:Adresse')
+                    ->findOneBy([
+                        'user' => $user->getId(),
+                        'main' => true
+                    ]);
                 $besoin = $em->getRepository('GeolocationAdminBundle:Ressources')
                     ->findOneBy(array('user' => $user->getId(), 'besoin' => true));
                 $proposition = $em->getRepository('GeolocationAdminBundle:Ressources')
@@ -80,7 +93,8 @@ class GenerateArrayRessources
                 $ressources[$user->getId()] =
                     array('besoin' => $besoin,
                         'proposition' => $proposition,
-                        'user' => $user
+                        'user' => $user,
+                        'adresse' => $adresse
                     );
                 $adresses = $em->getRepository('GeolocationAdminBundle:Adresse')
                     ->findBy([

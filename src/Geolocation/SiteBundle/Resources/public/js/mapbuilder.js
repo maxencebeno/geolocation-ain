@@ -48,8 +48,6 @@ function initMarker(data, centerMarkers) {
     for (i in data) {
         if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
             latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
-            console.log(data[i].user.latitude);
-            console.log(data[i].user.longitude);
             markers.push(new google.maps.Marker({
                 position: latlng[index],
                 map: carte,
@@ -78,7 +76,8 @@ function initMarker(data, centerMarkers) {
             if (data[i].proposition === null && data[i].besoin === null) {
                 contentString += '<p>Pas de ressources pour le moment</p>';
             }
-            contentString += '<a href = "' + baseUrl + 'details\\' + data[i].user.id + '">Plus d\'informations<a>' +
+            console.log(data[i]);
+            contentString += '<a href = "' + baseUrl + 'details\\' + data[i].adresse.id + '">Plus d\'informations<a>' +
                     '</div>';
             infowindow[index] = new google.maps.InfoWindow({
                 content: contentString
@@ -92,7 +91,6 @@ function initMarker(data, centerMarkers) {
             }(index));
 
             index++;
-            console.log(index);
         }
     }
 
@@ -100,10 +98,8 @@ function initMarker(data, centerMarkers) {
     for (i in data) {
         if (typeof data[i].sites !== 'undefined') {
             for (var j in data[i].sites) {
-                console.log(data[i].sites[j].adresse.latitude);
-                console.log(data[i].sites[j].adresse.longitude);
                 latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
-                console.log(latlng[index]);
+                
                 markers.push(new google.maps.Marker({
                     position: latlng[index],
                     map: carte,
@@ -141,7 +137,6 @@ function initMarker(data, centerMarkers) {
                     }
                 }(index));
                 index++;
-                console.log(index);
             }
         }
     }

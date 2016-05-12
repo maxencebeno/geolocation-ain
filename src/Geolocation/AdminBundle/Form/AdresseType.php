@@ -2,6 +2,7 @@
 
 namespace Geolocation\AdminBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -24,6 +25,7 @@ class AdresseType extends AbstractType
             ->add('tel', null, array('label' => 'form.tel', 'translation_domain' => 'GeolocationUserBundle', 'required' => true))
             ->add('isPublic', null, array('label' => 'form.public', 'translation_domain' => 'GeolocationUserBundle'))
             ->add('pilier', null, ['label' => 'form.pilier', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'])
+            ->add('iso', EntityType::class, ['label' => 'ISO', 'class' => 'Geolocation\AdminBundle\Entity\Iso', 'multiple' => true, 'expanded' => true])
             ->add('saveSite', 'submit', array('label' => 'form.valider_site', 'translation_domain' => 'GeolocationUserBundle'));
     }
 

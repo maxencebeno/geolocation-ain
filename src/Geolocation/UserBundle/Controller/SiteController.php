@@ -33,8 +33,7 @@ class SiteController extends Controller {
         $entity = new Adresse();
         $entity->setNom($user->getNom());
         $form = $this->createForm(new AdresseType(), $entity);
-        $form->add('iso', EntityType::class, ['label' => 'ISO', 'class' => 'Geolocation\AdminBundle\Entity\Iso', 'multiple' => true, 'expanded' => true]);
-
+        
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -160,7 +159,6 @@ class SiteController extends Controller {
         }
 
         $form = $this->createForm(new AdresseType(), $entity);
-        $form->add('iso', EntityType::class, ['label' => 'ISO', 'class' => 'Geolocation\AdminBundle\Entity\Iso', 'multiple' => true, 'expanded' => true]);
 
         $form->handleRequest($request);
 
