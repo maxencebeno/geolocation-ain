@@ -68,7 +68,7 @@
                     <th>Téléphone</th>
                     <th>Date de création de l'utilisateur</th>
                     <th>Date de création de l'entreprise</th>
-                    <th>Siret</th>
+                    <th>Siren</th>
                     <th>Kbis</th>
                     <th>Url</th>
                     <th>Etat</th>
@@ -86,7 +86,7 @@
                         <td>{{ entity.tel }}</td>
                         <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if entity.dateCreationEntreprise %}{{ entity.dateCreationEntreprise|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ entity.siret }}</td>
+                        <td>{{ entity.siren }}</td>
                         <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}" traget="_blank">{{ entity.kbis }}</a></td>
                         <td>{{ entity.url }}</td>
                         {%  if entity.enabled == '1' %}
