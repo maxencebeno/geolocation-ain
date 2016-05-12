@@ -33,10 +33,10 @@ class ProfileController extends Controller {
         }
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $user, 'adresse_id'=>NULL));
-        
+                ->findBy(array('user' => $user, 'adresse_id' => NULL));
+
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-                ->findBy(array('user' => $user, 'main'=>false));
+                ->findBy(array('user' => $user, 'main' => false));
 
         /** @var \DateTime $date */
         if ($user->getDateCreationEntreprise() !== null) {
@@ -47,7 +47,7 @@ class ProfileController extends Controller {
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
                     'user' => $user,
                     'ressources' => $ressources,
-                    'sites'=>$sites
+                    'sites' => $sites
         ));
     }
 
@@ -96,6 +96,25 @@ class ProfileController extends Controller {
             }
 
             $userManager->updateUser($user);
+            
+            //Mise à jour des données de la table Adresse
+            $adresse = new Adresse();
+           
+            $adresse->setAdresse($user->getAdresse());
+            $adresse->setCodePostal($user->getCodePostal());
+            $adresse->setLatitude($user->getLatitude());
+            $adresse->setLongitude($user->getLongitude());
+            $adresse->setTel($user->getTel());
+            $adresse->setIsPublic($user->getIsPublic());
+            $adresse->setUser($user);
+            $adresse->setVille($user->getVille());
+            $adresse->setMain(true);
+            $adresse->setPilier($user->getPilier());
+            $adresse->setNom($user->getNom());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($adresse);
+            $em->flush();
+
 
             if (null === $response = $event->getResponse()) {
                 $url = $this->generateUrl('fos_user_profile_show');
@@ -149,15 +168,14 @@ class ProfileController extends Controller {
         $em->persist($userBDD);
         $em->flush();
     }
-    
-    public function downloadFileAction(Request $request)
-    {
+
+    public function downloadFileAction(Request $request) {
         // On récupère l'utilisateur
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('GeolocationAdminBundle:User')
-            ->findOneBy(array(
-                'id' => $request->attributes->get('id')
-            ));
+                ->findOneBy(array(
+            'id' => $request->attributes->get('id')
+        ));
 
         $path = $this->get('kernel')->getRootDir() . "/../web/uploads/kbis/" . $user->getKbis();
         $content = file_get_contents($path);
@@ -165,7 +183,7 @@ class ProfileController extends Controller {
         $response = new Response();
 
         $response->headers->set('Content-Type', 'application/pdf');
-        
+
         $response->setContent($content);
         return $response;
     }

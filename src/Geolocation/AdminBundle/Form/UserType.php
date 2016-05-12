@@ -18,6 +18,7 @@ class UserType extends AbstractType
             ->add('codePostal')
             ->add('ville')
             ->add('tel')
+            ->add('isPublic')
             ->add('siren')
             ->add('kbis')
             ->add('url')

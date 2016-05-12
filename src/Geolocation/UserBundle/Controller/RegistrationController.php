@@ -121,7 +121,7 @@ class RegistrationController extends BaseController
                         $adresse->setLatitude($latitude);
                         $adresse->setLongitude($longitude);
                         $adresse->setTel($user->getTel());
-                        $adresse->setIsPublic(true);
+                        $adresse->setIsPublic($user->getIsPublic());
                         $adresse->setUser($user);
                         $adresse->setVille($user->getVille());
                         $adresse->setMain(true);

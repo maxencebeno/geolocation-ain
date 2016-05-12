@@ -142,6 +142,14 @@ class User extends BaseUser
      */
     protected $longitude;
     
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isPublic", type="boolean")
+     */
+    private $isPublic;
+    
+    
     public function __construct() {
         parent::__construct();
         $this->dateCreation = new \DateTime();
@@ -561,5 +569,29 @@ class User extends BaseUser
     public function getSiren()
     {
         return $this->siren;
+    }
+
+    /**
+     * Set isPublic
+     *
+     * @param boolean $isPublic
+     *
+     * @return User
+     */
+    public function setIsPublic($isPublic)
+    {
+        $this->isPublic = $isPublic;
+
+        return $this;
+    }
+
+    /**
+     * Get isPublic
+     *
+     * @return boolean
+     */
+    public function getIsPublic()
+    {
+        return $this->isPublic;
     }
 }

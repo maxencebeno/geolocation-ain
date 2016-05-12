@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.nom) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.nom, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.nom', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.nom) }}</span>
                             </div>
@@ -31,24 +31,24 @@
                                 <div class='input-group date' id='datetimepicker1'>
                                     {{ form_widget(form.dateCreationEntreprise, {'attr': {'tabindex': '2'}}) }}
                                     <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
                                 </div>
-                    <span class="form-error"
-                          id="error-dateCreationEntreprise">{{ form_errors(form.dateCreationEntreprise) }}</span>
+                                <span class="form-error"
+                                      id="error-dateCreationEntreprise">{{ form_errors(form.dateCreationEntreprise) }}</span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.username) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.username, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.username', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '3'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.username) }}</span>
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.email) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.email, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.email', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '4'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.email) }}</span>
                             </div>
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.adresse) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.adresse, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.adresse', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '5'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.adresse) }}</span>
                             </div>
@@ -66,14 +66,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <span class="form-register-label">{{ form_label(form.codePostal) }} <strong
-                                                    class="text-danger">*</strong></span>
+                                                class="text-danger">*</strong></span>
                                         {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
                                         <span class="text-danger"
                                               id="error-surname">{{ form_errors(form.codePostal) }}</span>
                                     </div>
                                     <div class="col-sm-6">
                                         <span class="form-register-label">{{ form_label(form.ville) }} <strong
-                                                    class="text-danger">*</strong></span>
+                                                class="text-danger">*</strong></span>
                                         {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
                                         <span class="text-danger"
                                               id="error-surname">{{ form_errors(form.ville) }}</span>
@@ -86,30 +86,49 @@
                             {% if type == 'entreprise' %}
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.tel) }} <strong
-                                                class="text-danger">*</strong> <i class="glyphicon glyphicon-question-sign"
-                                                                                  data-toggle="tooltip"
-                                                                                  data-placement="right"
-                                                                                  title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
+                                            class="text-danger">*</strong> <i class="glyphicon glyphicon-question-sign"
+                                            data-toggle="tooltip"
+                                            data-placement="right"
+                                            title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
                                     {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '8'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
                                 </div>
 
                                 <div class="col-sm-6">
+                                    <span class="form-edit-label">{{ form_label(form.isPublic) }}
+                                        <i class="glyphicon glyphicon-question-sign"
+                                           data-toggle="tooltip"
+                                           data-placement="right"
+                                           title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i></span>
+                                    {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'tabindex': '9','spellcheck': 'false'}}) }}
+                                    <span class="form-error" id="error-isPublic">{{ form_errors(form.isPublic) }}</span>
+                                </div>
+
+                                <div class="col-sm-6">
                                     <span class="form-edit-label">{{ form_label(form.fileKbis) }}
                                         (PDF uniquement)</span>
-                                    {{ form_widget(form.fileKbis, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '9'}}) }}
+                                    {{ form_widget(form.fileKbis, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '10'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.fileKbis) }}</span>
                                 </div>
 
                             {% else %}
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.tel) }} <strong
-                                                class="text-danger">*</strong> <i
-                                                class="glyphicon glyphicon-question-sign" data-toggle="tooltip"
-                                                data-placement="right"
-                                                title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
-                                    {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '10'}}) }}
+                                            class="text-danger">*</strong> <i
+                                            class="glyphicon glyphicon-question-sign" data-toggle="tooltip"
+                                            data-placement="right"
+                                            title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
+                                    {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '8'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="form-edit-label">{{ form_label(form.isPublic) }}
+                                        <i class="glyphicon glyphicon-question-sign"
+                                           data-toggle="tooltip"
+                                           data-placement="right"
+                                           title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i></span>
+                                    {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'tabindex': '9','spellcheck': 'false'}}) }}
+                                    <span class="form-error" id="error-isPublic">{{ form_errors(form.isPublic) }}</span>
                                 </div>
                             {% endif %}
                         </div>
@@ -118,7 +137,7 @@
                             {% if type == 'entreprise' %}
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.siren) }} <strong
-                                                class="text-danger">*</strong></span>
+                                            class="text-danger">*</strong></span>
                                     {{ form_widget(form.siren, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.siren', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '11'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.siren) }}</span>
                                 </div>
@@ -130,13 +149,13 @@
                             {% else %}
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.rna) }} <strong
-                                                class="text-danger">*</strong></span>
-                                    {{ form_widget(form.rna, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.rna', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '13'}}) }}
+                                            class="text-danger">*</strong></span>
+                                    {{ form_widget(form.rna, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.rna', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '10'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.rna) }}</span>
                                 </div>
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.url) }}</span>
-                                    {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'http://', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '14'}}) }}
+                                    {{ form_widget(form.url, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'http://', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '11'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.url) }}</span>
                                 </div>
                             {% endif %}
@@ -145,13 +164,13 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.description) }}</span>
-                                {{ form_widget(form.description, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.description', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                                {{ form_widget(form.description, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.description', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '13'}}) }}
                                 <span class="text-danger"
                                       id="error-surname">{{ form_errors(form.description) }}</span>
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.pilier) }}</span>
-                                {{ form_widget(form.pilier, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.pilier', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
+                                {{ form_widget(form.pilier, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.pilier', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '14', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
                                 <span class="text-danger"
                                       id="error-surname">{{ form_errors(form.pilier) }}</span>
                             </div>
@@ -160,8 +179,8 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.plainPassword.first) }} <strong
-                                            class="text-danger">*</strong></span>
-                                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '14'}}) }}
+                                        class="text-danger">*</strong></span>
+                                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '15'}}) }}
                                 <div id="password-solidity">
                                     <div id="register-pass-status-line1" class="register-pass-status-line"></div>
                                     <div id="register-pass-status-line2" class="register-pass-status-line"></div>
@@ -176,8 +195,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.plainPassword.second) }} <strong
-                                            class="text-danger">*</strong></span>
-                                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '15'}}) }}
+                                        class="text-danger">*</strong></span>
+                                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '16'}}) }}
                                 <span class="text-danger"
                                       id="error-second-password">{{ form_errors(form.plainPassword.second) }}</span>
                             </div>

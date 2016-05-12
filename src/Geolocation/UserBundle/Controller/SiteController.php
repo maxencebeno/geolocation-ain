@@ -31,6 +31,7 @@ class SiteController extends Controller {
                 ->findBy(array('user' => $user, 'main'=>false));
 
         $entity = new Adresse();
+        $entity->setNom($user->getNom());
         $form = $this->createForm(new AdresseType(), $entity);
         $form->add('iso', EntityType::class, ['label' => 'ISO', 'class' => 'Geolocation\AdminBundle\Entity\Iso', 'multiple' => true, 'expanded' => true]);
 

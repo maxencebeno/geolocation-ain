@@ -47,8 +47,8 @@ profile:
         description: Description
         ressources_title : Mes ressources
         link_edit_ressources : Modifier mes ressources
-        no_ressources : Aucune ressources choisies
-        no_besoins : Aucun besoins choisis
+        no_ressources : Aucune ressource choisie
+        no_besoins : Aucun besoin choisi
         no_propositions : Aucune ressources proposées
         site_secondary: Mes sites
         link_site_secondary: Modifier mes sites
