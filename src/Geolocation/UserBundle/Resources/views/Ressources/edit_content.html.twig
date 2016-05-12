@@ -159,11 +159,11 @@
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
         modal.find('.modal-body span').text(myressource);
-        var pathname = window.location.pathname; //récuération du chemin pour savoir sur quel page on est; car le template est appelé à plusieurs endroit
+        var pathname = window.location.pathname; //récpuération du chemin pour savoir sur quel page on est; car le template est appelé à plusieurs endroit
         if (pathname.search("get-site") > -1) {
-            modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/" + id + "?page=edit-site");
+            modal.find('.modal-footer #valid').attr('href', baseUrl+"ressources-delete/" + id + "?page=edit-site");
         } else {
-            modal.find('.modal-footer #valid').attr('href', "/app_dev.php/ressources-delete/" + id);
+            modal.find('.modal-footer #valid').attr('href', baseUrl+"ressources-delete/" + id);
         }
     });
 </script>

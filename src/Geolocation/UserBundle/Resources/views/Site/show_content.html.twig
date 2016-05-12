@@ -155,6 +155,6 @@
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
         modal.find('.modal-body span').text(myaddress);
-        modal.find('.modal-footer #valid').attr('href', "/app_dev.php/profile/delete-site/" + id);
+        modal.find('.modal-footer #valid').attr('href', baseUrl+"profile/delete-site/" + id);
     });
 </script>
