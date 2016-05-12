@@ -10,9 +10,19 @@ class DetailsController extends Controller
     {
     	$em = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:User');
         $em2 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Ressources');
+        $em3 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Adresse');
 
-    	$user = $em->findOneBy(array('id'=>$id));
+    	$site = $em3->findOneBy(array('id'=>$id));
+        $user = $em->findOneBy(array('id'=>$site->getUser()));
         $ressources = $em2->findBy(array('user'=>$user->getId()));
+        
+        $isMain = False;
+        $sites=[];
+        if($site->getMain()){
+            $isMain = true;
+            $sites = $em3->findBy(array('user'=>$user->getId(), 'main' => false));
+        }
+        
         
         $cpfs = [];
         foreach ($ressources as $ressource) {
@@ -51,6 +61,6 @@ class DetailsController extends Controller
             ];
         }
         
-        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user, 'ress'=>$ressources));
+        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user, 'ress'=>$ressources, 'isMain'=>$isMain, 'sites'=>$sites));
     }
 }

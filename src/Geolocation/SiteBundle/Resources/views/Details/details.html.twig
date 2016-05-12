@@ -82,14 +82,14 @@
                         {% if ress|length == 0 %}
                             <p>Aucune ressource proposée</p>
                         {% else %}
-                        {% for item in ress %}
-                            {% if item.besoin == true %}
-                                <article class="col-sm-4">
-                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
-                                    {{ item.cpf.souscategorie.libelle }}
-                                </article>
-                            {% endif %}
-                        {% endfor %}
+                            {% for item in ress %}
+                                {% if item.besoin == true %}
+                                    <article class="col-sm-4">
+                                        <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
+                                        {{ item.cpf.souscategorie.libelle }}
+                                    </article>
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
                     </div>
                 </section>
@@ -98,11 +98,27 @@
 
             <aside class="col-sm-5 col-sm-offset-1">
                 <div class="row voffset3"><a href="mailto:{{ user.email }}" type="button" class="btn btn-primary btn-lg col-sm-12">Contacter cette entreprise</a></div>
-                <div class="row">
+                <div class="row voffset3">
                     <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="100%" height="400" src="https://maps.google.com/maps?hl=en&q={{ user.adresse }} {{ user.codePostal }} {{ user.Ville }}&ie=UTF8&t=m&z=11&iwloc=B&output=embed"><div><small><a href="http://embedgooglemaps.com">
                                     embedgooglemaps.com
                                 </a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">website traffic</a></small></div></iframe>
                 </div>
+
+
+                <div class="row well">
+                    {% if isMain %}
+                        <h3>Site de l'entreprise</h3>
+                        <ul>
+                        {% for item in sites %}
+                            <li><a href="{{ path('site_details', {'id': item.id}) }}">{{ item.nom }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p><a href="">Voir la fiche de l'entreprise mère</a></p>
+                    {% endif %}
+                </div>
+
+
             </aside>
         </div>
 
