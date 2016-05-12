@@ -113,13 +113,16 @@ class RessourcesController extends Controller {
     public function deleteAction(Request $request) {
         $id= $request->attributes->get('id');
         $em = $this->getDoctrine()->getManager();
+        /** @var Ressources $ressource */
         $ressource = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->find($id);
+        
+        $idAdresseForRedirection = $ressource->getAdresseId()->getId();
 
         $em->remove($ressource);
         $em->flush();
         if ($request->query->get('page')){
-            return $this->redirectToRoute('user_edit_site',array('id'=>$this->getUser()->getId()));
+            return $this->redirectToRoute('user_edit_site',array('id'=>$idAdresseForRedirection));
         } else{
             return $this->redirectToRoute('user_ressources');
         }
