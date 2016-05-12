@@ -149,6 +149,7 @@ class SiteController extends Controller {
         $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
 
+        /** @var Adresse $entity */
         $entity = $em->getRepository('GeolocationAdminBundle:Adresse')
                 ->findOneBy(array('id' => $id));
 

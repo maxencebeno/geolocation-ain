@@ -33,7 +33,7 @@ class Ressources
      *
      * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      * })
      */
     private $user;
@@ -53,7 +53,7 @@ class Ressources
      *
      * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Adresse")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id", onDelete="CASCADE")
      * })
      */
     private $adresse_id;
