@@ -14,7 +14,7 @@ class DetailsController extends Controller
 
     	$site = $em3->findOneBy(array('id'=>$id));
         $user = $em->findOneBy(array('id'=>$site->getUser()));
-        $ressources = $em2->findBy(array('user'=>$user->getId()));
+        $ressources = $em2->findBy(array('adresse_id'=>$site->getId()));
         
         $isMain = False;
         $sites=[];
@@ -61,6 +61,6 @@ class DetailsController extends Controller
             ];
         }
         
-        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user, 'ress'=>$ressources, 'isMain'=>$isMain, 'sites'=>$sites));
+        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user,'site'=>$site, 'ress'=>$ressources, 'isMain'=>$isMain, 'sites'=>$sites));
     }
 }
