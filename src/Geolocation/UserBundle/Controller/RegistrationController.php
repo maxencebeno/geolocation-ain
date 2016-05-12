@@ -126,6 +126,7 @@ class RegistrationController extends BaseController
                         $adresse->setVille($user->getVille());
                         $adresse->setMain(true);
                         $adresse->setPilier($user->getPilier());
+                        $adresse->setNom($user->getNom());
 
                         $em->persist($adresse);
 

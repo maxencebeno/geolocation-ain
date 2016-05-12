@@ -76,12 +76,14 @@ class SiteController extends Controller {
 
                         $em->persist($entity);
                         $em->flush();
+                        
+                        $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
+                                        ->findOneBy(array('adresse' => $adr['adresse'], 'ville'=>$adr['ville'], 'codePostal'=>$adr['codePostal']));
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
                                     ->findOneBy(['id' => $i[0]]);
-                                $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
-                                        ->findOneBy(array('adresse' => $adr['adresse']));
+                                
                                 $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
 
                                 $siteIso->setIsoId($iso);
@@ -107,13 +109,7 @@ class SiteController extends Controller {
                         }
                         $this->addFlash('success', 'site.flash.create.success');
 
-                        $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-                                ->findBy(array('user' => $user));
-                        
-                        return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
-                                    'sites' => $sites,
-                                    'form' => $form->createView()
-                        ));
+                         return $this->redirectToRoute('user_edit_site', array('id'=>$siteId->getId()),302);
                     } else {
                         $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
 
