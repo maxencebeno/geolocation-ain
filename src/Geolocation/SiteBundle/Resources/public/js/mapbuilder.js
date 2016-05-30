@@ -22,7 +22,6 @@ google.maps.event.addListenerOnce(carte, 'idle', function () {
     $.ajax({
         url: baseUrl + 'json/markers',
         success: function (data) {
-            console.log(data);
             clearMarker();
             initMarker(data, false);
         }
@@ -103,7 +102,7 @@ function initMarker(data, centerMarkers) {
     for (i in data) {
         if (typeof data[i].sites !== 'undefined') {
             for (var j in data[i].sites) {
-                console.log(data[i].sites);
+                
                 latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
 
                 markers.push(new google.maps.Marker({
