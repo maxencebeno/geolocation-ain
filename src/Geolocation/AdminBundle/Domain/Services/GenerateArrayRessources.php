@@ -25,9 +25,7 @@ class GenerateArrayRessources
     public function generate($users, $requestCodeNaf)
     {
         $em = $this->doctrine->getManager();
-
         if ($idCpf = $requestCodeNaf) {
-
             $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
                 ->findOneBy([
                     'id' => $idCpf

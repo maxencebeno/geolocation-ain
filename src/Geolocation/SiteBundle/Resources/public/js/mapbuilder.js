@@ -76,7 +76,7 @@ function initMarker(data, centerMarkers) {
             if (data[i].proposition === null && data[i].besoin === null) {
                 contentString += '<p>Pas de ressources pour le moment</p>';
             }
-            console.log(data[i]);
+            
             contentString += '<a href = "' + baseUrl + 'details\\' + data[i].adresse.id + '">Plus d\'informations<a>' +
                     '</div>';
             infowindow[index] = new google.maps.InfoWindow({

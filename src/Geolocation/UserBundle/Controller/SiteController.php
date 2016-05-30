@@ -14,12 +14,14 @@ use Geolocation\AdminBundle\Domain\Api\ApiLib;
 use Geolocation\AdminBundle\Entity\Ressources;
 use Geolocation\AdminBundle\Form\RessourcesType;
 
-class SiteController extends Controller {
+class SiteController extends Controller
+{
 
     /**
      * Show the user site and permit to edit it
      */
-    public function showAction(Request $request) {
+    public function showAction(Request $request)
+    {
         /** @var User $user */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof User) {
@@ -28,12 +30,12 @@ class SiteController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-                ->findBy(array('user' => $user, 'main'=>false));
+            ->findBy(array('user' => $user, 'main' => false));
 
         $entity = new Adresse();
         $entity->setNom($user->getNom());
         $form = $this->createForm(new AdresseType(), $entity);
-        
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -51,8 +53,8 @@ class SiteController extends Controller {
 
                 $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
                 return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
-                            'sites' => $sites,
-                            'form' => $form->createView()
+                    'sites' => $sites,
+                    'form' => $form->createView()
                 ));
             } else {
                 // Geocode your request
@@ -76,14 +78,14 @@ class SiteController extends Controller {
 
                         $em->persist($entity);
                         $em->flush();
-                        
+
                         $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
-                                        ->findOneBy(array('adresse' => $adr['adresse'], 'ville'=>$adr['ville'], 'codePostal'=>$adr['codePostal']));
+                            ->findOneBy(array('adresse' => $adr['adresse'], 'ville' => $adr['ville'], 'codePostal' => $adr['codePostal']));
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
                                     ->findOneBy(['id' => $i[0]]);
-                                
+
                                 $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
 
                                 $siteIso->setIsoId($iso);
@@ -109,35 +111,36 @@ class SiteController extends Controller {
                         }
                         $this->addFlash('success', 'site.flash.create.success');
 
-                         return $this->redirectToRoute('user_edit_site', array('id'=>$siteId->getId()),302);
+                        return $this->redirectToRoute('user_edit_site', array('id' => $siteId->getId()), 302);
                     } else {
                         $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
 
                         return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
-                                    'sites' => $sites,
-                                    'form' => $form->createView()
+                            'sites' => $sites,
+                            'form' => $form->createView()
                         ));
                     }
                 } else {
                     $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
 
                     return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
-                                'sites' => $sites,
-                                'form' => $form->createView()
+                        'sites' => $sites,
+                        'form' => $form->createView()
                     ));
                 }
             }
         }
         return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
-                    'sites' => $sites,
-                    'form' => $form->createView()
+            'sites' => $sites,
+            'form' => $form->createView()
         ));
     }
 
     /**
      * Permit to the user to edit one site
      */
-    public function editAction(Request $request) {
+    public function editAction(Request $request)
+    {
         $id = $request->attributes->get('id');
 
         /** @var User $user */
@@ -151,7 +154,12 @@ class SiteController extends Controller {
 
         /** @var Adresse $entity */
         $entity = $em->getRepository('GeolocationAdminBundle:Adresse')
-                ->findOneBy(array('id' => $id));
+            ->findOneBy(array('id' => $id));
+
+        $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
+            ->findBy([
+                'siteId' => $entity
+            ]);
 
         if ($entity->getUser()->getId() != $user->getId()) {
 
@@ -165,32 +173,32 @@ class SiteController extends Controller {
 
         //récupération des ressources
         $sections = $em->getRepository('GeolocationAdminBundle:Section')
-                ->findAll();
+            ->findAll();
         $ressource = new Ressources();
 
         $formRessource = $this->createForm(new RessourcesType(), $ressource);
         $formRessource->handleRequest($request);
 
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('adresse_id' => $id));
+            ->findBy(array('adresse_id' => $id));
 
         if ($formRessource->isValid()) {
             $user = $this->getUser();
 
             $section = $em->getRepository('GeolocationAdminBundle:Section')
-                    ->findOneBy(array(
-                'id' => $request->request->get('section')
-            ));
+                ->findOneBy(array(
+                    'id' => $request->request->get('section')
+                ));
 
             $division = $em->getRepository('GeolocationAdminBundle:Division')
-                    ->findOneBy(array(
-                'id' => $request->request->get('division')
-            ));
+                ->findOneBy(array(
+                    'id' => $request->request->get('division')
+                ));
 
             $groupe = $em->getRepository('GeolocationAdminBundle:Groupe')
-                    ->findOneBy(array(
-                'id' => $request->request->get('groupe')
-            ));
+                ->findOneBy(array(
+                    'id' => $request->request->get('groupe')
+                ));
 
             /* $classe = $em->getRepository('GeolocationAdminBundle:Classe')
               ->findOneBy(array(
@@ -208,11 +216,11 @@ class SiteController extends Controller {
               )); */
 
             $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
-                    ->findOneBy(array(
-                'section' => $section,
-                'division' => $division,
-                'groupe' => $groupe
-            ));
+                ->findOneBy(array(
+                    'section' => $section,
+                    'division' => $division,
+                    'groupe' => $groupe
+                ));
 
             /* $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
               ->findOneBy(array(
@@ -234,21 +242,22 @@ class SiteController extends Controller {
                 $em->flush();
 
                 $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('adresse_id' => $entity));
+                    ->findBy(array('adresse_id' => $entity));
 
                 $this->addFlash('success', 'ressources.flash.create.success');
             } else {
                 $this->addFlash('danger', 'ressources.flash.create.fail');
             }
             return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
-                        'adresse' => array(
-                            'adresseId' => $id,
-                            'lieu' => $entity->getAdresse()
-                        ),
-                        'form1' => $form->createView(),
-                        'form' => $formRessource->createView(),
-                        'sections' => $sections,
-                        'ressources' => $ressources,
+                'adresse' => array(
+                    'adresseId' => $id,
+                    'lieu' => $entity->getAdresse()
+                ),
+                'form1' => $form->createView(),
+                'form' => $formRessource->createView(),
+                'sections' => $sections,
+                'ressources' => $ressources,
+                'isoAlreadyIn' => $isoAlreadyIn
             ));
         }
 
@@ -259,7 +268,7 @@ class SiteController extends Controller {
             $entity->setAdresse($adr['adresse']);
             $entity->setVille($adr['ville']);
             $entity->setCodePostal($adr['codePostal']);
-            
+
             // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
             $response = ApiLib::searchAdresse(null, $entity);
 
@@ -267,14 +276,15 @@ class SiteController extends Controller {
 
                 $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
                 return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
-                            'adresse' => array(
-                                'adresseId' => $id,
-                                'lieu' => $entity->getAdresse()
-                            ),
-                            'form1' => $form->createView(),
-                            'form' => $formRessource->createView(),
-                            'sections' => $sections,
-                            'ressources' => $ressources,
+                    'adresse' => array(
+                        'adresseId' => $id,
+                        'lieu' => $entity->getAdresse()
+                    ),
+                    'form1' => $form->createView(),
+                    'form' => $formRessource->createView(),
+                    'sections' => $sections,
+                    'ressources' => $ressources,
+                    'isoAlreadyIn' => $isoAlreadyIn
                 ));
             } else {
                 // Geocode your request
@@ -324,58 +334,62 @@ class SiteController extends Controller {
                         }
 
                         $this->addFlash('success', 'site.flash.edit.success');
-                        
+
                         return $this->redirectToRoute('user_show_site');
                     } else {
                         $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
 
                         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
-                                    'adresse' => array(
-                                        'adresseId' => $id,
-                                        'lieu' => $entity->getAdresse()
-                                    ),
-                                    'form1' => $form->createView(),
-                                    'form' => $formRessource->createView(),
-                                    'sections' => $sections,
-                                    'ressources' => $ressources,
+                            'adresse' => array(
+                                'adresseId' => $id,
+                                'lieu' => $entity->getAdresse()
+                            ),
+                            'form1' => $form->createView(),
+                            'form' => $formRessource->createView(),
+                            'sections' => $sections,
+                            'ressources' => $ressources,
+                            'isoAlreadyIn' => $isoAlreadyIn
                         ));
                     }
                 } else {
                     $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
 
                     return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
-                                'adresse' => array(
-                                    'adresseId' => $id,
-                                    'lieu' => $entity->getAdresse()
-                                ),
-                                'form1' => $form->createView(),
-                                'form' => $formRessource->createView(),
-                                'sections' => $sections,
-                                'ressources' => $ressources,
+                        'adresse' => array(
+                            'adresseId' => $id,
+                            'lieu' => $entity->getAdresse()
+                        ),
+                        'form1' => $form->createView(),
+                        'form' => $formRessource->createView(),
+                        'sections' => $sections,
+                        'ressources' => $ressources,
+                        'isoAlreadyIn' => $isoAlreadyIn
                     ));
                 }
             }
         }
         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
-                    'adresse' => array(
-                        'adresseId' => $id,
-                        'lieu' => $entity->getAdresse()
-                    ),
-                    'form1' => $form->createView(),
-                    'form' => $formRessource->createView(),
-                    'sections' => $sections,
-                    'ressources' => $ressources,
+            'adresse' => array(
+                'adresseId' => $id,
+                'lieu' => $entity->getAdresse()
+            ),
+            'form1' => $form->createView(),
+            'form' => $formRessource->createView(),
+            'sections' => $sections,
+            'ressources' => $ressources,
+            'isoAlreadyIn' => $isoAlreadyIn
         ));
     }
 
-    public function deleteAction($id) {
+    public function deleteAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
         $site = $em->getRepository('GeolocationAdminBundle:Adresse')
-                ->find($id);
+            ->find($id);
 
         //suppression des ressources
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('adresse_id' => $id));
+            ->findBy(array('adresse_id' => $id));
 
         if ($ressources !== null) {
             foreach ($ressources as $r) {
@@ -385,7 +399,7 @@ class SiteController extends Controller {
 
         //suppression des iso
         $iso = $em->getRepository('GeolocationAdminBundle:SiteIso')
-                ->findBy(array('siteId' => $site));
+            ->findBy(array('siteId' => $site));
 
         if ($iso !== null) {
             foreach ($iso as $i) {

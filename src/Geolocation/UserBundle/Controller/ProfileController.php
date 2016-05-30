@@ -96,34 +96,69 @@ class ProfileController extends Controller {
             }
 
             $userManager->updateUser($user);
-            
-            //Mise à jour des données de la table Adresse
-            $adresse = new Adresse();
-           
-            $adresse->setAdresse($user->getAdresse());
-            $adresse->setCodePostal($user->getCodePostal());
-            $adresse->setLatitude($user->getLatitude());
-            $adresse->setLongitude($user->getLongitude());
-            $adresse->setTel($user->getTel());
-            $adresse->setIsPublic($user->getIsPublic());
-            $adresse->setUser($user);
-            $adresse->setVille($user->getVille());
-            $adresse->setMain(true);
-            $adresse->setPilier($user->getPilier());
-            $adresse->setNom($user->getNom());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($adresse);
-            $em->flush();
+
+            $response = ApiLib::searchAdresse($user);
+
+            if ($response === false) {
+                $errors[] = "Votre adresse n'a pas pu être trouvée, merci de réessayer.";
+
+                return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
+                    'form' => $form->createView()
+                ));
+            } else {
+                // Geocode your request
+                $datas = $response->all();
+                if (count($datas) >= 1) {
+
+                    $verifcp = ApiLib::verifCp(strip_tags($user->getCodePostal()));
+
+                    if ($verifcp === true) {
+
+                        $data = $datas[0];
+                        $latitude = $data->getLatitude();
+                        $longitude = $data->getLongitude();
+
+                        $user->setLatitude($latitude);
+                        $user->setLongitude($longitude);
+
+                        //Mise à jour des données de la table Adresse
+                        $adresse = new Adresse();
+
+                        $adresse->setAdresse($user->getAdresse());
+                        $adresse->setCodePostal($user->getCodePostal());
+                        $adresse->setLatitude($user->getLatitude());
+                        $adresse->setLongitude($user->getLongitude());
+                        $adresse->setTel($user->getTel());
+                        $adresse->setIsPublic($user->getIsPublic());
+                        $adresse->setUser($user);
+                        $adresse->setVille($user->getVille());
+                        $adresse->setMain(true);
+                        $adresse->setPilier($user->getPilier());
+                        $adresse->setNom($user->getNom());
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($adresse);
+                        $em->flush();
 
 
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_profile_show');
-                $response = new RedirectResponse($url);
+                        if (null === $response = $event->getResponse()) {
+                            $url = $this->generateUrl('fos_user_profile_show');
+                            $response = new RedirectResponse($url);
+                        }
+
+                        $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+                        return $response;
+                    } else {
+                        return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
+                            'form' => $form->createView()
+                        ));
+                    }
+                } else {
+                    return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
+                        'form' => $form->createView()
+                    ));
+                }
             }
-
-            $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
-            return $response;
         }
 
 
