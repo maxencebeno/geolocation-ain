@@ -5,32 +5,36 @@
 
         <h1>Liste des inscrits</h1>
         <hr>
-        {% set pilier = 0 %}
+        {#{% set pilier = 0 %}
 
         {% for entreprise in entreprises %}
-            {% if entreprise.pilier.id!= pilier%}
+            {% if entreprise.pilier != null and entreprise.pilier.id != pilier %}
                 <h2>
                     {%if entreprise.pilier.nom!=null %}
 
-                        entreprise.pilier.nom
+                        {{ entreprise.pilier.nom }}
                     {% else %}
                         Pas de pilier défini
                     {% endif %}
                 </h2>
                 <ul>
-            {% endif %}
-
                 <li class="entreprise">
                     <strong>{{entreprise.nom}} </strong>: {{ entreprise.adresse }} - {{ entreprise.ville }}
                 </li>
-            
-            {% if entreprise.pilier.id!= pilier%}
-                </ul>
-            {% endif%}
-            {% set pilier = entreprise.pilier.id %}
+
+                {% if entreprise.pilier != null and entreprise.pilier.id != pilier%}
+                    </ul>
+                {% endif%}
+                {% set pilier = entreprise.pilier != null ? entreprise.pilier.id : null %}
+            {% endif %}
         {% endfor %}
-    </ul>
+
+    </ul>#}
+
+        {% for key, data in datas %}
+            {{ dump(data) }}
+        {% endfor %}
 
 
-</div>
+    </div>
 {% endblock %}
