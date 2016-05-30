@@ -53,7 +53,7 @@ function initMarker(data, centerMarkers) {
                 map: carte,
                 title: 'Test ' + index
             }));
-
+            choosePilier(markers[index],data[i].adresse.pilier.id);
             if (centerMarkers === true) {
                 bounds.extend(markers[index].position);
             }
@@ -98,6 +98,7 @@ function initMarker(data, centerMarkers) {
     for (i in data) {
         if (typeof data[i].sites !== 'undefined') {
             for (var j in data[i].sites) {
+                console.log(data[i].sites);
                 latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
                 
                 markers.push(new google.maps.Marker({
@@ -105,7 +106,7 @@ function initMarker(data, centerMarkers) {
                     map: carte,
                     title: 'Test ' + index
                 }));
-
+                choosePilier(markers[index],data[i].sites[j].adresse.pilier.id);
                 contentString =
                     '<div id="content">' +
                     '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
@@ -200,6 +201,39 @@ function centerMap(lat, lng) {
     carte.setCenter(pos);
 }
 
+//Définit la couleur du marker sur la carte en fonction du pilier
+function choosePilier(marker,pilier) {
+    var icon = "";
+    switch (pilier) {
+        case 1 :
+            icon='http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+            break;
+        case 2 :
+            icon='http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+            break;
+        case 3 :
+            icon='http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
+            break;
+        case 4 :
+            icon='http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+            break;
+        case 5 :
+            icon='http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
+            break;
+        case 6 :
+            icon='http://maps.google.com/mapfiles/ms/icons/ltblue-dot-dot.png';
+            break;
+        case 7 :
+            icon='http://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+            break;
+        default:
+            icon='http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+            break;
+    }
+    marker.setIcon(icon);
+
+
+}
 $(document).ready(function () {
 
 
