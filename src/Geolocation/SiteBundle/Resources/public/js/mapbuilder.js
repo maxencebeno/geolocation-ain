@@ -102,7 +102,7 @@ function initMarker(data, centerMarkers) {
     for (i in data) {
         if (typeof data[i].sites !== 'undefined') {
             for (var j in data[i].sites) {
-                
+
                 latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
 
                 markers.push(new google.maps.Marker({
@@ -151,6 +151,7 @@ function initMarker(data, centerMarkers) {
     }
     if (centerMarkers === true) {
         carte.fitBounds(bounds);
+        carte.setZoom(13);
     }
     if (typeof data.connectedUser !== 'undefined') {
         centerMap(data.connectedUser.latitude, data.connectedUser.longitude);

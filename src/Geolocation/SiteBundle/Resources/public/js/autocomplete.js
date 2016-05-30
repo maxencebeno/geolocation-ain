@@ -149,7 +149,7 @@ $('#search-code-naf-form').submit(function (e) {
             console.log(data);
             clearMarker();
             initMarker(data);
-            if (navigator.geolocation) {
+            /*if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
                         lat: position.coords.latitude,
@@ -159,7 +159,7 @@ $('#search-code-naf-form').submit(function (e) {
                 });
             } else {
                 centerMap(46.204960, 5.225797);
-            }
+            }*/
         }
     });
 
