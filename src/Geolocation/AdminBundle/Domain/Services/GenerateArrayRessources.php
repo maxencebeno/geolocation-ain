@@ -96,21 +96,23 @@ class GenerateArrayRessources
                     );
                 $adresses = $em->getRepository('GeolocationAdminBundle:Adresse')
                     ->findBy([
-                        'user' => $user
+                        'user' => $user,
+                        'main' => false
                     ]);
+
                 if (count($adresses) > 0) {
                     foreach ($adresses as $adress) {
                         $besoinSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'adresse_id' => $adress));
                         $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'adresse_id' => $adress));
-                        if ($besoinSite !== null || $propositionSite !== null) {
+                        //if ($besoinSite !== null || $propositionSite !== null) {
                             $ressources[$user->getId()]['sites'][] = [
                                 'adresse' => $adress,
                                 'besoin' => $besoinSite,
                                 'proposition' => $propositionSite
                             ];
-                        }
+                        //}
                     }
                 }
             }

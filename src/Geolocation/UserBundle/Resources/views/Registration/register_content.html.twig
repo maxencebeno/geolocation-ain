@@ -16,14 +16,14 @@
 
                     <div id="form_register">
                         {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
-                        {{ form_start(form, {'attr': {'onSubmit': 'javascript:return verifFormRegister();', 'novalidate': 'novalidate'}}) }}
+                        {{ form_start(form) }}
                         {{ form_errors(form) }}
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.nom) }} <strong
                                         class="text-danger">*</strong></span>
-                                {{ form_widget(form.nom, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.nom', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1'}}) }}
+                                {{ form_widget(form.nom, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.nom', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1', 'required': 'required'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.nom) }}</span>
                             </div>
                             <div class="col-sm-6">
@@ -118,7 +118,7 @@
                                             class="glyphicon glyphicon-question-sign" data-toggle="tooltip"
                                             data-placement="right"
                                             title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
-                                    {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '8'}}) }}
+                                    {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '8', 'required': 'required'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
                                 </div>
                                 <div class="col-sm-6">
@@ -138,7 +138,7 @@
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.siren) }} <strong
                                             class="text-danger">*</strong></span>
-                                    {{ form_widget(form.siren, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.siren', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '11'}}) }}
+                                    {{ form_widget(form.siren, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.siren', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '11', 'required': 'required'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.siren) }}</span>
                                 </div>
                                 <div class="col-sm-6">

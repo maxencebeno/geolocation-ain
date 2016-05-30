@@ -80,9 +80,11 @@ class RegistrationController extends BaseController
         if ($form->isValid()) {
 
             $dateCreationEntrepriseString = $request->request->get('fos_user_registration_form')['dateCreationEntreprise'];
-            $dateCreationEntreprise = ApiLib::dateToMySQL($dateCreationEntrepriseString);
+            if ($dateCreationEntrepriseString !== "" && $dateCreationEntrepriseString !== null) {
+                $dateCreationEntreprise = ApiLib::dateToMySQL($dateCreationEntrepriseString);
 
-            $user->setDateCreationEntreprise($dateCreationEntreprise);
+                $user->setDateCreationEntreprise($dateCreationEntreprise);
+            }
 
             // On cherche ici la latitude et longitude de l'adresse de l'entreprise pour l'afficher correctement sur la google map
 
