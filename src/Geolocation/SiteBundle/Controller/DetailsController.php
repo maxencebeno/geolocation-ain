@@ -18,9 +18,13 @@ class DetailsController extends Controller
         
         $isMain = False;
         $sites=[];
+        $main ="";
         if($site->getMain()){
             $isMain = true;
             $sites = $em3->findBy(array('user'=>$user->getId(), 'main' => false));
+        }
+        else{
+            $main = $em3->findOneBy(array('user'=>$user->getId(), 'main' => true));
         }
         
         
@@ -61,6 +65,6 @@ class DetailsController extends Controller
             ];
         }
         
-        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user,'site'=>$site, 'ress'=>$ressources, 'isMain'=>$isMain, 'sites'=>$sites));
+        return $this->render('SiteBundle:Details:details.html.twig', array('user'=>$user,'site'=>$site, 'ress'=>$ressources, 'isMain'=>$isMain, 'sites'=>$sites, 'main'=>$main));
     }
 }

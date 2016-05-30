@@ -114,7 +114,7 @@
                         {% endfor %}
                         </ul>
                     {% else %}
-                        <p><a href="">Voir la fiche de l'entreprise mère</a></p>
+                        <p><a href="{{ path('site_details', {'id': main.id}) }}">Voir la fiche de l'entreprise mère</a></p>
                     {% endif %}
                 </div>
 

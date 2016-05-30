@@ -225,8 +225,10 @@ footer ul li{
     font-weight: bold;
 }
 
-.btn-default:hover{
-    color:#525252;
+.btn-primary:hover, .btn-default:hover, .btn-primary:focus, .btn-default:focus{
+    background-color: #56B37B;
+    border-color: #56B37B;
+    color:white;
 }
 
 .btn-info{
@@ -258,3 +260,6 @@ input#distance{
 .myressource li{
     list-style-type:none;
 }
+
+
+
