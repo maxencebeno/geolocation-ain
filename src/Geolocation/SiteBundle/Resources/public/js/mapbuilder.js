@@ -53,17 +53,22 @@ function initMarker(data, centerMarkers) {
                 map: carte,
                 title: 'Test ' + index
             }));
-            choosePilier(markers[index],data[i].adresse.pilier.id);
+            var pilier = "";
+            if (data[i].adresse.pilier != null) {
+                pilier = data[i].adresse.pilier.id;
+            }
+
+            choosePilier(markers[index], pilier);
             if (centerMarkers === true) {
                 bounds.extend(markers[index].position);
             }
 
             contentString =
-                    '<div id="content">' +
-                    '<h3>' + data[i].user.nom + '</h3>' +
-                    data[i].user.adresse + '<br>' +
-                    data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
-                    '<h4>Ressources</h4>';
+                '<div id="content">' +
+                '<h3>' + data[i].user.nom + '</h3>' +
+                data[i].user.adresse + '<br>' +
+                data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
+                '<h4>Ressources</h4>';
 
             if (data[i].besoin !== null) {
                 contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.souscategorie.libelle + '</p>';
@@ -76,9 +81,9 @@ function initMarker(data, centerMarkers) {
             if (data[i].proposition === null && data[i].besoin === null) {
                 contentString += '<p>Pas de ressources pour le moment</p>';
             }
-            
+
             contentString += '<a href = "' + baseUrl + 'details\\' + data[i].adresse.id + '">Plus d\'informations<a>' +
-                    '</div>';
+                '</div>';
             infowindow[index] = new google.maps.InfoWindow({
                 content: contentString
             });
@@ -100,13 +105,17 @@ function initMarker(data, centerMarkers) {
             for (var j in data[i].sites) {
                 console.log(data[i].sites);
                 latlng.push(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
-                
+
                 markers.push(new google.maps.Marker({
                     position: latlng[index],
                     map: carte,
                     title: 'Test ' + index
                 }));
-                choosePilier(markers[index],data[i].sites[j].adresse.pilier.id);
+                var pilier = "";
+                if (data[i].sites[j].adresse.pilier != null) {
+                    pilier = data[i].sites[j].adresse.pilier.id;
+                }
+                choosePilier(markers[index], pilier);
                 contentString =
                     '<div id="content">' +
                     '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
@@ -154,11 +163,11 @@ function initMarker(data, centerMarkers) {
                 max: data.distances.max.value,
                 values: [data.distances.min.value, data.distances.max.value],
                 slide: function (event, ui) {
-                    $("#distance").val(ui.values[ 0 ] + " - " + ui.values[ 1 ] + "");
+                    $("#distance").val(ui.values[0] + " - " + ui.values[1] + "");
                 }
             });
             $("#distance").val(data.distances.min.string +
-                    " - " + data.distances.max.string);
+                " - " + data.distances.max.string);
         });
     } else {
         //Géolocalisation de l'utilisateur
@@ -179,8 +188,7 @@ function initMarker(data, centerMarkers) {
 
 //fermeture de toutes les infosWindows
 function closeWindowInfos() {
-    for (var i = 0; i < infowindow.length; i++)
-    {
+    for (var i = 0; i < infowindow.length; i++) {
         infowindow[i].close();
     }
 }
@@ -202,35 +210,36 @@ function centerMap(lat, lng) {
 }
 
 //Définit la couleur du marker sur la carte en fonction du pilier
-function choosePilier(marker,pilier) {
+function choosePilier(marker, pilier) {
     var icon = "";
     switch (pilier) {
         case 1 :
-            icon='http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+            icon = 'green-dot.png';
             break;
         case 2 :
-            icon='http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+            icon = 'yellow-dot.png';
             break;
         case 3 :
-            icon='http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
+            icon = 'purple-dot.png';
             break;
         case 4 :
-            icon='http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+            icon = 'blue-dot.png';
             break;
         case 5 :
-            icon='http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
+            icon = 'pink-dot.png';
             break;
         case 6 :
-            icon='http://maps.google.com/mapfiles/ms/icons/ltblue-dot-dot.png';
+            icon = 'ltblue-dot.png';
             break;
         case 7 :
-            icon='http://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+            icon = 'orange-dot.png';
             break;
         default:
-            icon='http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+            icon = 'red-dot.png';
             break;
     }
-    marker.setIcon(icon);
+
+    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/' + icon);
 
 
 }
