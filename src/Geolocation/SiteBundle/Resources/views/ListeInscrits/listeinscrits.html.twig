@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>Liste des inscrits</h1>
+        <hr>
+        {% set pilier = 0 %}
+
+        {% for entreprise in entreprises %}
+            {% if entreprise.pilier.id!= pilier%}
+                <h2>
+                    {%if entreprise.pilier.nom!=null %}
+
+                        entreprise.pilier.nom
+                    {% else %}
+                        Pas de pilier défini
+                    {% endif %}
+                </h2>
+                <ul>
+            {% endif %}
+
+                <li class="entreprise">
+                    <strong>{{entreprise.nom}} </strong>: {{ entreprise.adresse }} - {{ entreprise.ville }}
+                </li>
+            
+            {% if entreprise.pilier.id!= pilier%}
+                </ul>
+            {% endif%}
+            {% set pilier = entreprise.pilier.id %}
+        {% endfor %}
+    </ul>
+
+
+</div>
+{% endblock %}

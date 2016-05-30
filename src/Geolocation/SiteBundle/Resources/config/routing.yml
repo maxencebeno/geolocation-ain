@@ -25,6 +25,10 @@ site_partenaires:
 site_apropos:
     path:     /apropos
     defaults: { _controller: SiteBundle:Apropos:apropos }
+
+site_listeinscrit:
+    path:     /liste-des-inscrits
+    defaults: { _controller: SiteBundle:ListeInscrits:listeinscrits }
     
 api_commun_json_villes:
     path: /json/getcities
