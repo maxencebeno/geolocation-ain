@@ -1,0 +1,16 @@
+detail:
+    title: Fiche de l'entreprise %nomEntreprise%
+    address_not_found: Adresse non renseignée
+    city_not_found: Ville non renseignée
+    contact: Coordonnées
+    tel_not_found: Téléphone non renseigné
+    email_not_found: Email non renseigné
+    site_not_found: Site non renseigné
+    iso: Entreprise certifiée ISO
+    iso_not_found: Cette entreprise n'a pas de certification ISO
+    description: Description
+    description_not_found: Description non renseignée
+    ressources: Ressources proposées
+    ressources_not_found: Aucune ressource proposée
+    remarque: Remarque
+    remarque_not_found: Pas de remarque

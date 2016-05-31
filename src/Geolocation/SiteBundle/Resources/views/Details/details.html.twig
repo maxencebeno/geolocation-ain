@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain 'detail' %}
+
 {% block title %}
     {{ 'titles.detail'|trans({'%nomEntreprise%':site.nom}, 'titles') }}
 {% endblock title %}
@@ -7,7 +9,7 @@
 {% block body %}
     <div class="container">
 
-        <h1>Fiche de l'entreprise {{ site.nom }}</h1>
+        <h1>{{ |trans({'%nomEntreprise%':site.nom}, 'detail') }}</h1>
         <hr>
 
         <div class="row">
@@ -19,51 +21,51 @@
                             {% if site.adresse != '' %}
                                 <p>{{ site.adresse }}</p>
                             {% else %}
-                                <p>Adresse non-renseignée</p>
+                                <p>{{ 'detail.address_not_found'|trans }}</p>
                             {% endif %}
 
                             {% if site.codePostal != '' or site.ville != '' %}
                                 <p>{{ site.codePostal }}, {{ site.ville }}</p>
                             {% else %}
-                                <p>Ville non-renseignée</p>
+                                <p>{{ 'detail.city_not_found'|trans }}</p>
                             {% endif %}
 
                         </article>
                         <article class="col-sm-6">
-                            <h2>Coordonnées</h2>
+                            <h2>{{ 'detail.contact'|trans }}</h2>
                             {% if site.tel != '' and site.isPublic %}
                                 <p><i class="fa fa-phone"></i> {{ site.tel }}</p>
                             {% else %}
-                                <p><i class="fa fa-phone"></i> Téléphone non-renseigné</p>
+                                <p><i class="fa fa-phone"></i> {{ 'detail.tel_not_found'|trans }}</p>
                             {% endif %}
 
                             {% if user.email != '' %}
                                 <p><i class="fa fa-envelope-o"></i> {{ user.email }}</p>
                             {% else %}
-                                <p><i class="fa fa-envelope-o"></i> Email non-renseigné</p>
+                                <p><i class="fa fa-envelope-o"></i> {{ 'detail.email_not_found'|trans }}</p>
                             {% endif %}
 
                             {% if user.url != '' %}
                                 <p><i class="fa fa-at"></i> <a href="{{ user.url }}" target="_blank">{{ user.url }}</a></p>
                                 {% else %}
-                                <p><i class="fa fa-at"></i> Site non-renseigné</p>
+                                <p><i class="fa fa-at"></i> {{ 'detail.site_not_found'|trans }}</p>
                             {% endif %}
                         </article>
                     </div>
                     <div class="row well">
                         {% if iso|length > 0 %}
-                            <p>Entreprise certifiée ISO {% for item in iso %}{{ item.iso.codeIso }},{% endfor %}</p>
+                            <p>{{ 'detail.iso'|trans }} {% for item in iso %}{{ item.iso.codeIso }},{% endfor %}</p>
                         {% else %}
-                            <p>Cette entreprise n'a pas de certification ISO</p>
+                            <p>{{ 'detail.iso_not_found'|trans }}</p>
                         {% endif %}
                     </div>
                     <div class="row well">
                         <article class="col-sm-12">
-                            <h2>Description</h2>
+                            <h2>{{ 'detail.description'|trans }}</h2>
                             {% if user.description != '' %}
                                 <p> {{ user.description }}</p>
                             {% else %}
-                                <p>Description non-renseignée</p>
+                                <p>D{{ 'detail.description_not_found'|trans }}</p>
                             {% endif %}
                         </article>
                     </div>
@@ -71,9 +73,9 @@
 
                 <section>
                     <div class="row well">
-                        <h2 class="col-sm-12">Ressources proposées</h2>
+                        <h2 class="col-sm-12">{{ 'detail.ressources'|trans }}</h2>
                         {% if ressourcesProp|length == 0 %}
-                            <p>Aucune ressource proposée</p>
+                            <p>{{ 'detail.ressources_not_found'|trans }}</p>
                         {% else %}
                             {% for item in ressourcesProp %}
                                 <article class="col-sm-12 ressource-detail">
@@ -83,18 +85,18 @@
                                             {{ item.cpf.souscategorie.libelle }}
                                         </div>
                                         <div class="col-sm-8">
-                                            <h3>Description</h3>
+                                            <h3>{{ 'detail.description'|trans }}</h3>
                                             {% if item.description|length > 0 %}
                                                 {{ item.description }}
                                             {% else %}
-                                                <p>Pas de description</p>
+                                                <p>{{ 'detail.description_not_found'|trans }}</p>
                                             {% endif %}
 
-                                            <h3>Remarques</h3>
+                                            <h3>{{ 'detail.remarque'|trans }}</h3>
                                             {% if item.remarque|length > 0 %}
                                                 {{ item.remarque }}
                                             {% else %}
-                                                <p>Pas de remarque</p>
+                                                <p>{{ 'detail.remarque_not_found'|trans }}</p>
                                             {% endif %}
                                         </div>
                                     </div>
