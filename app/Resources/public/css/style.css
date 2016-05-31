@@ -273,3 +273,14 @@ input#distance{
 .list-group-item{
     padding:5px 15px;
 }
+
+.ressource-detail h3:first-child{
+    margin-top: 0px;
+}
+.ressource-detail{
+    margin-bottom: 10px;
+}
+
+.ressource-detail hr{
+   border-top-color: #C7C7C7;
+}
