@@ -1,4 +1,4 @@
-{% trans_default_domain 'GeolocationUserBundle' %}
+ {% trans_default_domain 'GeolocationUserBundle' %}
 
 <div class="container">
     <div id="fos_user_user_show">
@@ -12,71 +12,71 @@
                         <div class="panel panel-default">
                             <div class="panel-heading"><h3>{{ 'profile.show.basic_infos'|trans }}</h3></div>
                             <div class="panel-body">
-                                <dl class="dl-horizontal">
-                                    <dt>{{ 'profile.show.name'|trans }}</dt>
-                                    <dd>{{ user.nom }}</dd>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><strong>{{ 'profile.show.name'|trans }} :</strong>
+                                    {{ user.nom }}</li>
 
-                                    <dt>{{ 'profile.show.date_creation_entreprise'|trans }}</dt>
-                                    <dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.date_creation_entreprise'|trans }} :</strong>
+                                    
                                         {% if user.dateCreationEntreprise  != '' %}
                                             {{ user.dateCreationEntreprise }}
                                         {% else %}
                                             {{ 'profile.show.nonrenseigne'|trans }}
                                         {% endif %}
-                                    </dd>
+                                    </li>
 
-                                    <dt>{{ 'profile.show.email'|trans }}</dt>
-                                    <dd>{{ user.email }}</dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.email'|trans }} :</strong>
+                                    {{ user.email }}</li>
 
-                                    <dt>{{ 'profile.show.adresse'|trans }}</dt>
-                                    <dd>{{ user.adresse }}</dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.adresse'|trans }} :</strong>
+                                    {{ user.adresse }}</li>
 
 
-                                    <dt>{{ 'profile.show.ville'|trans }}</dt>
-                                    <dd>{{ user.ville }}</dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.ville'|trans }} :</strong>
+                                    {{ user.ville }}</li>
 
-                                    <dt>{{ 'profile.show.codepostal'|trans }}</dt>
-                                    <dd>{{ user.codepostal }}</dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.codepostal'|trans }} :</strong>
+                                    {{ user.codepostal }}</li>
 
-                                    <dt>{{ 'profile.show.telephone'|trans }}</dt>
-                                    <dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.telephone'|trans }} :</strong>
+                                    
                                         {% if user.tel != '' %}
                                             {{ user.tel }}
                                         {% else %}
                                             {{ 'profile.show.nonrenseigne'|trans }}
                                         {% endif %}
-                                    </dd>
+                                    </li>
 
-                                    <dt>{{ 'profile.show.siren'|trans }}</dt>
-                                    <dd>{{ user.siren }}</dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.siren'|trans }} :</strong>
+                                    {{ user.siren }}</li>
 
-                                    <dt>{{ 'profile.show.kbis'|trans }}</dt>
-                                    <dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.kbis'|trans }} :</strong>
+                                    
                                         {% if user.kbis != '' %}
                                             <a href="{{ path('user_kbis', {'id': user.id}) }}" target="_blank">{{ user.kbis }}</a>
                                         {% else %}
                                             {{ 'profile.show.nonrenseigne'|trans }}
                                         {% endif %}
-                                    </dd>
+                                    </li>
 
-                                    <dt>{{ 'profile.show.site'|trans }}</dt>
-                                    <dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.site'|trans }} :</strong>
+                                    
                                         {% if user.url != '' %}
                                             <a href="{{ user.url }}">{{ user.url }}</a>
                                         {% else %}
                                             {{ 'profile.show.nonrenseigne'|trans }}
                                         {% endif %}
-                                    </dd>
+                                    </li>
 
-                                    <dt>{{ 'profile.show.description'|trans }}</dt>
-                                    <dd>
+                                    <li class="list-group-item"><strong>{{ 'profile.show.description'|trans }} :</strong>
+                                    
                                         {% if user.description != '' %}
                                             {{ user.description }}
                                         {% else %}
                                             {{ 'profile.show.nonrenseigne'|trans }}
                                         {% endif %}
-                                    </dd>   
-                                </dl>
+                                    </li>   
+                                </ul>
                                 <div class="text-center">       
                                     <a class="btn btn-info btn-lg text-center" href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.link_edit'|trans }}</a>
                                 </div>
@@ -163,7 +163,7 @@
                                     <ul>
                                         {% for site in sites %}
                                             <li class="mySite">
-                                                <strong> {{ site.nom }} </strong>: {{ site.adresse }} - {{ site.ville }}
+                                                <strong> {{ site.nom }}  :</strong>: {{ site.adresse }} - {{ site.ville }}
                                             </li>
                                         {% endfor %}
                                     </ul>

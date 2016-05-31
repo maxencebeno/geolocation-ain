@@ -225,7 +225,7 @@ footer ul li{
     font-weight: bold;
 }
 
-.btn-primary:hover, .btn-default:hover, .btn-primary:focus, .btn-default:focus{
+.btn-primary:hover, .btn-default:hover, .btn-primary:focus, .btn-default:focus, .btn-primary:active, .btn-default:active{
     background-color: #56B37B;
     border-color: #56B37B;
     color:white;
@@ -268,4 +268,8 @@ input#distance{
 .results .alert{
     margin-bottom: 0px;
     padding:7px;
+}
+
+.list-group-item{
+    padding:5px 15px;
 }
