@@ -57,7 +57,7 @@ function initMarker(data, centerMarkers) {
             markers.push(new google.maps.Marker({
                 position: latlng[index],
                 map: carte,
-                title: 'Test ' + index
+                title: data[i].user.nom
             }));
             var pilier = "";
             if (data[i].adresse.pilier != null) {
@@ -116,7 +116,7 @@ function initMarker(data, centerMarkers) {
                 markers.push(new google.maps.Marker({
                     position: latlng[index],
                     map: carte,
-                    title: 'Test ' + index
+                    title: data[i].sites[j].adresse.nom
                 }));
                 var pilier = "";
                 if (data[i].sites[j].adresse.pilier != null) {
