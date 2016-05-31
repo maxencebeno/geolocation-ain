@@ -31,7 +31,7 @@ class FilterByCodePostal
 
             $ville = $this->doctrine->getRepository('GeolocationAdminBundle:VilleFrance')
                 ->findOneBy([
-                    'villeSlug' => ApiLib::slugifyCity($user->getVille())
+                    'villeNom' => ApiLib::slugifyCity($user->getVille())
                 ]);
 
             if ($ville !== null && substr($ville->getVilleCodePostal(), 0, 2) != substr($request->request->get('cp'), 0, 2)) {

@@ -45,7 +45,6 @@ function initMarker(data, centerMarkers) {
     var bounds;
     var result = 0;
     if (typeof data.ville !== 'undefined') {
-        console.log('ok');
         bounds = new google.maps.LatLngBounds(new google.maps.LatLng(data.ville.lat, data.ville.lng));
     } else {
         bounds = new google.maps.LatLngBounds();
@@ -180,7 +179,7 @@ function initMarker(data, centerMarkers) {
                 " - " + data.distances.max.string);
         });
     }
-
+    $('.results').removeClass('hide');
     if (markers.length > 0) {
         carte.setOptions({
             center: bounds.getCenter()

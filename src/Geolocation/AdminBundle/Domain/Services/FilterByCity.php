@@ -11,6 +11,7 @@ namespace Geolocation\AdminBundle\Domain\Services;
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Geolocation\AdminBundle\Domain\Api\ApiLib;
+use Geolocation\AdminBundle\Entity\Adresse;
 use Geolocation\AdminBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,10 +32,19 @@ class FilterByCity
             $user = $data['user'];
 
             if (strtolower(ApiLib::slugifyCity($user->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
-                unset($datas[$key]);
+
+                foreach ($data['sites'] as $sites) {
+                    foreach ($sites as $site) {
+                        if ($site !== null && get_class($site) === "Adresse") {
+                            if (strtolower(ApiLib::slugifyCity($site->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
+                                unset($datas[$key]);
+                            }
+                        }
+                    }
+                }
             }
         }
-        
+
         return $datas;
     }
 }

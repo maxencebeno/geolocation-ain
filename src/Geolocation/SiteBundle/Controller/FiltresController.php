@@ -38,7 +38,7 @@ class FiltresController extends Controller
         if ($request->request->get('city')) {
             /** @var VilleFrance $ville */
             $ville = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:VilleFrance')->findOneBy([
-                'villeNomReel' => $request->request->get('city')
+                'villeNom' => $request->request->get('city')
             ]);
             
             $filterByCity = $this->get('site_bundle.filter_by_city');
