@@ -186,3 +186,7 @@ site:
         edit:
             bad_site: "Erreur. Vous ne pouvez pas modifier ce site."
             success: "Le site a bien été mis à jour"
+
+#Entreprise
+entreprise:
+    no_entreprise: "Pas d'entreprise pour le moment"

@@ -176,3 +176,9 @@ site:
         edit:
             bad_site: "Error. You can't modify this site."
             success: "Update of the site was a success"
+            
+
+#Entreprise
+entreprise:
+    no_entreprise: "No companies currently"
+            

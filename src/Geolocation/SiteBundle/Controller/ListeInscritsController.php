@@ -26,7 +26,7 @@ class ListeInscritsController extends Controller {
             if (count($entreprises) > 0) {
                 $array[$pilier->getId()] = ['entreprises' => $entreprises, 'pilier' => $pilier->getNom()];
             } else {
-                $array[$pilier->getId()] = ['entreprises' => "Pas d'entreprise pour le moment", 'pilier' => $pilier->getNom()];
+                $array[$pilier->getId()] = ['entreprises' => 'entreprise.no_entreprise', 'pilier' => $pilier->getNom()];
             }
         }
         

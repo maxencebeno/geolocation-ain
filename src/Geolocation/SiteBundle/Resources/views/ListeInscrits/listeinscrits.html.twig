@@ -5,34 +5,20 @@
 
         <h1>Liste des inscrits</h1>
         <hr>
-        {#{% set pilier = 0 %}
-
-        {% for entreprise in entreprises %}
-            {% if entreprise.pilier != null and entreprise.pilier.id != pilier %}
-                <h2>
-                    {%if entreprise.pilier.nom!=null %}
-
-                        {{ entreprise.pilier.nom }}
+        {% for data in datas %}
+            <h2> {{ data.pilier }}</h2>
+            <ul>
+                {% for entreprise in data.entreprises %}
+                    {{dump(entreprise.nom)}}
+                    {% if entreprise.nom != null and entreprise.nom != "" %}
+                        <li class="entreprise">
+                            <a href="{{ path('site_details', {'id':entreprise.id })}}"> <strong>{{entreprise.nom}} </strong></a>: {{ entreprise.adresse }} - {{ entreprise.ville }}
+                        </li>
                     {% else %}
-                        Pas de pilier défini
-                    {% endif %}
-                </h2>
-                <ul>
-                <li class="entreprise">
-                    <strong>{{entreprise.nom}} </strong>: {{ entreprise.adresse }} - {{ entreprise.ville }}
-                </li>
-
-                {% if entreprise.pilier != null and entreprise.pilier.id != pilier%}
-                    </ul>
-                {% endif%}
-                {% set pilier = entreprise.pilier != null ? entreprise.pilier.id : null %}
-            {% endif %}
-        {% endfor %}
-
-    </ul>#}
-
-        {% for key, data in datas %}
-            {{ dump(data) }}
+                        <li> {{ 'entreprise.no_entreprise'|trans }}</li>
+                        {% endif %}
+                    {% endfor %}
+            </ul> 
         {% endfor %}
 
 
