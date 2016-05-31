@@ -1,0 +1,12 @@
+#General#
+general:
+    adresse_not_found: Le site de production demandé n'a pas été trouvé.
+
+#Flash#
+adresse:
+    flash:
+        create:
+            success: Le site de production a été mis à jour
+            fail: 
+                cp: Votre code postal est erroné, merci de le corriger.
+                adresse: Votre adresse n'a pas pu être trouvée, merci de réessayer.
