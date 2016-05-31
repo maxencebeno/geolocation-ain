@@ -14,17 +14,19 @@ class DetailsController extends Controller
 
     	$site = $em3->findOneBy(array('id'=>$id));
         $user = $em->findOneBy(array('id'=>$site->getUser()));
+        // Ressources des sites
         $ressources = $em2->findBy(array('adresse_id'=>$site->getId()));
         
         $isMain = False;
         $sites=[];
-        $main ="";
+        // ID du site mère
+        $main = $em3->findOneBy(array('user'=>$user->getId(), 'main' => true));
         if($site->getMain()){
             $isMain = true;
+            // Sites du site mère
             $sites = $em3->findBy(array('user'=>$user->getId(), 'main' => false));
-        }
-        else{
-            $main = $em3->findOneBy(array('user'=>$user->getId(), 'main' => true));
+            // ressources du site mère
+            $ressources = $em2->findBy(array('adresse_id'=>$main->getId()));
         }
         
         
