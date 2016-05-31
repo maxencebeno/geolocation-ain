@@ -1,9 +1,15 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain 'partenaires' %}
+
+{% block title %}
+    {{ 'titles.partenaires'|trans({}, 'titles') }}
+{% endblock title %}
+
 {% block body %}
     <div class="container">
 
-        <h1>Partenaires</h1>
+        <h1>{{ 'partenaires.title'|trans }}</h1>
         <hr>
 
     </div>

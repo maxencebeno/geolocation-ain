@@ -2,10 +2,14 @@
 
 {% trans_default_domain 'GeolocationUserBundle' %}
 
+{% block title %}
+    {{ 'titles.liste_inscrits'|trans({}, 'titles') }}
+{% endblock title %}
+
 {% block body %}
     <div class="container">
 
-        <h1>Liste des inscrits</h1>
+        <h1>{{ 'entreprise.title'|trans }}</h1>
         <hr>
         {% for data in datas %}
             <h2> {{ data.pilier|trans }}</h2>

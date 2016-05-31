@@ -1,9 +1,15 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain 'aide' %}
+
+{% block title %}
+    {{ 'titles.aide'|trans({}, 'titles') }}
+{% endblock title %}
+
 {% block body %}
     <div class="container">
 
-        <h1>Aide en ligne</h1>
+        <h1>{{ 'aide.title'|trans }}</h1>
         <hr>
 
     </div>

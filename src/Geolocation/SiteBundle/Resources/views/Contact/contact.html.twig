@@ -1,9 +1,15 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain 'contact' %}
+
+{% block title %}
+    {{ 'titles.contact'|trans({}, 'titles') }}
+{% endblock title %}
+
 {% block body %}
     <div class="container">
 
-        <h1>Contact</h1>
+        <h1>{{ 'contact.title'|trans }}</h1>
         <hr>
 
     </div>

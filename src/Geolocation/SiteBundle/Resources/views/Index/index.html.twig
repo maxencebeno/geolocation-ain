@@ -1,5 +1,11 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain 'accueil' %}
+
+{% block title %}
+    {{ 'titles.accueil'|trans({}, 'titles') }}
+{% endblock title %}
+
 {% block body %}
 
     {% stylesheets '@SiteBundle/Resources/public/css/map.css' %}
@@ -23,7 +29,7 @@
                     <p id="nb_firm_found"></p>
                 </div>
             </div>
-            <p class="col-sm-2"><a class="btn btn-warning" href="{{ path('reset_filters') }}">Supprimer tous les filtres</a></p>
+            <p class="col-sm-2"><a class="btn btn-warning" href="{{ path('reset_filters') }}">{{ 'filters.reset'|trans }}</a></p>
         </div>
     </div>
 
@@ -66,45 +72,7 @@
             </article>
             <article class="col-sm-8 text-left">
 
-                <p>Nous consommons des biens composés de fluides liquides ou gazeux et de matières organiques ou
-                    inertes.</p>
-
-                <p>L'économie circulaire permet de restituer dans nos systèmes de production, de consommation, et
-                    d'échange, les matières premières que nous avons extrait.</p>
-                <p>Ces matières premières peuvent alors être ré-injectées dans les grands cycles de transformations.</p>
-                <p>2 cycles se distinguent :</p>
-                <ul>
-                    <li>le cycle biologique : composé de matières biodégradables qui peuvent être déposée dans la nature
-                        sans préjudice.
-                    </li>
-                    <li>Le cycle technique : composé de matières transformées (à partir de pétrole par exemple). Ce
-                        cycle fonctionne grâce à des matières que nous pouvons séparer afin de réutiliser leurs composés
-                        à l'infini.
-                    </li>
-                </ul>
-
-                <p>La raréfaction des ressources de notre planète est devenue un enjeu majeur de la société du 21ème
-                    siècle. Par exemple, les coûts d'un grand nombre de matières premières sont indexés sur le prix du
-                    baril de pétrole parceque la plupart des matières premières sont transportées grâce à ce carburant.
-                    L'or noir est également un enjeu géopolitique qui conduit l'Europe à multiplier les sources
-                    d'énergie pour diminuer sa dépendance.</p>
-
-                <p>L'économie circulaire permet d'économiser nos ressouces.</p>
-                <h2>Pour quoi faire?</h2>
-                <ul>
-                    <li>inventer des systèmes de production moins gourmands en matières premières et en énergie et
-                        gagner de l'argent!
-                    </li>
-                    <li>vendre nos déchets qui deviennent des ressources pour les uns ;</li>
-                    <li>acheter des ressouces qui sont des déchets pour les autres ;</li>
-                    <li>réparer pour faire durer ;</li>
-                </ul>
-
-                <h2>Comment faire ?</h2>
-
-                <p>L'objectif de ce site est la mise en relation des vendeurs et des acheteurs de ressources.</p>
-                <p>Nous distingons les 2 cycles soit biologique (produits biodégradables, déchets verts), soit
-                    techniques (produits non biodégradables).</p>
+                {{ 'filters.content'|trans|raw }}
                 
                 <a href="http://www.ademe.fr/expertises/economie-circulaire">
                     <img class="img-responsive" src="https://www.ademe.fr/sites/default/files/assets/images/economie_circulaire_schema_ademe.gif" alt="Schéma de l'économie circulaire"/>
