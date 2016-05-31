@@ -137,23 +137,32 @@
                                     embedgooglemaps.com
                                 </a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">website traffic</a></small></div></iframe>
                 </div>
-
-                {{dump(sites)}}
-                {% if sites|length > 0 %}
-                    <div class="row well">
-                        {% if isMain %}
+                    
+                {% if isMain %}
+                    {% if sites|length > 0 %}
+                        <div class="row well">
                             <h3>Site de l'entreprise</h3>
                             <ul>
                             {% for item in sites %}
                                 <li><a href="{{ path('site_details', {'id': item.id}) }}">{{ item.nom }}</a></li>
                             {% endfor %}
                             </ul>
-                        {% else %}
-                            <p><a href="{{ path('site_details', {'id': main.id}) }}">Voir la fiche de l'entreprise mère</a></p>
-                        {% endif %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="row well">
+                        <h3>Entreprise mère</h3>
+                        <p> <a href="{{ path('site_details', {'id': main.id}) }}">{{main.nom}}</a></p>
+                        {% if sites|length > 0 %}
+                            <h3>Autres sites de l'entreprise</h3>
+                            <ul>
+                            {% for item in sites %}
+                                <li><a href="{{ path('site_details', {'id': item.id}) }}">{{ item.nom }}</a></li>
+                            {% endfor %}
+                            </ul>
+                    {% endif %}
                     </div>
-                
-                {% endif %}
+            {% endif %}
 
 
             </aside>

@@ -31,6 +31,7 @@ class DetailsController extends Controller
             // Ressources des sites
             $ressourcesProposition = $em2->findBy(array('adresse_id'=>$site->getId(), 'besoin'=>false));
             $ressourcesBesoin = $em2->findBy(array('adresse_id'=>$site->getId(), 'besoin'=>true));
+            $sites = $em3->findSiteNotCurrent($site->getId(),$user->getId());
         }
         
         
