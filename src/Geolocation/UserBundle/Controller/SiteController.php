@@ -180,9 +180,9 @@ class SiteController extends Controller
         $formRessource->handleRequest($request);
 
         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>false));
-         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>true));
+            ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => false));
+        $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+            ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => true));
 
         if ($formRessource->isValid()) {
             $user = $this->getUser();
@@ -244,9 +244,9 @@ class SiteController extends Controller
                 $em->flush();
 
                 $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>false));
-         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>true));
+                    ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => false));
+                $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                    ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => true));
 
                 $this->addFlash('success', 'ressources.flash.create.success');
             } else {
@@ -261,7 +261,7 @@ class SiteController extends Controller
                 'form' => $formRessource->createView(),
                 'sections' => $sections,
                 'ressourcesPropo' => $ressourcesProposition,
-                'ressourcesBesoin'=> $ressourcesBesoin,
+                'ressourcesBesoin' => $ressourcesBesoin,
                 'isoAlreadyIn' => $isoAlreadyIn
             ));
         }
@@ -289,7 +289,7 @@ class SiteController extends Controller
                     'form' => $formRessource->createView(),
                     'sections' => $sections,
                     'ressourcesPropo' => $ressourcesProposition,
-                    'ressourcesBesoin'=> $ressourcesBesoin,
+                    'ressourcesBesoin' => $ressourcesBesoin,
                     'isoAlreadyIn' => $isoAlreadyIn
                 ));
             } else {
@@ -314,12 +314,15 @@ class SiteController extends Controller
                         $em->persist($entity);
                         $em->flush();
 
-                        $siteIso = $em->getRepository('GeolocationAdminBundle:SiteIso')
+                        $sitesIso = $em->getRepository('GeolocationAdminBundle:SiteIso')
                             ->findBy([
                                 'siteId' => $entity,
                             ]);
 
-                        $em->remove($siteIso);
+
+                        foreach ($sitesIso as $siteIso) {
+                            $em->remove($siteIso);
+                        }
                         $em->flush();
 
                         if (array_key_exists('iso', $adr)) {
@@ -362,7 +365,7 @@ class SiteController extends Controller
                             'form' => $formRessource->createView(),
                             'sections' => $sections,
                             'ressourcesPropo' => $ressourcesProposition,
-                            'ressourcesBesoin'=> $ressourcesBesoin,
+                            'ressourcesBesoin' => $ressourcesBesoin,
                             'isoAlreadyIn' => $isoAlreadyIn
                         ));
                     }
@@ -378,7 +381,7 @@ class SiteController extends Controller
                         'form' => $formRessource->createView(),
                         'sections' => $sections,
                         'ressourcesPropo' => $ressourcesProposition,
-                        'ressourcesBesoin'=> $ressourcesBesoin,
+                        'ressourcesBesoin' => $ressourcesBesoin,
                         'isoAlreadyIn' => $isoAlreadyIn
                     ));
                 }
@@ -393,7 +396,7 @@ class SiteController extends Controller
             'form' => $formRessource->createView(),
             'sections' => $sections,
             'ressourcesPropo' => $ressourcesProposition,
-            'ressourcesBesoin'=> $ressourcesBesoin,
+            'ressourcesBesoin' => $ressourcesBesoin,
             'isoAlreadyIn' => $isoAlreadyIn
         ));
     }
