@@ -101,13 +101,13 @@ $(document).ready(function () {
             data: $('#form-filters').serialize(),
             dataType: 'json',
             success: function (data) {
-                console.log(data);
+                
                 clearMarker();
                 initMarker(data);
                 if (typeof data.ville !== 'undefined') {
                     centerMap(data.ville.lat, data.ville.lng);
                 } else {
-                    if (navigator.geolocation) {
+                    /*if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(function (position) {
                             var pos = {
                                 lat: position.coords.latitude,
@@ -115,9 +115,9 @@ $(document).ready(function () {
                             };
                             centerMap(pos.lat, pos.lng);
                         });
-                    } else {
+                    } else {*/
                         centerMap(46.204960, 5.225797);
-                    }
+                    //}
                 }
             }
         });

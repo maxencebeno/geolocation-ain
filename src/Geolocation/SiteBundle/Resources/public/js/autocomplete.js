@@ -146,7 +146,6 @@ $('#search-code-naf-form').submit(function (e) {
         url: baseUrl + 'json/markers/' + idCpf,
         method: "GET",
         success: function (data) {
-            console.log(data);
             clearMarker();
             initMarker(data);
             /*if (navigator.geolocation) {
