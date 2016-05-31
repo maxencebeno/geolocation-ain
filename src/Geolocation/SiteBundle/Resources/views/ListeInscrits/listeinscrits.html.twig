@@ -1,24 +1,27 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain 'GeolocationUserBundle' %}
+
 {% block body %}
     <div class="container">
 
         <h1>Liste des inscrits</h1>
         <hr>
         {% for data in datas %}
-            <h2> {{ data.pilier }}</h2>
+            <h2> {{ data.pilier|trans }}</h2>
             <ul>
-                {% for entreprise in data.entreprises %}
-                    {{dump(entreprise.nom)}}
-                    {% if entreprise.nom != null and entreprise.nom != "" %}
+                {% if data.entreprises != null %}
+                    {% for entreprise in data.entreprises %}
                         <li class="entreprise">
-                            <a href="{{ path('site_details', {'id':entreprise.id })}}"> <strong>{{entreprise.nom}} </strong></a>: {{ entreprise.adresse }} - {{ entreprise.ville }}
+                            <a href="{{ path('site_details', {'id':entreprise.id }) }}">
+                                <strong>{{ entreprise.nom }} </strong></a>: {{ entreprise.adresse }}
+                            - {{ entreprise.ville }}
                         </li>
-                    {% else %}
-                        <li> {{ 'entreprise.no_entreprise'|trans }}</li>
-                        {% endif %}
                     {% endfor %}
-            </ul> 
+                {% else %}
+                    <li> {{ 'entreprise.no_entreprise'|trans }}</li>
+                {% endif %}
+            </ul>
         {% endfor %}
 
 

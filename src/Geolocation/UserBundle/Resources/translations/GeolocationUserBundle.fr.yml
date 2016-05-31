@@ -190,3 +190,4 @@ site:
 #Entreprise
 entreprise:
     no_entreprise: "Pas d'entreprise pour le moment"
+    no_pilier: "Aucun pilier"
