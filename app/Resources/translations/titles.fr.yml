@@ -5,6 +5,7 @@ titles:
     contact: Contactez-nous
     liste_inscrits: Liste des entreprises
     partenaires: Partenaires
+    detail: Détail de l'entreprise %nomEntreprise%
 
     user:
         change_password: Changez votre mot de passe

@@ -1,5 +1,9 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {{ 'titles.detail'|trans({'%nomEntreprise%':site.nom}, 'titles') }}
+{% endblock title %}
+
 {% block body %}
     <div class="container">
 
@@ -48,7 +52,7 @@
                     </div>
                     <div class="row well">
                         {% if iso|length > 0 %}
-                            <p>Entreprise certifiée ISO {% for item in iso %}{{ item.getSiteIso.getCodeIso }},{% endfor %}</p>
+                            <p>Entreprise certifiée ISO {% for item in iso %}{{ item.iso.codeIso }},{% endfor %}</p>
                         {% else %}
                             <p>Cette entreprise n'a pas de certification ISO</p>
                         {% endif %}
