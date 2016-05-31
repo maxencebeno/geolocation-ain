@@ -180,9 +180,9 @@ class SiteController extends Controller
         $formRessource->handleRequest($request);
 
         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
+                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>false));
          $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
+                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>true));
 
         if ($formRessource->isValid()) {
             $user = $this->getUser();
@@ -244,9 +244,9 @@ class SiteController extends Controller
                 $em->flush();
 
                 $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
+                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>false));
          $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
+                        ->findBy(array('user' => $userId, 'adresse_id'=>$entity, 'besoin'=>true));
 
                 $this->addFlash('success', 'ressources.flash.create.success');
             } else {
