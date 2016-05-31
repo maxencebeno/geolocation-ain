@@ -21,8 +21,10 @@ class RessourcesController extends Controller {
         $formRessource->handleRequest($request);
 
         $userId = $this->getUser()->getId();
-        $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $userId, 'adresse_id'=>NULL));
+         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
+         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
 
 
 
@@ -86,8 +88,10 @@ class RessourcesController extends Controller {
                 $em->flush();
                 $this->addFlash('success', 'ressources.flash.create.success');
 
-                $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId));
+                $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
+                $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
             } else {
                 $this->addFlash('danger', 'ressources.flash.create.fail');
             }
@@ -95,7 +99,8 @@ class RessourcesController extends Controller {
                         'entity' => $entity,
                         'form' => $formRessource->createView(),
                         'sections' => $sections,
-                        'ressources' => $ressources
+                        'ressourcesPropo' => $ressources,
+                        'ressourcesBesoin'=> $ressourcesBesoin
             ));
         }
 
@@ -106,7 +111,8 @@ class RessourcesController extends Controller {
                     'entity' => $entity,
                     'form' => $formRessource->createView(),
                     'sections' => $sections,
-                    'ressources' => $ressources
+                    'ressourcesPropo' => $ressourcesProposition,
+                    'ressourcesBesoin'=> $ressourcesBesoin
         ));
     }
 
