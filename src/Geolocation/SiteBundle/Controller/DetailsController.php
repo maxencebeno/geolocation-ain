@@ -11,9 +11,12 @@ class DetailsController extends Controller
     	$em = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:User');
         $em2 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Ressources');
         $em3 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Adresse');
+        $em4 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:SiteIso');
 
     	$site = $em3->findOneBy(array('id'=>$id));
         $user = $em->findOneBy(array('id'=>$site->getUser()));
+        $iso = $em4->findBy(array('siteId'=>$id));
+        
      
         
         $isMain = false;
@@ -79,7 +82,8 @@ class DetailsController extends Controller
                     'ressourcesProp'=>$ressourcesProposition,
                     'isMain'=>$isMain, 
                     'sites'=>$sites,
-                    'main'=>$main
+                    'main'=>$main,
+                    'iso'=>$iso
                 ));
     }
 }
