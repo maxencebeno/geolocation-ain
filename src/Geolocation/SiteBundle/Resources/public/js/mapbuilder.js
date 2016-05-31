@@ -66,7 +66,7 @@ function initMarker(data, centerMarkers) {
 
             choosePilier(markers[index], pilier);
             //if (centerMarkers === true) {
-                bounds.extend(markers[index].position);
+                bounds.extend(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
             //}
 
             contentString =
@@ -124,7 +124,7 @@ function initMarker(data, centerMarkers) {
                 }
                 choosePilier(markers[index], pilier);
 
-                bounds.extend(markers[index].position);
+                bounds.extend(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
 
                 contentString =
                     '<div id="content">' +
@@ -162,10 +162,7 @@ function initMarker(data, centerMarkers) {
             }
         }
     }
-    if (centerMarkers === true) {
-        carte.fitBounds(bounds);
-        carte.setZoom(13);
-    }
+
     if (typeof data.connectedUser !== 'undefined' && markers.length === 0) {
         centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
         /*Gestion du slider range pour le filtre de distance*/
@@ -183,11 +180,14 @@ function initMarker(data, centerMarkers) {
                 " - " + data.distances.max.string);
         });
     }
-    
+
     if (markers.length > 0) {
+        carte.setOptions({
+            center: bounds.getCenter()
+        });
         carte.fitBounds(bounds);
         carte.panToBounds(bounds);
-        carte.setCenter(bounds.getCenter());
+
         if (markers.length === 1) {
             carte.setZoom(14);
         }
