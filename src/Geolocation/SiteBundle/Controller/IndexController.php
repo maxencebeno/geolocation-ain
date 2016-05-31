@@ -84,7 +84,9 @@ class IndexController extends Controller {
 
         $generationService = $this->get('site_bundle.generate_array_ressources');
 
-        $ressources = $generationService->generate($array, $request->attributes->get('codeNaf'));
+        $codeNaf = $request->attributes->get('codeNaf');
+
+        $ressources = $generationService->generate($array, $codeNaf);
 
         $user = $this->getUser();
 

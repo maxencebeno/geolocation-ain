@@ -43,6 +43,7 @@ function initMarker(data, centerMarkers) {
     var i;
     var index = 0;
     var bounds = new google.maps.LatLngBounds();
+    var result = 0;
     // On affiche les maisons meres
     for (i in data) {
         if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
@@ -58,9 +59,9 @@ function initMarker(data, centerMarkers) {
             }
 
             choosePilier(markers[index], pilier);
-            if (centerMarkers === true) {
+            //if (centerMarkers === true) {
                 bounds.extend(markers[index].position);
-            }
+            //}
 
             contentString =
                 '<div id="content">' +
@@ -95,6 +96,7 @@ function initMarker(data, centerMarkers) {
             }(index));
 
             index++;
+            result++;
         }
     }
 
@@ -115,6 +117,9 @@ function initMarker(data, centerMarkers) {
                     pilier = data[i].sites[j].adresse.pilier.id;
                 }
                 choosePilier(markers[index], pilier);
+
+                bounds.extend(markers[index].position);
+
                 contentString =
                     '<div id="content">' +
                     '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
@@ -145,7 +150,9 @@ function initMarker(data, centerMarkers) {
                         infowindow[index].open(carte, markers[index]); //ouverture de l'infobulle du point choisi
                     }
                 }(index));
+
                 index++;
+                result++;
             }
         }
     }
@@ -171,7 +178,7 @@ function initMarker(data, centerMarkers) {
         });
     } else {
         //Géolocalisation de l'utilisateur
-        if (navigator.geolocation) {
+        /*if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = {
                     lat: position.coords.latitude,
@@ -182,7 +189,16 @@ function initMarker(data, centerMarkers) {
         } else {
             // Browser doesn't support Geolocation
             alert("Votre navigateur ne supporte pas la géolocalisation.");
-        }
+        }*/
+    }
+
+    if (markers.length > 0) {
+        carte.fitBounds(bounds);
+        $('#nb_firm_found').text(markers.length + " entreprises trouvées");
+        $('.results').fadeIn();
+        $('.results').removeClass('hide');
+    } else {
+        $('#nb_firm_found').text("Aucune entreprise ne correspond à votre recherche");
     }
 }
 

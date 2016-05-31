@@ -25,6 +25,9 @@ class GenerateArrayRessources
     public function generate($users, $requestCodeNaf)
     {
         $em = $this->doctrine->getManager();
+        if ($requestCodeNaf === "-1") {
+            return [];
+        }
         if ($idCpf = $requestCodeNaf) {
             $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
                 ->findOneBy([
@@ -72,6 +75,9 @@ class GenerateArrayRessources
                                 ];
                             }
                         }
+                        if (isset($ressources[$user->getId()]['sites']) && count($ressources[$user->getId()]['sites']) === 0) {
+                            $ressources[$user->getId()]['sites'] = null;
+                        }
                     }
                 }
             }
@@ -106,13 +112,16 @@ class GenerateArrayRessources
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'adresse_id' => $adress));
                         $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'adresse_id' => $adress));
-                        //if ($besoinSite !== null || $propositionSite !== null) {
+                        if ($besoinSite !== null || $propositionSite !== null) {
                             $ressources[$user->getId()]['sites'][] = [
                                 'adresse' => $adress,
                                 'besoin' => $besoinSite,
                                 'proposition' => $propositionSite
                             ];
-                        //}
+                        }
+                    }
+                    if (isset($ressources[$user->getId()]['sites']) && count($ressources[$user->getId()]['sites']) === 0) {
+                        $ressources[$user->getId()]['sites'] = null;
                     }
                 }
             }
