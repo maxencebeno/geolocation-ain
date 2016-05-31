@@ -28,7 +28,7 @@ a:hover{
 
 #zoneRechercheCarte {
     position: absolute;
-    top: 49px;
+    top: 0px;
     right: 63px;
     background-color: #374a5d;
     height: 420px;
@@ -261,5 +261,11 @@ input#distance{
     list-style-type:none;
 }
 
+.results{
+    height:35px;
+}
 
-
+.results .alert{
+    margin-bottom: 0px;
+    padding:7px;
+}
