@@ -24,6 +24,10 @@
             {{ form_widget(form.remarque, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
             <span class="form-error" id="error-remarque">{{ form_errors(form.remarque) }}</span>
 
+            <span class="form-edit-label">{{ form_label(form.quantite) }}</span><br>
+            {{ form_widget(form.quantite, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-remarque">{{ form_errors(form.quantite) }}</span>
+
             <div class="from-group voffset1">
 
                 {% include 'GeolocationUserBundle:Ajax:template_ajax.html.twig' %}

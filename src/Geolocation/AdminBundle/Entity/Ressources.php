@@ -73,6 +73,13 @@ class Ressources
     private $remarque;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="quantite", type="text", nullable=true)
+     */
+    private $quantite;
+
+    /**
      * Set besoin
      *
      * @param boolean $besoin
@@ -224,5 +231,29 @@ class Ressources
     public function getRemarque()
     {
         return $this->remarque;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param string $quantite
+     *
+     * @return Ressources
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return string
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
     }
 }
