@@ -85,9 +85,11 @@ class ProfileController extends Controller
 
         if ($form->isValid()) {
             $dateCreationEntrepriseString = $request->request->get('fos_user_profile_form')['dateCreationEntreprise'];
-            $dateCreationEntreprise = ApiLib::dateToMySQL($dateCreationEntrepriseString);
-
-            $user->setDateCreationEntreprise($dateCreationEntreprise);
+            if ($dateCreationEntrepriseString !== "" && $dateCreationEntrepriseString !== null) {
+                $dateCreationEntreprise = ApiLib::dateToMySQL($dateCreationEntrepriseString);
+                $user->setDateCreationEntreprise($dateCreationEntreprise);
+            }
+            
             // var_dump($date);
             //die;
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
