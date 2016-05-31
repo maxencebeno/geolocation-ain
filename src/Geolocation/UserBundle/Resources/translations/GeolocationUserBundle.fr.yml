@@ -171,6 +171,11 @@ ressources:
             success: "La ressource a bien été ajoutée"
             fail: "Veuillez choisir un élément pour chaque champ"
 
+    title: "Mes ressources"
+    besoin: "Besoins"
+    ressources: "Ressources"
+    proposition: "Propositions"
+
 #Site
 site:
     edit:
@@ -192,3 +197,8 @@ entreprise:
     no_entreprise: "Pas d'entreprise pour le moment"
     no_pilier: "Aucun pilier"
     title: "Liste des entreprises partenaires"
+    delete_action: "Etes-vous sûr de vouloir supprimer ce site : "
+    delete: "Supprimer"
+    confirm: "Confirmation"
+    no: "Non"
+    yes: "Oui"

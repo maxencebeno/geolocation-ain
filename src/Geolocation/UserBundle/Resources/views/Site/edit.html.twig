@@ -1,5 +1,9 @@
 {% extends "GeolocationUserBundle::layout.html.twig" %}
 
+{% block title %}
+    {{ 'titles.user.site.edit'|trans({'%nomSite%':adresse.obj.nom}, 'titles') }}
+{% endblock title %}
+
 {% block stylesheets %}
 {% endblock %}
 

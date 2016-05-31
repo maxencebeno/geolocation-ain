@@ -75,12 +75,12 @@
 <div class="row">
     <div id="ressource_delete" class="form-group col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-heading"><h3>Mes ressources</h3></div>
+            <div class="panel-heading"><h3>{{ 'ressources.title'|trans }}</h3></div>
             <div class="panel-body">
-                <h4>Besoin</h4>
+                <h4>{{ 'ressources.besoin'|trans }}</h4>
                 {% if ressourcesBesoin|length > 0 %}
                     <table class="table" id="listBesoin">
-                        <tr><th>Ressources</th><th></th></tr>
+                        <tr><th>{{ 'ressources.ressources'|trans }}</th><th></th></tr>
                         {% for key, ressource in ressourcesBesoin %}
                             {% if ressource.getBesoin()==true %}
                                 <tr class="myRessource">
@@ -97,7 +97,7 @@
                     </p>
                     {% endif %}
                     
-                    <h4>Proposition</h4>
+                    <h4>{{ 'ressources.proposition'|trans }}</h4>
                     {% if ressourcesPropo|length > 0 %}
                     <table class="table" id="listProposition">
                         <tr><th>Ressources</th><th></th></tr>
@@ -137,14 +137,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Confirmation</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                Etes-vous sûr de vouloir supprimer cette ressource : <span></span> ?
+                {{ 'entreprise.delete_action'|trans }}<span></span> ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
-                <a id="valid" href = "" type="button" class="btn btn-danger">Oui</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
+                <a id="valid" href = "" type="button" class="btn btn-danger">{{ 'entreprise.yes'|trans }}</a>
             </div>
         </div>
     </div>

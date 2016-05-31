@@ -255,7 +255,8 @@ class SiteController extends Controller
             return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                 'adresse' => array(
                     'adresseId' => $id,
-                    'lieu' => $entity->getAdresse()
+                    'lieu' => $entity->getAdresse(),
+                    'obj' => $entity
                 ),
                 'form1' => $form->createView(),
                 'form' => $formRessource->createView(),
@@ -283,7 +284,8 @@ class SiteController extends Controller
                 return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                     'adresse' => array(
                         'adresseId' => $id,
-                        'lieu' => $entity->getAdresse()
+                        'lieu' => $entity->getAdresse(),
+                        'obj' => $entity
                     ),
                     'form1' => $form->createView(),
                     'form' => $formRessource->createView(),
@@ -359,7 +361,8 @@ class SiteController extends Controller
                         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                             'adresse' => array(
                                 'adresseId' => $id,
-                                'lieu' => $entity->getAdresse()
+                                'lieu' => $entity->getAdresse(),
+                                'obj' => $entity
                             ),
                             'form1' => $form->createView(),
                             'form' => $formRessource->createView(),
@@ -375,7 +378,8 @@ class SiteController extends Controller
                     return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                         'adresse' => array(
                             'adresseId' => $id,
-                            'lieu' => $entity->getAdresse()
+                            'lieu' => $entity->getAdresse(),
+                            'obj' => $entity
                         ),
                         'form1' => $form->createView(),
                         'form' => $formRessource->createView(),
@@ -390,7 +394,8 @@ class SiteController extends Controller
         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
             'adresse' => array(
                 'adresseId' => $id,
-                'lieu' => $entity->getAdresse()
+                'lieu' => $entity->getAdresse(),
+                'obj' => $entity
             ),
             'form1' => $form->createView(),
             'form' => $formRessource->createView(),

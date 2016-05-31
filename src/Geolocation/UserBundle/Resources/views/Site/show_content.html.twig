@@ -103,7 +103,7 @@
                                 <strong>{{site.nom}} </strong>: {{ site.adresse }} - {{ site.ville }}
                                 <a href="{{ path('user_edit_site', {'id': site.id}) }}" id="{{ site.id }} "
                                    class="btn btn-info btn-sm">Modifier</a>
-                                <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">Supprimer</button>
+                                <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">{{ 'entreprise.delete'|trans }}</button>
 
                             </li>
                         {% endfor %}
@@ -132,14 +132,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Confirmation</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                Etes-vous sûr de vouloir supprimer ce site : <span></span> ?
+                {{ 'entreprise.delete_action'|trans }}<span></span> ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
-                <a id="valid" href="" type="button" class="btn btn-danger">Oui</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
+                <a id="valid" href="" type="button" class="btn btn-danger">{{ 'entreprise.yes'|trans }}</a>
             </div>
         </div>
     </div>

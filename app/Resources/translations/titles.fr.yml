@@ -5,7 +5,21 @@ titles:
     contact: Contactez-nous
     liste_inscrits: Liste des entreprises
     partenaires: Partenaires
-    detail: Détail de l'entreprise %nomEntreprise%
+    detail: Détails de l'entreprise %nomEntreprise%
 
     user:
         change_password: Changez votre mot de passe
+        show_profile: Mon compte
+        edit_profile: Modifier votre profil
+        check_email: Vérification de votre email
+        confirmed: Votre compte est activé !
+        pre_register: Choisissez votre statut
+        register: Inscription
+        password_already_requested: Vous avez déjà fait une demande de changement de mot de passe
+        reset: Demande de changement de mot de passe
+        ressource: Ajouter une ressource
+        login: Connexion
+
+        site:
+            edit: Modifiez le site %nomSite%
+            show: Mes sites de production

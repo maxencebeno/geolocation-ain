@@ -1,5 +1,9 @@
 {% extends "GeolocationUserBundle::layout.html.twig" %}
 
+{% block title %}
+    {{ 'titles.user.pre_register'|trans({}, 'titles') }}
+{% endblock title %}
+
 {% block stylesheets %}
     {% stylesheets '@GeolocationUserBundle/Resources/public/css/register/pre_register.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />

@@ -2,6 +2,10 @@
 
 {% trans_default_domain 'GeolocationUserBundle' %}
 
+{% block title %}
+    {{ 'titles.user.login'|trans({}, 'titles') }}
+{% endblock title %}
+
 {% block stylesheets %}
     {% stylesheets '@GeolocationUserBundle/Resources/public/css/login/*' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
