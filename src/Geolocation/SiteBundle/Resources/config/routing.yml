@@ -53,3 +53,7 @@ api_markers:
 searchCPfromCity:
     path: /json/getcodepostalfromcity
     defaults: { _controller: SiteBundle:Index:getCodepostalFromCity }
+
+reset_filters:
+    path: /reset-filters
+    defaults: { _controller: SiteBundle:Index:resetFilters }

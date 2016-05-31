@@ -129,5 +129,9 @@ class IndexController extends Controller {
             return $response;
         }
     }
+    
+    public function resetFiltersAction () {
+        return $this->redirectToRoute('site_homepage');
+    }
 
 }
