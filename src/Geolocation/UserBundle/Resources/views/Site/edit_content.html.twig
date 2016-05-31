@@ -67,38 +67,46 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <span class="form-edit-label">{{ form_label(form1.iso) }}</span>
-                                {{ form_widget(form1.iso) }}
-                                {#<div id="geolocation_adminbundle_adresse_iso">
-                                    {% for iso in form1.iso.vars.choices %}
-                                        {% set exist = false %}
-                                        {% for isIn in isoAlreadyIn %}
-                                            {% if isIn.isoId.id == iso.value %}
-                                                {% set exist = true %}
-                                            {% endif %}
-                                        {% endfor %}
-                                        {% if exist == false %}
-                                            <div class="checkbox">
-                                                <label class="">
-                                                    <input type="checkbox" id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
-                                                           name="geolocation_adminbundle_adresse[iso][]" value="{{ iso.value }}"/>
-                                                    {{ iso.label }}
-                                                </label>
-                                            </div>
-                                        {% else %}
-                                            <div class="checkbox">
-                                                <label class="">
-                                                    <input checked="checked" type="checkbox" id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
-                                                           name="geolocation_adminbundle_adresse[iso][]" value="{{ iso.value }}"/>
-                                                    {{ iso.label }}
-                                                </label>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>#}
-                                <span class="form-error" id="error-iso">{{ form_errors(form1.iso) }}</span>
+                                {% block entity_widget %}
+                                    {% spaceless %}
+                                        <span class="form-edit-label">{{ form_label(form1.iso) }}</span>
+                                        <div id="geolocation_adminbundle_adresse_iso">
+                                            {% for iso in form1.iso.vars.choices %}
+                                                {% set exist = false %}
+                                                {% for isIn in isoAlreadyIn %}
+                                                    {% if isIn.isoId.id == iso.value %}
+                                                        {% set exist = true %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if exist == false %}
+                                                    <div class="checkbox">
+                                                        <label class="">
+                                                            <input type="checkbox"
+                                                                   id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
+                                                                   name="geolocation_adminbundle_adresse[iso][]"
+                                                                   value="{{ iso.value }}"/>
+                                                            {{ iso.label }}
+                                                        </label>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="checkbox">
+                                                        <label class="">
+                                                            <input checked="checked" type="checkbox"
+                                                                   id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
+                                                                   name="geolocation_adminbundle_adresse[iso][]"
+                                                                   value="{{ iso.value }}"/>
+                                                            {{ iso.label }}
+                                                        </label>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <span class="form-error" id="error-iso">{{ form_errors(form1.iso) }}</span>
+                                    {% endspaceless %}
+                                {% endblock entity_widget %}
                             </div>
                         </div>
+                        {% do form1.iso.setRendered %}
                         <div class="form-group">
                             {{ form_widget(form1.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '9' }}) }}
                             {{ form_end(form1) }}

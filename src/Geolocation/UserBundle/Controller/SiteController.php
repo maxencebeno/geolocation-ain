@@ -314,6 +314,14 @@ class SiteController extends Controller
                         $em->persist($entity);
                         $em->flush();
 
+                        $siteIso = $em->getRepository('GeolocationAdminBundle:SiteIso')
+                            ->findBy([
+                                'siteId' => $entity,
+                            ]);
+
+                        $em->remove($siteIso);
+                        $em->flush();
+
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
