@@ -27,7 +27,7 @@
                         </article>
                         <article class="col-sm-6">
                             <h2>Coordonnées</h2>
-                            {% if site.tel != '' %}
+                            {% if site.tel != '' and site.isPublic %}
                                 <p><i class="fa fa-phone"></i> {{ site.tel }}</p>
                             {% else %}
                                 <p><i class="fa fa-phone"></i> Téléphone non-renseigné</p>
@@ -66,7 +66,7 @@
                         {% else %}
                             {% for item in ress %}
                                 {% if item.besoin == false %}
-                                    <article class="col-sm-4">
+                                    <article class="col-sm-4 text-center">
                                         <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ item.cpf.section.libelle }}" /><br>
                                         {{ item.cpf.souscategorie.libelle }}
                                     </article>
@@ -84,7 +84,7 @@
                         {% else %}
                             {% for item in ress %}
                                 {% if item.besoin == true %}
-                                    <article class="col-sm-4">
+                                    <article class="col-sm-4 text-center">
                                         <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
                                         {{ item.cpf.souscategorie.libelle }}
                                     </article>
