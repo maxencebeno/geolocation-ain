@@ -179,8 +179,10 @@ class SiteController extends Controller
         $formRessource = $this->createForm(new RessourcesType(), $ressource);
         $formRessource->handleRequest($request);
 
-        $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findBy(array('adresse_id' => $id));
+        $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
+         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
 
         if ($formRessource->isValid()) {
             $user = $this->getUser();
@@ -241,8 +243,10 @@ class SiteController extends Controller
                 $em->persist($ressource);
                 $em->flush();
 
-                $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findBy(array('adresse_id' => $entity));
+                $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
+         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
 
                 $this->addFlash('success', 'ressources.flash.create.success');
             } else {
@@ -256,7 +260,8 @@ class SiteController extends Controller
                 'form1' => $form->createView(),
                 'form' => $formRessource->createView(),
                 'sections' => $sections,
-                'ressources' => $ressources,
+                'ressourcesPropo' => $ressourcesProposition,
+                'ressourcesBesoin'=> $ressourcesBesoin,
                 'isoAlreadyIn' => $isoAlreadyIn
             ));
         }
@@ -283,7 +288,8 @@ class SiteController extends Controller
                     'form1' => $form->createView(),
                     'form' => $formRessource->createView(),
                     'sections' => $sections,
-                    'ressources' => $ressources,
+                    'ressourcesPropo' => $ressourcesProposition,
+                    'ressourcesBesoin'=> $ressourcesBesoin,
                     'isoAlreadyIn' => $isoAlreadyIn
                 ));
             } else {
@@ -347,7 +353,8 @@ class SiteController extends Controller
                             'form1' => $form->createView(),
                             'form' => $formRessource->createView(),
                             'sections' => $sections,
-                            'ressources' => $ressources,
+                            'ressourcesPropo' => $ressourcesProposition,
+                            'ressourcesBesoin'=> $ressourcesBesoin,
                             'isoAlreadyIn' => $isoAlreadyIn
                         ));
                     }
@@ -362,7 +369,8 @@ class SiteController extends Controller
                         'form1' => $form->createView(),
                         'form' => $formRessource->createView(),
                         'sections' => $sections,
-                        'ressources' => $ressources,
+                        'ressourcesPropo' => $ressourcesProposition,
+                        'ressourcesBesoin'=> $ressourcesBesoin,
                         'isoAlreadyIn' => $isoAlreadyIn
                     ));
                 }
@@ -376,7 +384,8 @@ class SiteController extends Controller
             'form1' => $form->createView(),
             'form' => $formRessource->createView(),
             'sections' => $sections,
-            'ressources' => $ressources,
+            'ressourcesPropo' => $ressourcesProposition,
+            'ressourcesBesoin'=> $ressourcesBesoin,
             'isoAlreadyIn' => $isoAlreadyIn
         ));
     }

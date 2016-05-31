@@ -99,7 +99,7 @@ class RessourcesController extends Controller {
                         'entity' => $entity,
                         'form' => $formRessource->createView(),
                         'sections' => $sections,
-                        'ressourcesPropo' => $ressources,
+                        'ressourcesPropo' => $ressourcesProposition,
                         'ressourcesBesoin'=> $ressourcesBesoin
             ));
         }
