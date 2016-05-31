@@ -61,16 +61,33 @@
                 <section>
                     <div class="row well">
                         <h2 class="col-sm-12">Ressources proposées</h2>
-                        {% if ress|length == 0 %}
+                        {% if ressourcesProp|length == 0 %}
                             <p>Aucune ressource proposée</p>
                         {% else %}
-                            {% for item in ress %}
-                                {% if item.besoin == false %}
-                                    <article class="col-sm-4 text-center">
-                                        <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ item.cpf.section.libelle }}" /><br>
-                                        {{ item.cpf.souscategorie.libelle }}
+                            {% for item in ressourcesProp %}
+                                    <article class="col-sm-12">
+                                         <div class="row">
+                                            <div class="col-sm-4 text-center">
+                                            <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
+                                            {{ item.cpf.souscategorie.libelle }}
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <h3>Description</h3>
+                                                    {% if item.description|length > 0 %}
+                                                        {{ item.description }}
+                                                    {% else %}
+                                                        <p>Pas de description</p>
+                                                    {% endif %}
+
+                                                    <h3>Remarques</h3>
+                                                    {% if item.remarque|length > 0 %}
+                                                        {{ item.remarque }}
+                                                    {% else %}
+                                                        <p>Pas de remarque</p>
+                                                    {% endif %}
+                                            </div>
+                                        </div>
                                     </article>
-                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     </div>
@@ -79,16 +96,33 @@
                 <section>
                     <div class="row well">
                         <h2 class="col-sm-12">Ressources demandées</h2>
-                        {% if ress|length == 0 %}
+                        {% if ressourcesBesoin|length == 0 %}
                             <p>Aucune ressource proposée</p>
                         {% else %}
-                            {% for item in ress %}
-                                {% if item.besoin == true %}
-                                    <article class="col-sm-4 text-center">
-                                        <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
-                                        {{ item.cpf.souscategorie.libelle }}
+                            {% for item in ressourcesBesoin %}
+                                    <article class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center">
+                                            <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
+                                            {{ item.cpf.souscategorie.libelle }}
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <h3>Description</h3>
+                                                    {% if item.description|length > 0 %}
+                                                        {{ item.description }}
+                                                    {% else %}
+                                                        <p>Pas de description</p>
+                                                    {% endif %}
+
+                                                    <h3>Remarques</h3>
+                                                    {% if item.remarque|length > 0 %}
+                                                        {{ item.remarque }}
+                                                    {% else %}
+                                                        <p>Pas de remarque</p>
+                                                    {% endif %}
+                                            </div>
+                                        </div>
                                     </article>
-                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     </div>
@@ -104,19 +138,22 @@
                                 </a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">website traffic</a></small></div></iframe>
                 </div>
 
-
-                <div class="row well">
-                    {% if isMain %}
-                        <h3>Site de l'entreprise</h3>
-                        <ul>
-                        {% for item in sites %}
-                            <li><a href="{{ path('site_details', {'id': item.id}) }}">{{ item.nom }}</a></li>
-                        {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p><a href="{{ path('site_details', {'id': main.id}) }}">Voir la fiche de l'entreprise mère</a></p>
-                    {% endif %}
-                </div>
+                {{dump(sites)}}
+                {% if sites|length > 0 %}
+                    <div class="row well">
+                        {% if isMain %}
+                            <h3>Site de l'entreprise</h3>
+                            <ul>
+                            {% for item in sites %}
+                                <li><a href="{{ path('site_details', {'id': item.id}) }}">{{ item.nom }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p><a href="{{ path('site_details', {'id': main.id}) }}">Voir la fiche de l'entreprise mère</a></p>
+                        {% endif %}
+                    </div>
+                
+                {% endif %}
 
 
             </aside>
