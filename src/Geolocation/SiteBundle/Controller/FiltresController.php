@@ -8,6 +8,7 @@
 
 namespace Geolocation\SiteBundle\Controller;
 
+use Geolocation\AdminBundle\Entity\VilleFrance;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,9 +36,11 @@ class FiltresController extends Controller
         }
         
         if ($request->request->get('city')) {
+            /** @var VilleFrance $ville */
             $ville = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:VilleFrance')->findOneBy([
                 'villeNomReel' => $request->request->get('city')
             ]);
+            
             $filterByCity = $this->get('site_bundle.filter_by_city');
             $datas = $filterByCity->filterByCity($datas, $request);
 

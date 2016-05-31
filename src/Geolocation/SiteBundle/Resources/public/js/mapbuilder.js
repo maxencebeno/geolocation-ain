@@ -42,8 +42,14 @@ function initMarker(data, centerMarkers) {
     centerMarkers = typeof centerMarkers === 'undefined';
     var i;
     var index = 0;
-    var bounds = new google.maps.LatLngBounds();
+    var bounds;
     var result = 0;
+    if (typeof data.ville !== 'undefined') {
+        console.log('ok');
+        bounds = new google.maps.LatLngBounds(new google.maps.LatLng(data.ville.lat, data.ville.lng));
+    } else {
+        bounds = new google.maps.LatLngBounds();
+    }
     // On affiche les maisons meres
     for (i in data) {
         if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
@@ -160,7 +166,7 @@ function initMarker(data, centerMarkers) {
         carte.fitBounds(bounds);
         carte.setZoom(13);
     }
-    if (typeof data.connectedUser !== 'undefined') {
+    if (typeof data.connectedUser !== 'undefined' && markers.length === 0) {
         centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
         /*Gestion du slider range pour le filtre de distance*/
         $(function () {
@@ -176,27 +182,16 @@ function initMarker(data, centerMarkers) {
             $("#distance").val(data.distances.min.string +
                 " - " + data.distances.max.string);
         });
-    } else {
-        //Géolocalisation de l'utilisateur
-        /*if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                carte.setCenter(pos);
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            alert("Votre navigateur ne supporte pas la géolocalisation.");
-        }*/
     }
-
+    
     if (markers.length > 0) {
         carte.fitBounds(bounds);
+        carte.panToBounds(bounds);
+        carte.setCenter(bounds.getCenter());
+        if (markers.length === 1) {
+            carte.setZoom(14);
+        }
         $('#nb_firm_found').text(markers.length + " entreprises trouvées");
-        $('.results').fadeIn();
-        $('.results').removeClass('hide');
     } else {
         $('#nb_firm_found').text("Aucune entreprise ne correspond à votre recherche");
     }

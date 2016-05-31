@@ -20,7 +20,6 @@ class FilterByCpf
 
     public function filterByCpf(array $datas = [], Request $request)
     {
-
         if ($request->request->get('section') === "-1") {
             $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')->findAll();
         } else {
