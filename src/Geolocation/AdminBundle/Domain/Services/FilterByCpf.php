@@ -28,84 +28,25 @@ class FilterByCpf
                 'division' => $request->request->get('division')
             ]);
 
-        /** @var Cpf $value */
-        foreach ($cpf as $value) {
-            $ressources = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy([
-                    'cpf' => $value->getId()
-                ]);
-
-            if (count($ressources) > 0) {
-                /** @var Ressources $ressource */
-                foreach ($ressources as $ressource) {
-                    if (!isset($datas[$ressource->getUser()->getId()])) {
-                        $datas[$ressource->getUser()->getId()] = [
-                            'sites' => []
-                        ];
+        foreach ($datas as $idUser => $data) {
+            $removeUser = false;
+            /** @var Cpf $value */
+            foreach ($cpf as $value) {
+                if ($data['besoin']->getId() !== $value->getId() && $data['proposition']->getId() !== $value->getId()) {
+                    $removeUser = true;
+                }
+                if (isset($data['sites'])) {
+                    $removeUser = false;
+                    foreach ($data['sites'] as $key => $site) {
+                        if ($site['besoin']->getId() !== $value->getId() && $site['proposition']->getId() !== $value->getId()) {
+                            unset($datas[$idUser]['sites'][$key]);
+                        }
                     }
                 }
             }
-        }
 
-        foreach ($datas as $key => $data) {
-            $user = $this->doctrine->getRepository('GeolocationAdminBundle:User')
-                ->findOneBy([
-                    'id' => $key,
-                ]);
-
-            if ($user !== null) {
-                $adresse = $this->doctrine->getManager()->getRepository('GeolocationAdminBundle:Adresse')
-                    ->findOneBy([
-                        'user' => $user,
-                        'main' => true
-                    ]);
-                $besoin = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findOneBy([
-                        'user' => $user,
-                        'besoin' => true
-                    ]);
-
-                $proposition = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findOneBy([
-                        'user' => $user,
-                        'besoin' => false
-                    ]);
-
-                $datas[$key] = [
-                    'besoin' => $besoin,
-                    'proposition' => $proposition,
-                    'user' => $user,
-                    'adresse' => $adresse
-                ];
-
-                $adresses = $this->doctrine->getRepository('GeolocationAdminBundle:Adresse')
-                    ->findBy([
-                        'user' => $user
-                    ]);
-
-                foreach ($adresses as $adress) {
-                    $besoinSite = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findOneBy([
-                            'user' => $user,
-                            'besoin' => true,
-                            'adresse_id' => $adress
-                        ]);
-
-                    $propositionSite = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findOneBy([
-                            'user' => $user,
-                            'besoin' => false,
-                            'adresse_id' => $adress
-                        ]);
-
-                    if ($besoinSite !== null || $propositionSite !== null) {
-                        $datas[$key]['sites'][] = [
-                            'adresse' => $adress,
-                            'besoin' => $besoinSite,
-                            'proposition' => $propositionSite
-                        ];
-                    }
-                }
+            if ($removeUser === true) {
+                unset($datas[$idUser]);
             }
         }
 

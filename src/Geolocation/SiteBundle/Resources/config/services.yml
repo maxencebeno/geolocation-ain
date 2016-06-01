@@ -22,3 +22,14 @@ services:
     site_bundle.generate_array_ressources:
         class: Geolocation\AdminBundle\Domain\Services\GenerateArrayRessources
         arguments: ["@doctrine"]
+
+    site_bundle.generate_array_ressources_from_filters:
+        class: Geolocation\AdminBundle\Domain\Services\GenerateArrayRessourcesFromFilters
+        arguments:
+            - "@doctrine"
+            - "@site_bundle.filter_by_city"
+            - "@site_bundle.filter_by_code_postal"
+            - "@site_bundle.filter_by_cpf"
+            - "@site_bundle.filter_by_nom_entreprise"
+            - "@security.authorization_checker"
+            - "@security.token_storage"

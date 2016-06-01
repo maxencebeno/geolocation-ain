@@ -20,45 +20,9 @@ class FiltresController extends Controller
 {
     public function getEntreprisesByFiltersAction(Request $request)
     {
-        $datas = [];
-        if ($request->request->get('entreprise') !== "") {
-            $filterByNomEntreprise = $this->get('site_bundle.filter_by_nom_entreprise');
-            $datas = $filterByNomEntreprise->filterByNomEntreprise([], $request);
-        }
-
-        if ($request->request->get('section') !== "-1") {
-            $filterByCpf = $this->get('site_bundle.filter_by_cpf');
-
-            $datas = $filterByCpf->filterByCpf($datas, $request);
-        }
-
-        if ($request->request->get('cp') !== "") {
-            $filterByCodePostal = $this->get('site_bundle.filter_by_code_postal');
-            $datas = $filterByCodePostal->filterByCodePostal($datas, $request);
-        }
+        $generalService = $this->get('site_bundle.generate_array_ressources_from_filters');
         
-        if ($request->request->get('city')) {
-            /** @var VilleFrance $ville */
-            $ville = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:VilleFrance')->findOneBy([
-                'villeNom' => $request->request->get('city')
-            ]);
-            
-            $filterByCity = $this->get('site_bundle.filter_by_city');
-            $datas = $filterByCity->filterByCity($datas, $request);
-
-            if ($ville !== null) {
-                $datas['ville'] = [
-                    'lat' => $ville->getVilleLatitudeDeg(),
-                    'lng' => $ville->getVilleLongitudeDeg()
-                ];
-            }
-        }
-
-        $auth_checker = $this->get('security.authorization_checker');
-
-        if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
-            $ressources['connectedUser'] = $this->getUser();
-        }
+        $datas = $generalService->generate($request);
 
         $ignoredAttributes = array('user');
         $normalizer = new GetSetMethodNormalizer();

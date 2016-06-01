@@ -32,7 +32,6 @@ class FilterByCity
             $user = $data['user'];
 
             if (strtolower(ApiLib::slugifyCity($user->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
-
                 if (isset($data['sites'])) {
                     foreach ($data['sites'] as $sites) {
                         foreach ($sites as $site) {

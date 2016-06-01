@@ -44,6 +44,7 @@ function initMarker(data, centerMarkers) {
     var index = 0;
     var bounds;
     var result = 0;
+    console.log(data);
     if (typeof data.ville !== 'undefined') {
         bounds = new google.maps.LatLngBounds(new google.maps.LatLng(data.ville.lat, data.ville.lng));
     } else {
