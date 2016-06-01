@@ -113,25 +113,27 @@ class GenerateArrayRessourcesFromFilters
                         if (count($ressourcesSite) > 0) {
                             /** @var Ressources $ressourceSite */
                             foreach ($ressourcesSite as $ressourceSite) {
-                                if (!isset($datas[$ressourceSite->getUser()->getId()])) {
-                                    $datas[$ressourceSite->getUser()->getId()] = [
-                                        'besoin' => null,
-                                        'proposition' => null,
-                                        'user' => null,
-                                        'adresse' => null,
-                                        'sites' => null
-                                    ];
-                                }
-                                if (!isset($datas[$ressourceSite->getUser()->getId()]['sites'])) {
-                                    $datas[$ressourceSite->getUser()->getId()]['sites'] = [];
-                                }
+                                if (!in_array($ressourceSite->getId(), $done)) {
+                                    if (!isset($datas[$ressourceSite->getUser()->getId()])) {
+                                        $datas[$ressourceSite->getUser()->getId()] = [
+                                            'besoin' => null,
+                                            'proposition' => null,
+                                            'user' => null,
+                                            'adresse' => null,
+                                            'sites' => null
+                                        ];
+                                    }
+                                    if (!isset($datas[$ressourceSite->getUser()->getId()]['sites'])) {
+                                        $datas[$ressourceSite->getUser()->getId()]['sites'] = [];
+                                    }
 
-                                $datas[$ressourceSite->getUser()->getId()]['sites'][] = [
-                                    'besoin' => $ressourceSite->getBesoin() === true ? $ressourceSite : null,
-                                    'proposition' => $ressourceSite->getBesoin() === false ? $ressourceSite : null,
-                                    'adresse' => $site
-                                ];
-                                $done[] = $ressourceSite->getId();
+                                    $datas[$ressourceSite->getUser()->getId()]['sites'][] = [
+                                        'besoin' => $ressourceSite->getBesoin() === true ? $ressourceSite : null,
+                                        'proposition' => $ressourceSite->getBesoin() === false ? $ressourceSite : null,
+                                        'adresse' => $site
+                                    ];
+                                    $done[] = $ressourceSite->getId();
+                                }
                             }
                         }
                     }
@@ -172,6 +174,7 @@ class GenerateArrayRessourcesFromFilters
         if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
             $datas['connectedUser'] = $this->tokenStorage->getToken()->getUser();
         }
+
         return $datas;
     }
 }
