@@ -69,6 +69,13 @@ class IndexController extends Controller {
                     ->getRepository('GeolocationAdminBundle:User')
                     ->findEntrepriseLike($term);
 
+            if (count($array) === 0) {
+                $array = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('GeolocationAdminBundle:Adresse')
+                    ->findEntrepriseLike($term);
+            }
+
             $response = new Response(json_encode($array));
             $response->headers->set('Content-Type', 'application/json');
             return $response;

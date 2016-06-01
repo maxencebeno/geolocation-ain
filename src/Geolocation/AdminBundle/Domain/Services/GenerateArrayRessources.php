@@ -24,6 +24,24 @@ class GenerateArrayRessources
 
     public function generate($users, $requestCodeNaf)
     {
+        /**
+         * Construction du tableau des ressources
+         *
+         * Exemple :
+         *
+         * $ressources = [
+         *      besoin => [Tableau d'objet de besoin],
+         *      proposition => [Tableau d'objet de proposition],
+         *      user => [L'entreprise concernée (le user)],
+         *      adresse => [L'adresse de son entreprise],
+         *      sites => [
+         *          besoin => [Tableau d'objet de besoin],
+         *          proposition => [Tableau d'objet de proposition],
+         *          adresse => [L'adresse du site de production],
+         *      ]
+         * ]
+         *
+         */
         $em = $this->doctrine->getManager();
         if ($requestCodeNaf === "-1") {
             return [];

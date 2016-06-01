@@ -20,17 +20,13 @@ class FilterByCpf
 
     public function filterByCpf(array $datas = [], Request $request)
     {
-        if ($request->request->get('section') === "-1") {
-            $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')->findAll();
-        } else {
 
-            $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')
-                ->findByCpf([
-                    'section' => $request->request->get('section'),
-                    'groupe' => $request->request->get('groupe'),
-                    'division' => $request->request->get('division')
-                ]);
-        }
+        $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')
+            ->findByCpf([
+                'section' => $request->request->get('section'),
+                'groupe' => $request->request->get('groupe'),
+                'division' => $request->request->get('division')
+            ]);
 
         /** @var Cpf $value */
         foreach ($cpf as $value) {
@@ -103,12 +99,11 @@ class FilterByCpf
                         ]);
 
                     if ($besoinSite !== null || $propositionSite !== null) {
-                        $datas[$key]['sites'][] =  [
-                                'adresse' => $adress,
-                                'besoin' => $besoinSite,
-                                'proposition' => $propositionSite
-                            ]
-                        ;
+                        $datas[$key]['sites'][] = [
+                            'adresse' => $adress,
+                            'besoin' => $besoinSite,
+                            'proposition' => $propositionSite
+                        ];
                     }
                 }
             }

@@ -10,6 +10,7 @@ namespace Geolocation\AdminBundle\Domain\Services;
 
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Geolocation\AdminBundle\Entity\Adresse;
 use Geolocation\AdminBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -25,33 +26,80 @@ class FilterByNomEntreprise
 
     public function filterByNomEntreprise($datas = [], Request $request)
     {
-        $users = $this->doctrine->getRepository('GeolocationAdminBundle:User')
-            ->findBy([
-                'nom' => $request->request->get('entreprise')
-            ]);
+        /** @var Adresse $siteDeProduction */
+        /** @var User $user */
+        $user = $this->doctrine->getRepository('GeolocationAdminBundle:User')
+            ->findEntrepriseCustom($request->request->get('entreprise'), 1);
 
-        if (count($users) > 0) {
-            foreach ($users as $user) {
+        if ($user !== null) {
+
+            $besoin = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
+                ->findOneBy([
+                    'user' => $user,
+                    'besoin' => true
+                ]);
+
+            $proposition = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
+                ->findOneBy([
+                    'user' => $user,
+                    'besoin' => false
+                ]);
+
+            $datas[$user->getId()] = [
+                'besoin' => $besoin,
+                'proposition' => $proposition,
+                'user' => $user
+            ];
+
+            foreach ($datas as $idUser => $data) {
+                if ($idUser !== $user->getId()) {
+                    unset($datas[$idUser]);
+                }
+            }
+        } else {
+            $siteDeProduction = $this->doctrine->getRepository('GeolocationAdminBundle:Adresse')
+                ->findEntrepriseCustom($request->request->get('entreprise'), 1);
+
+
+            if ($siteDeProduction !== null) {
                 $besoin = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
                     ->findOneBy([
-                        'user' => $user,
+                        'adresse_id' => $siteDeProduction,
                         'besoin' => true
                     ]);
 
                 $proposition = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
                     ->findOneBy([
-                        'user' => $user,
+                        'adresse_id' => $siteDeProduction,
                         'besoin' => false
                     ]);
 
-                $datas[$user->getId()] = [
+                $user = $siteDeProduction->getUser();
+
+                if (!isset($datas[$user->getId()])) {
+                    $datas[$user->getId()] = ['besoin' => null,
+                        'proposition' => null,
+                        'user' => $user,
+                        'adresse' => $siteDeProduction
+                    ];
+                }
+                if (!isset($datas[$user->getId()]['sites'])) {
+                    $datas[$user->getId()]['sites'] = [];
+                }
+
+                $datas[$user->getId()]['sites'][] = [
                     'besoin' => $besoin,
                     'proposition' => $proposition,
-                    'user' => $user
+                    'adresse' => $siteDeProduction
                 ];
+                foreach ($datas as $idUser => $data) {
+                    if ($idUser !== $siteDeProduction->getUser()->getId()) {
+                        unset($datas[$idUser]);
+                    }
+                }
             }
-
         }
+
         return $datas;
     }
 }

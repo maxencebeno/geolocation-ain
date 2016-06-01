@@ -26,9 +26,11 @@ class FiltresController extends Controller
             $datas = $filterByNomEntreprise->filterByNomEntreprise([], $request);
         }
 
-        $filterByCpf = $this->get('site_bundle.filter_by_cpf');
+        if ($request->request->get('section') !== "-1") {
+            $filterByCpf = $this->get('site_bundle.filter_by_cpf');
 
-        $datas = $filterByCpf->filterByCpf($datas, $request);
+            $datas = $filterByCpf->filterByCpf($datas, $request);
+        }
 
         if ($request->request->get('cp') !== "") {
             $filterByCodePostal = $this->get('site_bundle.filter_by_code_postal');
@@ -50,6 +52,12 @@ class FiltresController extends Controller
                     'lng' => $ville->getVilleLongitudeDeg()
                 ];
             }
+        }
+
+        $auth_checker = $this->get('security.authorization_checker');
+
+        if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
+            $ressources['connectedUser'] = $this->getUser();
         }
 
         $ignoredAttributes = array('user');

@@ -104,7 +104,6 @@ function initMarker(data, centerMarkers) {
             result++;
         }
     }
-
     // On affiche les sites de production
     for (i in data) {
         if (typeof data[i].sites !== 'undefined') {
@@ -163,7 +162,7 @@ function initMarker(data, centerMarkers) {
     }
 
     if (typeof data.connectedUser !== 'undefined' && markers.length === 0) {
-        centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
+        //centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
         /*Gestion du slider range pour le filtre de distance*/
         $(function () {
             $("#slider-range").slider({
@@ -181,11 +180,7 @@ function initMarker(data, centerMarkers) {
     }
     $('.results').removeClass('hide');
     if (markers.length > 0) {
-        carte.setOptions({
-            center: bounds.getCenter()
-        });
         carte.fitBounds(bounds);
-        carte.panToBounds(bounds);
 
         if (markers.length === 1) {
             carte.setZoom(14);

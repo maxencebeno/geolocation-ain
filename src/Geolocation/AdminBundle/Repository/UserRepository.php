@@ -13,12 +13,14 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     
     public function findEntrepriseLike( $term, $limit = 10 )
     {
-
+        $term = strtr($term, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
+        $term = strtr($term, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
         $qb = $this->createQueryBuilder('s');
         $qb ->select('s.nom')
             ->where('s.nom LIKE :term')
+            ->orWhere('s.nom LIKE :termNoSpace')
             ->andWhere('s.enabled = :enabled')
-            ->setParameters(['term' => $term.'%', 'enabled' => 1])
+            ->setParameters(['term' => '%' . $term . '%', 'termNoSpace' => '%' . str_replace(' ', '-', $term) . '%', 'enabled' => 1])
             ->orderBy('s.nom')
             ->setMaxResults($limit);
 
@@ -33,5 +35,20 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         }
 
         return $array;
+    }
+
+    public function findEntrepriseCustom( $term, $limit = 10 )
+    {
+        $term = strtr($term, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
+        $term = strtr($term, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.nom LIKE :term')
+            ->orWhere('s.nom LIKE :termNoSpace')
+            ->andWhere('s.enabled = :enabled')
+            ->setParameters(['term' => '%' . $term . '%', 'termNoSpace' => '%' . str_replace(' ', '-', $term) . '%', 'enabled' => 1])
+            ->orderBy('s.nom')
+            ->setMaxResults($limit);
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }
