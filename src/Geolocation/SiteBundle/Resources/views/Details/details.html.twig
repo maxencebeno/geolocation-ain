@@ -9,7 +9,7 @@
 {% block body %}
     <div class="container">
 
-        <h1>{{ |trans({'%nomEntreprise%':site.nom}, 'detail') }}</h1>
+        <h1>{{ 'detail.title'|trans({'%nomEntreprise%':site.nom}, 'detail') }}</h1>
         <hr>
 
         <div class="row">
