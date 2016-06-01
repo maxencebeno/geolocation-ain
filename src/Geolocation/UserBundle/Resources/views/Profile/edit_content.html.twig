@@ -49,23 +49,21 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <span class="form-edit-label">{{ form_label(form.tel) }} <strong
                                         class="text-danger">*</strong> <i class="glyphicon glyphicon-question-sign"
                                         data-toggle="tooltip"
                                         data-placement="right"
                                         title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
-                                {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'tabindex': '6','spellcheck': 'false'}}) }}
+                                {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'tabindex': '6','spellcheck': 'false'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
-                            </div>
 
-                            <div class="col-sm-6">
                                 <span class="form-edit-label">{{ form_label(form.isPublic) }}
                                     <i class="glyphicon glyphicon-question-sign"
                                        data-toggle="tooltip"
                                        data-placement="right"
                                        title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i></span>
-                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'tabindex': '6','spellcheck': 'false'}}) }}
+                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names big-checkbox', 'autocomplete': 'off', 'tabindex': '6','spellcheck': 'false'}}) }}
                                 <span class="form-error" id="error-isPublic">{{ form_errors(form.isPublic) }}</span>
                             </div>
                         </div>
