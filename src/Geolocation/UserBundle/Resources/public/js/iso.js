@@ -13,26 +13,44 @@ $(document).ready(function () {
         if ($(this).is(':checked')) {
             var id = $(this).attr("value");
             certificationRadio($(this), id);
-            $("input[type=radio]").on('change', function () {
+            //gestion des intercations avec les radio button
+              $("input[type=radio]").on('change', function () {
                 dateCertification($(this), id);
             });
+            
         } else {
             viderCertification($(this));
         }
     });
 
-    //initialisation des checkbox avanr interaction
+    
+    $("input[type=radio].certifie").on('change', function () {
+        //récupération de la valeur de la checkbox
+        var checkId =$(this).parent("label").parent(".certification").prev("label").children().attr("value");
+        dateCertification($(this), checkId);
+    });
+    
+    //initialisation des checkbox avant interaction
     function initCheckbox() {
         $(checkbox).each(function () {
             if ($(this).is(':checked')) {
                 var id = $(this).attr("value");
-                certificationRadio($(this), id);          
-                //récupérer les données de la bd et voir en fonction du en-cours ou certifié....
+                certificationRadio($(this), id);
             }
         });
-
     }
 
+    //initialisation des radio button avant interaction
+    function initRadioButton() {
+        $('input[type=radio]').each(function () {
+            if ($(this).is(':checked')) {
+                var check =$(this).parent().parent().next("label").children();
+                var id = $(check).attr("value");
+                certificationRadio($(check), id);
+            }
+        });
+    }
+    
     //affiche les boutons radio du choix de certification (en cours ou certifié)
     function certificationRadio(box, id) {
         if ($(box).parent().text().trim() !== "Autre") {

@@ -167,13 +167,44 @@
     });
 </script>
 
+<script>
+    $(window).load(function () {
+        var radio;
+    {% for isIn in isoAlreadyIn %}
+        {% if isIn.isoId.codeIso == "Autre" %}
+                //remplissage du code iso dans l'input "Autre"
+                $('#geolocation_adminbundle_adresse_iso').find('#other').val("{{isIn.autre}}");
+                //récupération des radio buttons de certification
+                radio = $('#geolocation_adminbundle_adresse_iso').find('input[name=certifie-other]');
+        {%else%}
+                radio = $('#geolocation_adminbundle_adresse_iso').find('input[name=certifie-'+{{ isIn.isoId.id }}+']');
+        {% endif %}
 
-<script> 
-    $( window ).load(function() {
-        {% for isIn in isoAlreadyIn %}
-            if ("{{ isIn.isoId.codeIso }}" === "Autre") {
-                    $(document).find('#other').val("{{isIn.autre}}");
+        {% if isIn.certifie %}
+                for (i = 0; i < $(radio).size(); i++) {
+                    if ($(radio[i]).val() === "oui") {
+                        $(radio[i]).prop('checked', true);
+                        console.log({{isIn.isoId.id}});
+                        {% if isIn.dateCertification !=null %}  
+                                    $(radio[i]).parent('label').next('.date_certif').append(
+                                            '<label> Depuis quand ? ' +
+                                            '<input type="text" name="date_certification-'+{{ isIn.isoId.id }}+'" class="date_certification datepicker" placeholder="jj/mm/aaaa" data-provide="datepicker" data-date-format="DD/MM/Y" value="{{isIn.dateCertification.date|date('d/m/Y')}}" />' +
+                                            '</label>');
+
+                        {% endif %}
+                        } else {
+                            $(radio[i]).prop('checked', false);
+                        }
+                    }
+        {% else %}
+                for (i = 0; i < $(radio).size(); i++) {
+                    if ($(radio[i]).val() === "oui") {
+                        $(radio[i]).prop('checked', false);
+                    } else {
+                        $(radio[i]).prop('checked', true);
+                    }
                 }
+        {% endif %}
     {% endfor %}
-    });
+        });
 </script>
