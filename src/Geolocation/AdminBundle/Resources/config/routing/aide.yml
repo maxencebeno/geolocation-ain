@@ -1,0 +1,3 @@
+aide:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Aide:index" }

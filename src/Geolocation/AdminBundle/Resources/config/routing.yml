@@ -45,6 +45,10 @@ geolocation_admin_user:
 geolocation_admin_pilier:
     resource: "@GeolocationAdminBundle/Resources/config/routing/pilier.yml"
     prefix:   /pilier
+    
+geolocation_admin_aide:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/aide.yml"
+    prefix:   /aide
 
 geolocation_admin_homepage:
     path:     /
