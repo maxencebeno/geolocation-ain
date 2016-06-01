@@ -12,5 +12,71 @@
         <h1>{{ 'aide.title'|trans }}</h1>
         <hr>
 
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Comment trouver la ressource qui m'intéresse ?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <p>La page d'accueil vous met à disposition tous les moyens nécéssaires pour trouver la ressouces industrielle ou commerciale dont vous avez besoin. </p>
+                        <p>Vous trouverez au premier la carte Google Map, qui permet d'afficher les entreprises grâce à un petit pictogramme de couleur.<br> La légende se trouve juste en dessous de la carte.<br>Par défaut, toutes les entreprises sont affichées. Vous pouvez affiner votre recherche en tapant un code NAF ou des mots clés dans la barre de recherche, ou bien utiliser les filtres sur la carte.</p>
+                        <p>En cliquant sur le pictrogramme, vous obtiendez les informations relatives à l'entreprise</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Comment puis-je faire apparaitre mon entreprise sur la carte ?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        Pour apparaitre sur la carte, vous devez avoir un compte utilisateur sur le site. Pour cela, vous devez inscrire votre entreprise sur la page d'inscription en cliquant sur le lien "S'inscrire" dans le bandeau en haut à droite.
+                        <p>Vous ensuite choisir la catégorie "Entreprise" ou "Association / Autres organismes". Un formulaire devra être complèté et sera soumit à une vérification après des administrateur avant validation du compte.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Comment ajouter une ressource à mon enrreprise ?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <p>Si vous compte est validé, connectez-vous et aller dans votre profil. Vous trouverez un encadré où vous pouvez ajouter des ressources.</p>
+                        <p>Choisissez si c'est un besoin ou une ressources que vous proposez, ajoutez y, si vous le souhaitez, des informations complémentaires comme une description ou la quantité.</p>
+                        <p>Sur cette même page, dans la partie du bas, vous pouvez supprimer une ressources déjà enregistrée.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Mon entreprise comporte plusieurs sites ! Comment les différencier ?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <p>Un site appartient à un siège social, ou "entreprise mère". Vous devez donc déjà avec un compte valide lié à une "entreprise mère" afin d'ajouter un site externe.</p>
+                        <p>Sur votre profil, dans la partie "Mes sites", vous pourrez ajouter ou modifier un site externe au siège social.<br>
+                            Celui ci apparaitra ensuite normalement sur la carte princiaple. Vous pouvez évidemment ajouter une ressource à un site, sur la page de modification de celui-ci.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 {% endblock %}
