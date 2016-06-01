@@ -109,7 +109,7 @@ class AdresseController extends Controller {
      * Creates a new Adresse entity.
      *
      */
-    public function createAction(Request $request) {        
+    public function createAction(Request $request) {
         $translator = new Translator($request->getLocale());
         $entity = new Adresse();
         $form = $this->createForm(new AdresseType(), $entity);
@@ -130,25 +130,12 @@ class AdresseController extends Controller {
         ));
     }
 
-    /**
-     * Displays a form to create a new Adresse entity.
-     *
-     */
-    public function newAction() {
-        $entity = new Adresse();
-        $form = $this->createForm(new AdresseType(), $entity);
-
-        return $this->render('GeolocationAdminBundle:Adresse:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-        ));
-    }
-
+    
     /**
      * Finds and displays a Adresse entity.
      *
      */
-    public function showAction(Request $request,$id) {        
+    public function showAction(Request $request, $id) {
         $translator = new Translator($request->getLocale());
         $em = $this->getDoctrine()->getManager();
 
@@ -157,19 +144,25 @@ class AdresseController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException($translator->trans('general.adresse_not_found', [], 'GeolocationAdminBundle'));
         }
+        $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
+                ->findBy([
+            'siteId' => $entity
+        ]);
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('GeolocationAdminBundle:Adresse:show.html.twig', array(
                     'entity' => $entity,
-                    'delete_form' => $deleteForm->createView(),));
+                    'delete_form' => $deleteForm->createView(),
+                    'isoAlreadyIn' => $isoAlreadyIn
+            ));
     }
 
     /**
      * Displays a form to edit an existing Adresse entity.
      *
      */
-    public function editAction(Request $request,$id) {        
+    public function editAction(Request $request, $id) {
         $translator = new Translator($request->getLocale());
         $em = $this->getDoctrine()->getManager();
 
@@ -178,6 +171,11 @@ class AdresseController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException($translator->trans('general.adresse_not_found', [], 'GeolocationAdminBundle'));
         }
+
+        $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
+                ->findBy([
+            'siteId' => $entity
+        ]);
 
         $editForm = $this->createForm(new AdresseType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -186,6 +184,7 @@ class AdresseController extends Controller {
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
+                    'isoAlreadyIn' => $isoAlreadyIn
         ));
     }
 
@@ -203,6 +202,11 @@ class AdresseController extends Controller {
             throw $this->createNotFoundException($translator->trans('general.adresse_not_found', [], 'GeolocationAdminBundle'));
         }
 
+        $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
+                ->findBy([
+            'siteId' => $entity
+        ]);
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new AdresseType(), $entity);
         $editForm->bind($request);
@@ -212,7 +216,7 @@ class AdresseController extends Controller {
               $em->flush();
               $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
              */
-            
+
             $adr = $request->request->get('geolocation_adminbundle_adresse');
 
             $entity->setAdresse($adr['adresse']);
@@ -224,8 +228,7 @@ class AdresseController extends Controller {
 
             if ($response == false) {
 
-                $this->addFlash('danger', $translator->trans('adresse.flash.create.fail.adresse', [], 'GeolocationAdminBundle'));
-               
+                $this->addFlash('danger', $translator->trans('address.flash.create.fail.adresse', [], 'GeolocationAdminBundle'));
             } else {
                 // Geocode your request
                 $datas = $response->all();
@@ -247,8 +250,18 @@ class AdresseController extends Controller {
                         $em->persist($entity);
                         $em->flush();
 
-                        $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
-                                ->findOneBy(array('id' => $id));
+                        $sitesIso = $em->getRepository('GeolocationAdminBundle:SiteIso')
+                                ->findBy([
+                            'siteId' => $entity,
+                        ]);
+
+
+                        foreach ($sitesIso as $siteIso) {
+                            $em->remove($siteIso);
+                        }
+                        $em->flush();
+
+
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
@@ -257,7 +270,7 @@ class AdresseController extends Controller {
                                 $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
 
                                 $siteIso->setIsoId($iso);
-                                $siteIso->setSiteId($siteId);
+                                $siteIso->setSiteId($entity);
                                 if ($request->request->get('certifie-' . $i) === "oui") {
                                     $siteIso->setCertifie(true);
                                     $siteIso->setEnCoursCertification(false);
@@ -277,22 +290,23 @@ class AdresseController extends Controller {
                             }
                             $em->flush();
                         }
-                        $this->addFlash('success', $translator->trans('adresse.flash.create.success', [], 'adresse'));
+                        $this->addFlash('success', $translator->trans('address.flash.create.success', [], 'adresse'));
                     } else {
-                        $this->addFlash('danger', $translator->trans('adresse.flash.create.fail.cp', [], 'adresse'));
+                        $this->addFlash('danger', $translator->trans('address.flash.create.fail.cp', [], 'adresse'));
                     }
                 } else {
-                    $this->addFlash('danger', $translator->trans('adresse.flash.create.fail.adresse', [], 'adresse'));
+                    $this->addFlash('danger', $translator->trans('address.flash.create.fail.adresse', [], 'adresse'));
                 }
             }
         } else {
-            $this->get('session')->getFlashBag()->add('danger', 'adresse.flash.update.error');
+            $this->get('session')->getFlashBag()->add('danger', 'address.flash.update.error');
         }
 
         return $this->render('GeolocationAdminBundle:Adresse:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
+                    'isoAlreadyIn' => $isoAlreadyIn
         ));
     }
 
@@ -300,7 +314,7 @@ class AdresseController extends Controller {
      * Deletes a Adresse entity.
      *
      */
-    public function deleteAction(Request $request, $id) {        
+    public function deleteAction(Request $request, $id) {
         $translator = new Translator($request->getLocale());
         $form = $this->createDeleteForm($id);
         $form->bind($request);

@@ -1,4 +1,5 @@
 {% extends 'GeolocationAdminBundle::layout.html.twig' %}
+{% trans_default_domain 'adresse' %}
 
 {% block title %}
     {{ parent() }} -  {{ 'views.edit.edit'|trans({'%entity%': 'Adresse'}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -10,24 +11,65 @@
 
     <form class="well" action="{{ path('adresse_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
+         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-       {# <p>
-            <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
-        </p>#}
-    </form>
+        {# <p>
+             <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+         </p>#}
 
-    <div>
-        <div class="float-left">
-            <a class="btn" href="{{ path('adresse') }}">
-                {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-            </a>
-        </div>
-        <div class="float-left">
-            <form action="{{ path('adresse_delete', { 'id': entity.id }) }}" method="post">
-                <input type="hidden" name="_method" value="DELETE" />
-                {{ form_widget(delete_form) }}
-                <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle')|escape('js') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
-            </form>
-        </div>
+        {% block entity_widget %}
+            {% spaceless %}
+                <span class="form-edit-label">{{ form_label(edit_form.iso) }}</span>
+                <div id="geolocation_adminbundle_adresse_iso">
+                    {% for iso in edit_form.iso.vars.choices %}
+                        {% set exist = false %}
+                        {% for isIn in isoAlreadyIn %}
+                            {% if isIn.isoId.id == iso.value %}
+                                {% set exist = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if exist == false %}
+                            <div class="checkbox">
+                                <label class="">
+                                    <input type="checkbox"
+                                           id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
+                                           name="geolocation_adminbundle_adresse[iso][]"
+                                           value="{{ iso.value }}"/>
+                                    {{ iso.label }}
+                                </label>
+                            </div>
+                        {% else %}
+                            <div class="checkbox">
+                                <label class="">
+                                    <input checked="checked" type="checkbox"
+                                           id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
+                                           name="geolocation_adminbundle_adresse[iso][]"
+                                           value="{{ iso.value }}"/>
+                                    {{ iso.label }}
+                                </label>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <span class="form-error" id="error-iso">{{ form_errors(edit_form.iso) }}</span>
+            {% endspaceless %}
+        {% endblock entity_widget %}
+{% do edit_form.iso.setRendered %}
+{{ form_end(edit_form) }}
+</form>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('adresse') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
     </div>
+    <div class="float-left">
+        <form action="{{ path('adresse_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle')|escape('js') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

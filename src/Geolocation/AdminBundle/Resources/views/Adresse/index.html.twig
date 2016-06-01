@@ -1,4 +1,5 @@
 {% extends 'GeolocationAdminBundle::layout.html.twig' %}
+{% trans_default_domain 'adresse' %}
 
 {% block title %}
     {{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Adresse'}, 'JordiLlonchCrudGeneratorBundle') }}
@@ -58,14 +59,14 @@
             <table class="table table-striped table-bordered table-condensed">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Adresse</th>
-                        <th>Siret</th>
-                        <th>Ville</th>
-                        <th>Code Postal</th>
-                        <th>Téléphone</th>
-                        <th>Téléphone visible par tous</th>
+                        <th>{{ 'address.id'|trans }}</th>
+                        <th>{{ 'address.name'|trans }}</th>
+                        <th>{{ 'address.address'|trans }}</th>
+                        <th>{{ 'address.city'|trans }}</th>
+                        <th>{{ 'address.zipcode'|trans }}</th>
+                        <th>{{ 'address.phone'|trans }} Postal</th>
+                        <th>{{ 'address.phoneVisible'|trans }}</th>
+                        <th>{{ 'address.siret'|trans }}</th>
                         <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
                     </tr>
                 </thead>
@@ -75,11 +76,11 @@
                             <td><a href="{{ path('adresse_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>                            
                             <td>{{ entity.nom }}</td>
                             <td>{{ entity.adresse }}</td>
-                            <td>{{ entity.siret }}</td>
                             <td>{{ entity.ville }}</td>
                             <td>{{ entity.codePostal }}</td>
                             <td>{{ entity.tel }}</td>
-                            <td>{{ entity.isPublic }}</td>
+                            <td>{{ entity.isPublic }}</td>                            
+                            <td>{{ entity.siret }}</td>
                             <td>
                                 <a class="btn btn-mini" href="{{ path('adresse_show', { 'id': entity.id }) }}">
                                     {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}

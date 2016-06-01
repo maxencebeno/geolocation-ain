@@ -102,7 +102,9 @@ class SiteController extends Controller
                                 }
 
                                 if ($request->request->get('other')) {
-                                    $siteIso->setAutre($request->request->get('other'));
+                                   if($i == 5){
+                                         $siteIso->setAutre($request->request->get('other'));
+                                    }
                                 }
 
                                 $em->persist($siteIso);
@@ -327,7 +329,7 @@ class SiteController extends Controller
                         }
                         $em->flush();
 
-                        if (array_key_exists('iso', $adr)) {
+                        if (array_key_exists('iso', $adr)) {                            
                             foreach ($adr['iso'] as $i) {
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
                                     ->findOneBy(['id' => $i[0]]);
@@ -343,9 +345,11 @@ class SiteController extends Controller
                                 } else {
                                     $siteIso->setCertifie(false);
                                     $siteIso->setEnCoursCertification(true);
-                                }
+                                }                                
                                 if ($request->request->get('other')) {
-                                    $siteIso->setAutre($request->request->get('other'));
+                                    if($i == 5){
+                                         $siteIso->setAutre($request->request->get('other'));
+                                    }
                                 }
                                 $em->persist($siteIso);
                             }

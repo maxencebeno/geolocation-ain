@@ -43,7 +43,7 @@ $(document).ready(function () {
                     '</label>' +
                     '<div class="date_certif"></div>').appendTo($(box).parent().siblings('.certification'));
         } else {
-            $('     <label>Entrer un code ISO *<input type="text" name="other" placeholer="Entrer un code ISO" required/></label>' +
+            $('     <label>Entrer un code ISO *<input type="text" name="other" id="other" placeholer="Entrer un code ISO" required /></label>' +
                     '<label> Etes-vous certifié ? ' +
                     '<input type="radio" name="certifie-other" class="certifie" value="oui"> Oui' +
                     '<input type="radio" name="certifie-other" class="certifie" value="en-cours" checked> En cours de certification' +
