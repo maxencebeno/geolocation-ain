@@ -12,20 +12,22 @@
         <h1>{{ 'entreprise.title'|trans }}</h1>
         <hr>
         {% for data in datas %}
-            <h2> {{ data.pilier|trans }}</h2>
-            <ul>
-                {% if data.entreprises != null %}
-                    {% for entreprise in data.entreprises %}
-                        <li class="entreprise">
-                            <a href="{{ path('site_details', {'id':entreprise.id }) }}">
-                                <strong>{{ entreprise.nom }} </strong></a>: {{ entreprise.adresse }}
-                            - {{ entreprise.ville }}
-                        </li>
-                    {% endfor %}
-                {% else %}
-                    <li> {{ 'entreprise.no_entreprise'|trans }}</li>
-                {% endif %}
-            </ul>
+            <div class="well">
+                <h2>{{ data.pilier|trans }}</h2>
+                <ul>
+                    {% if data.entreprises != null %}
+                        {% for entreprise in data.entreprises %}
+                            <li class="entreprise">
+                                <a href="{{ path('site_details', {'id':entreprise.id }) }}">
+                                    <strong>{{ entreprise.nom }} </strong></a>: {{ entreprise.adresse }}
+                                - {{ entreprise.ville }}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li> {{ 'entreprise.no_entreprise'|trans }}</li>
+                    {% endif %}
+                </ul>
+            </div>
         {% endfor %}
 
 

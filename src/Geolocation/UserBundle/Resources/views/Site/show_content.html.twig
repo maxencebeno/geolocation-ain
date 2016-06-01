@@ -53,18 +53,15 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <span class="form-edit-label">{{ form_label(form.tel) }}<strong
                                         class="text-danger">*</strong></span>
-                                {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-site form-control', 'spellcheck': 'false', 'tabindex': '5'}}) }}
+                                {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-site', 'spellcheck': 'false', 'tabindex': '5'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
+
                                 <span class="form-edit-label">{{ form_label(form.isPublic) }}</span>
-                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-site form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
+                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-site', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}<br>
                                 <span class="form-error" id="error-tel">{{ form_errors(form.isPublic) }}</span>
                             </div>
                         </div>
@@ -100,12 +97,13 @@
                     <ul>
                         {% for site in sites %}
                             <li class="mySite">
-                                <strong>{{site.nom}} </strong>: {{ site.adresse }} - {{ site.ville }}
+                                <strong>{{site.nom}} </strong>: {{ site.adresse }} - {{ site.ville }}<br>
                                 <a href="{{ path('user_edit_site', {'id': site.id}) }}" id="{{ site.id }} "
                                    class="btn btn-info btn-sm">Modifier</a>
                                 <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">{{ 'entreprise.delete'|trans }}</button>
 
                             </li>
+                            <hr>
                         {% endfor %}
                     </ul>
                 {% else %}
