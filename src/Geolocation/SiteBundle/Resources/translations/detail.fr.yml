@@ -19,3 +19,6 @@ detail:
     site_production: Site de l'entreprise
     main_entreprise: Entreprise mère
     other_site: Autres sites de l'entreprise
+    more_info: Plus d'informations
+    entreprise_found: entreprises trouvées
+    no_entreprise_found: Aucune entreprise ne correspond à votre recherche

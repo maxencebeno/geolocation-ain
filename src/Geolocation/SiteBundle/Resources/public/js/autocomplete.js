@@ -142,29 +142,25 @@ $('#search-code-naf-form').submit(function (e) {
 
     var idCpf = $('#search-code-naf-input').val();
 
-    $.ajax({
-        url: baseUrl + 'json/markers/' + idCpf,
-        method: "GET",
-        success: function (data) {
-            clearMarker();
-            initMarker(data);
-            /*if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    centerMap(pos.lat, pos.lng);
-                });
-            } else {
-                centerMap(46.204960, 5.225797);
-            }*/
-        }
-    });
+    if (idCpf !== '') {
+        $.ajax({
+            url: baseUrl + 'json/markers/' + idCpf,
+            method: "GET",
+            success: function (data) {
+                clearMarker();
+                initMarker(data);
+            }
+        });
+    }
 
     return false;
 });
 
+$('#send-form').click(function () {
+    if ($('#search-code-naf-input').val() !== '') {
+        $('#search-code-naf-form').submit();
+    }
+});
 
 function searchCpfromCity(city) {
     $.ajax({

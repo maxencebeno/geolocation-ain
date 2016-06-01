@@ -202,3 +202,10 @@ entreprise:
     confirm: "Confirmation"
     no: "Non"
     yes: "Oui"
+
+iso:
+    certified: Etes-vous certifié ?
+    yes: Oui
+    almost: En cours de certification
+    enter: Entrez un code ISO
+    since_when: Depuis quand ?
