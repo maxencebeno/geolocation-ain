@@ -250,7 +250,7 @@ class AdresseController extends Controller {
                         $em->persist($entity);
                         $em->flush();
 
-                        $sitesIso = $em->getRepository('GeolocationAdminBundle:SiteIso')
+                        /*$sitesIso = $em->getRepository('GeolocationAdminBundle:SiteIso')
                                 ->findBy([
                             'siteId' => $entity,
                         ]);
@@ -289,7 +289,7 @@ class AdresseController extends Controller {
                                 $em->persist($siteIso);
                             }
                             $em->flush();
-                        }
+                        }*/
                         $this->addFlash('success', $translator->trans('address.flash.create.success', [], 'adresse'));
                     } else {
                         $this->addFlash('danger', $translator->trans('address.flash.create.fail.cp', [], 'adresse'));

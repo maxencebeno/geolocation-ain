@@ -16,45 +16,6 @@
         {# <p>
              <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
          </p>#}
-
-        {% block entity_widget %}
-            {% spaceless %}
-                <span class="form-edit-label">{{ form_label(edit_form.iso) }}</span>
-                <div id="geolocation_adminbundle_adresse_iso">
-                    {% for iso in edit_form.iso.vars.choices %}
-                        {% set exist = false %}
-                        {% for isIn in isoAlreadyIn %}
-                            {% if isIn.isoId.id == iso.value %}
-                                {% set exist = true %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if exist == false %}
-                            <div class="checkbox">
-                                <label class="">
-                                    <input type="checkbox"
-                                           id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
-                                           name="geolocation_adminbundle_adresse[iso][]"
-                                           value="{{ iso.value }}"/>
-                                    {{ iso.label }}
-                                </label>
-                            </div>
-                        {% else %}
-                            <div class="checkbox">
-                                <label class="">
-                                    <input checked="checked" type="checkbox"
-                                           id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
-                                           name="geolocation_adminbundle_adresse[iso][]"
-                                           value="{{ iso.value }}"/>
-                                    {{ iso.label }}
-                                </label>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <span class="form-error" id="error-iso">{{ form_errors(edit_form.iso) }}</span>
-            {% endspaceless %}
-        {% endblock entity_widget %}
-{% do edit_form.iso.setRendered %}
 {{ form_end(edit_form) }}
 </form>
 
@@ -72,4 +33,11 @@
         </form>
     </div>
 </div>
+            
+<script>
+    $(document).ready(function () {
+        $('#geolocation_adminbundle_adresse_iso').empty();
+        $('#geolocation_adminbundle_adresse_iso').parent().empty();
+    });
+</script>         
 {% endblock %}
