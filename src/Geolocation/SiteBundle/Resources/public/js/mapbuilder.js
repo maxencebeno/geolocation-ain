@@ -186,7 +186,12 @@ function initMarker(data, centerMarkers) {
         if (markers.length === 1) {
             carte.setZoom(14);
         }
-        $('#nb_firm_found').text(markers.length + " entreprises trouvées");
+        if (markers.length > 1) {
+            $('#nb_firm_found').text(markers.length + " entreprises trouvées");
+        } else {
+            $('#nb_firm_found').text(markers.length + " entreprise trouvée");
+        }
+
     } else {
         $('#nb_firm_found').text("Aucune entreprise ne correspond à votre recherche");
     }
