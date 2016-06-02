@@ -2,9 +2,10 @@
 
 namespace Geolocation\AdminBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormError;
@@ -16,8 +17,21 @@ class RessourcesFilterType extends AbstractType
         $builder
             ->add('besoin', 'filter_choice')
             ->add('id', 'filter_number_range')
-            ->add('user')
-            ->add('cpf')
+            ->add('user', EntityType::class, [
+                'required' => 'false',
+                'class' => 'Geolocation\AdminBundle\Entity\User',
+                'placeholder' => ""
+            ])
+            ->add('cpf', EntityType::class, [
+                'required' => 'false',
+                'class' => 'Geolocation\AdminBundle\Entity\Cpf',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->join('GeolocationAdminBundle:Ressources', 'r', 'WITH', 'c.id = r.cpf')
+                        ;
+                },
+                'placeholder' => ""
+            ])
         ;
 
         $listener = function(FormEvent $event)

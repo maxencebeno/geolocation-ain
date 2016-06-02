@@ -141,7 +141,7 @@ $('#search-code-naf-form').submit(function (e) {
     e.stopPropagation();
 
     var idCpf = $('#search-code-naf-input').val();
-
+    console.log(idCpf);
     if (idCpf !== '') {
         $.ajax({
             url: baseUrl + 'json/markers/' + idCpf,
