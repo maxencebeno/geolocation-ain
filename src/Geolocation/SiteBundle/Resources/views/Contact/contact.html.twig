@@ -9,12 +9,17 @@
 {% block body %}
     <div class="container">
 
-        <h1>{{ 'contact.title'|trans }}</h1>
-        <hr>
 
-        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1>{{ 'contact.title'|trans }}</h1>
+                <hr>
 
-        {{ form(form|raw) }}
+                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+                {{ form(form|raw) }}
+            </div>
+        </div>
 
     </div>
 {% endblock %}
