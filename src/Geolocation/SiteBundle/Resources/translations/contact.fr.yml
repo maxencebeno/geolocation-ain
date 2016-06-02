@@ -1,2 +1,10 @@
 contact:
     title: Contact
+    form:
+        nom: Nom
+        prenom: Prénom
+        email: Email *
+        objet: Objet *
+        message: Message *
+        success: Votre demande a bien été envoyée, merci de votre confiance
+        submit: Envoyer
