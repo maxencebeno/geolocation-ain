@@ -96,7 +96,7 @@ function initMarker(data, centerMarkers) {
                 contentString += '<p>Pas de ressources pour le moment</p>';
             }
 
-            contentString += '<a href = "' + baseUrl + 'details\\' + data[i].adresse.id + '">Plus d\'informations<a>' +
+            contentString += '<a href = "' + baseUrl + 'details/' + data[i].adresse.id + '">Plus d\'informations<a>' +
                 '</div>';
             infowindow[index] = new google.maps.InfoWindow({
                 content: contentString
@@ -151,7 +151,7 @@ function initMarker(data, centerMarkers) {
                 if (data[i].sites[j].proposition === null && data[i].sites[j].besoin === null) {
                     contentString += '<p>Pas de ressources pour le moment</p>';
                 }
-                contentString += '<a href = "' + baseUrl + 'details\\' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
+                contentString += '<a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
                     '</div>';
                 infowindow[index] = new google.maps.InfoWindow({
                     content: contentString
