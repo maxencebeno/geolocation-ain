@@ -32,13 +32,28 @@ class FilterByCpf
             $removeUser = false;
             /** @var Cpf $value */
             foreach ($cpf as $value) {
-                if ($data['besoin']->getId() !== $value->getId() && $data['proposition']->getId() !== $value->getId()) {
+                if ($data['besoin'] !== null) {
+                    if ($data['besoin']->getId() !== $value->getId()) {
+                        $removeUser = true;
+                    }
+                    if (isset($data['sites'])) {
+                        $removeUser = false;
+                        foreach ($data['sites'] as $key => $site) {
+                            if ($site['besoin']->getId() !== $value->getId()) {
+                                unset($datas[$idUser]['sites'][$key]);
+                            }
+                        }
+                    }
+                }
+                if ($data['proposition'] !== null) {
+
+                }if ($data['proposition']->getId() !== $value->getId()) {
                     $removeUser = true;
                 }
                 if (isset($data['sites'])) {
                     $removeUser = false;
                     foreach ($data['sites'] as $key => $site) {
-                        if ($site['besoin']->getId() !== $value->getId() && $site['proposition']->getId() !== $value->getId()) {
+                        if ($site['proposition']->getId() !== $value->getId()) {
                             unset($datas[$idUser]['sites'][$key]);
                         }
                     }
