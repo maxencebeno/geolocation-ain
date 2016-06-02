@@ -282,3 +282,51 @@ input#distance{
    border-top-color: #C7C7C7;
 }
 
+/*--------- Tableau  ----------*/
+#listBesoin td,
+#listBesoin th,
+#listProposition td,
+#listProposition th {
+    width : 22.5%;
+}
+
+td.quantite,
+th.quantite{
+    width : 10%;
+}
+
+@media screen and (max-width: 767px){
+     /*Gestion Tableau*/
+    table, tbody {
+        display: block; 
+        width: 100%;
+    }
+
+    tr:first-child{
+        display: none;
+    }
+
+    tr {
+        display: table;
+        width: 100%;
+    }
+
+    td, th { 
+        display: table-row;
+        border:  1px solid black; 
+    }
+
+    td:before {
+        content: attr(data-headers);
+        display: table-cell;
+        width: 40%;
+        border:  1px solid black;   
+    }
+
+    tr,td{
+        height : 50px;
+        vertical-align:middle;
+       /* text-align:center;*/
+    }
+
+}

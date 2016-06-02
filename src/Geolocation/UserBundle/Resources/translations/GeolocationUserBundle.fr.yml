@@ -182,6 +182,7 @@ ressources:
         edit_ressource_title: Editer une ressource
         ressource_submit: Enregistrer
     delete_action: Supprimer
+    update_action: Modifier
     my_ressource: Ma ressource
 
 #Site
