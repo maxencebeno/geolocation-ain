@@ -18,3 +18,19 @@
 .ui-menu-item {
     border-bottom: 1px solid #EFEFEF;
 }
+
+#loading-root{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    z-index: 41000;
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+    font-size: 50px;
+    overflow: hidden;
+    min-height: 800px;
+}

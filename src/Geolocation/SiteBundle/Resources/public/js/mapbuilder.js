@@ -28,6 +28,13 @@ google.maps.event.addListenerOnce(carte, 'idle', function () {
     });
 });
 
+google.maps.event.addListenerOnce(carte, 'tilesloaded', function () {
+    //appel de l'action pour charger les markers
+    $('html').css('overflow', 'scroll');
+    $('#loading-root').fadeOut();
+    $('#loading-root').addClass('hide');
+});
+
 //vider la liste des markers
 function clearMarker() {
     for (var i = 0; i < markers.length; i++) {

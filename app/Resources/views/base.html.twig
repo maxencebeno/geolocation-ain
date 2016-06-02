@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>{% block title %}{% endblock %}</title>
-        {% stylesheets
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% block title %}{% endblock %}</title>
+    {% stylesheets
     '../app/Resources/public/css/*' %}
     <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
-   
-        <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
-        {% endstylesheets %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     {% block stylesheets %}{% endblock stylesheets %}
 
     {% javascripts '../app/Resources/public/js/jquery.min.js'
@@ -36,6 +36,7 @@
         </div>
     {% endfor %}
 {% endfor %}
+
 <div id="wrapper">
     {% block body %}
 

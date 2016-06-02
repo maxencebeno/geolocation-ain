@@ -8,6 +8,10 @@
 
 {% block body %}
 
+    <div id="loading-root">
+        <img src="{{ asset('bundles/site/img/loader.gif') }}">
+    </div>
+
     {% stylesheets '@SiteBundle/Resources/public/css/map.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
@@ -92,5 +96,9 @@
     {% javascripts '@SiteBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
+    <script>
+        $('html').css('overflow', 'hidden');
+    </script>
 
 {% endblock %}
