@@ -29,36 +29,48 @@ class FilterByCpf
             ]);
 
         foreach ($datas as $idUser => $data) {
-            $removeUser = false;
-            /** @var Cpf $value */
-            foreach ($cpf as $value) {
-                if ($data['besoin'] !== null) {
-                    if ($data['besoin']->getId() !== $value->getId()) {
-                        $removeUser = true;
+            $removeUser = true;
+            $continue = true;
+            /** @var Cpf $item */
+            foreach ($cpf as $item) {
+                if ($continue === true) {
+                    if ($data['besoin'] !== null && $continue === true) {
+                        if ($item->getId() === $data['besoin']->getCpf()->getId()) {
+                            $removeUser = false;
+                            $continue = false;
+                        }
                     }
-                    if (isset($data['sites'])) {
-                        $removeUser = false;
-                        foreach ($data['sites'] as $key => $site) {
-                            if ($site['besoin'] !== null) {
-                                if ($site['besoin']->getId() !== $value->getId()) {
-                                    unset($datas[$idUser]['sites'][$key]);
-                                }
-                            }
+                    if ($data['proposition'] !== null && $continue === true) {
+                        if ($item->getId() === $data['proposition']->getCpf()->getId()) {
+                            $removeUser = false;
+                            $continue = false;
                         }
                     }
                 }
-                if ($data['proposition'] !== null) {
+            }
 
-                }if ($data['proposition']->getId() !== $value->getId()) {
-                    $removeUser = true;
-                }
-                if (isset($data['sites'])) {
-                    $removeUser = false;
-                    foreach ($data['sites'] as $key => $site) {
-                        if ($site['proposition'] !== null) {
-                            if ($site['proposition']->getId() !== $value->getId()) {
-                                unset($datas[$idUser]['sites'][$key]);
+            if (isset($data['sites'])) {
+                foreach ($data['sites'] as $key => $site) {
+                    $removeSite = true;
+                    $continue = true;
+                    /** @var Cpf $item */
+                    foreach ($cpf as $item) {
+                        if ($continue === true) {
+                            if ($site['besoin'] !== null && $continue === true) {
+                                if ($item->getId() === $site['besoin']->getCpf()->getId()) {
+                                    $removeSite = false;
+                                    $continue = false;
+                                }
                             }
+                            if ($site['proposition'] !== null && $continue === true) {
+                                if ($item->getId() === $site['proposition']->getCpf()->getId()) {
+                                    $removeSite = false;
+                                    $continue = false;
+                                }
+                            }
+                        }
+                        if ($removeSite === true) {
+                            unset($datas[$idUser]['sites'][$key]);
                         }
                     }
                 }

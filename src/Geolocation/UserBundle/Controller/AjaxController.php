@@ -29,29 +29,23 @@ class AjaxController extends Controller
         $divisions = [];
 
         $done = [];
-
         foreach ($cpfs as $cpf) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
+            
             if ($request->query->get('filter') === "true") {
-                $users = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findBy([
-                        'cpf' => $cpf
-                    ]);
-            } else {
-                $users = [];
-            }
-            if ($request->query->get('filter') === "true") {
-                if ($cpf->getDivision() !== null) {
+                if (count($users) > 0) {
                     if (!in_array($cpf->getDivision()->getId(), $done)) {
                         $divisions[] = $cpf->getDivision();
                         $done[] = $cpf->getDivision()->getId();
                     }
                 }
             } else {
-                if ($cpf->getDivision() !== null) {
-                    if (!in_array($cpf->getDivision()->getId(), $done)) {
-                        $divisions[] = $cpf->getDivision();
-                        $done[] = $cpf->getDivision()->getId();
-                    }
+                if (!in_array($cpf->getDivision()->getId(), $done)) {
+                    $divisions[] = $cpf->getDivision();
+                    $done[] = $cpf->getDivision()->getId();
                 }
             }
         }
@@ -93,29 +87,22 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
             if ($request->query->get('filter') === "true") {
-                $users = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findBy([
-                        'cpf' => $cpf
-                    ]);
-            } else {
-                $users = [];
-            }
-            if ($request->query->get('filter') === "true") {
-                if ($cpf->getGroupe() !== null) {
+                if (count($users) > 0) {
                     if (!in_array($cpf->getGroupe()->getId(), $done)) {
                         $groupes[] = $cpf->getGroupe();
-                        $done[] = $cpf->getGroupe()->getId();
                     }
                 }
             } else {
-                if ($cpf->getGroupe() !== null) {
-                    if (!in_array($cpf->getGroupe()->getId(), $done)) {
-                        $groupes[] = $cpf->getGroupe();
-                        $done[] = $cpf->getGroupe()->getId();
-                    }
+                if (!in_array($cpf->getGroupe()->getId(), $done)) {
+                    $groupes[] = $cpf->getGroupe();
                 }
             }
+            $done[] = $cpf->getGroupe()->getId();
         }
 
         $normalizer = new GetSetMethodNormalizer();
@@ -146,29 +133,22 @@ class AjaxController extends Controller
         $done = [];
 
         foreach ($cpfs as $cpf) {
+            $users = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy([
+                    'cpf' => $cpf
+                ]);
             if ($request->query->get('filter') === "true") {
-                $users = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findBy([
-                        'cpf' => $cpf
-                    ]);
-            } else {
-                $users = [];
-            }
-            if ($request->query->get('filter') === "true") {
-                if ($cpf->getClasse() !== null) {
+                if (count($users) > 0) {
                     if (!in_array($cpf->getClasse()->getId(), $done)) {
                         $classes[] = $cpf->getClasse();
-                        $done[] = $cpf->getClasse()->getId();
                     }
                 }
             } else {
-                if ($cpf->getClasse() !== null) {
-                    if (!in_array($cpf->getClasse()->getId(), $done)) {
-                        $classes[] = $cpf->getClasse();
-                        $done[] = $cpf->getClasse()->getId();
-                    }
+                if (!in_array($cpf->getClasse()->getId(), $done)) {
+                    $classes[] = $cpf->getClasse();
                 }
             }
+            $done[] = $cpf->getDivision()->getId();
         }
 
         $normalizer = new GetSetMethodNormalizer();
