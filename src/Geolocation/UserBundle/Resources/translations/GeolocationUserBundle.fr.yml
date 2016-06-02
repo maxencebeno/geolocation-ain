@@ -56,9 +56,7 @@ profile:
         submit: Mettre à jour
         title: Modifier mes informations générales
         back_on_profile: Revenir à mon profil
-        or: ou
-        ressource_title: Ajouter / Modifier mes ressources
-        ressource_submit: Mettre à jour
+        or: ou        
     flash:
         updated: Le profil a été mis à jour
 
@@ -169,12 +167,22 @@ ressources:
     flash:
         create:
             success: "La ressource a bien été ajoutée"
-            fail: "Veuillez choisir un élément pour chaque champ"
-
+            fail: "Une erreur est survenue. Verifiez les élements des champs"
+        update:
+            success: "La ressource a bien été mise à jour"
+            fail: "Une erreur est survenue. Verifiez les élements des champs"
     title: "Mes ressources"
     besoin: "Besoins"
     ressources: "Ressources"
     proposition: "Propositions"
+    back_on_ressources: Revenir à mes ressources
+    back_on_ressources_site: Revenir aux ressources de mes sites
+    edit:
+        add_ressource_title: Ajouter une ressource
+        edit_ressource_title: Editer une ressource
+        ressource_submit: Enregistrer
+    delete_action: Supprimer
+    my_ressource: Ma ressource
 
 #Site
 site:

@@ -254,6 +254,8 @@ class SiteController extends Controller
             } else {
                 $this->addFlash('danger', 'ressources.flash.create.fail');
             }
+            $ressource = new Ressources();
+            $formRessource = $this->createForm(new RessourcesType(), $ressource);
             return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                 'adresse' => array(
                     'adresseId' => $id,

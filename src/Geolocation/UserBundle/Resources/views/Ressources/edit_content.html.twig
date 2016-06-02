@@ -1,136 +1,69 @@
 {% trans_default_domain 'GeolocationUserBundle' %}
 
+<div class="container">
+    <div class="row">
+        {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
 
 
-{% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
-{{ form_start(form) }}
-{{ form_errors(form) }}
+        <div id="ressource_edit">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>{{ 'ressources.edit.edit_ressource_title'|trans }}</h3></div>
+                <div class="panel-body">
+                    <span class="form-edit-label"><strong>{{ 'ressources.my_ressource'|trans }}</strong></span><br>
+                    <p>{{ entity.cpf }}</p>
 
+                    <span class="form-edit-label">{{ form_label(form.besoin) }}</span><br>
+                    {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
 
-<div id="ressource_edit">
-    <div class="panel panel-default">
-        <div class="panel-heading"><h3>{{ 'profile.edit.ressource_title'|trans }}</h3></div>
-        <div class="panel-body">
+                    <span class="form-edit-label">{{ form_label(form.description) }}</span><br>
+                    {{ form_widget(form.description, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-description">{{ form_errors(form.description) }}</span>
 
-            <span class="form-edit-label">{{ form_label(form.besoin) }}</span><br>
-            {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
+                    <span class="form-edit-label">{{ form_label(form.remarque) }}</span><br>
+                    {{ form_widget(form.remarque, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-remarque">{{ form_errors(form.remarque) }}</span>
 
-            <span class="form-edit-label">{{ form_label(form.description) }}</span><br>
-            {{ form_widget(form.description, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-description">{{ form_errors(form.description) }}</span>
+                    <span class="form-edit-label">{{ form_label(form.quantite) }}</span><br>
+                    {{ form_widget(form.quantite, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-remarque">{{ form_errors(form.quantite) }}</span>
 
-            <span class="form-edit-label">{{ form_label(form.remarque) }}</span><br>
-            {{ form_widget(form.remarque, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-remarque">{{ form_errors(form.remarque) }}</span>
+                    <div class="form-group">           
 
-            <span class="form-edit-label">{{ form_label(form.quantite) }}</span><br>
-            {{ form_widget(form.quantite, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-            <span class="form-error" id="error-remarque">{{ form_errors(form.quantite) }}</span>
+                        {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('ressources.edit.ressource_submit'|trans) }}) }}
 
-            <div class="from-group voffset1">
+                        {{ form_end(form) }}
 
-                {% include 'GeolocationUserBundle:Ajax:template_ajax.html.twig' %}
+                    </div>
+                    <button id="{{ entity.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ entity.id }}" data-myressource="{{ entity.cpf }}">
+                        {{'ressources.delete_action'|trans}}
+                    </button>
 
-                <div class="col-sm-4 hide">
-                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
                 </div>
-
-                <div class="col-sm-4 hide">
-                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
-                </div>
-
-                <div class="col-sm-4 hide">
-                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
-                </div>
-
-                <div class="col-sm-4 hide">
-                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
-                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="form-group">           
-
-                {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.ressource_submit'|trans) }}) }}
-
-                {{ form_end(form) }}
-
             </div>
         </div>
-    </div>
-</div>
-
-
-<div class="row">
-    <div id="ressource_delete" class="form-group col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h3>{{ 'ressources.title'|trans }}</h3></div>
-            <div class="panel-body">
-                <h4>{{ 'ressources.besoin'|trans }}</h4>
-                {% if ressourcesBesoin|length > 0 %}
-                    <table class="table" id="listBesoin">
-                        <tr><th>{{ 'ressources.ressources'|trans }}</th><th></th></tr>
-                        {% for key, ressource in ressourcesBesoin %}
-                            {% if ressource.getBesoin()==true %}
-                                <tr class="myRessource">
-                                    <td>{{ ressource.getCpf() }}</td>
-                                    <td><button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}"><i class="
-                                                                                                                                                                glyphicon glyphicon-remove"></i></button></td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    </table>
-                    {% else %}
-                    <p>
-                        {{ 'profile.show.no_ressources'|trans }} 
-                    </p>
-                    {% endif %}
                     
-                    <h4>{{ 'ressources.proposition'|trans }}</h4>
-                    {% if ressourcesPropo|length > 0 %}
-                    <table class="table" id="listProposition">
-                        <tr><th>Ressources</th><th></th></tr>
-                        {% for key, ressource in ressourcesPropo %}
-                            {% if ressource.getBesoin()==false %}
-                                <tr class="myRessource">
-                                <td>{{ ressource.getCpf() }}</td>
+        {% if entity.adresseId!=null%}
+            <a class="btn btn-default" href="{{ path('user_edit_site', {'id': entity.adresseId.id}) }}" class="submit-button-geolocation-light">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+                {{ 'ressources.back_on_ressources_site'|trans }}
+            </a>
+        {% else %}
+            <a class="btn btn-default" href="{{ path('user_ressources') }}" class="submit-button-geolocation-light">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+                {{ 'ressources.back_on_ressources'|trans }}
+            </a>
+        {% endif %}
+        <a class="btn btn-default" href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+            {{ 'profile.edit.back_on_profile'|trans }}
+        </a>
 
-                                    <td><button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}"><i class="
-                                                                                                                                                                                                        glyphicon glyphicon-remove"></i></button></td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
 
-                    </table>
-                {% else %}
-                    <p>
-                        {{ 'profile.show.no_ressources'|trans }} 
-                    </p>
-                {% endif %}
-                
-
-            </div>
-        </div>
     </div>
 </div>
-<a class="btn btn-default" href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
-    <i class="glyphicon glyphicon-arrow-left"></i>
-    {{ 'profile.edit.back_on_profile'|trans }}
-</a>
-
-
-
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
@@ -140,7 +73,7 @@
                 <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                {{ 'entreprise.delete_action'|trans }}<span></span> ?
+                {{ 'ressource.delete_action'|trans }}<span></span> ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>

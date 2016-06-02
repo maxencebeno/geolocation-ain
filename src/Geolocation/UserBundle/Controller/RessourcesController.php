@@ -9,25 +9,26 @@ use Geolocation\AdminBundle\Form\RessourcesType;
 
 class RessourcesController extends Controller {
 
-    public function editAction(Request $request) {
-        // On récupère les infos pour le formulaire en ajax
+    public function showAction(Request $request) {
+
         $em = $this->getDoctrine()->getManager();
 
         $sections = $em->getRepository('GeolocationAdminBundle:Section')
                 ->findAll();
         $entity = new Ressources();
 
+        //création du formulaire d'ajout de ressources
         $formRessource = $this->createForm(new RessourcesType(), $entity);
         $formRessource->handleRequest($request);
 
         $userId = $this->getUser()->getId();
-         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
-         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
+        $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
+        $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => true));
 
 
-
+        //vérification du formulaire envoyé
         if ($formRessource->isValid()) {
             $user = $this->getUser();
 
@@ -89,47 +90,79 @@ class RessourcesController extends Controller {
                 $this->addFlash('success', 'ressources.flash.create.success');
 
                 $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>false));
+                        ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
                 $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id'=>NULL, 'besoin'=>true));
+                        ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => true));
             } else {
                 $this->addFlash('danger', 'ressources.flash.create.fail');
             }
-            return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
+            
+            return $this->render('GeolocationUserBundle:Ressources:show.html.twig', array(
                         'entity' => $entity,
                         'form' => $formRessource->createView(),
                         'sections' => $sections,
                         'ressourcesPropo' => $ressourcesProposition,
-                        'ressourcesBesoin'=> $ressourcesBesoin
+                        'ressourcesBesoin' => $ressourcesBesoin
             ));
         }
 
-        // var_dump($ressources);
-        // die;
 
-        return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
+        return $this->render('GeolocationUserBundle:Ressources:show.html.twig', array(
                     'entity' => $entity,
                     'form' => $formRessource->createView(),
                     'sections' => $sections,
                     'ressourcesPropo' => $ressourcesProposition,
-                    'ressourcesBesoin'=> $ressourcesBesoin
+                    'ressourcesBesoin' => $ressourcesBesoin
+        ));
+    }
+
+    public function editAction(Request $request) {
+
+        $id = $request->attributes->get('id');
+           
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('GeolocationAdminBundle:Ressources')
+                ->findOneBy(array('id' => $id));
+       
+        //création du formulaire d'ajout de ressources
+        $formRessource = $this->createForm(new RessourcesType(), $entity);
+        $formRessource->remove('cpf');
+        $formRessource->handleRequest($request);
+
+        //vérification du formulaire envoyé
+        if ($formRessource->isValid()) {
+            $user = $this->getUser();
+            $entity->setUser($user);
+            $em->persist($entity);
+            $em->flush();
+            $this->addFlash('success', 'ressources.flash.update.success');
+        } else if (!$formRessource->isValid() && $formRessource->isSubmitted()) {
+            $this->addFlash('danger', 'ressources.flash.update.fail');
+        }
+
+
+
+        return $this->render('GeolocationUserBundle:Ressources:edit.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $formRessource->createView(),
         ));
     }
 
     public function deleteAction(Request $request) {
-        $id= $request->attributes->get('id');
+        $id = $request->attributes->get('id');
         $em = $this->getDoctrine()->getManager();
         /** @var Ressources $ressource */
         $ressource = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->find($id);
-        
+
         $idAdresseForRedirection = $ressource->getAdresseId()->getId();
 
         $em->remove($ressource);
         $em->flush();
-        if ($request->query->get('page')){
-            return $this->redirectToRoute('user_edit_site',array('id'=>$idAdresseForRedirection));
-        } else{
+        if ($request->query->get('page')) {
+            return $this->redirectToRoute('user_edit_site', array('id' => $idAdresseForRedirection));
+        } else {
             return $this->redirectToRoute('user_ressources');
         }
     }

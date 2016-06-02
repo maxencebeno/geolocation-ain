@@ -179,6 +179,7 @@ class AdresseController extends Controller {
 
         $editForm = $this->createForm(new AdresseType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
+        $editForm->remove('iso');
 
         return $this->render('GeolocationAdminBundle:Adresse:edit.html.twig', array(
                     'entity' => $entity,
@@ -209,6 +210,7 @@ class AdresseController extends Controller {
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new AdresseType(), $entity);
+        $editForm->remove('iso');
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

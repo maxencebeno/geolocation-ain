@@ -42,8 +42,15 @@ ajax_sous_categorie:
     path: /ajax/getSousCategorie
     
 user_ressources:
+    defaults: { _controller: GeolocationUserBundle:Ressources:show }
+    path: /show-ressources
+    
+user_ressources_edit:
     defaults: { _controller: GeolocationUserBundle:Ressources:edit }
-    path: /ressources-ajout
+    path: /edit-ressource/{id}
+    requirements:
+        id: \d+
+    
 
 user_ressources_delete : 
     defaults: { _controller: GeolocationUserBundle:Ressources:delete }

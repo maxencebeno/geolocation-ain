@@ -17,7 +17,9 @@ titles:
         register: Inscription
         password_already_requested: Vous avez déjà fait une demande de changement de mot de passe
         reset: Demande de changement de mot de passe
-        ressource: Ajouter une ressource
+        ressource: 
+            show : Mes ressources
+            edit : Modifiez la ressource
         login: Connexion
 
         site:

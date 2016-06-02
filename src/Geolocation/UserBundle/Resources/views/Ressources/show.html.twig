@@ -1,19 +1,19 @@
 {% extends "GeolocationUserBundle::layout.html.twig" %}
 
 {% block title %}
-    {{ 'titles.user.ressource.edit'|trans({}, 'titles') }}
+    {{ 'titles.user.ressource.show'|trans({}, 'titles') }}
 {% endblock title %}
 
 {% block stylesheets %}
 {% endblock %}
 
 {% block fos_user_content %}
-    {% include "GeolocationUserBundle:Ressources:edit_content.html.twig" %}
-
+    <div class="container">
+        {% include "GeolocationUserBundle:Ressources:show_content.html.twig" %}
+    </div>
 
     {% block javascript %}
-        {% javascripts '@GeolocationUserBundle/Resources/public/js/*'
-                        '@SiteBundle/Resources/public/js/autocomplete.js' %}
+        {% javascripts '@GeolocationUserBundle/Resources/public/js/*' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock javascript %}

@@ -1,0 +1,174 @@
+{% trans_default_domain 'GeolocationUserBundle' %}
+
+
+
+{% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+
+<div id="ressource_edit">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>{{ 'ressources.edit.add_ressource_title'|trans }}</h3></div>
+        <div class="panel-body">
+
+            <span class="form-edit-label">{{ form_label(form.besoin) }}</span><br>
+            {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
+
+            <span class="form-edit-label">{{ form_label(form.description) }}</span><br>
+            {{ form_widget(form.description, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-description">{{ form_errors(form.description) }}</span>
+
+            <span class="form-edit-label">{{ form_label(form.remarque) }}</span><br>
+            {{ form_widget(form.remarque, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-remarque">{{ form_errors(form.remarque) }}</span>
+
+            <span class="form-edit-label">{{ form_label(form.quantite) }}</span><br>
+            {{ form_widget(form.quantite, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+            <span class="form-error" id="error-remarque">{{ form_errors(form.quantite) }}</span>
+
+            <div class="from-group voffset1">
+
+                {% include 'GeolocationUserBundle:Ajax:template_ajax.html.twig' %}
+
+                <div class="col-sm-4 hide">
+                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                </div>
+
+                <div class="col-sm-4 hide">
+                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                </div>
+
+                <div class="col-sm-4 hide">
+                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                </div>
+
+                <div class="col-sm-4 hide">
+                    <span class="form-edit-label">{{ form_label(form.cpf) }}</span>
+                    {{ form_widget(form.cpf, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                    <span class="form-error" id="error-cpf">{{ form_errors(form.cpf) }}</span>
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">           
+
+                {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.ressource_submit'|trans) }}) }}
+
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div id="ressource_delete" class="form-group col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3>{{ 'ressources.title'|trans }}</h3></div>
+            <div class="panel-body">
+                <h4>{{ 'ressources.besoin'|trans }}</h4>
+                {% if ressourcesBesoin|length > 0 %}
+                    <table class="table" id="listBesoin">
+                        <tr><th>{{ 'ressources.ressources'|trans }}</th><th></th></tr>
+                        {% for key, ressource in ressourcesBesoin %}
+                            {% if ressource.getBesoin()==true %}
+                                <tr class="myRessource">
+                                    <td>{{ ressource.getCpf() }}</td>
+                                    <td>
+                                         <a href="{{ path('user_ressources_edit', {'id': ressource.id}) }}" id="{{ ressource.id }} " class="btn btn-info btn-sm">Modifier</a>
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}"><i class="
+                                                                                                                                                                glyphicon glyphicon-remove"></i></button></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <p>
+                        {{ 'profile.show.no_ressources'|trans }} 
+                    </p>
+                    {% endif %}
+                    
+                    <h4>{{ 'ressources.proposition'|trans }}</h4>
+                    {% if ressourcesPropo|length > 0 %}
+                    <table class="table" id="listProposition">
+                        <tr><th>Ressources</th><th></th></tr>
+                        {% for key, ressource in ressourcesPropo %}
+                            {% if ressource.getBesoin()==false %}
+                                <tr class="myRessource">
+                                <td>{{ ressource.getCpf() }}</td>
+
+                                    <td>
+                                        <a href="{{ path('user_ressources_edit', {'id': ressource.id}) }}" id="{{ ressource.id }} " class="btn btn-info btn-sm">Modifier</a>
+                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">
+                                            <i class="glyphicon glyphicon-remove"></i></button></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+
+                    </table>
+                {% else %}
+                    <p>
+                        {{ 'profile.show.no_ressources'|trans }} 
+                    </p>
+                {% endif %}
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+<a class="btn btn-default" href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+    {{ 'profile.edit.back_on_profile'|trans }}
+</a>
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+                {{ 'entreprise.delete_action'|trans }}<span></span> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
+                <a id="valid" href = "" type="button" class="btn btn-danger">{{ 'entreprise.yes'|trans }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('whatever'); // Extract info from data-* attributes
+        var myressource = button.data('myressource');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        modal.find('.modal-body span').text(myressource);
+        var pathname = window.location.pathname; //récpuération du chemin pour savoir sur quel page on est; car le template est appelé à plusieurs endroit
+        if (pathname.search("get-site") > -1) {
+            modal.find('.modal-footer #valid').attr('href', baseUrl+"ressources-delete/" + id + "?page=edit-site");
+        } else {
+            modal.find('.modal-footer #valid').attr('href', baseUrl+"ressources-delete/" + id);
+        }
+    });
+</script>
