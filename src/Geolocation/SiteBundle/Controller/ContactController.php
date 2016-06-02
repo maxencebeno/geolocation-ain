@@ -39,7 +39,7 @@ class ContactController extends Controller
             ;
             $this->get('mailer')->send($message);
             
-            $this->addFlash('success', $translator->trans('contact.form.success', [], 'contact'));
+            $this->addFlash('success', $translator->trans('contact.form.success'));
 
             $contact = new Contact();
             $form = $this->createForm(new ContactType(), $contact);
