@@ -81,8 +81,7 @@ class GenerateArrayRessourcesFromFilters
 
                 if ($ressource->getBesoin() === true) {
                     $datas[$ressource->getUser()->getId()]['besoin'] = $ressource;
-                }
-                if ($ressource->getBesoin() === false) {
+                } else {
                     $datas[$ressource->getUser()->getId()]['proposition'] = $ressource;
                 }
                 $datas[$ressource->getUser()->getId()]['user'] = $ressource->getUser();
@@ -124,14 +123,24 @@ class GenerateArrayRessourcesFromFilters
                                         ];
                                     }
                                     if (!isset($datas[$ressourceSite->getUser()->getId()]['sites'])) {
-                                        $datas[$ressourceSite->getUser()->getId()]['sites'] = [];
+                                        $datas[$ressourceSite->getUser()->getId()]['sites'] = [
+                                            'besoin' => null,
+                                            'proposition' => null,
+                                            'adresse' => null
+                                        ];
                                     }
+                                    $arraySite = [];
 
-                                    $datas[$ressourceSite->getUser()->getId()]['sites'][] = [
-                                        'besoin' => $ressourceSite->getBesoin() === true ? $ressourceSite : null,
-                                        'proposition' => $ressourceSite->getBesoin() === false ? $ressourceSite : null,
-                                        'adresse' => $site
-                                    ];
+                                    if ($ressourceSite->getBesoin() === true) {
+                                        $arraySite['besoin'] = $ressourceSite;
+                                        $arraySite['proposition'] = null;
+                                    } else {
+                                        $arraySite['proposition'] = $ressourceSite;
+                                        $arraySite['besoin'] = null;
+                                    }
+                                    $arraySite['adresse'] = $site;
+                                    $datas[$ressourceSite->getUser()->getId()]['sites'][] = $arraySite;
+
                                     $done[] = $ressourceSite->getId();
                                 }
                             }

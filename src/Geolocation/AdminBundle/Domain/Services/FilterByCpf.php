@@ -20,12 +20,12 @@ class FilterByCpf
 
     public function filterByCpf(array $datas = [], Request $request)
     {
-
         $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')
             ->findByCpf([
                 'section' => $request->request->get('section'),
                 'groupe' => $request->request->get('groupe'),
-                'division' => $request->request->get('division')
+                'division' => $request->request->get('division'),
+                'classe' => $request->request->get('classe')
             ]);
 
         foreach ($datas as $idUser => $data) {
