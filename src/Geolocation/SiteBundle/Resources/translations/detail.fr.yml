@@ -2,7 +2,7 @@ detail:
     title: Fiche de l'entreprise %nomEntreprise%
     address_not_found: Adresse non renseignée
     city_not_found: Ville non renseignée
-    contact: Coordonnées
+    coordonnees: Coordonnées
     tel_not_found: Téléphone non renseigné
     email_not_found: Email non renseigné
     site_not_found: Site non renseigné
