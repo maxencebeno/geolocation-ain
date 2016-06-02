@@ -28,16 +28,18 @@
             </form>
 
 
-            <div class="col-sm-4 results hide">
+            <div class="col-sm-4 results hide voffset2">
                 <div class="alert alert-info text-center">
                     <p id="nb_firm_found"></p>
                 </div>
-                <a class="btn btn-warning col-sm-4 col-sm-offset-4" href="{{ path('reset_filters') }}">{{ 'filters.reset'|trans }}</a>
+
             </div>
-            
+            <div class="col-sm-2 text-center">           
+                <a class="btn btn-warning" href="{{ path('reset_filters') }}">{{ 'filters.reset'|trans }}</a>
+            </div>
         </div>
 
-            
+
 
     </div>
 
@@ -81,7 +83,7 @@
             <article class="col-sm-8 text-left">
 
                 {{ 'filters.content'|trans|raw }}
-                
+
                 <a href="http://www.ademe.fr/expertises/economie-circulaire">
                     <img class="img-responsive" src="https://www.ademe.fr/sites/default/files/assets/images/economie_circulaire_schema_ademe.gif" alt="Schéma de l'économie circulaire"/>
                     <p>Source : ADEME</p>
