@@ -40,6 +40,9 @@ class ContactController extends Controller
             $this->get('mailer')->send($message);
             
             $this->addFlash('success', $translator->trans('contact.form.success', [], 'contact'));
+
+            $contact = new Contact();
+            $form = $this->createForm(new ContactType(), $contact);
         }
         
         return $this->render('SiteBundle:Contact:contact.html.twig', ['form' => $form->createView()]);
