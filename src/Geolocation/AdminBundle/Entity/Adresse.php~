@@ -113,6 +113,22 @@ class Adresse {
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
+
+    /**
+     * @return mixed
+     */
+    public function getIso()
+    {
+        return $this->iso;
+    }
+
+    /**
+     * @param mixed $iso
+     */
+    public function setIso($iso)
+    {
+        $this->iso = $iso;
+    }
     
     /**
      * Get id
@@ -299,14 +315,6 @@ class Adresse {
         return $this->longitude;
     }
 
-    function getIso() {
-        return $this->iso;
-    }
-
-    function setIso($iso) {
-        $this->iso = $iso;
-    }
-
     /**
      * Set user
      *
@@ -396,5 +404,10 @@ class Adresse {
     public function getNom()
     {
         return $this->nom;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }

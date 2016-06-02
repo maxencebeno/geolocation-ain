@@ -159,6 +159,6 @@ class Section
 
     public function __toString()
     {
-        return $this->getCode() . ' : ' . $this->getLibelle();
+        return $this->getLibelle();
     }
 }

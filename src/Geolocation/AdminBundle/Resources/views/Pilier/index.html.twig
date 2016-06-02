@@ -55,6 +55,7 @@
                     <th>Id</th>
                     <th>Nom</th>
                     <th>Categorie</th>
+                    <th>URL picto google map</th>
                     <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
                 </tr>
                 </thead>
@@ -70,6 +71,7 @@
                         {% else %}
                             <td>Demande et comportement des consommateurs</td>
                         {% endif %}
+                        <td><img src="{{ entity.urlPicto }}"></td>
                         <td>
                             <a class="btn btn-mini" href="{{ path('pilier_show', { 'id': entity.id }) }}">
                                 {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}

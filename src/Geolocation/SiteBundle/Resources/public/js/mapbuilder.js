@@ -69,7 +69,7 @@ function initMarker(data, centerMarkers) {
             }));
             var pilier = "";
             if (data[i].adresse.pilier != null) {
-                pilier = data[i].adresse.pilier.id;
+                pilier = data[i].adresse.pilier;
             }
 
             choosePilier(markers[index], pilier);
@@ -127,7 +127,7 @@ function initMarker(data, centerMarkers) {
                 }));
                 var pilier = "";
                 if (data[i].sites[j].adresse.pilier != null) {
-                    pilier = data[i].sites[j].adresse.pilier.id;
+                    pilier = data[i].sites[j].adresse.pilier;
                 }
                 choosePilier(markers[index], pilier);
 
@@ -230,37 +230,11 @@ function centerMap(lat, lng) {
 
 //Définit la couleur du marker sur la carte en fonction du pilier
 function choosePilier(marker, pilier) {
-    var icon = "";
-    switch (pilier) {
-        case 1 :
-            icon = 'green-dot.png';
-            break;
-        case 2 :
-            icon = 'yellow-dot.png';
-            break;
-        case 3 :
-            icon = 'purple-dot.png';
-            break;
-        case 4 :
-            icon = 'blue-dot.png';
-            break;
-        case 5 :
-            icon = 'pink-dot.png';
-            break;
-        case 6 :
-            icon = 'ltblue-dot.png';
-            break;
-        case 7 :
-            icon = 'orange-dot.png';
-            break;
-        default:
-            icon = 'red-dot.png';
-            break;
+    if (pilier !== null && pilier !== "") {
+        marker.setIcon(pilier.urlPicto);
+    } else {
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
     }
-
-    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/' + icon);
-
-
 }
 $(document).ready(function () {
 

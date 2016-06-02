@@ -35,6 +35,13 @@ class Pilier
      */
     private $categorie;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_picto", type="string", length=255)
+     */
+    private $urlPicto;
+
 
     /**
      * Get id
@@ -97,5 +104,29 @@ class Pilier
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    /**
+     * Set urlPicto
+     *
+     * @param string $urlPicto
+     *
+     * @return Pilier
+     */
+    public function setUrlPicto($urlPicto)
+    {
+        $this->urlPicto = $urlPicto;
+
+        return $this;
+    }
+
+    /**
+     * Get urlPicto
+     *
+     * @return string
+     */
+    public function getUrlPicto()
+    {
+        return $this->urlPicto;
     }
 }

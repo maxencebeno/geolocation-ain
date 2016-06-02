@@ -16,6 +16,7 @@ class PilierType extends AbstractType
             ->add('categorie', 'choice', array(
                 'choices' => PilierRepository::getCategorie()
             ))
+            ->add('urlPicto')
         ;
     }
 
