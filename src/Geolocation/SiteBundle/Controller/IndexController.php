@@ -15,8 +15,11 @@ class IndexController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $sections = $em->getRepository('GeolocationAdminBundle:Section')
                 ->findByUserExist();
+        
+        $piliers = $em->getRepository('GeolocationAdminBundle:Pilier')
+            ->findAll();
 
-        return $this->render('SiteBundle:Index:index.html.twig', ['sections' => $sections]);
+        return $this->render('SiteBundle:Index:index.html.twig', ['sections' => $sections, 'piliers' => $piliers]);
     }
 
     public function getCitiesAction(Request $request) {
