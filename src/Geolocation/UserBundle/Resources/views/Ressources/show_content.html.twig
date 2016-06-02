@@ -79,13 +79,14 @@
             <div class="panel-body">
                 <h4>{{ 'ressources.besoin'|trans }}</h4>
                 {% if ressourcesBesoin|length > 0 %}
-                    <table class="table" id="listBesoin">               
+                    <table class="table table-striped" id="listBesoin">               
                         <tr>
                             <th id="th-ressource">{{ 'ressources.ressources'|trans }}</th>
                             <th id="th-quantite" class="quantite">Quantité</th>
                             <th id="th-description">Description</th>
                             <th id="th-remarque">Remarques</th>
-                            <th id="th-actions">Actions</th>
+                            <th id="th-actions" colspan="2" class="text-center">Actions</th>
+                            <th id="th-actions2"></th>
                         </tr>
                         {% for key, ressource in ressourcesBesoin %}
                             {% if ressource.getBesoin()==true %}
@@ -94,10 +95,19 @@
                                     <td headers="th-quantite" data-headers="Quantité" class="quantite">{{ ressource.getQuantite() }}</td>
                                     <td headers="th-description" data-headers="Description">{{ ressource.getDescription() }}</td>
                                     <td headers="th-remarque" data-headers="Remarques">{{ ressource.getRemarque() }}</td>
-                                    <td headers="th-actions" data-headers="Actions">
-                                        <a href="{{ path('user_ressources_edit', {'id': ressource.id}) }}" id="{{ ressource.id }} " class="btn btn-info btn-sm">{{ 'ressources.update_action'|trans}}</a>
-                                        <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">
+                                    <td headers="th-actions" data-headers="Modifier">
+                                        <div class="row">
+                                            <a href="{{ path('user_ressources_edit', {'id': ressource.id}) }}" id="{{ ressource.id }} " class="btn btn-info btn-sm">{{ 'ressources.update_action'|trans}}</a>
+                                            
+                                        </div>
+                                        
+                                    </td>
+                                    <td headers="th-actions2" data-headers="Supprimer">
+                                        <div class="row">
+                                            <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">
                                         <i class=" glyphicon glyphicon-remove"></i></button>
+                                        </div>
+                                        
                                     </td>
                                 </tr>
                             {% endif %}
@@ -111,13 +121,14 @@
                     
                     <h4>{{ 'ressources.proposition'|trans }}</h4>
                     {% if ressourcesPropo|length > 0 %}
-                    <table class="table" id="listProposition">
+                    <table class="table table-striped" id="listProposition">
                        <tr>
                             <th id="th-ressource">{{ 'ressources.ressources'|trans }}</th>
                             <th id="th-quantite" class="quantite">Quantité</th>
                             <th id="th-description">Description</th>
                             <th id="th-remarque">Remarques</th>
-                            <th id="th-actions">Actions</th>
+                            <th id="th-actions" colspan="2" class="text-center">Actions</th>
+                            <th id="th-actions2"></th>
                         </tr>
                         {% for key, ressource in ressourcesPropo %}
                             {% if ressource.getBesoin()==false %}
@@ -126,8 +137,11 @@
                                     <td headers="th-quantite" data-headers="Quantité" class="quantite">{{ ressource.getQuantite() }}</td>
                                     <td headers="th-description" data-headers="Description">{{ ressource.getDescription() }}</td>
                                     <td headers="th-remarque" data-headers="Remarques">{{ ressource.getRemarque() }}</td>
-                                    <td headers="th-actions" data-headers="Actions">
+                                    <td headers="th-actions" data-headers="Modifier">
                                         <a href="{{ path('user_ressources_edit', {'id': ressource.id}) }}" id="{{ ressource.id }} " class="btn btn-info btn-sm">{{ 'ressources.update_action'|trans}}</a>
+                                        
+                                    </td>
+                                    <td headers="th-actions2" data-headers="Supprimer">
                                         <button id="  {{ ressource.getId() }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ ressource.getId() }}" data-myressource="{{ ressource.getCpf() }}">
                                         <i class=" glyphicon glyphicon-remove"></i></button>
                                     </td>

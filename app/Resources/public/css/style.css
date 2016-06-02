@@ -313,20 +313,22 @@ th.quantite{
 
     td, th { 
         display: table-row;
-        border:  1px solid black; 
+
+    }
+    
+    td:after{
+        content:" ";
     }
 
     td:before {
         content: attr(data-headers);
         display: table-cell;
         width: 40%;
-        border:  1px solid black;   
+        font-weight: bold;
     }
 
     tr,td{
-        height : 50px;
-        vertical-align:middle;
-       /* text-align:center;*/
+       text-align:center;
     }
 
 }
