@@ -1,7 +1,7 @@
 {% extends 'GeolocationAdminBundle::layout.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Aide) }}
+    {{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Aide'}, 'JordiLlonchCrudGeneratorBundle') }}
 {% endblock %}
 
 {% block page %}
@@ -41,7 +41,7 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                            <p>Un nouveau pilier à dans son apparition dans l'économie circulaire. Comment  l'ajouter ?</p>
+                            <p>Un nouveau pilier a fait son apparition dans l'économie circulaire. Comment  l'ajouter ?</p>
                         </a>
                     </div>
                     <div id="collapseThree" class="accordion-body collapse">
@@ -64,19 +64,7 @@
                     </div>
                 </div>
                 
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
-                            Comment modifer la description d'une ressource liée à une entreprise ?
-                        </a>
-                    </div>
-                    <div id="collapseFive" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <p>Cliquez sur le lien "Ressources" dans le menu. Vous verrez apparaitre la liste des ressources enregistrée par les entreprise.</p>
-                            <p>Recherchez l'entreprise (vous pouvez utiliser les filtres), éditez puis validez.</p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
 

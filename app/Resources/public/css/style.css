@@ -24,6 +24,7 @@ a:hover{
 
 .container-map{
     position: relative;
+    margin-top:10px;
 }
 
 #zoneRechercheCarte {
