@@ -128,6 +128,6 @@ class SousCategorie
 
     public function __toString()
     {
-        return $this->getCode() . ' : ' . $this->getLibelle();
+        return $this->getLibelle();
     }
 }

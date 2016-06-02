@@ -128,6 +128,6 @@ class Classe
 
     public function __toString()
     {
-        return $this->getCode() . ' : ' . $this->getLibelle();
+        return $this->getLibelle();
     }
 }
