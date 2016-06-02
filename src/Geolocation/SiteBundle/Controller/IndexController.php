@@ -120,7 +120,6 @@ class IndexController extends Controller {
             'user',
             'password',
             'usernameCanonical',
-            'id',
             'enabled',
             'emailCanonical',
             'salt',
