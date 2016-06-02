@@ -31,6 +31,7 @@ google.maps.event.addListenerOnce(carte, 'idle', function () {
 google.maps.event.addListenerOnce(carte, 'tilesloaded', function () {
     //appel de l'action pour charger les markers
     $('html').css('overflow', 'scroll');
+    $('body').css('overflow', 'scroll');
     $('#loading-root').fadeOut();
     $('#loading-root').addClass('hide');
 });

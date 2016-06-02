@@ -148,7 +148,7 @@ class AjaxController extends Controller
                     $classes[] = $cpf->getClasse();
                 }
             }
-            $done[] = $cpf->getDivision()->getId();
+            $done[] = $cpf->getClasse()->getId();
         }
 
         $normalizer = new GetSetMethodNormalizer();
