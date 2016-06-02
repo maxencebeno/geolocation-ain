@@ -182,6 +182,20 @@ class RegistrationController extends BaseController
 
             $url = $this->generateUrl('site_homepage');
 
+            
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Nouvelle inscription')
+                ->setFrom($user->getEmail())
+                ->setTo('georic.ain@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        '@Site/Email/registration.html.twig',
+                        array('user' => $user)
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($message);
+             
             $response = new RedirectResponse($url);
 
             /*if (null === $response = $event->getResponse()) {
