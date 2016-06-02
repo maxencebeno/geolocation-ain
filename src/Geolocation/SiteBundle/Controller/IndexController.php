@@ -116,7 +116,32 @@ class IndexController extends Controller {
             ];
         }
 
-        $ignoredAttributes = array('user');
+        $ignoredAttributes = array(
+            'user',
+            'password',
+            'usernameCanonical',
+            'id',
+            'enabled',
+            'emailCanonical',
+            'salt',
+            'password',
+            'lastLogin',
+            'locked',
+            'expired',
+            'expiresAt',
+            'confirmationToken',
+            'passwordRequestedAt',
+            'roles',
+            'credentialsExpired',
+            'credentialsExpireAt',
+            'plainPassword',
+            'groups',
+            'accountNonExpired',
+            'accountNonLocked',
+            'credentialsNonExpired',
+            'superAdmin',
+            'groupNames',
+        );
         $normalizer = new GetSetMethodNormalizer();
         $normalizer->setIgnoredAttributes($ignoredAttributes);
         $serializer = new Serializer(array($normalizer), array('ressources' => new JsonEncoder()));
