@@ -22,6 +22,8 @@ class RessourcesController extends Controller {
         $formRessource->handleRequest($request);
 
         $userId = $this->getUser()->getId();
+        
+        //récupération des ressources (besoin et proposition) de l'entreprise courant pour pouvoir les afficher par la suite
         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
@@ -79,20 +81,34 @@ class RessourcesController extends Controller {
               'souscategorie' => $souscategorie
               ));
              */
-
+            
+            //vérification que la ressource choisie existe
             if ($cpf !== null) {
-                $entity->setCpf($cpf);
+                
+                //vérification que la ressources n'est pas déjà ajoutée pour cette entreprise
+                $existeRessource= $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findOneBy(array(
+                            'user'=>$user,
+                            'cpf'=>$cpf,
+                            'adresse_id'=>null,
+                            'besoin'=>$entity->getBesoin()
+                        ));
+                
+                if (count($existeRessource)>0) {
+                     $this->addFlash('danger', 'ressources.flash.already_exist');
+                }else{    
+                    //ajout en base    
+                    $entity->setCpf($cpf);
+                    $entity->setUser($user);
+                    $em->persist($entity);
+                    $em->flush();
+                    $this->addFlash('success', 'ressources.flash.create.success');
 
-                $entity->setUser($user);
-
-                $em->persist($entity);
-                $em->flush();
-                $this->addFlash('success', 'ressources.flash.create.success');
-
-                $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
-                $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => true));
+                    $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                            ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
+                    $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                            ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => true));
+                    }
             } else {
                 $this->addFlash('danger', 'ressources.flash.create.fail');
             }
@@ -125,18 +141,34 @@ class RessourcesController extends Controller {
         $entity = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findOneBy(array('id' => $id));
        
+        $besoin=$entity->getBesoin();
+        
         //création du formulaire d'ajout de ressources
         $formRessource = $this->createForm(new RessourcesType(), $entity);
         $formRessource->remove('cpf');
         $formRessource->handleRequest($request);
-
+        
+        
         //vérification du formulaire envoyé
         if ($formRessource->isValid()) {
             $user = $this->getUser();
-            $entity->setUser($user);
-            $em->persist($entity);
-            $em->flush();
-            $this->addFlash('success', 'ressources.flash.update.success');
+             //vérification que la ressources n'est pas déjà ajoutée pour cette entreprise
+                $existeRessource= $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findOneBy(array(
+                            'user'=>$user,
+                            'cpf'=>$entity->getCpf(),
+                            'adresse_id'=>null,
+                            'besoin'=>$besoin
+                        ));
+                
+            if(intval($besoin) != $entity->getBesoin() && count($existeRessource)>0){
+                     $this->addFlash('danger', 'ressources.flash.already_exist');
+            }else{                
+                $entity->setUser($user);
+                $em->persist($entity);
+                $em->flush();
+                $this->addFlash('success', 'ressources.flash.update.success');
+            }
         } else if (!$formRessource->isValid() && $formRessource->isSubmitted()) {
             $this->addFlash('danger', 'ressources.flash.update.fail');
         }
@@ -155,9 +187,11 @@ class RessourcesController extends Controller {
         /** @var Ressources $ressource */
         $ressource = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->find($id);
-
-        $idAdresseForRedirection = $ressource->getAdresseId()->getId();
-
+        
+        //vérifie si on est sur un site de production
+        if ($request->query->get('page')) {
+            $idAdresseForRedirection = $ressource->getAdresseId()->getId();
+        }
         $em->remove($ressource);
         $em->flush();
         if ($request->query->get('page')) {

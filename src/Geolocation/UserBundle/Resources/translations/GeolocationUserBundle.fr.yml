@@ -165,6 +165,7 @@ form:
 #Ressources
 ressources:
     flash:
+        already_exist: Vous avez déjà ajouté cette ressource
         create:
             success: "La ressource a bien été ajoutée"
             fail: "Une erreur est survenue. Verifiez les élements des champs"
