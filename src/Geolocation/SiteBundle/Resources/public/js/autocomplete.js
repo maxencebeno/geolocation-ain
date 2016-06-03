@@ -141,8 +141,7 @@ $('#search-code-naf-form').submit(function (e) {
     e.stopPropagation();
 
     var idCpf = $('#search-code-naf-input').val();
-    console.log(idCpf);
-    if (idCpf !== '') {
+    if (idCpf !== '' && idCpf !== null && idCpf !== "-1") {
         $.ajax({
             url: baseUrl + 'json/markers/' + idCpf,
             method: "GET",
@@ -157,7 +156,8 @@ $('#search-code-naf-form').submit(function (e) {
 });
 
 $('#send-form').click(function () {
-    if ($('#search-code-naf-input').val() !== '') {
+    var idCpf = $('#search-code-naf-input').val();
+    if (idCpf !== '' && idCpf !== null && idCpf !== "-1") {
         $('#search-code-naf-form').submit();
     }
 });

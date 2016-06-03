@@ -95,32 +95,39 @@ $(document).ready(function () {
         e.preventDefault();
         e.stopPropagation();
 
-        $.ajax({
-            url: baseUrl + 'ajax/filtres/get-entreprises-by-filters',
-            method: "POST",
-            data: $('#form-filters').serialize(),
-            dataType: 'json',
-            success: function (data) {
-                
-                clearMarker();
-                initMarker(data);
-                /*if (typeof data.ville !== 'undefined') {
-                    centerMap(data.ville.lat, data.ville.lng);
-                } else {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            var pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            };
-                            centerMap(pos.lat, pos.lng);
-                        });
-                    } else {
-                        //centerMap(46.204960, 5.225797);
-                    }
-                }*/
-            }
-        });
+        var ressource = $('#sections').val();
+        var ville = $('#search-city').val();
+        var cp = $('#search-cp').val();
+        var entreprise = $('#search-entreprise').val();
+
+        if ((ressource !== "-1" && ressource !== "" && ressource !== null) || (ville !== "" && ville !== null) || (cp !== "" && cp !== null) || (entreprise !== "" && entreprise !== null)) {
+            $.ajax({
+                url: baseUrl + 'ajax/filtres/get-entreprises-by-filters',
+                method: "POST",
+                data: $('#form-filters').serialize(),
+                dataType: 'json',
+                success: function (data) {
+
+                    clearMarker();
+                    initMarker(data);
+                    /*if (typeof data.ville !== 'undefined') {
+                     centerMap(data.ville.lat, data.ville.lng);
+                     } else {
+                     if (navigator.geolocation) {
+                     navigator.geolocation.getCurrentPosition(function (position) {
+                     var pos = {
+                     lat: position.coords.latitude,
+                     lng: position.coords.longitude
+                     };
+                     centerMap(pos.lat, pos.lng);
+                     });
+                     } else {
+                     //centerMap(46.204960, 5.225797);
+                     }
+                     }*/
+                }
+            });
+        }
 
         return false;
     });
