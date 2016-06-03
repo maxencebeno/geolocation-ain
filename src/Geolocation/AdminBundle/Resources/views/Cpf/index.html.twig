@@ -49,9 +49,9 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Section</th>
-            <th>Division</th>
-            <th>Groupe</th>
+            <th>Classe</th>
+            <th>Catégorie</th>
+            <th>Sous catégorie</th>
             <th>Code</th>
             <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
         </tr>
@@ -60,9 +60,9 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('cpf_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.section }}</td>
-            <td>{{ entity.division }}</td>
-            <td>{{ entity.groupe }}</td>
+            <td>{{ entity.classe }}</td>
+            <td>{{ entity.categorie }}</td>
+            <td>{{ entity.souscategorie }}</td>
             <td>{{ entity.nom }}</td>
             <td>
         <a class="btn btn-mini" href="{{ path('cpf_show', { 'id': entity.id }) }}">

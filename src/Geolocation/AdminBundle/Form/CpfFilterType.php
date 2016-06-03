@@ -3,6 +3,7 @@
 namespace Geolocation\AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormEvent;
@@ -15,7 +16,7 @@ class CpfFilterType extends AbstractType
     {
         $builder
             ->add('id', 'filter_number_range')
-            ->add('nom')
+            ->add('nom', TextType::class, ['label' => 'Code'])
         ;
 
         $listener = function(FormEvent $event)
