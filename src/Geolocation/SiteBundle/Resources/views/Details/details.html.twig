@@ -60,7 +60,11 @@
                                     {% if item.isoId.codeIso == 'Autre' %}
                                         {{ item.autre }}
                                     {% else %}
-                                        {{ item.isoId.codeIso }} ,
+                                        {{ item.isoId.codeIso }}
+                                    {% endif %}
+                                    
+                                    {% if not loop.last %}
+                                        ,
                                     {% endif %}
                                 {% endfor %}
                             </p>
