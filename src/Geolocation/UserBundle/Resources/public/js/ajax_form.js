@@ -56,7 +56,7 @@ $(document).ready(function () {
             url: baseUrl + 'ajax/getDivision?id=' + sectionId + '&filter=false',
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    division.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
+                    division.append("<option value='" + data[i].id + "'>" + data[i].libelle + " " + data[i].code + "</option>");
                 }
                 $('.division-form').removeClass('hide');
             }
@@ -68,7 +68,7 @@ $(document).ready(function () {
             url: baseUrl + 'ajax/getGroupe?sectionid=' + sectionId + '&divisionid=' + divisionId + '&filter=false',
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    groupe.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
+                    groupe.append("<option value='" + data[i].id + "'>" + data[i].libelle + " " + data[i].code + "</option>");
                 }
                 $('.groupe-form').removeClass('hide');
             }
@@ -80,7 +80,7 @@ $(document).ready(function () {
             url: baseUrl + 'ajax/getClasse?sectionid=' + sectionId + '&divisionid=' + divisionId + '&groupeid=' + groupeId + '&filter=false',
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    classe.append("<option value='" + data[i].id + "'>" + data[i].libelle + "</option>");
+                    classe.append("<option value='" + data[i].id + "'>" + data[i].libelle + " " + data[i].code + "</option>");
                 }
                 $('.classe-form').removeClass('hide');
             }

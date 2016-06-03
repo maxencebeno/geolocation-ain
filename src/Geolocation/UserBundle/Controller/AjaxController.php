@@ -8,6 +8,7 @@
 
 namespace Geolocation\UserBundle\Controller;
 
+use Geolocation\AdminBundle\Entity\Cpf;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,6 +30,7 @@ class AjaxController extends Controller
         $divisions = [];
 
         $done = [];
+        /** @var Cpf $cpf */
         foreach ($cpfs as $cpf) {
             $users = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findBy([
@@ -37,13 +39,13 @@ class AjaxController extends Controller
             
             if ($request->query->get('filter') === "true") {
                 if (count($users) > 0) {
-                    if (!in_array($cpf->getDivision()->getId(), $done)) {
+                    if (!in_array($cpf->getDivision()->getId(), $done) && $cpf->getDivision()->getAffiche() === true) {
                         $divisions[] = $cpf->getDivision();
                         $done[] = $cpf->getDivision()->getId();
                     }
                 }
             } else {
-                if (!in_array($cpf->getDivision()->getId(), $done)) {
+                if (!in_array($cpf->getDivision()->getId(), $done) && $cpf->getDivision()->getAffiche() === true) {
                     $divisions[] = $cpf->getDivision();
                     $done[] = $cpf->getDivision()->getId();
                 }
@@ -93,12 +95,12 @@ class AjaxController extends Controller
                 ]);
             if ($request->query->get('filter') === "true") {
                 if (count($users) > 0) {
-                    if (!in_array($cpf->getGroupe()->getId(), $done)) {
+                    if (!in_array($cpf->getGroupe()->getId(), $done) && $cpf->getGroupe()->getAffiche() === true) {
                         $groupes[] = $cpf->getGroupe();
                     }
                 }
             } else {
-                if (!in_array($cpf->getGroupe()->getId(), $done)) {
+                if (!in_array($cpf->getGroupe()->getId(), $done) && $cpf->getGroupe()->getAffiche() === true) {
                     $groupes[] = $cpf->getGroupe();
                 }
             }
@@ -139,12 +141,12 @@ class AjaxController extends Controller
                 ]);
             if ($request->query->get('filter') === "true") {
                 if (count($users) > 0) {
-                    if (!in_array($cpf->getClasse()->getId(), $done)) {
+                    if (!in_array($cpf->getClasse()->getId(), $done) && $cpf->getClasse()->getAffiche() === true) {
                         $classes[] = $cpf->getClasse();
                     }
                 }
             } else {
-                if (!in_array($cpf->getClasse()->getId(), $done)) {
+                if (!in_array($cpf->getClasse()->getId(), $done) && $cpf->getClasse()->getAffiche() === true) {
                     $classes[] = $cpf->getClasse();
                 }
             }
