@@ -129,6 +129,8 @@ footer{
     clear: both;
     width:100%;
     margin-top: 20px;
+    text-align: center;
+    color:white;
 }
 
 footer ul{
@@ -313,7 +315,7 @@ th.quantite{
 
     td, th { 
         display: table-row;
-
+        height:50px;
     }
     
     td:after{
@@ -330,5 +332,5 @@ th.quantite{
     tr,td{
        text-align:center;
     }
-
+    
 }

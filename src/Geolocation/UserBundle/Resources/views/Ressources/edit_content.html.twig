@@ -14,21 +14,29 @@
                     <span class="form-edit-label"><strong>{{ 'ressources.my_ressource'|trans }}</strong></span><br>
                     <p>{{ entity.cpf }}</p>
 
-                    <span class="form-edit-label">{{ form_label(form.besoin) }}</span><br>
-                    {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
+                    <div class="form-group"> 
+                        <span class="form-edit-label">{{ form_label(form.besoin) }}</span><br>
+                        {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
+                    </div>
 
-                    <span class="form-edit-label">{{ form_label(form.description) }}</span><br>
-                    {{ form_widget(form.description, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-description">{{ form_errors(form.description) }}</span>
+                    <div class="form-group"> 
+                        <span class="form-edit-label">{{ form_label(form.description) }}</span><br>
+                        {{ form_widget(form.description, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-description">{{ form_errors(form.description) }}</span>
+                    </div>
 
-                    <span class="form-edit-label">{{ form_label(form.remarque) }}</span><br>
-                    {{ form_widget(form.remarque, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-remarque">{{ form_errors(form.remarque) }}</span>
+                    <div class="form-group"> 
+                        <span class="form-edit-label">{{ form_label(form.remarque) }}</span><br>
+                        {{ form_widget(form.remarque, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-remarque">{{ form_errors(form.remarque) }}</span>
+                    </div>
 
-                    <span class="form-edit-label">{{ form_label(form.quantite) }}</span><br>
-                    {{ form_widget(form.quantite, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
-                    <span class="form-error" id="error-remarque">{{ form_errors(form.quantite) }}</span>
+                    <div class="form-group"> 
+                        <span class="form-edit-label">{{ form_label(form.quantite) }}</span><br>
+                        {{ form_widget(form.quantite, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
+                        <span class="form-error" id="error-remarque">{{ form_errors(form.quantite) }}</span>
+                    </div>
 
                     <div class="form-group">           
 
@@ -44,7 +52,7 @@
                 </div>
             </div>
         </div>
-                    
+
         {% if entity.adresseId!=null%}
             <a class="btn btn-default" href="{{ path('user_edit_site', {'id': entity.adresseId.id}) }}" class="submit-button-geolocation-light">
                 <i class="glyphicon glyphicon-arrow-left"></i>
@@ -73,11 +81,11 @@
                 <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                {{ 'ressource.delete_action'|trans }}<span></span> ?
+                {{ 'ressources.delete_action'|trans }}<span></span> ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
-                <a id="valid" href = "" type="button" class="btn btn-danger">{{ 'entreprise.yes'|trans }}</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
+                <a id="valid" href = "" type="button" class="btn btn-default">{{ 'entreprise.yes'|trans }}</a>
             </div>
         </div>
     </div>
@@ -95,9 +103,9 @@
         modal.find('.modal-body span').text(myressource);
         var pathname = window.location.pathname; //récpuération du chemin pour savoir sur quel page on est; car le template est appelé à plusieurs endroit
         if (pathname.search("get-site") > -1) {
-            modal.find('.modal-footer #valid').attr('href', baseUrl+"ressources-delete/" + id + "?page=edit-site");
+            modal.find('.modal-footer #valid').attr('href', baseUrl + "ressources-delete/" + id + "?page=edit-site");
         } else {
-            modal.find('.modal-footer #valid').attr('href', baseUrl+"ressources-delete/" + id);
+            modal.find('.modal-footer #valid').attr('href', baseUrl + "ressources-delete/" + id);
         }
     });
 </script>

@@ -53,8 +53,17 @@
                         </article>
                     </div>
                     <div class="row well">
+
                         {% if iso|length > 0 %}
-                            <p>{{ 'detail.iso'|trans }} {% for item in iso %}{{ item.iso.codeIso }},{% endfor %}</p>
+                            <p>
+                                {{ 'detail.iso'|trans }} {% for item in iso %} 
+                                    {% if item.isoId.codeIso == 'Autre' %}
+                                        {{ item.autre }}
+                                    {% else %}
+                                        {{ item.isoId.codeIso }} ,
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
                         {% else %}
                             <p>{{ 'detail.iso_not_found'|trans }}</p>
                         {% endif %}
@@ -130,7 +139,7 @@
                                             {% else %}
                                                 <p>{{ 'detail.quantite_not_found'|trans }}</p>
                                             {% endif %}
-                                            
+
                                         </div>
                                         <div class="col-sm-8">
                                             <h3>{{ 'detail.description'|trans }}</h3>
