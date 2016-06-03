@@ -20,14 +20,12 @@ use Geolocation\AdminBundle\Entity\AdresseRepository;
 use Geolocation\AdminBundle\Domain\Api\ApiLib;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class ProfileController extends Controller
-{
+class ProfileController extends Controller {
 
     /**
      * Show the user
      */
-    public function showAction()
-    {
+    public function showAction() {
         /** @var User $user */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -35,10 +33,10 @@ class ProfileController extends Controller
         }
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findBy(array('user' => $user, 'adresse_id' => NULL));
+                ->findBy(array('user' => $user, 'adresse_id' => NULL));
 
         $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
-            ->findBy(array('user' => $user, 'main' => false));
+                ->findBy(array('user' => $user, 'main' => false));
 
         /** @var \DateTime $date */
         if ($user->getDateCreationEntreprise() !== null) {
@@ -47,17 +45,16 @@ class ProfileController extends Controller
         }
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user,
-            'ressources' => $ressources,
-            'sites' => $sites
+                    'user' => $user,
+                    'ressources' => $ressources,
+                    'sites' => $sites
         ));
     }
 
     /**
      * Edit the user
      */
-    public function editAction(Request $request)
-    {
+    public function editAction(Request $request) {
         /** @var User $user */
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -89,7 +86,7 @@ class ProfileController extends Controller
                 $dateCreationEntreprise = ApiLib::dateToMySQL($dateCreationEntrepriseString);
                 $user->setDateCreationEntreprise($dateCreationEntreprise);
             }
-            
+
             // var_dump($date);
             //die;
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -109,7 +106,7 @@ class ProfileController extends Controller
                 $errors[] = "Votre adresse n'a pas pu être trouvée, merci de réessayer.";
 
                 return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-                    'form' => $form->createView()
+                            'form' => $form->createView()
                 ));
             } else {
                 // Geocode your request
@@ -129,10 +126,10 @@ class ProfileController extends Controller
 
                         //Mise à jour des données de la table Adresse
                         $adresse = $em->getRepository('GeolocationAdminBundle:Adresse')
-                            ->findOneBy([
-                                'user' => $user,
-                                'main' => true
-                            ]);
+                                ->findOneBy([
+                            'user' => $user,
+                            'main' => true
+                        ]);
 
                         $em->persist($user);
                         $em->flush();
@@ -165,12 +162,12 @@ class ProfileController extends Controller
                         return $response;
                     } else {
                         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-                            'form' => $form->createView()
+                                    'form' => $form->createView()
                         ));
                     }
                 } else {
                     return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-                        'form' => $form->createView()
+                                'form' => $form->createView()
                     ));
                 }
             }
@@ -178,33 +175,30 @@ class ProfileController extends Controller
 
 
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
 
-    protected function getUploadRootDir()
-    {
+    protected function getUploadRootDir() {
         // le chemin absolu du répertoire dans lequel sauvegarder les photos de profil
         return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
 
-    protected function getUploadDir()
-    {
+    protected function getUploadDir() {
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
         return 'uploads/kbis/';
     }
 
-    public function uploadKbis(UploadedFile $file, $username)
-    {
+    public function uploadKbis(UploadedFile $file, $username) {
         // Nous utilisons le nom de fichier original, donc il est dans la pratique 
         // nécessaire de le nettoyer xpour éviter les problèmes de sécurité
         // move copie le fichier présent chez le client dans le répertoire indiqué.
         $em = $this->getDoctrine()->getManager();
 
         $userBDD = $em->getRepository('GeolocationAdminBundle:User')
-            ->findOneBy(array(
-                'username' => $username
-            ));
+                ->findOneBy(array(
+            'username' => $username
+        ));
 
         if ($userBDD->getKbis() !== null) {
             @unlink(__DIR__ . '/../../../../web/uploads/kbis/' . $userBDD->getKbis());
@@ -222,14 +216,13 @@ class ProfileController extends Controller
         $em->flush();
     }
 
-    public function downloadFileAction(Request $request)
-    {
+    public function downloadFileAction(Request $request) {
         // On récupère l'utilisateur
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('GeolocationAdminBundle:User')
-            ->findOneBy(array(
-                'id' => $request->attributes->get('id')
-            ));
+                ->findOneBy(array(
+            'id' => $request->attributes->get('id')
+        ));
 
         $path = $this->get('kernel')->getRootDir() . "/../web/uploads/kbis/" . $user->getKbis();
         $content = file_get_contents($path);
@@ -240,6 +233,29 @@ class ProfileController extends Controller
 
         $response->setContent($content);
         return $response;
+    }
+
+    public function deleteAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $contact = new Contact();
+
+        $em->persist($contact);
+        $em->flush();
+
+        $message = \Swift_Message::newInstance()
+                ->setSubject('Nouvelle demande de suppression de compte')
+                ->setFrom($contact->getEmail())
+                ->setTo('georic.ain@gmail.com')
+                ->setBody(
+                $this->renderView(
+                        '@User/Email/delete.html.twig', array('contact' => $contact)
+                ), 'text/html'
+                )
+        ;
+        $this->get('mailer')->send($message);
+
+        return $this->redirectToRoute('profile');
     }
 
 }
