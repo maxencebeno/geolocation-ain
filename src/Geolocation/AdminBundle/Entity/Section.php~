@@ -25,13 +25,6 @@ class Section
      * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
      */
     private $libelle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     */
-    private $image;
     
     /**
      * @var boolean
@@ -97,30 +90,6 @@ class Section
     public function getLibelle()
     {
         return $this->libelle;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Section
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
