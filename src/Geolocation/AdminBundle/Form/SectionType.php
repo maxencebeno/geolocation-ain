@@ -13,7 +13,6 @@ class SectionType extends AbstractType
         $builder
             ->add('code')
             ->add('libelle')
-            ->add('image')
             ->add('affiche')
         ;
     }

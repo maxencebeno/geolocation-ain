@@ -14,7 +14,7 @@ class RessourcesController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $sections = $em->getRepository('GeolocationAdminBundle:Section')
-                ->findAll();
+                ->findBy(['affiche' => true]);
         $entity = new Ressources();
 
         //création du formulaire d'ajout de ressources

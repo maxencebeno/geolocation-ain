@@ -16,7 +16,6 @@ class SectionFilterType extends AbstractType
         $builder
             ->add('code', 'filter_text')
             ->add('libelle', 'filter_text')
-            ->add('image', 'filter_text')
             ->add('affiche', 'filter_choice')
             ->add('id', 'filter_number_range')
         ;

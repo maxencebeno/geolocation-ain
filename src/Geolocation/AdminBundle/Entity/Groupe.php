@@ -128,6 +128,6 @@ class Groupe
 
     public function __toString()
     {
-        return $this->getLibelle() . ' ' . $this->getCode();
+        return $this->getLibelle();
     }
 }
