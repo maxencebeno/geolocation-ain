@@ -128,6 +128,6 @@ class Division
 
     public function __toString()
     {
-        return $this->getLibelle();
+        return $this->getLibelle() . ' ' . $this->getCode();
     }
 }
