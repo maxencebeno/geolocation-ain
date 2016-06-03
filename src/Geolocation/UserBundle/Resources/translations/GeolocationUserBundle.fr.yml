@@ -59,6 +59,7 @@ profile:
         or: ou        
     flash:
         updated: Le profil a été mis à jour
+    demand: Demande de suppression de compte
 
 # Password change
 change_password:

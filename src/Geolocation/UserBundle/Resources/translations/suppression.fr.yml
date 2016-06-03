@@ -1,0 +1,4 @@
+suppression:
+    title: Demande de suppression
+    form:
+        success: Votre demande de suppression de compte a bien été prise en compte.

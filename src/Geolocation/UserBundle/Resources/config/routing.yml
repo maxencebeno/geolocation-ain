@@ -79,3 +79,7 @@ user_delete_site:
     path: /profile/delete-site/{id}
     requirements:
         id: \d+
+
+user_ask_delete_account:
+    defaults: { _controller: GeolocationUserBundle:Suppression:demandeSuppression }
+    path: /profile/demande-de-suppression-de-compte

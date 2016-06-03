@@ -6,6 +6,7 @@ titles:
     liste_inscrits: Liste des entreprises
     partenaires: Partenaires
     detail: Détails de l'entreprise %nomEntreprise%
+    demande_de_suppression: Demande de suppression de compte
 
     user:
         change_password: Changez votre mot de passe
