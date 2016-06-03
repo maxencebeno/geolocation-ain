@@ -1,0 +1,23 @@
+#Ressources
+ressources:
+    flash:
+        already_exist: Vous avez déjà ajouté cette ressource
+        create:
+            success: "La ressource a bien été ajoutée"
+            fail: "Une erreur est survenue. Verifiez les élements des champs"
+        update:
+            success: "La ressource a bien été mise à jour"
+            fail: "Une erreur est survenue. Verifiez les élements des champs"
+    title: "Mes ressources"
+    besoin: "Besoins"
+    ressources: "Ressources"
+    proposition: "Propositions"
+    back_on_ressources: Revenir à mes ressources
+    back_on_ressources_site: Revenir aux ressources de mes sites
+    edit:
+        add_ressource_title: Ajouter une ressource
+        edit_ressource_title: Editer une ressource
+        ressource_submit: Enregistrer
+    delete_action: Supprimer
+    update_action: Modifier
+    my_ressource: Ma ressource

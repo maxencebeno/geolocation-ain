@@ -157,7 +157,7 @@ class RessourcesController extends Controller {
                         ->findOneBy(array(
                             'user'=>$user,
                             'cpf'=>$entity->getCpf(),
-                            'adresse_id'=>null,
+                            'adresse_id'=>$entity->getAdresseId()->getId(),
                             'besoin'=>$besoin
                         ));
                 

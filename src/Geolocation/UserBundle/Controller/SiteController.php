@@ -238,19 +238,33 @@ class SiteController extends Controller
              */
 
             if ($cpf !== null) {
-                $ressource->setCpf($cpf);
-                $ressource->setUser($user);
-                $ressource->setAdresseId($entity);
+                //vérification que la ressources n'est pas déjà ajoutée pour cette entreprise
+                $existeRessource= $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findOneBy(array(
+                            'user'=>$user,
+                            'cpf'=>$cpf,
+                            'adresse_id'=>$entity,
+                            'besoin'=>$ressource->getBesoin()
+                        ));
+                
+                if (count($existeRessource)>0) {
+                     $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.already_exist', [], 'ressources'));
+                }else{    
+                    //ajout en base  
+                    $ressource->setCpf($cpf);
+                    $ressource->setUser($user);
+                    $ressource->setAdresseId($entity);
 
-                $em->persist($ressource);
-                $em->flush();
+                    $em->persist($ressource);
+                    $em->flush();
 
-                $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => false));
-                $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                    ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => true));
+                    $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => false));
+                    $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
+                        ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => true));
 
-                $this->addFlash('success', 'ressources.flash.create.success');
+                    $this->addFlash('success', 'ressources.flash.create.success');
+                }
             } else {
                 $this->addFlash('danger', 'ressources.flash.create.fail');
             }

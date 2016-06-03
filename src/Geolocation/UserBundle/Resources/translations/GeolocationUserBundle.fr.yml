@@ -162,46 +162,6 @@ form:
     valider_ressource: Enregistrer
     nom_site: Nom du site
     
-#Ressources
-ressources:
-    flash:
-        already_exist: Vous avez déjà ajouté cette ressource
-        create:
-            success: "La ressource a bien été ajoutée"
-            fail: "Une erreur est survenue. Verifiez les élements des champs"
-        update:
-            success: "La ressource a bien été mise à jour"
-            fail: "Une erreur est survenue. Verifiez les élements des champs"
-    title: "Mes ressources"
-    besoin: "Besoins"
-    ressources: "Ressources"
-    proposition: "Propositions"
-    back_on_ressources: Revenir à mes ressources
-    back_on_ressources_site: Revenir aux ressources de mes sites
-    edit:
-        add_ressource_title: Ajouter une ressource
-        edit_ressource_title: Editer une ressource
-        ressource_submit: Enregistrer
-    delete_action: Supprimer
-    update_action: Modifier
-    my_ressource: Ma ressource
-
-#Site
-site:
-    edit:
-        title_ajout: "Ajouter des sites"
-        title_modification: "Modifier mes sites"
-        no_sites: "Pas de sites ajoutés"
-        title_edit: "Editer ce site"
-        back_on_site: "Revenir sur mes sites"
-    flash:
-        create:
-            success: "Le site a bien été ajouté"
-            fail: "Un champ est invalide"
-        edit:
-            bad_site: "Erreur. Vous ne pouvez pas modifier ce site."
-            success: "Le site a bien été mis à jour"
-
 #Entreprise
 entreprise:
     no_entreprise: "Pas d'entreprise pour le moment"
@@ -212,10 +172,3 @@ entreprise:
     confirm: "Confirmation"
     no: "Non"
     yes: "Oui"
-
-iso:
-    certified: Etes-vous certifié ?
-    yes: Oui
-    almost: En cours de certification
-    enter: Entrez un code ISO
-    since_when: Depuis quand ?
