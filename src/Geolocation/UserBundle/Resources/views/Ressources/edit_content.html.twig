@@ -1,4 +1,4 @@
-{% trans_default_domain 'GeolocationUserBundle' %}
+{% trans_default_domain 'ressources' %}
 
 <div class="container">
     <div class="row">
@@ -66,7 +66,7 @@
         {% endif %}
         <a class="btn btn-default" href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
             <i class="glyphicon glyphicon-arrow-left"></i>
-            {{ 'profile.edit.back_on_profile'|trans }}
+            {{ 'ressources.edit.back_on_profile'|trans }}
         </a>
 
 
@@ -78,14 +78,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ 'ressources.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                {{ 'ressources.delete_action'|trans }}<span></span> ?
+                {{ 'ressources.delete_action'|trans }} : <span></span> ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
-                <a id="valid" href = "" type="button" class="btn btn-default">{{ 'entreprise.yes'|trans }}</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'ressources.no'|trans }}</button>
+                <a id="valid" href = "" type="button" class="btn btn-default">{{ 'ressources.yes'|trans }}</a>
             </div>
         </div>
     </div>

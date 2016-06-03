@@ -51,7 +51,7 @@ class SiteController extends Controller
 
             if ($response == false) {
 
-                $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
+                $this->addFlash('danger', $this->get('translator')->trans('site.address_not_found', [], 'site'));
                 return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
                     'sites' => $sites,
                     'form' => $form->createView()
@@ -79,8 +79,12 @@ class SiteController extends Controller
                         $em->persist($entity);
                         $em->flush();
 
+                        //récupération du site de production entré en base
                         $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
                             ->findOneBy(array('adresse' => $adr['adresse'], 'ville' => $adr['ville'], 'codePostal' => $adr['codePostal']));
+                        
+                        //rappel :  $adr = $request->request->get('geolocation_adminbundle_adresse');
+                        //récupération des iso dans la request
                         if (array_key_exists('iso', $adr)) {
                             foreach ($adr['iso'] as $i) {
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
@@ -93,14 +97,16 @@ class SiteController extends Controller
                                 if ($request->request->get('certifie-' . $i) === "oui") {
                                     $siteIso->setCertifie(true);
                                     $siteIso->setEnCoursCertification(false);
+                                    //si le site est certifié et que la date entrée est valide
                                     if ($request->request->get('date_certification-' . $i) !== null) {
+                                        //ApiLib::dateToMySQL permet de reformater la date pour la base de données
                                         $siteIso->setDateCertification(ApiLib::dateToMySQL($request->request->get('date_certification-' . $i)));
                                     }
                                 } else {
                                     $siteIso->setCertifie(false);
                                     $siteIso->setEnCoursCertification(true);
                                 }
-
+                                //Si c'est l'iso "Autre" traitement spécifique
                                 if ($request->request->get('other')) {
                                    if($i == 5){
                                          $siteIso->setAutre($request->request->get('other'));
@@ -111,11 +117,11 @@ class SiteController extends Controller
                             }
                             $em->flush();
                         }
-                        $this->addFlash('success', 'site.flash.create.success');
+                        $this->addFlash('success', $this->get('translator')->trans( 'site.flash.create.success', [], 'site'));
 
                         return $this->redirectToRoute('user_edit_site', array('id' => $siteId->getId()), 302);
                     } else {
-                        $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
+                        $this->addFlash('danger', $this->get('translator')->trans('site.zip_code_not_found', [], 'site'));
 
                         return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
                             'sites' => $sites,
@@ -123,7 +129,7 @@ class SiteController extends Controller
                         ));
                     }
                 } else {
-                    $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
+                    $this->addFlash('danger', $this->get('translator')->trans('site.address_not_found', [], 'site'));
 
                     return $this->render('GeolocationUserBundle:Site:show.html.twig', array(
                         'sites' => $sites,
@@ -263,10 +269,10 @@ class SiteController extends Controller
                     $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
                         ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => true));
 
-                    $this->addFlash('success', 'ressources.flash.create.success');
+                    $this->addFlash('success', $this->get('translator')->trans('ressources.flash.create.success', [], 'ressources'));
                 }
             } else {
-                $this->addFlash('danger', 'ressources.flash.create.fail');
+                $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.create.fail', [], 'ressources'));
             }
             $ressource = new Ressources();
             $formRessource = $this->createForm(new RessourcesType(), $ressource);
@@ -298,7 +304,7 @@ class SiteController extends Controller
 
             if ($response == false) {
 
-                $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
+                $this->addFlash('danger',  $this->get('translator')->trans('site.address_not_found', [], 'site'));
                 return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                     'adresse' => array(
                         'adresseId' => $id,
@@ -376,7 +382,7 @@ class SiteController extends Controller
 
                         return $this->redirectToRoute('user_show_site');
                     } else {
-                        $this->addFlash('danger', "Votre code postal est erroné, merci de le corriger.");
+                        $this->addFlash('danger', $this->get('translator')->trans('site.zip_code_not_found', [], 'site'));
 
                         return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                             'adresse' => array(
@@ -393,7 +399,7 @@ class SiteController extends Controller
                         ));
                     }
                 } else {
-                    $this->addFlash('danger', "Votre adresse n'a pas pu être trouvée, merci de réessayer.");
+                    $this->addFlash('danger',  $this->get('translator')->trans('site.address_not_found', [], 'site'));
 
                     return $this->render('GeolocationUserBundle:Site:edit.html.twig', array(
                         'adresse' => array(
@@ -455,7 +461,7 @@ class SiteController extends Controller
         $em->remove($site);
         $em->flush();
 
-        $this->addFlash('success', "Le site a été supprimé avec succès");
+        $this->addFlash('success',$this->get('translator')->trans('site.flash.delete.success', [], 'site'));
         return $this->redirectToRoute('user_show_site');
     }
 

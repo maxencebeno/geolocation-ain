@@ -1,4 +1,4 @@
-{% trans_default_domain 'GeolocationUserBundle' %}
+{% trans_default_domain 'ressources' %}
 
 
 
@@ -62,7 +62,7 @@
 
             <div class="form-group">           
 
-                {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.ressource_submit'|trans) }}) }}
+                {{ form_widget(form.saveRessource, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('ressources.edit.ressource_submit'|trans) }}) }}
 
                 {{ form_end(form) }}
 
@@ -82,10 +82,10 @@
                     <table class="table table-striped" id="listBesoin">               
                         <tr>
                             <th id="th-ressource">{{ 'ressources.ressources'|trans }}</th>
-                            <th id="th-quantite" class="quantite">Quantité</th>
-                            <th id="th-description">Description</th>
-                            <th id="th-remarque">Remarques</th>
-                            <th id="th-actions" colspan="2" class="text-center">Actions</th>
+                            <th id="th-quantite" class="quantite">{{ 'ressources.quantite'|trans }}</th>
+                            <th id="th-description">{{ 'ressources.description'|trans }}</th>
+                            <th id="th-remarque">{{ 'ressources.remarques'|trans }}</th>
+                            <th id="th-actions" colspan="2" class="text-center">{{ 'ressources.actions'|trans }}</th>
                             <th id="th-actions2"></th>
                         </tr>
                         {% for key, ressource in ressourcesBesoin %}
@@ -115,19 +115,19 @@
                     </table>
                     {% else %}
                     <p>
-                        {{ 'profile.show.no_ressources'|trans }} 
+                        {{ 'ressources.show.no_ressources'|trans }} 
                     </p>
                     {% endif %}
                     
                     <h4>{{ 'ressources.proposition'|trans }}</h4>
                     {% if ressourcesPropo|length > 0 %}
                     <table class="table table-striped" id="listProposition">
-                       <tr>
+                      <tr>
                             <th id="th-ressource">{{ 'ressources.ressources'|trans }}</th>
-                            <th id="th-quantite" class="quantite">Quantité</th>
-                            <th id="th-description">Description</th>
-                            <th id="th-remarque">Remarques</th>
-                            <th id="th-actions" colspan="2" class="text-center">Actions</th>
+                            <th id="th-quantite" class="quantite">{{ 'ressources.quantite'|trans }}</th>
+                            <th id="th-description">{{ 'ressources.description'|trans }}</th>
+                            <th id="th-remarque">{{ 'ressources.remarques'|trans }}</th>
+                            <th id="th-actions" colspan="2" class="text-center">{{ 'ressources.actions'|trans }}</th>
                             <th id="th-actions2"></th>
                         </tr>
                         {% for key, ressource in ressourcesPropo %}
@@ -152,7 +152,7 @@
                     </table>
                 {% else %}
                     <p>
-                        {{ 'profile.show.no_ressources'|trans }} 
+                        {{ 'ressources.show.no_ressources'|trans }} 
                     </p>
                 {% endif %}
                 
@@ -163,7 +163,7 @@
 </div>
 <a class="btn btn-default" href="{{ path('fos_user_profile_show') }}" class="submit-button-geolocation-light">
     <i class="glyphicon glyphicon-arrow-left"></i>
-    {{ 'profile.edit.back_on_profile'|trans }}
+    {{ 'ressources.edit.back_on_profile'|trans }}
 </a>
 
 
@@ -174,14 +174,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ 'ressources.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                {{ 'entreprise.delete_action'|trans }}<span></span> ?
+                {{ 'ressources.delete_action'|trans }} : <span></span> ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
-                <a id="valid" href = "" type="button" class="btn btn-default">{{ 'entreprise.yes'|trans }}</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'ressources.no'|trans }}</button>
+                <a id="valid" href = "" type="button" class="btn btn-default">{{ 'ressources.yes'|trans }}</a>
             </div>
         </div>
     </div>

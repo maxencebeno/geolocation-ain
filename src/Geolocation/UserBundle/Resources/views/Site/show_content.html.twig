@@ -1,4 +1,4 @@
-{% trans_default_domain 'GeolocationUserBundle' %}
+{% trans_default_domain 'site' %}
 
 <div class="container">
     <div class="row">
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="form-group">
-                    {{ form_widget(form.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '7' }}) }}
+                    {{ form_widget(form.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('site.edit.site_submit'|trans), 'tabindex': '7' }}) }}
                     {{ form_end(form) }}
 
                 </div>
@@ -99,8 +99,8 @@
                             <li class="mySite">
                                 <strong>{{site.nom}} </strong>: {{ site.adresse }} - {{ site.ville }}<br>
                                 <a href="{{ path('user_edit_site', {'id': site.id}) }}" id="{{ site.id }} "
-                                   class="btn btn-info btn-sm">Modifier</a>
-                                <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">{{ 'entreprise.delete'|trans }}</button>
+                                   class="btn btn-info btn-sm">{{'site.modify'|trans}}</a>
+                                <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">{{ 'site.delete_action'|trans }}</button>
 
                             </li>
                             <hr>
@@ -119,7 +119,7 @@
 <a href="{{ path('fos_user_profile_show') }}"
    class="submit-button-geolocation-light btn btn-default">
     <i class="glyphicon glyphicon-arrow-left"></i>
-    {{ 'profile.edit.back_on_profile'|trans }}
+    {{ 'site.edit.back_on_profile'|trans }}
 </a>
 
 </div>
@@ -130,14 +130,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ 'site.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                {{ 'entreprise.delete_action'|trans }}<span></span> ?
+                {{ 'site.delete_action'|trans }} : <span></span> ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
-                <a id="valid" href="" type="button" class="btn btn-default">{{ 'entreprise.yes'|trans }}</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'site.no'|trans }}</button>
+                <a id="valid" href="" type="button" class="btn btn-default">{{ 'site.yes'|trans }}</a>
             </div>
         </div>
     </div>

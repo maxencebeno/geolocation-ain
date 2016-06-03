@@ -1,19 +1,30 @@
 #Site
 site:
     edit:
-        title_ajout: "Ajouter des sites"
-        title_modification: "Modifier mes sites"
-        no_sites: "Pas de sites ajoutés"
-        title_edit: "Editer ce site"
-        back_on_site: "Revenir sur mes sites"
+        title_ajout: Ajouter des sites
+        title_modification: Modifier mes sites
+        no_sites: Pas de sites ajoutés
+        title_edit: Editer ce site
+        back_on_site: Revenir sur mes sites
+        site_submit: Enregistrer        
+        back_on_profile: Revenir à mon profil
     flash:
         create:
-            success: "Le site a bien été ajouté"
-            fail: "Un champ est invalide"
+            success: Le site a bien été ajouté
+            fail: Un champ est invalide
         edit:
-            bad_site: "Erreur. Vous ne pouvez pas modifier ce site."
-            success: "Le site a bien été mis à jour"
-
+            bad_site: Erreur. Vous ne pouvez pas modifier ce site.
+            success: Le site a bien été mis à jour
+        delete:
+            success: Le site a été supprimé avec succès
+    address_not_found: Votre adresse n'a pas pu être trouvée, merci de réessayer.
+    zip_code_not_found: Votre code postal est erroné, merci de le corriger.
+    no: Non
+    yes: Oui
+    confirm: Confirmation
+    delete_action: Supprimer
+    modify: Modifier
+    
 iso:
     certified: Etes-vous certifié ?
     yes: Oui

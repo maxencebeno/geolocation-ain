@@ -26,10 +26,11 @@ class AdresseType extends AbstractType
             ->add('isPublic', null, array('label' => 'form.public', 'translation_domain' => 'GeolocationUserBundle'))
             ->add('pilier', null, ['label' => 'form.pilier', 'required' => false, 'translation_domain' => 'GeolocationUserBundle'])
             ->add('iso', EntityType::class, [
-                'label' => 'ISO',
+                'label' => 'form.iso',
                 'class' => 'Geolocation\AdminBundle\Entity\Iso',
                 'multiple' => true,
                 'expanded' => true,
+                'translation_domain' => 'GeolocationUserBundle'
             ])
             ->add('saveSite', 'submit', array('label' => 'form.valider_site', 'translation_domain' => 'GeolocationUserBundle'));
     }

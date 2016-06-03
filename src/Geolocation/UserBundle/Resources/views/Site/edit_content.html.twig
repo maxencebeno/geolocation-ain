@@ -1,4 +1,4 @@
-{% trans_default_domain 'GeolocationUserBundle' %}
+{% trans_default_domain 'site' %}
 
 <div class="container">
     <div class="row">
@@ -107,7 +107,7 @@
                         </div>
                         {% do form1.iso.setRendered %}
                         <div class="form-group">
-                            {{ form_widget(form1.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('profile.edit.site_submit'|trans), 'tabindex': '9' }}) }}
+                            {{ form_widget(form1.saveSite, { 'attr': {'class': 'submit-button-geolocation btn btn-success', 'value' : ('site.edit.site_submit'|trans), 'tabindex': '9' }}) }}
                             {{ form_end(form1) }}
 
                         </div>
@@ -140,14 +140,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">{{ 'entreprise.confirm'|trans }}</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ 'site.confirm'|trans }}</h4>
             </div>
             <div class="modal-body">
-                {{ 'entreprise.delete_action'|trans }}<span></span> ?
+                {{ 'site.delete_action'|trans }} : <span></span> ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'entreprise.no'|trans }}</button>
-                <a id="valid" href="" type="button" class="btn btn-default">{{ 'entreprise.yes'|trans }}</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'site.no'|trans }}</button>
+                <a id="valid" href="" type="button" class="btn btn-default">{{ 'site.yes'|trans }}</a>
             </div>
         </div>
     </div>
@@ -184,7 +184,6 @@
                 for (i = 0; i < $(radio).size(); i++) {
                     if ($(radio[i]).val() === "oui") {
                         $(radio[i]).prop('checked', true);
-                        console.log({{isIn.isoId.id}});
                         {% if isIn.dateCertification !=null %}  
                                     $(radio[i]).parent('label').next('.date_certif').append(
                                             '<label> Depuis quand ? ' +

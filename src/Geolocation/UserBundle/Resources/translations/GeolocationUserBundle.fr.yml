@@ -161,6 +161,7 @@ form:
     valider_site: Enregistrer
     valider_ressource: Enregistrer
     nom_site: Nom du site
+    iso: Code ISO
     
 #Entreprise
 entreprise:

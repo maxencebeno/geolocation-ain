@@ -13,19 +13,20 @@ class RessourcesType extends AbstractType
     {
         $builder
             ->add('besoin', 'choice', [
-                'label' => 'Besoin',
+                'label' => 'form.besoin_label',
                 'choices' =>
                     [
-                        '0' => 'Je propose',
-                        '1' => 'J\'ai besoin'
+                        '0' => 'form.proposition',
+                        '1' => 'form.besoin'
                     ],
                 'expanded' => true,
-                'multiple' => false])
+                'multiple' => false,
+                'translation_domain' => 'ressources'])
             ->add('cpf')
-            ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => ['placeholder' => "Description complémentaire du produit"], 'required' => false])
-            ->add('remarque', TextareaType::class, ['label' => 'Remarques / observations', 'attr' => ['placeholder' => "Précisez ici toutes les informations qui permettront de faciliter la transaction"], 'required' => false])
-            ->add('quantite', TextareaType::class, ['label' => 'Quantité que vous proposez ou dont vous avez besoin', 'attr' => ['placeholder' => "Quantité"], 'required' => false])
-            ->add('saveRessource', 'submit', array('label' => 'form.valider_ressource', 'translation_domain' => 'GeolocationUserBundle'));
+            ->add('description', TextareaType::class, ['label' => 'form.description', 'attr' => ['placeholder' => "form.placeholder.description"], 'translation_domain' => 'ressources','required' => false])
+            ->add('remarque', TextareaType::class, ['label' => 'form.remarques', 'attr' => ['placeholder' => "form.placeholder.remarques"], 'translation_domain' => 'ressources','required' => false])
+            ->add('quantite', TextareaType::class, ['label' => 'form.quantite', 'attr' => ['placeholder' => "form.placeholder.quantite"],'translation_domain' => 'ressources', 'required' => false])
+            ->add('saveRessource', 'submit', array('label' => 'form.valider_ressource', 'translation_domain' => 'ressources'));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

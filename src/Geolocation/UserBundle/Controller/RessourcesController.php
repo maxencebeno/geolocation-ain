@@ -95,14 +95,14 @@ class RessourcesController extends Controller {
                         ));
                 
                 if (count($existeRessource)>0) {
-                     $this->addFlash('danger', 'ressources.flash.already_exist');
+                     $this->addFlash('danger',$this->get('translator')->trans('ressources.flash.already_exist', [], 'ressources'));
                 }else{    
                     //ajout en base    
                     $entity->setCpf($cpf);
                     $entity->setUser($user);
                     $em->persist($entity);
                     $em->flush();
-                    $this->addFlash('success', 'ressources.flash.create.success');
+                    $this->addFlash('success', $this->get('translator')->trans('ressources.flash.create.success', [], 'ressources'));
 
                     $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
                             ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
@@ -110,7 +110,7 @@ class RessourcesController extends Controller {
                             ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => true));
                     }
             } else {
-                $this->addFlash('danger', 'ressources.flash.create.fail');
+                $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.create.fail', [], 'ressources'));
             }
             
             return $this->render('GeolocationUserBundle:Ressources:show.html.twig', array(
@@ -162,15 +162,15 @@ class RessourcesController extends Controller {
                         ));
                 
             if(intval($besoin) != $entity->getBesoin() && count($existeRessource)>0){
-                     $this->addFlash('danger', 'ressources.flash.already_exist');
+                     $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.already_exist', [], 'ressources'));
             }else{                
                 $entity->setUser($user);
                 $em->persist($entity);
                 $em->flush();
-                $this->addFlash('success', 'ressources.flash.update.success');
+                $this->addFlash('success', $this->get('translator')->trans('ressources.flash.update.success', [], 'ressources'));
             }
         } else if (!$formRessource->isValid() && $formRessource->isSubmitted()) {
-            $this->addFlash('danger', 'ressources.flash.update.fail');
+            $this->addFlash('danger',  $this->get('translator')->trans('ressources.flash.update.fail', [], 'ressources'));
         }
 
 
@@ -194,6 +194,7 @@ class RessourcesController extends Controller {
         }
         $em->remove($ressource);
         $em->flush();
+        $this->addFlash('success',  $this->get('translator')->trans('ressources.flash.delete.success', [], 'ressources'));
         if ($request->query->get('page')) {
             return $this->redirectToRoute('user_edit_site', array('id' => $idAdresseForRedirection));
         } else {

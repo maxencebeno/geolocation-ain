@@ -3,21 +3,48 @@ ressources:
     flash:
         already_exist: Vous avez déjà ajouté cette ressource
         create:
-            success: "La ressource a bien été ajoutée"
-            fail: "Une erreur est survenue. Verifiez les élements des champs"
+            success: La ressource a bien été ajoutée
+            fail: Une erreur est survenue. Verifiez les élements des champs
         update:
-            success: "La ressource a bien été mise à jour"
-            fail: "Une erreur est survenue. Verifiez les élements des champs"
-    title: "Mes ressources"
-    besoin: "Besoins"
-    ressources: "Ressources"
-    proposition: "Propositions"
+            success: La ressource a bien été mise à jour
+            fail: Une erreur est survenue. Verifiez les élements des champs
+        delete:
+            success: La ressource a bien été supprimée
+    title: Mes ressources
+    besoin: Besoins
+    ressources: Ressources
+    proposition: Propositions
+    quantite: Quantité
+    description: Description
+    remarques: Remarques
+    actions: Actions
     back_on_ressources: Revenir à mes ressources
     back_on_ressources_site: Revenir aux ressources de mes sites
     edit:
         add_ressource_title: Ajouter une ressource
         edit_ressource_title: Editer une ressource
         ressource_submit: Enregistrer
+        back_on_profile: Revenir à mon profil
+    show:
+        no_ressources: Aucune ressource choisie
     delete_action: Supprimer
     update_action: Modifier
     my_ressource: Ma ressource
+    no: Non
+    yes: Oui
+    confirm: Confirmation
+
+form:
+    besoin_label: Besoin
+    description: Description
+    remarques: Remarques / Observations
+    quantite: Quantité que vous proposez ou dont vous avez besoin
+    valider_ressource: Enregistrer
+    proposition: Je propose
+    besoin: J'ai besoin
+    placeholder:
+        description: Description complémentaire du produit
+        remarques: Précisez ici toutes les informations qui permettront de faciliter la transaction
+        quantite: Quantité - 150 Litres, 1 tonne ...
+
+        
