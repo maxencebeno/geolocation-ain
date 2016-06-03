@@ -8,6 +8,16 @@
     width: 100%;
     height: 100%;
 }
+@media only screen 
+and (orientation : landscape) { 
+#map {
+
+        width: 80%;
+        height:90%;
+        margin:auto;
+
+    }
+}
 
 .ui-autocomplete {
     max-height: 200px;
