@@ -110,7 +110,7 @@ class AdresseController extends Controller {
      *
      */
     public function createAction(Request $request) {
-        $translator = new Translator($request->getLocale());
+
         $entity = new Adresse();
         $form = $this->createForm(new AdresseType(), $entity);
         $form->bind($request);
@@ -136,13 +136,13 @@ class AdresseController extends Controller {
      *
      */
     public function showAction(Request $request, $id) {
-        $translator = new Translator($request->getLocale());
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('GeolocationAdminBundle:Adresse')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException($translator->trans('general.adresse_not_found', [], 'GeolocationAdminBundle'));
+            throw $this->createNotFoundException($this->get('translator')->trans('general.adresse_not_found', [], 'adresse'));
         }
         $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
                 ->findBy([
@@ -163,13 +163,13 @@ class AdresseController extends Controller {
      *
      */
     public function editAction(Request $request, $id) {
-        $translator = new Translator($request->getLocale());
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('GeolocationAdminBundle:Adresse')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException($translator->trans('general.adresse_not_found', [], 'GeolocationAdminBundle'));
+            throw $this->createNotFoundException($this->get('translator')->trans('general.adresse_not_found', [], 'adresse'));
         }
 
         $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
@@ -200,7 +200,7 @@ class AdresseController extends Controller {
         $entity = $em->getRepository('GeolocationAdminBundle:Adresse')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException($translator->trans('general.adresse_not_found', [], 'GeolocationAdminBundle'));
+            throw $this->createNotFoundException($this->get('translator')->trans('general.adresse_not_found', [], 'adresse'));
         }
 
         $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
@@ -230,7 +230,7 @@ class AdresseController extends Controller {
 
             if ($response == false) {
 
-                $this->addFlash('danger', $translator->trans('address.flash.create.fail.adresse', [], 'GeolocationAdminBundle'));
+                $this->addFlash('danger', $this->get('translator')->trans('address.flash.create.fail.adresse', [], 'adresse'));
             } else {
                 // Geocode your request
                 $datas = $response->all();
@@ -292,12 +292,12 @@ class AdresseController extends Controller {
                             }
                             $em->flush();
                         }*/
-                        $this->addFlash('success', $translator->trans('address.flash.create.success', [], 'adresse'));
+                        $this->addFlash('success', $this->get('translator')->trans('address.flash.create.success', [], 'adresse'));
                     } else {
-                        $this->addFlash('danger', $translator->trans('address.flash.create.fail.cp', [], 'adresse'));
+                        $this->addFlash('danger', $this->get('translator')->trans('address.flash.create.fail.cp', [], 'adresse'));
                     }
                 } else {
-                    $this->addFlash('danger', $translator->trans('address.flash.create.fail.adresse', [], 'adresse'));
+                    $this->addFlash('danger', $this->get('translator')->trans('address.flash.create.fail.adresse', [], 'adresse'));
                 }
             }
         } else {

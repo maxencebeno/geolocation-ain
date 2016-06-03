@@ -31,7 +31,7 @@
     {% for key, message in messages %}
         <div class="row">
             <div class="col-md-8 col-md-offset-2 alert alert-{{ type }} op_message">
-                {{ message|trans({}, 'GeolocationUserBundle') }}
+                {{ message|trans }}
             </div>
         </div>
     {% endfor %}

@@ -18,7 +18,7 @@ class UserType extends AbstractType
             ->add('codePostal')
             ->add('ville')
             ->add('tel')
-            ->add('isPublic', 'checkbox', ['label' => 'N° de téléphone visible par tous'])
+            ->add('isPublic', 'checkbox', ['label' => 'N° de téléphone visible par tous', 'required' => false])
             ->add('siren')
             ->add('kbis')
             ->add('url')

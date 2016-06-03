@@ -6,15 +6,12 @@ use Geolocation\AdminBundle\Entity\Contact;
 use Geolocation\AdminBundle\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Translation\Translator;
 
 class ContactController extends Controller
 {
     public function contactAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        
-        $translator = new Translator($request->getLocale());
         
         $contact = new Contact();
         $form = $this->createForm(new ContactType(), $contact);
@@ -39,10 +36,9 @@ class ContactController extends Controller
             ;
             $this->get('mailer')->send($message);
             
-            $this->addFlash('success', $translator->trans('contact.form.success'));
+            $this->get('session')->getFlashBag()->add('success', $this->get('translator')->trans('contact.form.success', [], 'contact'));
 
-            $contact = new Contact();
-            $form = $this->createForm(new ContactType(), $contact);
+            return $this->redirectToRoute('site_contact');
         }
         
         return $this->render('SiteBundle:Contact:contact.html.twig', ['form' => $form->createView()]);
