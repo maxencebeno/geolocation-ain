@@ -337,3 +337,13 @@ th.quantite{
     }
     
 }
+
+
+#accordion .panel-heading{
+    padding:0px;
+}
+
+#accordion a{
+    padding:10px 15px;
+    display: block;
+}
