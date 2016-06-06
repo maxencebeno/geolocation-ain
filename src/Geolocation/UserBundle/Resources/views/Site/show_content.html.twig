@@ -100,7 +100,7 @@
                                 <strong>{{site.nom}} </strong>: {{ site.adresse }} - {{ site.ville }}<br>
                                 <a href="{{ path('user_edit_site', {'id': site.id}) }}" id="{{ site.id }} "
                                    class="btn btn-info btn-sm">{{'site.modify'|trans}}</a>
-                                <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}">{{ 'site.delete_action'|trans }}</button>
+                                <button id="{{ site.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalSiteProduction" data-whatever="{{ site.id }}" data-myaddress="{{ site.adresse }}" data-myname="{{ site.nom }}">{{ 'site.delete_action'|trans }}</button>
 
                             </li>
                             <hr>
@@ -149,10 +149,11 @@
         var button = $(event.relatedTarget); // Button that triggered the modal
         var id = button.data('whatever'); // Extract info from data-* attributes
         var myaddress = button.data('myaddress');
+        var myname = button.data('myname');
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
-        modal.find('.modal-body span').text(myaddress);
+        modal.find('.modal-body span').text(myname+" - "+myaddress);
         modal.find('.modal-footer #valid').attr('href', baseUrl+"profile/delete-site/" + id);
     });
 </script>

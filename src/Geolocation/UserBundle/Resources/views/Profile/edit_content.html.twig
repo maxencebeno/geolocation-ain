@@ -55,21 +55,24 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-12">
-                                <span class="form-edit-label">{{ form_label(form.tel) }} <strong
-                                        class="text-danger">*</strong> <i class="glyphicon glyphicon-question-sign"
+                                <span class="form-edit-label">{{ form_label(form.tel) }} <strong class="text-danger">*</strong> 
+                                    <i class="glyphicon glyphicon-question-sign"
                                         data-toggle="tooltip"
                                         data-placement="right"
                                         title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
                                 {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'tabindex': '7','spellcheck': 'false'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
-
-                                <span class="form-edit-label">{{ form_label(form.isPublic) }}
-                                    <i class="glyphicon glyphicon-question-sign"
+                                
+                                
+                                <span class="form-edit-label">{{ form_label(form.isPublic) }}  </span>
+                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names big-checkbox', 'autocomplete': 'off', 'tabindex': '7','spellcheck': 'false'}}) }}
+                                <i class="glyphicon glyphicon-question-sign"
                                        data-toggle="tooltip"
                                        data-placement="right"
-                                       title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i></span>
-                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names big-checkbox', 'autocomplete': 'off', 'tabindex': '7','spellcheck': 'false'}}) }}
+                                       title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i>
                                 <span class="form-error" id="error-isPublic">{{ form_errors(form.isPublic) }}</span>
+         
+                                
                             </div>
                         </div>
                     </div>
@@ -135,15 +138,15 @@
                 </div>
             </div>
 
-
-        </div>
         <a href="{{ path('fos_user_profile_show') }}"
            class="submit-button-geolocation-light btn btn-default">
             <i class="glyphicon glyphicon-arrow-left"></i>
             {{ 'profile.edit.back_on_profile'|trans }}
         </a>
 
-        <a href="{{ path('user_ask_delete_account') }}" data-toggle="modal" data-target="#agregarRonda">{{ 'profile.demand'|trans }}</a>
+        <a class="btn btn-danger" href="{{ path('user_ask_delete_account') }}" data-toggle="modal" data-target="#agregarRonda">{{ 'profile.demand'|trans }}</a>
+
+        </div>
 
         <div  style="display: none;"  class="modal fade" id="agregarRonda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  aria-hidden="true">
             <div class="modal-dialog">
