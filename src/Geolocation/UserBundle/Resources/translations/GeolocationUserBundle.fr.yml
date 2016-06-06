@@ -28,6 +28,7 @@ security:
 profile:
     show:
         name: Nom de l'entreprise
+        username: Nom d'utilisateur
         email: Adresse e-mail
         adresse: Adresse
         ville: Ville

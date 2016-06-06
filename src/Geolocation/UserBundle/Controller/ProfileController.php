@@ -57,6 +57,7 @@ class ProfileController extends Controller {
     public function editAction(Request $request) {
         /** @var User $user */
         $user = $this->getUser();
+        
         $em = $this->getDoctrine()->getManager();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');

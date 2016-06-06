@@ -11,7 +11,9 @@
 
 namespace Geolocation\UserBundle\Form\Type;
 
+use Geolocation\UserBundle\GeolocationUserBundle;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\Validator\Constraint\UserPassword as OldUserPassword;
@@ -45,14 +47,16 @@ class ProfileFormType extends AbstractType {
                     'mapped' => false,
                     'constraints' => $constraint,
                 ))
-                ->add('isPublic', null, array('label' => 'form.public', 'translation_domain' => 'GeolocationUserBundle')
-        );
+                ->add('isPublic', null, array('label' => 'form.public', 'translation_domain' => 'GeolocationUserBundle'))
+            ->add('username', TextType::class, ['label' => 'form.username', 'disabled' => true])
+        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'intention' => 'profile',
+            'translation_domain' => 'GeolocationUserBundle'
         ));
     }
 
