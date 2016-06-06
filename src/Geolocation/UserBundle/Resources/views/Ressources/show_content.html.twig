@@ -100,7 +100,7 @@
                                     <td headers="th-quantite" data-headers="Quantité" class="quantite">{{ ressource.getQuantite() }}</td>
                                     <td headers="th-description" data-headers="Description">{{ ressource.getDescription() }}</td>
                                     <td headers="th-remarque" data-headers="Remarques">{{ ressource.getRemarque() }}</td>
-                                    <td headers="th-actions" data-headers="Modifier">
+                                    <td headers="th-actions" colspan="2" data-headers="Modifier">
                                         <div class="row">
                                             <a href="{{ path('user_ressources_edit', {'id': ressource.id}) }}" id="{{ ressource.id }} " class="btn btn-info btn-sm">{{ 'ressources.update_action'|trans}}</a>
 
@@ -142,7 +142,7 @@
                                     <td headers="th-quantite" data-headers="Quantité" class="quantite">{{ ressource.getQuantite() }}</td>
                                     <td headers="th-description" data-headers="Description">{{ ressource.getDescription() }}</td>
                                     <td headers="th-remarque" data-headers="Remarques">{{ ressource.getRemarque() }}</td>
-                                    <td headers="th-actions" data-headers="Modifier">
+                                    <td headers="th-actions" colspan="2" data-headers="Modifier">
                                         <a href="{{ path('user_ressources_edit', {'id': ressource.id}) }}" id="{{ ressource.id }} " class="btn btn-info btn-sm">{{ 'ressources.update_action'|trans}}</a>
 
                                     </td>
