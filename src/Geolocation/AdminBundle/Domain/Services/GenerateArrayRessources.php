@@ -59,7 +59,7 @@ class GenerateArrayRessources
                 $ressources = array();
                 /** @var User $user */
                 foreach ($users as $user) {
-                    $adresse = $em->getRepository('GeolocationAdminBundle:Adresse')
+                    $adresse = $em->getRepository('GeolocationAdminBundle:Site')
                         ->findOneBy([
                             'user' => $user->getId(),
                             'main' => true
@@ -77,20 +77,20 @@ class GenerateArrayRessources
                                 'adresse' => $adresse
                             );
                     }
-                    $adresses = $em->getRepository('GeolocationAdminBundle:Adresse')
+                    $sites = $em->getRepository('GeolocationAdminBundle:Site')
                         ->findBy([
                             'user' => $user,
                             'isPublic' => true
                         ]);
-                    if (count($adresses) > 0) {
-                        foreach ($adresses as $adress) {
+                    if (count($sites) > 0) {
+                        foreach ($sites as $site) {
                             $besoinSite = $em->getRepository('GeolocationAdminBundle:Ressources')
-                                ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'cpf' => $cpf, 'adresse_id' => $adress));
+                                ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'cpf' => $cpf, 'site' => $site));
                             $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
-                                ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf, 'adresse_id' => $adress));
+                                ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf, 'site' => $site));
                             if ($besoin !== null || $propositionSite !== null) {
                                 $ressources[$user->getId()]['sites'][] = [
-                                    'adresse' => $adress,
+                                    'adresse' => $site,
                                     'besoin' => $besoinSite,
                                     'proposition' => $propositionSite
                                 ];
@@ -106,7 +106,7 @@ class GenerateArrayRessources
 
             $ressources = array();
             foreach ($users as $user) {
-                $adresse = $em->getRepository('GeolocationAdminBundle:Adresse')
+                $adresse = $em->getRepository('GeolocationAdminBundle:Site')
                     ->findOneBy([
                         'user' => $user->getId(),
                         'main' => true
@@ -121,21 +121,21 @@ class GenerateArrayRessources
                         'user' => $user,
                         'adresse' => $adresse
                     );
-                $adresses = $em->getRepository('GeolocationAdminBundle:Adresse')
+                $sites = $em->getRepository('GeolocationAdminBundle:Site')
                     ->findBy([
                         'user' => $user,
                         'main' => false
                     ]);
 
-                if (count($adresses) > 0) {
-                    foreach ($adresses as $adress) {
+                if (count($sites) > 0) {
+                    foreach ($sites as $site) {
                         $besoinSite = $em->getRepository('GeolocationAdminBundle:Ressources')
-                            ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'adresse_id' => $adress));
+                            ->findOneBy(array('user' => $user->getId(), 'besoin' => true, 'site' => $site));
                         $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
-                            ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'adresse_id' => $adress));
+                            ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'site' => $site));
                         if ($besoinSite !== null || $propositionSite !== null) {
                             $ressources[$user->getId()]['sites'][] = [
-                                'adresse' => $adress,
+                                'adresse' => $site,
                                 'besoin' => $besoinSite,
                                 'proposition' => $propositionSite
                             ];

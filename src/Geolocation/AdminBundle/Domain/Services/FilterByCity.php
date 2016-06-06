@@ -41,7 +41,7 @@ class FilterByCity
                 if (isset($data['sites'])) {
                     foreach ($data['sites'] as $sites) {
                         foreach ($sites as $site) {
-                            if ($site !== null && get_class($site) === "Adresse") {
+                            if ($site !== null && get_class($site) === "Site") {
                                 if (strtolower(ApiLib::slugifyCity($site->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
                                     unset($datas[$key]);
                                 }

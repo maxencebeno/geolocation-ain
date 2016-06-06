@@ -1,0 +1,30 @@
+site:
+    pattern:  /
+    defaults: { _controller: "GeolocationAdminBundle:Site:index" }
+
+site_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GeolocationAdminBundle:Site:show" }
+
+site_new:
+    pattern:  /new
+    defaults: { _controller: "GeolocationAdminBundle:Site:new" }
+
+site_create:
+    pattern:  /create
+    defaults: { _controller: "GeolocationAdminBundle:Site:create" }
+    requirements: { _method: post }
+
+site_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GeolocationAdminBundle:Site:edit" }
+
+site_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GeolocationAdminBundle:Site:update" }
+    requirements: { _method: post|put }
+
+site_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GeolocationAdminBundle:Site:delete" }
+    requirements: { _method: post|delete }

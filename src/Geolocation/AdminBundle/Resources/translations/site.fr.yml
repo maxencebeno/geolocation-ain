@@ -1,0 +1,25 @@
+#General#
+general:
+    adresse_not_found: Le site de production demandé n'a pas été trouvé.
+
+#Flash#
+site:
+    flash:
+        create:
+            success: Le site de production a été mis à jour
+            fail: 
+                cp: Votre code postal est erroné, merci de le corriger.
+                adresse: Votre adresse n'a pas pu être trouvée, merci de réessayer.
+    id: Id
+    name: Nom
+    address: Adresse
+    city: Ville
+    zipcode: Code Postal
+    phone: Télépone
+    phoneVisible: Téléphone visible par tous
+    siret: Siret
+    iso: Code ISO
+    no_iso: Pas de certification pour le moment
+    production_site: Site de production
+    iso_certifie: certifié depuis le
+    iso_en_cours: en cours de certification

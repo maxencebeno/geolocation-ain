@@ -1,6 +1,6 @@
-geolocation_admin_adresse:
-    resource: "@GeolocationAdminBundle/Resources/config/routing/adresse.yml"
-    prefix:   /adresse
+geolocation_admin_site:
+    resource: "@GeolocationAdminBundle/Resources/config/routing/site.yml"
+    prefix:   /site
 
 geolocation_admin_admin_iso:
     resource: "@GeolocationAdminBundle/Resources/config/routing/iso.yml"

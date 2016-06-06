@@ -108,7 +108,7 @@ class GenerateArrayRessourcesFromFilters
                 }
                 $datas[$ressource->getUser()->getId()]['user'] = $ressource->getUser();
 
-                $mainAddress = $this->doctrine->getRepository('GeolocationAdminBundle:Adresse')
+                $mainAddress = $this->doctrine->getRepository('GeolocationAdminBundle:Site')
                     ->findOneBy([
                         'user' => $ressource->getUser(),
                         'main' => true
@@ -116,19 +116,19 @@ class GenerateArrayRessourcesFromFilters
                 
                 $datas[$ressource->getUser()->getId()]['adresse'] = $mainAddress;
 
-                $sites = $this->doctrine->getRepository('GeolocationAdminBundle:Adresse')
+                $sites = $this->doctrine->getRepository('GeolocationAdminBundle:Site')
                     ->findBy([
                         'user' => $ressource->getUser(),
                         'main' => false
                     ]);
 
                 if (count($sites) > 0) {
-                    /** @var Adresse $site */
+                    /** @var Site $site */
                     foreach ($sites as $site) {
                         $ressourcesSite = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
                             ->findBy([
                                 'user' => $site->getUser(),
-                                'adresse_id' => $site
+                                'site' => $site
                             ]);
 
                         if (count($ressourcesSite) > 0) {

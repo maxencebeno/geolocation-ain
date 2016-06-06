@@ -22,7 +22,7 @@ class ListeInscritsController extends Controller
             if (!isset($array[$pilier->getId()])) {
                 $array[$pilier->getId()] = [];
             }
-            $entreprises = $em->getRepository('GeolocationAdminBundle:Adresse')
+            $entreprises = $em->getRepository('GeolocationAdminBundle:Site')
                 ->findBy([
                     'pilier' => $pilier
                 ], [
@@ -35,7 +35,7 @@ class ListeInscritsController extends Controller
             }
         }
 
-        $entreprises = $em->getRepository('GeolocationAdminBundle:Adresse')
+        $entreprises = $em->getRepository('GeolocationAdminBundle:Site')
             ->findBy(['pilier' => null]);
 
         $array['nopilier'] = ['entreprises' => $entreprises, 'pilier' => $translator->trans('entreprise.no_pilier', [], 'GeolocationUserBundle')];

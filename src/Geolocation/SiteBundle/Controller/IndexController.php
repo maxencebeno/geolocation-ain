@@ -75,7 +75,7 @@ class IndexController extends Controller {
             if (count($array) === 0) {
                 $array = $this->getDoctrine()
                     ->getManager()
-                    ->getRepository('GeolocationAdminBundle:Adresse')
+                    ->getRepository('GeolocationAdminBundle:Site')
                     ->findEntrepriseLike($term);
             }
 

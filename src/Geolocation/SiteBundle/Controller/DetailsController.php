@@ -10,7 +10,7 @@ class DetailsController extends Controller
     {
     	$em = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:User');
         $em2 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Ressources');
-        $em3 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Adresse');
+        $em3 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Site');
         $em4 = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:SiteIso');
 
     	$site = $em3->findOneBy(array('id'=>$id));
@@ -28,12 +28,12 @@ class DetailsController extends Controller
             // Sites du site mère
             $sites = $em3->findBy(array('user'=>$user->getId(), 'main' => false));
             // ressources du site mère
-            $ressourcesProposition = $em2->findBy(array('user'=>$user->getId(),'adresse_id' => NULL, 'besoin'=>false));
-            $ressourcesBesoin = $em2->findBy(array('user'=>$user->getId(),'adresse_id' => NULL, 'besoin'=>true));
+            $ressourcesProposition = $em2->findBy(array('user'=>$user->getId(),'site' => NULL, 'besoin'=>false));
+            $ressourcesBesoin = $em2->findBy(array('user'=>$user->getId(),'site' => NULL, 'besoin'=>true));
         }else{
             // Ressources des sites
-            $ressourcesProposition = $em2->findBy(array('adresse_id'=>$site->getId(), 'besoin'=>false));
-            $ressourcesBesoin = $em2->findBy(array('adresse_id'=>$site->getId(), 'besoin'=>true));
+            $ressourcesProposition = $em2->findBy(array('site'=>$site->getId(), 'besoin'=>false));
+            $ressourcesBesoin = $em2->findBy(array('site'=>$site->getId(), 'besoin'=>true));
             $sites = $em3->findSiteNotCurrent($site->getId(),$user->getId());
         }
         
