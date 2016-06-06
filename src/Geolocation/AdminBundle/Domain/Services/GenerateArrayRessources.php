@@ -180,35 +180,37 @@ class GenerateArrayRessources
             if ($ressourceUser !== null) {
                 /** @var Site $entrepriseMereUser */
                 $entrepriseMereUser = $ressourceUser['adresse'];
-                $siteDeProductionUser = $ressourceUser['sites'];
+                if (isset($ressourceUser['sites'])) {
+                    $siteDeProductionUser = $ressourceUser['sites'];
 
-                foreach ($ressources as $idUser => $ressource) {
-                    if ($idUser !== $user->getId()) {
-                        $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
-                        if (isset($distance['value'])) {
-                            $ressources[$idUser]['distances'][] = [
-                                'value' => $distance['value'],
-                                'text' => $distance['text'],
-                                'duration' => $distance['duration'],
-                                'entreprise' => $entrepriseMereUser
-                            ];
-                        }
-                        if (isset($ressource['sites'])) {
-                            foreach ($ressource['sites'] as $site) {
-                                /** @var Site $destination */
-                                $destination = $site['adresse'];
-                                foreach ($siteDeProductionUser as $value) {
-                                    /** @var Site $depart */
-                                    $depart = $value['adresse'];
-                                    if ($depart->getUser()->getId() !== $destination->getUser()->getId()) {
-                                        $distance = $this->distanceService->getDistanceFromPosition($depart, $destination);
-                                        if (isset($distance['value'])) {
-                                            $ressources[$idUser]['distances'][] = [
-                                                'value' => $distance['value'],
-                                                'text' => $distance['text'],
-                                                'duration' => $distance['duration'],
-                                                'entreprise' => $depart
-                                            ];
+                    foreach ($ressources as $idUser => $ressource) {
+                        if ($idUser !== $user->getId()) {
+                            $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
+                            if (isset($distance['value'])) {
+                                $ressources[$idUser]['distances'][] = [
+                                    'value' => $distance['value'],
+                                    'text' => $distance['text'],
+                                    'duration' => $distance['duration'],
+                                    'entreprise' => $entrepriseMereUser
+                                ];
+                            }
+                            if (isset($ressource['sites'])) {
+                                foreach ($ressource['sites'] as $site) {
+                                    /** @var Site $destination */
+                                    $destination = $site['adresse'];
+                                    foreach ($siteDeProductionUser as $value) {
+                                        /** @var Site $depart */
+                                        $depart = $value['adresse'];
+                                        if ($depart->getUser()->getId() !== $destination->getUser()->getId()) {
+                                            $distance = $this->distanceService->getDistanceFromPosition($depart, $destination);
+                                            if (isset($distance['value'])) {
+                                                $ressources[$idUser]['distances'][] = [
+                                                    'value' => $distance['value'],
+                                                    'text' => $distance['text'],
+                                                    'duration' => $distance['duration'],
+                                                    'entreprise' => $depart
+                                                ];
+                                            }
                                         }
                                     }
                                 }
