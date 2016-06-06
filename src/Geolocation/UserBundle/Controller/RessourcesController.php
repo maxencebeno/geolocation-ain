@@ -25,9 +25,9 @@ class RessourcesController extends Controller {
         
         //récupération des ressources (besoin et proposition) de l'entreprise courant pour pouvoir les afficher par la suite
         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
+                ->findBy(array('user' => $userId, 'site' => NULL, 'besoin' => false));
         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => true));
+                ->findBy(array('user' => $userId, 'site' => NULL, 'besoin' => true));
 
 
         //vérification du formulaire envoyé
@@ -90,11 +90,11 @@ class RessourcesController extends Controller {
                         ->findOneBy(array(
                             'user'=>$user,
                             'cpf'=>$cpf,
-                            'adresse_id'=>null,
+                            'site'=>null,
                             'besoin'=>$entity->getBesoin()
                         ));
                 
-                if (count($existeRessource)>0) {
+                if ($existeRessource !== null) {
                      $this->addFlash('danger',$this->get('translator')->trans('ressources.flash.already_exist', [], 'ressources'));
                 }else{    
                     //ajout en base    
@@ -105,9 +105,9 @@ class RessourcesController extends Controller {
                     $this->addFlash('success', $this->get('translator')->trans('ressources.flash.create.success', [], 'ressources'));
 
                     $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                            ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => false));
+                            ->findBy(array('user' => $userId, 'site' => NULL, 'besoin' => false));
                     $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                            ->findBy(array('user' => $userId, 'adresse_id' => NULL, 'besoin' => true));
+                            ->findBy(array('user' => $userId, 'site' => NULL, 'besoin' => true));
                     }
             } else {
                 $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.create.fail', [], 'ressources'));
@@ -164,11 +164,11 @@ class RessourcesController extends Controller {
                         ->findOneBy(array(
                             'user'=>$user,
                             'cpf'=>$entity->getCpf(),
-                            'adresse_id'=>($entity->getAdresseId()!=null ? $entity->getAdresseId()->getId() : null ),
+                            'site'=>($entity->getSite()!=null ? $entity->getSite()->getId() : null ),
                             'besoin'=>$besoin
                         ));
                 
-            if(intval($besoin) != $entity->getBesoin() && count($existeRessource)>0){
+            if(intval($besoin) != $entity->getBesoin() && $existeRessource !== null){
                      $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.already_exist', [], 'ressources'));
             }else{                
                 $entity->setUser($user);
@@ -189,7 +189,7 @@ class RessourcesController extends Controller {
     }
 
     public function deleteAction(Request $request) {
-        $id = $request->request->get('id');
+        $id = $request->attributes->get('id');
         
         $em = $this->getDoctrine()->getManager();
         /** @var Ressources $ressource */
@@ -204,7 +204,9 @@ class RessourcesController extends Controller {
         
         //vérifie si on est sur un site de production
         if ($request->query->get('page')) {
-            $idAdresseForRedirection = $ressource->getAdresseId()->getId();
+            $idAdresseForRedirection = $ressource->getSite()->getId();
+        } else {
+            $idAdresseForRedirection = null;
         }
         $em->remove($ressource);
         $em->flush();

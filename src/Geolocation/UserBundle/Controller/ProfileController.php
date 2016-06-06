@@ -2,6 +2,7 @@
 
 namespace Geolocation\UserBundle\Controller;
 
+use Geolocation\AdminBundle\Entity\Contact;
 use Geolocation\AdminBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,10 +14,8 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Geolocation\AdminBundle\Form\RessourcesType;
 use Geolocation\AdminBundle\Entity\Ressources;
-use Geolocation\AdminBundle\Entity\Adresse;
-use Geolocation\AdminBundle\Entity\AdresseRepository;
+use Geolocation\AdminBundle\Entity\Site;
 use Geolocation\AdminBundle\Domain\Api\ApiLib;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -33,9 +32,9 @@ class ProfileController extends Controller {
         }
         $em = $this->getDoctrine()->getManager();
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-                ->findBy(array('user' => $user, 'adresse_id' => NULL));
+                ->findBy(array('user' => $user, 'site' => NULL));
 
-        $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
+        $sites = $em->getRepository('GeolocationAdminBundle:Site')
                 ->findBy(array('user' => $user, 'main' => false));
 
         /** @var \DateTime $date */
@@ -126,7 +125,7 @@ class ProfileController extends Controller {
                         $user->setLongitude($longitude);
 
                         //Mise à jour des données de la table Adresse
-                        $adresse = $em->getRepository('GeolocationAdminBundle:Adresse')
+                        $adresse = $em->getRepository('GeolocationAdminBundle:Site')
                                 ->findOneBy([
                             'user' => $user,
                             'main' => true

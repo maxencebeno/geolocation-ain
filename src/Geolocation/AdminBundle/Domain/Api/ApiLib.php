@@ -4,7 +4,7 @@ namespace Geolocation\AdminBundle\Domain\Api;
 
 
 use Geocoder\Provider\GoogleMaps;
-use Geolocation\AdminBundle\Entity\Adresse;
+use Geolocation\AdminBundle\Entity\Site;
 use Geolocation\AdminBundle\Entity\User;
 use Ivory\HttpAdapter\CurlHttpAdapter;
 
@@ -13,7 +13,7 @@ class ApiLib
 
     // Classe facilitant certains traitements
 
-    public static function searchAdresse(User $user = null, Adresse $adresse = null)
+    public static function searchAdresse(User $user = null, Site $adresse = null)
     {
         // Fonction de geocoder permettant de récupérer la latitude et la longitude en fonction d'une adresse donnée
         $curl = new CurlHttpAdapter();

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var checkbox = $('#geolocation_adminbundle_adresse_iso .checkbox input[type=checkbox]');
+    var checkbox = $('#geolocation_adminbundle_site_iso .checkbox input[type=checkbox]');
     //ajout du container des autres champs
     $(checkbox).each(function () {
         $('<div class="certification"></div>').appendTo($(this).parent('label').parent('.checkbox'));

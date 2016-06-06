@@ -2,17 +2,16 @@
 
 namespace Geolocation\UserBundle\Controller;
 
+use Geolocation\AdminBundle\Entity\Site;
 use Geolocation\AdminBundle\Entity\User;
-use Geolocation\AdminBundle\Form\IsoType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Geolocation\AdminBundle\Form\AdresseType;
-use Geolocation\AdminBundle\Entity\Adresse;
+use Geolocation\AdminBundle\Form\SiteType;
 use Symfony\Component\HttpFoundation\Request;
 use Geolocation\AdminBundle\Domain\Api\ApiLib;
 use Geolocation\AdminBundle\Entity\Ressources;
 use Geolocation\AdminBundle\Form\RessourcesType;
+use Geolocation\AdminBundle\Entity\SiteIso;
 
 class SiteController extends Controller
 {
@@ -29,18 +28,18 @@ class SiteController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $sites = $em->getRepository('GeolocationAdminBundle:Adresse')
+        $sites = $em->getRepository('GeolocationAdminBundle:Site')
             ->findBy(array('user' => $user, 'main' => false));
 
-        $entity = new Adresse();
+        $entity = new Site();
         $entity->setNom($user->getNom());
-        $form = $this->createForm(new AdresseType(), $entity);
+        $form = $this->createForm(new SiteType(), $entity);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
 
-            $adr = $request->request->get('geolocation_adminbundle_adresse');
+            $adr = $request->request->get('geolocation_adminbundle_site');
 
             $entity->setAdresse($adr['adresse']);
             $entity->setVille($adr['ville']);
@@ -80,7 +79,7 @@ class SiteController extends Controller
                         $em->flush();
 
                         //récupération du site de production entré en base
-                        $siteId = $em->getRepository('GeolocationAdminBundle:Adresse')
+                        $siteId = $em->getRepository('GeolocationAdminBundle:Site')
                             ->findOneBy(array('adresse' => $adr['adresse'], 'ville' => $adr['ville'], 'codePostal' => $adr['codePostal']));
                         
                         //rappel :  $adr = $request->request->get('geolocation_adminbundle_adresse');
@@ -90,7 +89,7 @@ class SiteController extends Controller
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
                                     ->findOneBy(['id' => $i[0]]);
 
-                                $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
+                                $siteIso = new SiteIso();
 
                                 $siteIso->setIsoId($iso);
                                 $siteIso->setSiteId($siteId);
@@ -160,8 +159,8 @@ class SiteController extends Controller
         $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
 
-        /** @var Adresse $entity */
-        $entity = $em->getRepository('GeolocationAdminBundle:Adresse')
+        /** @var Site $entity */
+        $entity = $em->getRepository('GeolocationAdminBundle:Site')
             ->findOneBy(array('id' => $id));
 
         $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
@@ -175,7 +174,7 @@ class SiteController extends Controller
             return $this->redirectToRoute('user_show_site');
         }
 
-        $form = $this->createForm(new AdresseType(), $entity);
+        $form = $this->createForm(new SiteType(), $entity);
 
         $form->handleRequest($request);
 
@@ -188,9 +187,9 @@ class SiteController extends Controller
         $formRessource->handleRequest($request);
 
         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => false));
+            ->findBy(array('user' => $userId, 'site' => $entity, 'besoin' => false));
         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => true));
+            ->findBy(array('user' => $userId, 'site' => $entity, 'besoin' => true));
 
         if ($formRessource->isValid()) {
             $user = $this->getUser();
@@ -249,11 +248,11 @@ class SiteController extends Controller
                         ->findOneBy(array(
                             'user'=>$user,
                             'cpf'=>$cpf,
-                            'adresse_id'=>$entity,
+                            'site'=>$entity,
                             'besoin'=>$ressource->getBesoin()
                         ));
                 
-                if (count($existeRessource)>0) {
+                if ($existeRessource !== null) {
                      $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.already_exist', [], 'ressources'));
                 }else{    
                     //ajout en base  
@@ -265,9 +264,9 @@ class SiteController extends Controller
                     $em->flush();
 
                     $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => false));
+                        ->findBy(array('user' => $userId, 'site' => $entity, 'besoin' => false));
                     $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
-                        ->findBy(array('user' => $userId, 'adresse_id' => $entity, 'besoin' => true));
+                        ->findBy(array('user' => $userId, 'site' => $entity, 'besoin' => true));
 
                     $this->addFlash('success', $this->get('translator')->trans('ressources.flash.create.success', [], 'ressources'));
                 }
@@ -293,7 +292,7 @@ class SiteController extends Controller
 
         if ($form->isValid()) {
 
-            $adr = $request->request->get('geolocation_adminbundle_adresse');
+            $adr = $request->request->get('geolocation_adminbundle_site');
 
             $entity->setAdresse($adr['adresse']);
             $entity->setVille($adr['ville']);
@@ -355,7 +354,7 @@ class SiteController extends Controller
                             foreach ($adr['iso'] as $i) {
                                 $iso = $em->getRepository('GeolocationAdminBundle:Iso')
                                     ->findOneBy(['id' => $i[0]]);
-                                $siteIso = new \Geolocation\AdminBundle\Entity\SiteIso();
+                                $siteIso = new SiteIso();
                                 $siteIso->setIsoId($iso);
                                 $siteIso->setSiteId($entity);
                                 if ($request->request->get('certifie-' . $i) === "oui") {
@@ -435,12 +434,12 @@ class SiteController extends Controller
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $site = $em->getRepository('GeolocationAdminBundle:Adresse')
+        $site = $em->getRepository('GeolocationAdminBundle:Site')
             ->find($id);
 
         //suppression des ressources
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
-            ->findBy(array('adresse_id' => $id));
+            ->findBy(array('site' => $id));
 
        $userId = $this->getUser()->getId();
         

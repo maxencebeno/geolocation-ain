@@ -69,7 +69,7 @@
                                 {% block entity_widget %}
                                     {% spaceless %}
                                         <span class="form-edit-label">{{ form_label(form1.iso) }}</span>
-                                        <div id="geolocation_adminbundle_adresse_iso">
+                                        <div id="geolocation_adminbundle_site_iso">
                                             {% for iso in form1.iso.vars.choices %}
                                                 {% set exist = false %}
                                                 {% for isIn in isoAlreadyIn %}
@@ -81,8 +81,8 @@
                                                     <div class="checkbox">
                                                         <label class="">
                                                             <input type="checkbox"
-                                                                   id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
-                                                                   name="geolocation_adminbundle_adresse[iso][]"
+                                                                   id="geolocation_adminbundle_site_iso_{{ iso.value }}"
+                                                                   name="geolocation_adminbundle_site[iso][]"
                                                                    value="{{ iso.value }}"/>
                                                             {{ iso.label }}
                                                         </label>
@@ -91,8 +91,8 @@
                                                     <div class="checkbox">
                                                         <label class="">
                                                             <input checked="checked" type="checkbox"
-                                                                   id="geolocation_adminbundle_adresse_iso_{{ iso.value }}"
-                                                                   name="geolocation_adminbundle_adresse[iso][]"
+                                                                   id="geolocation_adminbundle_site_iso_{{ iso.value }}"
+                                                                   name="geolocation_adminbundle_site[iso][]"
                                                                    value="{{ iso.value }}"/>
                                                             {{ iso.label }}
                                                         </label>
@@ -173,11 +173,11 @@
     {% for isIn in isoAlreadyIn %}
         {% if isIn.isoId.codeIso == "Autre" %}
                 //remplissage du code iso dans l'input "Autre"
-                $('#geolocation_adminbundle_adresse_iso').find('#other').val("{{isIn.autre}}");
+                $('#geolocation_adminbundle_site_iso').find('#other').val("{{isIn.autre}}");
                 //récupération des radio buttons de certification
-                radio = $('#geolocation_adminbundle_adresse_iso').find('input[name=certifie-other]');
+                radio = $('#geolocation_adminbundle_site_iso').find('input[name=certifie-other]');
         {%else%}
-                radio = $('#geolocation_adminbundle_adresse_iso').find('input[name=certifie-'+{{ isIn.isoId.id }}+']');
+                radio = $('#geolocation_adminbundle_site_iso').find('input[name=certifie-'+{{ isIn.isoId.id }}+']');
         {% endif %}
 
         {% if isIn.certifie %}
