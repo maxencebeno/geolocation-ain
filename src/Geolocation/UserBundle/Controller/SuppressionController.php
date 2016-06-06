@@ -26,6 +26,10 @@ class SuppressionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $user = $this->getUser();
+
+            $suppression->setUser($user);
+
             $em->persist($suppression);
             $em->flush();
 
@@ -36,7 +40,7 @@ class SuppressionController extends Controller
                 ->setBody(
                     $this->renderView(
                         '@GeolocationUser/Email/delete.html.twig',
-                        array('contact' => $suppression)
+                        array('suppression' => $suppression)
                     ),
                     'text/html'
                 );
@@ -44,7 +48,7 @@ class SuppressionController extends Controller
 
             $this->get('session')->getFlashBag()->add('success', $this->get('translator')->trans('suppression.form.success', [], 'suppression'));
 
-            return $this->redirectToRoute('user_ask_delete_account');
+            return $this->redirectToRoute('fos_user_profile_edit');
         }
 
         return $this->render('GeolocationUserBundle:Suppression:suppression.html.twig', ['form' => $form->createView()]);

@@ -36,14 +36,14 @@ class Suppression
     /**
      * @var string
      *
-     * @ORM\Column(name="objet", type="string", length=255)
+     * @ORM\Column(name="objet", type="string", length=255, nullable=true)
      */
     private $objet;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="text")
+     * @ORM\Column(name="message", type="text", nullable=true)
      */
     private $message;
 

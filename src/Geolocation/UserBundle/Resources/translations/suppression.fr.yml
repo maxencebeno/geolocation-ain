@@ -2,3 +2,6 @@ suppression:
     title: Demande de suppression
     form:
         success: Votre demande de suppression de compte a bien été prise en compte.
+        submit: Valider
+        message: Avez-vous des remarques pour l'amélioration du site web ?
+        objet: Pourquoi souhaitez vous supprimer votre compte ?
