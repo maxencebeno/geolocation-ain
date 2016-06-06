@@ -37,3 +37,4 @@ services:
             - "@site_bundle.filter_by_nom_entreprise"
             - "@security.authorization_checker"
             - "@security.token_storage"
+            - "@site_bundle.calculate_distance_from_position"

@@ -12,6 +12,7 @@ namespace Geolocation\AdminBundle\Domain\Services;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Geolocation\AdminBundle\Entity\Adresse;
 use Geolocation\AdminBundle\Entity\Ressources;
+use Geolocation\AdminBundle\Entity\Site;
 use Geolocation\AdminBundle\Entity\VilleFrance;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
@@ -33,6 +34,8 @@ class GenerateArrayRessourcesFromFilters
     private $security;
     /** @var  TokenStorage $tokenStorage */
     private $tokenStorage;
+    /** @var  CalculateDistanceFromPosition $distanceService */
+    private $distanceService;
 
     /**
      * GenerateArrayRessourcesFromFilters constructor.
@@ -44,7 +47,7 @@ class GenerateArrayRessourcesFromFilters
      * @param AuthorizationChecker $security
      * @param TokenStorage $tokenStorage
      */
-    public function __construct(Registry $doctrine, FilterByCity $cityService, FilterByCodePostal $cpService, FilterByCpf $cpfService, FilterByNomEntreprise $entrepriseService, AuthorizationChecker $security, TokenStorage $tokenStorage)
+    public function __construct(Registry $doctrine, FilterByCity $cityService, FilterByCodePostal $cpService, FilterByCpf $cpfService, FilterByNomEntreprise $entrepriseService, AuthorizationChecker $security, TokenStorage $tokenStorage, CalculateDistanceFromPosition $distanceService)
     {
         $this->doctrine = $doctrine;
         $this->cityService = $cityService;
@@ -53,6 +56,7 @@ class GenerateArrayRessourcesFromFilters
         $this->entrepriseService = $entrepriseService;
         $this->security = $security;
         $this->tokenStorage = $tokenStorage;
+        $this->distanceService = $distanceService;
     }
 
     /**
@@ -75,11 +79,12 @@ class GenerateArrayRessourcesFromFilters
      * La fonction génère tout le tableaux de ressources en prenant en compte les filtres de la page d'accueil
      * Les filtres sont gérés dans les différents services de ce même dossier
      *
-     * @param array           $request        variables POST
+     * @param array $request variables POST
      *
      */
     public function generate(Request $request)
     {
+        $auth_checker = $this->security;
         $datas = [];
         $done = [];
         $ressources = $this->doctrine->getRepository('GeolocationAdminBundle:Ressources')
@@ -113,7 +118,7 @@ class GenerateArrayRessourcesFromFilters
                         'user' => $ressource->getUser(),
                         'main' => true
                     ]);
-                
+
                 $datas[$ressource->getUser()->getId()]['adresse'] = $mainAddress;
 
                 $sites = $this->doctrine->getRepository('GeolocationAdminBundle:Site')
@@ -173,6 +178,64 @@ class GenerateArrayRessourcesFromFilters
             $done[] = $ressource->getId();
         }
 
+        /* On a tout trié, maintenant on calcule les distances entre chaque entreprises et sites de production
+         * On peut faire ça seulement si l'utilisateur est connecté puisqu'un a au moins un point de repère
+         * pour calculer les distances (son entreprise mère et ses sites de production
+        */
+
+        $user = $this->tokenStorage->getToken()->getUser();
+
+        if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
+            $ressourceUser = null;
+
+            foreach ($datas as $idUser => $ressource) {
+                if ($idUser === $user->getId()) {
+                    $ressourceUser = $ressource;
+                }
+            }
+
+            if ($ressourceUser !== null) {
+                /** @var Site $entrepriseMereUser */
+                $entrepriseMereUser = $ressourceUser['adresse'];
+                $siteDeProductionUser = $ressourceUser['sites'];
+
+                foreach ($datas as $idUser => $ressource) {
+                    if ($idUser !== $user->getId()) {
+                        $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
+                        if (isset($distance['value'])) {
+                            $datas[$idUser]['distances'][] = [
+                                'value' => $distance['value'],
+                                'text' => $distance['text'],
+                                'duration' => $distance['duration'],
+                                'entreprise' => $entrepriseMereUser
+                            ];
+                        }
+                        if (isset($ressource['sites'])) {
+                            foreach ($ressource['sites'] as $site) {
+                                /** @var Site $destination */
+                                $destination = $site['adresse'];
+                                foreach ($siteDeProductionUser as $value) {
+                                    /** @var Site $depart */
+                                    $depart = $value['adresse'];
+                                    if ($depart->getUser()->getId() !== $destination->getUser()->getId()) {
+                                        $distance = $this->distanceService->getDistanceFromPosition($depart, $destination);
+                                        if (isset($distance['value'])) {
+                                            $datas[$idUser]['distances'][] = [
+                                                'value' => $distance['value'],
+                                                'text' => $distance['text'],
+                                                'duration' => $distance['duration'],
+                                                'entreprise' => $depart
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         if ($request->request->get('entreprise') !== "") {
             $datas = $this->entrepriseService->filterByNomEntreprise($datas, $request->request->get('entreprise'));
         }
@@ -200,7 +263,7 @@ class GenerateArrayRessourcesFromFilters
                 ];
             }
         }
-        $auth_checker = $this->security;
+
 
         if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
             $datas['connectedUser'] = $this->tokenStorage->getToken()->getUser();

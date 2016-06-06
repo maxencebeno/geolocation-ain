@@ -35,12 +35,18 @@
 
             </div>
             <div class="col-sm-2 text-center">           
-                <a class="btn btn-warning" href="{{ path('reset_filters') }}">{{ 'filters.reset'|trans }}</a>
+                <a class="btn btn-warning" onclick="resetRoutes();" href="{{ path('reset_filters') }}">{{ 'filters.reset'|trans }}</a>
             </div>
         </div>
 
 
 
+    </div>
+
+    <div class="container hide">
+        <div class="col-sm-12">
+            <div id="itineraireTxt"></div>
+        </div>
     </div>
 
     <div class="container-map">

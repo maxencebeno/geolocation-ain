@@ -7,6 +7,12 @@ var options = {
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 var carte = new google.maps.Map(document.getElementById("map"), options);
+directionsDisplay = new google.maps.DirectionsRenderer();
+directionsDisplay = new google.maps.DirectionsRenderer({
+    map   : carte,
+    panel : document.getElementById('itineraireTxt') // Dom element pour afficher les instructions d'itinéraire
+});
+var directionsService = new google.maps.DirectionsService();
 
 //initialisation des variables de la carte
 var infowindow = new Array();
@@ -100,6 +106,7 @@ function initMarker(data, centerMarkers) {
                 for (var k in data[i].distances) {
                     if (data[i].distances[k].entreprise.main === true) {
                         contentString += "<p>Distance depuis votre entreprise mère " + data[i].distances[k].entreprise.nom + " : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "</p>";
+                        contentString += "<p><a onclick='calculateRoute(" + data[i].distances[k].entreprise.latitude + "," + data[i].distances[k].entreprise.longitude + "," + data[i].user.latitude + "," + data[i].user.longitude + ")'>Obtenir l'itinéraire</a></p>";
                     }
                 }
             }
@@ -163,6 +170,7 @@ function initMarker(data, centerMarkers) {
                 if (data[i].sites[j].distances !== null) {
                     for (var k in data[i].distances) {
                         contentString += "<p>Distance depuis votre site de production " + data[i].distances[k].entreprise.nom + " : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "<p>";
+                        contentString += "<p><a onclick='calculateRoute(" + data[i].distances[k].entreprise.latitude + "," + data[i].distances[k].entreprise.longitude + "," + data[i].sites[j].adresse.latitude + "," + data[i].sites[j].adresse.longitude + ")'>Obtenir l'itinéraire</a></p>";
                     }
                 }
 
@@ -251,8 +259,30 @@ function choosePilier(marker, pilier) {
         marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
     }
 }
-$(document).ready(function () {
 
+function calculateRoute(departLat, departLng, arriveLat, arriveLng) {
+    current_pos = new google.maps.LatLng(departLat, departLng);
+    end_pos = new google.maps.LatLng(arriveLat, arriveLng);
+    var request = {
+        origin: current_pos,
+        destination: end_pos,
+        travelMode: google.maps.TravelMode.DRIVING
+    };
+
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(result);
+            $('#itineraireTxt').parent().parent().removeClass('hide');
+        }
+    });
+}
+
+function resetRoutes() {
+    directionDisplay.setMap(null);
+    $('#itineraireTxt').parent().parent().addClass('hide');
+}
+
+$(document).ready(function () {
 
 });
 
