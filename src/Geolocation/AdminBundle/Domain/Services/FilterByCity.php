@@ -25,6 +25,12 @@ class FilterByCity
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * On enlève les cases du tableau ne correspondant pas à la ville cherchée
+     *
+     * @param array           $datas      Le tableau contenant toutes les entreprises
+     * @param array           $request    The POST parameters
+     */
     public function filterByCity($datas = [], Request $request)
     {
         foreach ($datas as $key => $data) {

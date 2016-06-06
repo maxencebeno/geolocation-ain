@@ -22,26 +22,29 @@ class GenerateArrayRessources
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * Construction du tableau des ressources
+     *
+     * Exemple :
+     *
+     * $ressources = [
+     *      besoin => [Tableau d'objet de besoin],
+     *      proposition => [Tableau d'objet de proposition],
+     *      user => [L'entreprise concernée (le user)],
+     *      adresse => [L'adresse de son entreprise],
+     *      sites => [
+     *          besoin => [Tableau d'objet de besoin],
+     *          proposition => [Tableau d'objet de proposition],
+     *          adresse => [L'adresse du site de production],
+     *      ]
+     * ]
+     * 
+     * @param array            $users                  Tous les utilisateurs (entreprises)
+     * @param string           $requestCodeNaf         Paramètre optionel de recherche sur un code NAF en particulier
+     *
+     */
     public function generate($users, $requestCodeNaf)
     {
-        /**
-         * Construction du tableau des ressources
-         *
-         * Exemple :
-         *
-         * $ressources = [
-         *      besoin => [Tableau d'objet de besoin],
-         *      proposition => [Tableau d'objet de proposition],
-         *      user => [L'entreprise concernée (le user)],
-         *      adresse => [L'adresse de son entreprise],
-         *      sites => [
-         *          besoin => [Tableau d'objet de besoin],
-         *          proposition => [Tableau d'objet de proposition],
-         *          adresse => [L'adresse du site de production],
-         *      ]
-         * ]
-         *
-         */
         $em = $this->doctrine->getManager();
         if ($requestCodeNaf === "-1") {
             return [];

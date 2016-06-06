@@ -10,8 +10,12 @@ use Ivory\HttpAdapter\CurlHttpAdapter;
 
 class ApiLib
 {
+
+    // Classe facilitant certains traitements
+
     public static function searchAdresse(User $user = null, Adresse $adresse = null)
     {
+        // Fonction de geocoder permettant de récupérer la latitude et la longitude en fonction d'une adresse donnée
         $curl = new CurlHttpAdapter();
         $geocoder = new GoogleMaps($curl);
         if ($user !== null) {
@@ -31,6 +35,7 @@ class ApiLib
 
     public static function verifCp($cp)
     {
+        // Regex pour vérif de code postal
         if (preg_match("/^[0-9]{5,5}$/", $cp)) {
             return true;
         } else {
@@ -40,6 +45,7 @@ class ApiLib
 
     public static function dateToMySQL($date)
     {
+        // Fonction qui converti un string en date mysql
         $day = substr($date, 0, 2);
         $month = substr($date, 3, 2);
         $year = substr($date, 6, 4);
@@ -53,6 +59,7 @@ class ApiLib
 
     public static function slugifyCity($str)
     {
+        // permettant de slugifier une ville pour que la recherche en autocomplétion soit plus efficace
         return str_replace(' ', '-', trim(strtolower($str)));
     }
 }

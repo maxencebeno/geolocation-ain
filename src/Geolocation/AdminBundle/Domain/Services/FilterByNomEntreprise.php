@@ -21,6 +21,12 @@ class FilterByNomEntreprise
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * On enlève les cases du tableau ne correspondant pas au nom d'entreprise ou de site de production recherché
+     *
+     * @param array           $datas      Le tableau contenant toutes les entreprises
+     * @param array           $request    The POST parameters
+     */
     public function filterByNomEntreprise($datas = [], $nomEntreprise)
     {
         foreach ($datas as $idUser => $data) {

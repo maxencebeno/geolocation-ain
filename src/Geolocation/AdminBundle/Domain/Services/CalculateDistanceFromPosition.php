@@ -21,9 +21,16 @@ use Widop\HttpAdapter\CurlHttpAdapter;
 
 class CalculateDistanceFromPosition
 {
+    /*
+     * Classe TODO
+     * 
+     * Non utilisée pour le moment
+     * Permet de calculer les distances pour les entreprises pour déterminer les itinéraires
+     * 
+     */
     /** @var  Registry */
     private $doctrine;
-    
+
     private $request;
     private $distanceMatrix;
 
@@ -34,8 +41,12 @@ class CalculateDistanceFromPosition
         $this->distanceMatrix = new DistanceMatrix(new CurlHttpAdapter());
     }
 
-    public function getMinDistance($datas = [], $user) {
-
+    /*
+     * Fonction qui retourne la distance minimum entre 2 entreprises (ne prend pas en compte les sites de production)
+     * 
+     */
+    public function getMinDistance($datas = [], $user)
+    {
         /**
          * @var User $user
          * @var User $userData
@@ -43,7 +54,7 @@ class CalculateDistanceFromPosition
          * @var DistanceMatrixResponseRow $item
          * @var DistanceMatrixResponseElement $element
          */
-        
+
         $this->request = new DistanceMatrixRequest();
 
         $this->distanceMatrix = new DistanceMatrix(new CurlHttpAdapter());
@@ -81,7 +92,8 @@ class CalculateDistanceFromPosition
         return $min !== 999999 && $minString !== "" ? ['value' => $min, 'string' => $minString] : ['value' => 0, 'string' => "0 km"];
     }
 
-    public function getMaxDistance($datas = [], $user) {
+    public function getMaxDistance($datas = [], $user)
+    {
 
         /**
          * @var User $user

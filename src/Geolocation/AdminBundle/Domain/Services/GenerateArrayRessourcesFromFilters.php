@@ -55,7 +55,29 @@ class GenerateArrayRessourcesFromFilters
         $this->tokenStorage = $tokenStorage;
     }
 
-
+    /**
+     * Construction du tableau des ressources
+     *
+     * Exemple :
+     *
+     * $ressources = [
+     *      besoin => [Tableau d'objet de besoin],
+     *      proposition => [Tableau d'objet de proposition],
+     *      user => [L'entreprise concernée (le user)],
+     *      adresse => [L'adresse de son entreprise],
+     *      sites => [
+     *          besoin => [Tableau d'objet de besoin],
+     *          proposition => [Tableau d'objet de proposition],
+     *          adresse => [L'adresse du site de production],
+     *      ]
+     * ]
+     *
+     * La fonction génère tout le tableaux de ressources en prenant en compte les filtres de la page d'accueil
+     * Les filtres sont gérés dans les différents services de ce même dossier
+     *
+     * @param array           $request        variables POST
+     *
+     */
     public function generate(Request $request)
     {
         $datas = [];

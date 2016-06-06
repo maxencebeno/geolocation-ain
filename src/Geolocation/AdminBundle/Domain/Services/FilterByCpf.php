@@ -18,6 +18,12 @@ class FilterByCpf
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * On enlève les cases du tableau ne correspondant pas au cpf recherché
+     *
+     * @param array           $datas      Le tableau contenant toutes les entreprises
+     * @param array           $request    The POST parameters
+     */
     public function filterByCpf(array $datas = [], Request $request)
     {
         $cpf = $this->doctrine->getRepository('GeolocationAdminBundle:Cpf')

@@ -24,6 +24,12 @@ class FilterByCodePostal
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * On enlève les cases du tableau ne correspondant pas au code postal recherché
+     *
+     * @param array           $datas      Le tableau contenant toutes les entreprises
+     * @param array           $request    The POST parameters
+     */
     public function filterByCodePostal ($datas = [], Request $request) {
         foreach ($datas as $key => $data) {
             /** @var User $user */
