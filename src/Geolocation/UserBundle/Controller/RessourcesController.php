@@ -152,12 +152,13 @@ class RessourcesController extends Controller {
         //vérification du formulaire envoyé
         if ($formRessource->isValid()) {
             $user = $this->getUser();
+            
              //vérification que la ressources n'est pas déjà ajoutée pour cette entreprise
                 $existeRessource= $em->getRepository('GeolocationAdminBundle:Ressources')
                         ->findOneBy(array(
                             'user'=>$user,
                             'cpf'=>$entity->getCpf(),
-                            'adresse_id'=>$entity->getAdresseId()->getId(),
+                            'adresse_id'=>($entity->getAdresseId()!=null ? $entity->getAdresseId()->getId() : null ),
                             'besoin'=>$besoin
                         ));
                 
