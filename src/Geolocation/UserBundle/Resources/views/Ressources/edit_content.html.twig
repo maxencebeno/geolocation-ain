@@ -45,14 +45,14 @@
                         {{ form_end(form) }}
 
                     </div>
-                    <button id="{{ entity.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ entity.id }}" data-myressource="{{ entity.cpf }}">
-                        {{'ressources.delete_action'|trans}}
-                    </button>
 
                 </div>
             </div>
         </div>
 
+        <button id="{{ entity.id }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="{{ entity.id }}" data-myressource="{{ entity.cpf }}">
+                {{'ressources.delete_action'|trans}}
+        </button>
         {% if entity.adresseId!=null%}
             <a class="btn btn-default" href="{{ path('user_edit_site', {'id': entity.adresseId.id}) }}" class="submit-button-geolocation-light">
                 <i class="glyphicon glyphicon-arrow-left"></i>
