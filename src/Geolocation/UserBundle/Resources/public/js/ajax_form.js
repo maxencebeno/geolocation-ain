@@ -15,6 +15,7 @@ $(document).ready(function () {
         var sectionId = $('#sections').val();
         var divisionId = $(this).val();
         resetGroupe();
+        resetClasse();
         getGroupe(sectionId, divisionId, $('.groupe'));
 
 
@@ -24,7 +25,7 @@ $(document).ready(function () {
         var sectionId = $('#sections').val();
         var divisionId = $('#division').val();
         var groupId = $('#groupe').val();
-
+        
         resetClasse();
         getClasse(sectionId, divisionId, groupId, $('.classe'));
 
