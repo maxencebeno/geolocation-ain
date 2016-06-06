@@ -10,6 +10,7 @@ namespace Geolocation\AdminBundle\Domain\Services;
 
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Geolocation\AdminBundle\Entity\Site;
 use Geolocation\AdminBundle\Entity\User;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Services\DistanceMatrix\DistanceMatrix;
@@ -136,5 +137,44 @@ class CalculateDistanceFromPosition
             }
         }
         return $max !== 0 && $maxString !== "" ? ['value' => $max, 'string' => $maxString] : ['value' => 0, 'string' => "0 km"];
+    }
+
+    public function getDistanceFromPosition(Site $depart, Site $destination)
+    {
+        /**
+         * @var DistanceMatrixResponse $response
+         * @var DistanceMatrixResponseRow $item
+         * @var DistanceMatrixResponseElement $element
+         */
+        
+        $this->request = new DistanceMatrixRequest();
+
+        $this->distanceMatrix = new DistanceMatrix(new CurlHttpAdapter());
+
+        $this->request->setOrigins(array(new Coordinate(round($depart->getLatitude(), 1), round($depart->getLongitude(), 1), true)));
+        $this->request->setDestinations(array(new Coordinate(round($destination->getLatitude(), 1), round($destination->getLongitude(), 1), true)));
+
+        $response = $this->distanceMatrix->process($this->request);
+        
+        $return = [];
+
+        if (count($response->getRows()) > 0) {
+            foreach ($response->getRows() as $item) {
+
+                $elements = $item->getElements();
+                foreach ($elements as $element) {
+                    if ($element->getDistance() !== null) {
+                        $return = [
+                            'value' => $element->getDistance()->getValue(),
+                            'text' => $element->getDistance()->getText(),
+                            'duration' => $element->getDuration()
+                        ];
+
+                        return $return;
+                    }
+                }
+            }
+        }
+        return $return;
     }
 }

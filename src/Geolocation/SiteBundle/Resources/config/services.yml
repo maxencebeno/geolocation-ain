@@ -21,7 +21,11 @@ services:
 
     site_bundle.generate_array_ressources:
         class: Geolocation\AdminBundle\Domain\Services\GenerateArrayRessources
-        arguments: ["@doctrine"]
+        arguments:
+            - "@doctrine"
+            - "@site_bundle.calculate_distance_from_position"
+            - "@security.authorization_checker"
+            - "@security.token_storage"
 
     site_bundle.generate_array_ressources_from_filters:
         class: Geolocation\AdminBundle\Domain\Services\GenerateArrayRessourcesFromFilters

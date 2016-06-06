@@ -2,6 +2,7 @@
 
 namespace Geolocation\AdminBundle\Repository;
 use Doctrine\ORM\EntityRepository;
+use Geolocation\AdminBundle\Entity\User;
 
 /**
  * SiteRepository
@@ -65,6 +66,16 @@ class SiteRepository extends EntityRepository {
             ->setMaxResults($limit);
 
         return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    public function findByMyParams(User $user) {
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.user != :user')
+            ->andWhere('s.main = 0')
+            ->setParameter('user', $user)
+            ;
+
+        return $qb->getQuery()->getResult();
     }
 
 }

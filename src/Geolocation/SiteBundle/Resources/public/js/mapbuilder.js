@@ -52,7 +52,7 @@ function initMarker(data, centerMarkers) {
     var index = 0;
     var bounds;
     var result = 0;
-    
+
     if (typeof data.ville !== 'undefined') {
         bounds = new google.maps.LatLngBounds(new google.maps.LatLng(data.ville.lat, data.ville.lng));
     } else {
@@ -74,7 +74,7 @@ function initMarker(data, centerMarkers) {
 
             choosePilier(markers[index], pilier);
             //if (centerMarkers === true) {
-                bounds.extend(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
+            bounds.extend(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
             //}
 
             contentString =
@@ -94,6 +94,14 @@ function initMarker(data, centerMarkers) {
 
             if (data[i].proposition === null && data[i].besoin === null) {
                 contentString += '<p>Pas de ressources pour le moment</p>';
+            }
+
+            if (data[i].distances !== null) {
+                for (var k in data[i].distances) {
+                    if (data[i].distances[k].entreprise.main === true) {
+                        contentString += "<p>Distance depuis votre entreprise mère " + data[i].distances[k].entreprise.nom + " : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "</p>";
+                    }
+                }
             }
 
             contentString += '<a href = "' + baseUrl + 'details/' + data[i].adresse.id + '">Plus d\'informations<a>' +
@@ -151,6 +159,13 @@ function initMarker(data, centerMarkers) {
                 if (data[i].sites[j].proposition === null && data[i].sites[j].besoin === null) {
                     contentString += '<p>Pas de ressources pour le moment</p>';
                 }
+
+                if (data[i].sites[j].distances !== null) {
+                    for (var k in data[i].distances) {
+                        contentString += "<p>Distance depuis votre site de production " + data[i].distances[k].entreprise.nom + " : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "<p>";
+                    }
+                }
+
                 contentString += '<a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
                     '</div>';
                 infowindow[index] = new google.maps.InfoWindow({
