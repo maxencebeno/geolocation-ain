@@ -57,9 +57,11 @@ profile:
         title: Modifier mes informations générales
         back_on_profile: Revenir à mon profil
         or: ou        
+        no_site: Pas de sites ajoutés
     flash:
         updated: Le profil a été mis à jour
     demand: Demande de suppression de compte
+    address_not_found: Votre adresse n'a pas pu être trouvée, merci de réessayer.
 
 # Password change
 change_password:

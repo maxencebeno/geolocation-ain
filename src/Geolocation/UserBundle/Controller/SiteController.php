@@ -171,7 +171,7 @@ class SiteController extends Controller
 
         if ($entity->getUser()->getId() != $user->getId()) {
 
-            $this->addFlash('danger', 'site.flash.edit.bad_site');
+            $this->addFlash('danger', $this->get('translator')->trans('site.flash.edit.bad_site', [], 'site'));
             return $this->redirectToRoute('user_show_site');
         }
 
@@ -378,7 +378,7 @@ class SiteController extends Controller
                             $em->flush();
                         }
 
-                        $this->addFlash('success', 'site.flash.edit.success');
+                        $this->addFlash('success',$this->get('translator')->trans('site.flash.edit.success', [], 'site') );
 
                         return $this->redirectToRoute('user_show_site');
                     } else {

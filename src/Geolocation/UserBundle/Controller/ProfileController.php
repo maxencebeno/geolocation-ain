@@ -103,7 +103,7 @@ class ProfileController extends Controller {
             $response = ApiLib::searchAdresse($user);
 
             if ($response === false) {
-                $errors[] = "Votre adresse n'a pas pu être trouvée, merci de réessayer.";
+                $errors[] = $this->get('translator')->trans('profile.address_not_found', [], 'GeolocationUserBundle');
 
                 return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
                             'form' => $form->createView()
