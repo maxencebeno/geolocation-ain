@@ -1,7 +1,7 @@
 #Site
 site:
     edit:
-        title_ajout: Ajouter des sites
+        title_ajout: Ajouter un site
         title_modification: Modifier mes sites
         no_sites: Pas de sites ajoutés
         title_edit: Editer ce site

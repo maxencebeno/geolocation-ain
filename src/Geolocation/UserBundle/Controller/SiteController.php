@@ -169,7 +169,7 @@ class SiteController extends Controller
                 'siteId' => $entity
             ]);
 
-        if ($entity->getUser()->getId() != $user->getId()) {
+        if ($entity->getUser()->getId() != $userId) {
 
             $this->addFlash('danger', $this->get('translator')->trans('site.flash.edit.bad_site', [], 'site'));
             return $this->redirectToRoute('user_show_site');
@@ -442,6 +442,14 @@ class SiteController extends Controller
         $ressources = $em->getRepository('GeolocationAdminBundle:Ressources')
             ->findBy(array('adresse_id' => $id));
 
+       $userId = $this->getUser()->getId();
+        
+        //vérification que l'utilisateur supprime une site lié à son compte
+        if ($site->getUser()->getId() != $userId) {
+            $this->addFlash('danger', $this->get('translator')->trans('site.flash.edit.bad_site', [], 'site'));
+            return $this->redirectToRoute('user_show_site');
+        }
+        
         if ($ressources !== null) {
             foreach ($ressources as $r) {
                 $em->remove($r);

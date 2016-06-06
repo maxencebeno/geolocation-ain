@@ -136,10 +136,17 @@ class RessourcesController extends Controller {
 
         $id = $request->attributes->get('id');
            
+        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findOneBy(array('id' => $id));
+        
+        if ($entity->getUser()->getId() != $user->getId()) {
+
+            $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.edit.bad_ressource', [], 'ressources'));
+            return $this->redirectToRoute('user_show_site');
+        }
        
         $besoin=$entity->getBesoin();
         
@@ -151,7 +158,6 @@ class RessourcesController extends Controller {
         
         //vérification du formulaire envoyé
         if ($formRessource->isValid()) {
-            $user = $this->getUser();
             
              //vérification que la ressources n'est pas déjà ajoutée pour cette entreprise
                 $existeRessource= $em->getRepository('GeolocationAdminBundle:Ressources')
@@ -183,11 +189,18 @@ class RessourcesController extends Controller {
     }
 
     public function deleteAction(Request $request) {
-        $id = $request->attributes->get('id');
+        $id = $request->request->get('id');
+        
         $em = $this->getDoctrine()->getManager();
         /** @var Ressources $ressource */
         $ressource = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->find($id);
+        $userId = $this->getUser()->getId();
+        //vérification que l'utilisateur supprime une ressource liée a son compte
+        if ($ressource->getUser()->getId() != $userId) {
+            $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.edit.bad_ressource', [], 'ressources'));
+            return $this->redirectToRoute('user_show_site');
+        }
         
         //vérifie si on est sur un site de production
         if ($request->query->get('page')) {

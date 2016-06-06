@@ -10,6 +10,8 @@ ressources:
             fail: Une erreur est survenue. Verifiez les élements des champs
         delete:
             success: La ressource a bien été supprimée
+        edit:
+            bad_ressource : Vous ne pouvez pas modifier cette ressource
     title: Mes ressources
     besoin: Besoins
     ressources: Ressources
