@@ -16,8 +16,13 @@ class SousCategorieFilterType extends AbstractType
         $builder
             ->add('code', 'filter_text')
             ->add('libelle', 'filter_text')
-            ->add('affiche', 'filter_choice')
-            ->add('id', 'filter_number_range')
+            ->add('affiche', 'filter_choice', [
+                'choices' => [
+                    '0' => 'Non',
+                    '1' => 'Oui'
+                ]
+            ])
+            ->add('id', 'number', ['required' => false])
         ;
 
         $listener = function(FormEvent $event)

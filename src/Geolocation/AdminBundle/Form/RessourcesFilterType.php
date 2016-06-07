@@ -15,8 +15,13 @@ class RessourcesFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('besoin', 'filter_choice')
-            ->add('id', 'filter_number_range')
+            ->add('besoin', 'filter_choice', [
+                'label' => 'Est-ce un besoin ou un proposition ?',
+                'choices' => [
+                    '0' => 'Proposition',
+                    '1' => 'Besoin'
+            ]])
+            ->add('id', 'number', ['required' => false])
             ->add('user', EntityType::class, [
                 'required' => 'false',
                 'class' => 'Geolocation\AdminBundle\Entity\User',

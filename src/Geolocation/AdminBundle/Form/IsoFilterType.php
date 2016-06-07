@@ -14,7 +14,7 @@ class IsoFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
+            ->add('id', 'number', ['required' => false])
             ->add('codeIso', 'filter_text')
         ;
 

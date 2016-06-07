@@ -34,14 +34,9 @@
 
                 <form class="well" action="{{ path('site') }}" method="get" {{ form_enctype(filterForm) }}>
                     {{ form_row(filterForm.id) }}
-                    {{ form_row(filterForm.main) }}
-                    {{ form_row(filterForm.adresse) }}
                     {{ form_row(filterForm.siret) }}
                     {{ form_row(filterForm.ville) }}
                     {{ form_row(filterForm.codePostal) }}
-                    {{ form_row(filterForm.tel) }}
-                    {{ form_row(filterForm.latitude) }}
-                    {{ form_row(filterForm.longitude) }}
                     {{ form_row(filterForm.isPublic) }}
                     {{ form_row(filterForm.nom) }}
                     {{ form_rest(filterForm) }}

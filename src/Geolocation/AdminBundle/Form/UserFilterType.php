@@ -14,17 +14,11 @@ class UserFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
+            ->add('id', 'number', ['required' => false])
             ->add('nom', 'filter_text')
-            ->add('adresse', 'filter_text')
-            ->add('codePostal', 'filter_number_range')
+            ->add('codePostal', 'filter_text')
             ->add('ville', 'filter_text')
-            ->add('tel', 'filter_text')
-            ->add('dateCreation', 'filter_date_range')
-            ->add('dateCreationEntreprise', 'filter_date_range')
             ->add('siren', 'filter_text')
-            ->add('kbis', 'filter_text')
-            ->add('url', 'filter_text')
         ;
 
         $listener = function(FormEvent $event)

@@ -15,7 +15,7 @@ class CpfFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
+            ->add('id', 'number')
             ->add('nom', TextType::class, ['label' => 'Code'])
         ;
 

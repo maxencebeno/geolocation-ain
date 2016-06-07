@@ -63,7 +63,11 @@
         <tr>
             <td><a href="{{ path('classe_show', { 'id': entity.id }) }}">{{ entity.code }}</a></td>
             <td>{{ entity.libelle }}</td>
-            <td>{{ entity.affiche }}</td>
+            {% if entity.affiche == 1 %}
+                <td>Oui</td>
+            {% else %}
+                <td>Non</td>
+            {% endif %}
             <td>{{ entity.id }}</td>
             <td>
         <a class="btn btn-mini" href="{{ path('classe_show', { 'id': entity.id }) }}">

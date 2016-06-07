@@ -34,15 +34,9 @@
                 <form class="well" action="{{ path('user') }}" method="get" {{ form_enctype(filterForm) }}>
                     {{ form_row(filterForm.id) }}
                     {{ form_row(filterForm.nom) }}
-                    {{ form_row(filterForm.adresse) }}
                     {{ form_row(filterForm.codePostal) }}
                     {{ form_row(filterForm.ville) }}
-                    {{ form_row(filterForm.tel) }}
-                    {{ form_row(filterForm.dateCreation) }}
-                    {{ form_row(filterForm.dateCreationEntreprise) }}
                     {{ form_row(filterForm.siren) }}
-                    {{ form_row(filterForm.kbis) }}
-                    {{ form_row(filterForm.url) }}
                     {{ form_rest(filterForm) }}
 
                     <p>

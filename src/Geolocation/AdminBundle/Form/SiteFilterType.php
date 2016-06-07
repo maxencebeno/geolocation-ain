@@ -14,16 +14,17 @@ class SiteFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
-            ->add('main', 'filter_choice')
-            ->add('adresse', 'filter_text')
+            ->add('id', 'number', ['required' => false])
             ->add('siret', 'filter_text')
             ->add('ville', 'filter_text')
             ->add('codePostal', 'filter_text')
-            ->add('tel', 'filter_text')
-            ->add('latitude', 'filter_number_range')
-            ->add('longitude', 'filter_number_range')
-            ->add('isPublic', 'filter_choice')
+            ->add('isPublic', 'filter_choice', [
+                'label' => 'N° de téléphone visible par tous',
+                'choices' => [
+                    '0' => 'Non',
+                    '1' => 'Oui'
+                ]
+            ])
             ->add('nom', 'filter_text')
         ;
 
