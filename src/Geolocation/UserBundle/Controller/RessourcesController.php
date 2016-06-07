@@ -139,6 +139,7 @@ class RessourcesController extends Controller {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
+        // Récupération des ressources de l'entreprise
         $entity = $em->getRepository('GeolocationAdminBundle:Ressources')
                 ->findOneBy(array('id' => $id));
         

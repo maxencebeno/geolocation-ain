@@ -20,6 +20,7 @@ class SuppressionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        // Création du formulaire de suppresion
         $suppression = new Suppression();
         $form = $this->createForm(new SuppressionType(), $suppression);
 
@@ -32,7 +33,8 @@ class SuppressionController extends Controller
 
             $em->persist($suppression);
             $em->flush();
-
+            
+            // Création du contenu du message
             $message = \Swift_Message::newInstance()
                 ->setSubject('Nouvelle demande de Suppression de compte')
                 ->setFrom($suppression->getUser()->getEmail())
@@ -44,6 +46,8 @@ class SuppressionController extends Controller
                     ),
                     'text/html'
                 );
+            
+            // Envoit du mail
             $this->get('mailer')->send($message);
 
             $this->get('session')->getFlashBag()->add('success', $this->get('translator')->trans('suppression.form.success', [], 'suppression'));
