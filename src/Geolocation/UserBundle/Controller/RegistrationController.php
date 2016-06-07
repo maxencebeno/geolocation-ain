@@ -66,6 +66,7 @@ class RegistrationController extends BaseController
         $form = $formFactory->createForm();
         $form->setData($user);
 
+        // Vérification du choix entre entreprise ou association
         switch ($request->attributes->get('type')) {
             case 'entreprise':
                 $form->remove('rna');

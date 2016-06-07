@@ -13,6 +13,7 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
+        // Création du formulaire de contact
         $contact = new Contact();
         $form = $this->createForm(new ContactType(), $contact);
         
@@ -22,6 +23,7 @@ class ContactController extends Controller
             $em->persist($contact);
             $em->flush();
 
+            // Création du contenu du message avec le sujet, le destinataire, le message.
             $message = \Swift_Message::newInstance()
                 ->setSubject('Nouvelle demande de Contact')
                 ->setFrom($contact->getEmail())
@@ -34,6 +36,8 @@ class ContactController extends Controller
                     'text/html'
                 )
             ;
+            
+            // Envoit du mail
             $this->get('mailer')->send($message);
             
             $this->get('session')->getFlashBag()->add('success', $this->get('translator')->trans('contact.form.success', [], 'contact'));

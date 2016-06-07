@@ -21,16 +21,19 @@ class SiteController extends Controller
      */
     public function showAction(Request $request)
     {
+        // Vérification d'autorisation d'accès
         /** @var User $user */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof User) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
+        // Récupération des sites par rapport au user (sans entreprise mère: false)
         $em = $this->getDoctrine()->getManager();
         $sites = $em->getRepository('GeolocationAdminBundle:Site')
             ->findBy(array('user' => $user, 'main' => false));
 
+        // Création du formulaire
         $entity = new Site();
         $entity->setNom($user->getNom());
         $form = $this->createForm(new SiteType(), $entity);
@@ -150,6 +153,7 @@ class SiteController extends Controller
     {
         $id = $request->attributes->get('id');
 
+        // Vérification d'autorisation d'accès
         /** @var User $user */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof User) {
@@ -159,10 +163,12 @@ class SiteController extends Controller
         $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
 
+        // Récupération du site en fonction de l'ID
         /** @var Site $entity */
         $entity = $em->getRepository('GeolocationAdminBundle:Site')
             ->findOneBy(array('id' => $id));
 
+        // Récupération de ses ISO
         $isoAlreadyIn = $em->getRepository('GeolocationAdminBundle:SiteIso')
             ->findBy([
                 'siteId' => $entity
@@ -186,6 +192,7 @@ class SiteController extends Controller
         $formRessource = $this->createForm(new RessourcesType(), $ressource);
         $formRessource->handleRequest($request);
 
+        // Récupération des ressources besoin + proposition
         $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
             ->findBy(array('user' => $userId, 'site' => $entity, 'besoin' => false));
         $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
@@ -263,6 +270,7 @@ class SiteController extends Controller
                     $em->persist($ressource);
                     $em->flush();
 
+                    // Récupération des ressources besoin + proposition
                     $ressourcesProposition = $em->getRepository('GeolocationAdminBundle:Ressources')
                         ->findBy(array('user' => $userId, 'site' => $entity, 'besoin' => false));
                     $ressourcesBesoin = $em->getRepository('GeolocationAdminBundle:Ressources')
