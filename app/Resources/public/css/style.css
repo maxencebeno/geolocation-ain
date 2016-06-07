@@ -360,3 +360,7 @@ th.quantite{
 #itineraireTxt .adp-placemark{
     margin:10px;
 }
+
+.popup-header h3{
+    display: inline-block;
+}

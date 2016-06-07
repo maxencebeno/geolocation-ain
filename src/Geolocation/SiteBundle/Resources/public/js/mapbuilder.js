@@ -85,7 +85,7 @@ function initMarker(data, centerMarkers) {
 
             contentString =
                     '<div id="content">' +
-                    '<h3>' + data[i].user.nom + '</h3>' +
+                    '<div class="popup-header"><a href = "' + baseUrl + 'details/' + data[i].adresse.id + '"><h3>' + data[i].user.nom + '</h3></a><a class="text-right" href = "' + baseUrl + 'details/' + data[i].adresse.id + '"> - Plus d\'informations</a></div>' +
                     data[i].user.adresse + '<br>' +
                     data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
                     '<h4>Ressources</h4>';
@@ -145,7 +145,7 @@ function initMarker(data, centerMarkers) {
 
                 contentString =
                         '<div id="content">' +
-                        '<div class="col-sm-12"><a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '"><h3>' + data[i].sites[j].adresse.nom + '</h3></a><a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '">Plus d\'informations</a></div>' +
+                        '<div class="popup-header"><a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '"><h3>' + data[i].sites[j].adresse.nom + '</h3></a><a class="text-right" href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '"> - Plus d\'informations</a></div>' +
                         data[i].sites[j].adresse.adresse + '<br>' +
                         data[i].sites[j].adresse.codePostal + ' ' + data[i].sites[j].adresse.ville + '<br>' +
                         '<h4>Ressources</h4>';
