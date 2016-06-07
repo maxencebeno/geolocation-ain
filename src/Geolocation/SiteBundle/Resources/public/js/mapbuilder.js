@@ -170,7 +170,7 @@ function initMarker(data, centerMarkers) {
                             } else {
                                 contentString += "<p>Distance depuis votre site de production <strong> " + data[i].distances[k].entrepriseDepart.nom + "</strong> : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "<p>";
                             }
-                            contentString += "<p><a onclick='calculateRoute(" + data[i].distances[k].entrepriseDepart.latitude + "," + data[i].distances[k].entrepriseDepart.longitude + "," + data[i].adresse.latitude + "," + data[i].sites[j].adresse.longitude + ")'>Obtenir l'itinéraire</a></p>";
+                            contentString += "<p><a onclick='calculateRoute(" + data[i].distances[k].entrepriseDepart.latitude + "," + data[i].distances[k].entrepriseDepart.longitude + "," + data[i].distances[k].entrepriseDestination.latitude + "," + data[i].distances[k].entrepriseDestination.longitude + ")'>Obtenir l'itinéraire</a></p>";
                         }
                     }
                 }
@@ -293,7 +293,7 @@ function showDistance(data) {
             } else {
                 contentString += "<p>Distance depuis votre site de production <strong> " + data.distances[k].entrepriseDepart.nom + "</strong> : " + data.distances[k].text + " Durée du trajet : " + data.distances[k].duration.text + "<p>";
             }
-            contentString += "<p><a onclick='calculateRoute(" + data.distances[k].entrepriseDepart.latitude + "," + data.distances[k].entrepriseDepart.longitude + "," + data.user.latitude + "," + data.user.longitude + ")'>Obtenir l'itinéraire</a></p>";
+            contentString += "<p><a onclick='calculateRoute(" + data.distances[k].entrepriseDepart.latitude + "," + data.distances[k].entrepriseDepart.longitude + "," + data.distances[k].entrepriseDestination.latitude + "," + data.distances[k].entrepriseDestination.longitude + ")'>Obtenir l'itinéraire</a></p>";
         }
     }
 }
