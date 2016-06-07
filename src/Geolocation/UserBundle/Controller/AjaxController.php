@@ -163,7 +163,7 @@ class AjaxController extends Controller
         return $response;
     }
 
-    public function getCategorieAction(Request $request) {
+    /*public function getCategorieAction(Request $request) {
         $sectionId = $request->query->get('sectionid');
         $divisionId = $request->query->get('divisionid');
         $groupeId = $request->query->get('groupeid');
@@ -277,5 +277,5 @@ class AjaxController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-    }
+    }*/
 }

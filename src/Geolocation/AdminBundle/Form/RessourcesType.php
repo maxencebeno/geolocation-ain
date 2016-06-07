@@ -22,7 +22,7 @@ class RessourcesType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'translation_domain' => 'ressources'])
-            ->add('cpf')
+            //->add('cpf')
             ->add('description', TextareaType::class, ['label' => 'form.description', 'attr' => ['placeholder' => "form.placeholder.description"], 'translation_domain' => 'ressources','required' => false])
             ->add('remarque', TextareaType::class, ['label' => 'form.remarques', 'attr' => ['placeholder' => "form.placeholder.remarques"], 'translation_domain' => 'ressources','required' => false])
             ->add('quantite', TextareaType::class, ['label' => 'form.quantite', 'attr' => ['placeholder' => "form.placeholder.quantite"],'translation_domain' => 'ressources', 'required' => false])
