@@ -226,7 +226,7 @@ class GenerateArrayRessourcesFromFilters
                                                 'value' => $distance['value'],
                                                 'text' => $distance['text'],
                                                 'duration' => $distance['duration'],
-                                                'entreprise' => $depart
+                                                'entrepriseDepart' => $depart
                                             ];
                                         }
                                     }

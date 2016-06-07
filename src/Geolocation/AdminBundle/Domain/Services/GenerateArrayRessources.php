@@ -25,6 +25,7 @@ class GenerateArrayRessources
     private $security;
     /** @var  TokenStorage $tokenStorage */
     private $tokenStorage;
+    private $ressources;
 
     public function __construct($doctrine, CalculateDistanceFromPosition $distanceService, AuthorizationChecker $security, TokenStorage $tokenStorage)
     {
@@ -32,6 +33,7 @@ class GenerateArrayRessources
         $this->distanceService = $distanceService;
         $this->security = $security;
         $this->tokenStorage = $tokenStorage;
+        $this->ressources = [];
     }
 
     /**
@@ -39,7 +41,7 @@ class GenerateArrayRessources
      *
      * Exemple :
      *
-     * $ressources = [
+     * $this->ressources = [
      *      besoin => [Tableau d'objet de besoin],
      *      proposition => [Tableau d'objet de proposition],
      *      user => [L'entreprise concernée (le user)],
@@ -57,7 +59,7 @@ class GenerateArrayRessources
      */
     public function generate($users, $requestCodeNaf)
     {
-        $ressources = [];
+        $this->ressources = [];
         $em = $this->doctrine->getManager();
         if ($requestCodeNaf === "-1") {
             return [];
@@ -82,7 +84,7 @@ class GenerateArrayRessources
                         ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf));
 
                     if ($besoin !== null || $proposition !== null) {
-                        $ressources[$user->getId()] =
+                        $this->ressources[$user->getId()] =
                             array('besoin' => $besoin,
                                 'proposition' => $proposition,
                                 'user' => $user,
@@ -102,22 +104,22 @@ class GenerateArrayRessources
                             $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                                 ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'cpf' => $cpf, 'site' => $site));
                             if ($besoin !== null || $propositionSite !== null) {
-                                $ressources[$user->getId()]['sites'][] = [
+                                $this->ressources[$user->getId()]['sites'][] = [
                                     'adresse' => $site,
                                     'besoin' => $besoinSite,
                                     'proposition' => $propositionSite
                                 ];
                             }
                         }
-                        if (isset($ressources[$user->getId()]['sites']) && count($ressources[$user->getId()]['sites']) === 0) {
-                            $ressources[$user->getId()]['sites'] = null;
+                        if (isset($this->ressources[$user->getId()]['sites']) && count($this->ressources[$user->getId()]['sites']) === 0) {
+                            $this->ressources[$user->getId()]['sites'] = null;
                         }
                     }
                 }
             }
         } else {
 
-            $ressources = array();
+            $this->ressources = array();
             foreach ($users as $user) {
                 $adresse = $em->getRepository('GeolocationAdminBundle:Site')
                     ->findOneBy([
@@ -128,7 +130,7 @@ class GenerateArrayRessources
                     ->findOneBy(array('user' => $user->getId(), 'besoin' => true));
                 $proposition = $em->getRepository('GeolocationAdminBundle:Ressources')
                     ->findOneBy(array('user' => $user->getId(), 'besoin' => false));
-                $ressources[$user->getId()] =
+                $this->ressources[$user->getId()] =
                     array('besoin' => $besoin,
                         'proposition' => $proposition,
                         'user' => $user,
@@ -148,15 +150,15 @@ class GenerateArrayRessources
                         $propositionSite = $em->getRepository('GeolocationAdminBundle:Ressources')
                             ->findOneBy(array('user' => $user->getId(), 'besoin' => false, 'site' => $site));
                         if ($besoinSite !== null || $propositionSite !== null) {
-                            $ressources[$user->getId()]['sites'][] = [
+                            $this->ressources[$user->getId()]['sites'][] = [
                                 'adresse' => $site,
                                 'besoin' => $besoinSite,
                                 'proposition' => $propositionSite
                             ];
                         }
                     }
-                    if (isset($ressources[$user->getId()]['sites']) && count($ressources[$user->getId()]['sites']) === 0) {
-                        $ressources[$user->getId()]['sites'] = null;
+                    if (isset($this->ressources[$user->getId()]['sites']) && count($this->ressources[$user->getId()]['sites']) === 0) {
+                        $this->ressources[$user->getId()]['sites'] = null;
                     }
                 }
             }
@@ -173,7 +175,7 @@ class GenerateArrayRessources
 
             $ressourceUser = null;
 
-            foreach ($ressources as $idUser => $ressource) {
+            foreach ($this->ressources as $idUser => $ressource) {
                 if ($idUser === $user->getId()) {
                     $ressourceUser = $ressource;
                 }
@@ -185,17 +187,19 @@ class GenerateArrayRessources
                 if (isset($ressourceUser['sites'])) {
                     $siteDeProductionUser = $ressourceUser['sites'];
 
-                    foreach ($ressources as $idUser => $ressource) {
+                    foreach ($this->ressources as $idUser => $ressource) {
                         if ($idUser !== $user->getId()) {
                             $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
                             if (isset($distance['value'])) {
-                                $ressources[$idUser]['distances'][] = [
+                                $this->ressources[$idUser]['distances'][] = [
                                     'value' => $distance['value'],
                                     'text' => $distance['text'],
                                     'duration' => $distance['duration'],
-                                    'entreprise' => $entrepriseMereUser
+                                    'entrepriseDepart' => $entrepriseMereUser,
+                                    'entrepriseDestination' => $ressource['adresse']
                                 ];
                             }
+                            $entrepriseMereOther = $ressource['adresse'];
                             if (isset($ressource['sites'])) {
                                 foreach ($ressource['sites'] as $site) {
                                     /** @var Site $destination */
@@ -206,22 +210,38 @@ class GenerateArrayRessources
                                         if ($depart->getUser()->getId() !== $destination->getUser()->getId()) {
                                             $distanceFromSite = $this->distanceService->getDistanceFromPosition($depart, $destination);
                                             if (isset($distanceFromSite['value'])) {
-                                                $ressources[$idUser]['distances'][] = [
+                                                $this->ressources[$idUser]['distances'][] = [
                                                     'value' => $distanceFromSite['value'],
                                                     'text' => $distanceFromSite['text'],
                                                     'duration' => $distanceFromSite['duration'],
-                                                    'entreprise' => $depart
+                                                    'entrepriseDepart' => $depart,
+                                                    'entrepriseDestination' => $destination
                                                 ];
                                             }
                                         }
                                         if ($entrepriseMereUser->getUser()->getId() !== $destination->getUser()->getId()) {
-                                            $distanceFromBase = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $destination);
+
+                                            $distanceFromBase = $this->distanceService->getDistanceFromPosition($destination, $entrepriseMereUser);
                                             if (isset($distanceFromBase['value'])) {
-                                                $ressources[$idUser]['distances'][] = [
+                                                $this->ressources[$idUser]['distances'][] = [
                                                     'value' => $distanceFromBase['value'],
                                                     'text' => $distanceFromBase['text'],
                                                     'duration' => $distanceFromBase['duration'],
-                                                    'entreprise' => $entrepriseMereUser
+                                                    'entrepriseDepart' => $entrepriseMereUser,
+                                                    'entrepriseDestination' => $destination
+                                                ];
+                                            }
+                                        }
+
+                                        if ($entrepriseMereOther->getUser()->getId() !== $depart->getUser()->getId()) {
+                                            $distanceFromBaseToSite = $this->distanceService->getDistanceFromPosition($depart, $entrepriseMereOther);
+                                            if (isset($distanceFromBaseToSite['value'])) {
+                                                $this->ressources[$idUser]['distances'][] = [
+                                                    'value' => $distanceFromBaseToSite['value'],
+                                                    'text' => $distanceFromBaseToSite['text'],
+                                                    'duration' => $distanceFromBaseToSite['duration'],
+                                                    'entrepriseDepart' => $depart,
+                                                    'entrepriseDestination' => $entrepriseMereOther
                                                 ];
                                             }
                                         }
@@ -234,6 +254,6 @@ class GenerateArrayRessources
             }
         }
 
-        return $ressources;
+        return $this->ressources;
     }
 }
