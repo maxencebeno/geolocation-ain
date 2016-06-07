@@ -91,11 +91,11 @@ function initMarker(data, centerMarkers) {
                     '<h4>Ressources</h4>';
 
             if (data[i].besoin !== null) {
-                contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.souscategorie.libelle + '</p>';
+                contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.souscategorie.libelle + '<sub> NAF : '+data[i].besoin.cpf.nom+'</sub></p>';
             }
 
             if (data[i].proposition !== null) {
-                contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.souscategorie.libelle + '</p>';
+                contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.souscategorie.libelle + '<sub> NAF : '+data[i].proposition.cpf.nom+'</sub></p>';
             }
 
             if (data[i].proposition === null && data[i].besoin === null) {
