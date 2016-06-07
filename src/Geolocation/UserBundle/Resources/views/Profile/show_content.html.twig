@@ -117,7 +117,7 @@
                                         {% for key, ressource in ressources %}
                                             {% if ressource.getBesoin()==true %}
                                                 <li class="myRessource">
-                                                    {% if ressource.cpf.section.image == null %}
+                                                    {% if ressource.cpf.section.image is null %}
                                                         <img src="{{ asset("bundles/site/img/logo-ressources/notfound.png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
                                                     {% else %}
                                                         <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.image) }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
@@ -138,7 +138,11 @@
                                         {% for key, ressource in ressources %}
                                             {% if ressource.getBesoin()==false %}
                                                 <li class="myRessource">
-                                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {% if ressource.cpf.section.image is null %}
+                                                        <img src="{{ asset("bundles/site/img/logo-ressources/notfound.png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {% else %}
+                                                        <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.image) }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {% endif %}
                                                     {{ ressource.cpf.souscategorie.libelle }}
                                                 </li>
                                                 {% set cpt = 1 %}
