@@ -67,6 +67,12 @@ a:hover{
     }
 }   
 
+@media screen and (max-width: 375px) {
+    .results{
+    height:100%;
+}
+}   
+
 
 
 #filtreRechercheCarte span.glyphicon{
