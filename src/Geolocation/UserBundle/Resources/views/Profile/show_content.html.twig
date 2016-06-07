@@ -1,4 +1,4 @@
- {% trans_default_domain 'GeolocationUserBundle' %}
+{% trans_default_domain 'GeolocationUserBundle' %}
 
 <div class="container">
     <div id="fos_user_user_show">
@@ -14,13 +14,13 @@
                             <div class="panel-body">
                                 <ul class="list-group">
                                     <li class="list-group-item"><strong>{{ 'profile.show.name'|trans }} :</strong>
-                                    {{ user.nom }}</li>
+                                        {{ user.nom }}</li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.username'|trans }} :</strong>
                                         {{ user.username }}</li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.date_creation_entreprise'|trans }} :</strong>
-                                    
+
                                         {% if user.dateCreationEntreprise  != '' %}
                                             {{ user.dateCreationEntreprise }}
                                         {% else %}
@@ -29,20 +29,20 @@
                                     </li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.email'|trans }} :</strong>
-                                    {{ user.email }}</li>
+                                        {{ user.email }}</li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.adresse'|trans }} :</strong>
-                                    {{ user.adresse }}</li>
+                                        {{ user.adresse }}</li>
 
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.ville'|trans }} :</strong>
-                                    {{ user.ville }}</li>
+                                        {{ user.ville }}</li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.codepostal'|trans }} :</strong>
-                                    {{ user.codepostal }}</li>
+                                        {{ user.codepostal }}</li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.telephone'|trans }} :</strong>
-                                    
+
                                         {% if user.tel != '' %}
                                             {{ user.tel }}
                                         {% else %}
@@ -51,10 +51,10 @@
                                     </li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.siren'|trans }} :</strong>
-                                    {{ user.siren }}</li>
+                                        {{ user.siren }}</li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.kbis'|trans }} :</strong>
-                                    
+
                                         {% if user.kbis != '' %}
                                             <a href="{{ path('user_kbis', {'id': user.id}) }}" target="_blank">{{ user.kbis }}</a>
                                         {% else %}
@@ -63,7 +63,7 @@
                                     </li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.site'|trans }} :</strong>
-                                    
+
                                         {% if user.url != '' %}
                                             <a href="{{ user.url }}">{{ user.url }}</a>
                                         {% else %}
@@ -72,7 +72,7 @@
                                     </li>
 
                                     <li class="list-group-item"><strong>{{ 'profile.show.description'|trans }} :</strong>
-                                    
+
                                         {% if user.description != '' %}
                                             {{ user.description }}
                                         {% else %}
@@ -117,7 +117,11 @@
                                         {% for key, ressource in ressources %}
                                             {% if ressource.getBesoin()==true %}
                                                 <li class="myRessource">
-                                                    <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.code~".png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {% if ressource.cpf.section.image == null %}
+                                                        <img src="{{ asset("bundles/site/img/logo-ressources/notfound.png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {% else %}
+                                                        <img src="{{ asset("bundles/site/img/logo-ressources/"~ressource.cpf.section.image) }}"  data-toggle="tooltip" data-placement="bottom" title="{{ ressource.cpf.section.libelle }}" />
+                                                    {% endif %}
                                                     {{ ressource.cpf.souscategorie.libelle }}
                                                 </li>
                                                 {% set cpt = 1 %}

@@ -32,9 +32,9 @@ class SiteIso
     private $isoId;
 
     /**
-     * @var \Geolocation\AdminBundle\Entity\Adresse
+     * @var \Geolocation\AdminBundle\Entity\Site
      *
-     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Adresse")
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Site")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
      * })
@@ -132,11 +132,11 @@ class SiteIso
     /**
      * Set siteId
      *
-     * @param \Geolocation\AdminBundle\Entity\Adresse $siteId
+     * @param \Geolocation\AdminBundle\Entity\Site $siteId
      *
      * @return SiteIso
      */
-    public function setSiteId(\Geolocation\AdminBundle\Entity\Adresse $siteId = null)
+    public function setSiteId(\Geolocation\AdminBundle\Entity\Site $siteId = null)
     {
         $this->siteId = $siteId;
 
@@ -146,7 +146,7 @@ class SiteIso
     /**
      * Get siteId
      *
-     * @return \Geolocation\AdminBundle\Entity\Adresse
+     * @return \Geolocation\AdminBundle\Entity\Site
      */
     public function getSiteId()
     {

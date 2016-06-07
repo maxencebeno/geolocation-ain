@@ -22,6 +22,13 @@ class Section
     /**
      * @var string
      *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
      */
     private $libelle;
@@ -129,5 +136,29 @@ class Section
     public function __toString()
     {
         return $this->getLibelle();
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Section
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

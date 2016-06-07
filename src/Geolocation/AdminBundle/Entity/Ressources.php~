@@ -49,14 +49,14 @@ class Ressources
     private $cpf;
 
     /**
-     * @var \Geolocation\AdminBundle\Entity\Adresse
+     * @var \Geolocation\AdminBundle\Entity\Site
      *
-     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Adresse")
+     * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Site")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id", onDelete="CASCADE")
+     *   @ORM\JoinColumn(name="site", referencedColumnName="id", onDelete="CASCADE")
      * })
      */
-    private $adresse_id;
+    private $site;
 
     /**
      * @var string
@@ -162,15 +162,15 @@ class Ressources
     }
 
     /**
-     * Set adresseId
+     * Set site
      *
-     * @param \Geolocation\AdminBundle\Entity\Adresse $adresseId
+     * @param \Geolocation\AdminBundle\Entity\Site $site
      *
      * @return Ressources
      */
-    public function setAdresseId(\Geolocation\AdminBundle\Entity\Adresse $adresseId = null)
+    public function setAdresseId(\Geolocation\AdminBundle\Entity\Site $site = null)
     {
-        $this->adresse_id = $adresseId;
+        $this->site = $site;
 
         return $this;
     }
@@ -178,11 +178,11 @@ class Ressources
     /**
      * Get adresseId
      *
-     * @return \Geolocation\AdminBundle\Entity\Adresse
+     * @return \Geolocation\AdminBundle\Entity\Site
      */
-    public function getAdresseId()
+    public function getSite()
     {
-        return $this->adresse_id;
+        return $this->site;
     }
 
     /**
