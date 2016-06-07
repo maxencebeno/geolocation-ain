@@ -9,8 +9,8 @@ var options = {
 var carte = new google.maps.Map(document.getElementById("map"), options);
 directionsDisplay = new google.maps.DirectionsRenderer();
 directionsDisplay = new google.maps.DirectionsRenderer({
-    map   : carte,
-    panel : document.getElementById('itineraireTxt') // Dom element pour afficher les instructions d'itinéraire
+    map: carte,
+    panel: document.getElementById('itineraireTxt') // Dom element pour afficher les instructions d'itinéraire
 });
 var directionsService = new google.maps.DirectionsService();
 
@@ -84,11 +84,11 @@ function initMarker(data, centerMarkers) {
             //}
 
             contentString =
-                '<div id="content">' +
-                '<h3>' + data[i].user.nom + '</h3>' +
-                data[i].user.adresse + '<br>' +
-                data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
-                '<h4>Ressources</h4>';
+                    '<div id="content">' +
+                    '<h3>' + data[i].user.nom + '</h3>' +
+                    data[i].user.adresse + '<br>' +
+                    data[i].user.codePostal + ' ' + data[i].user.ville + '<br>' +
+                    '<h4>Ressources</h4>';
 
             if (data[i].besoin !== null) {
                 contentString += '<h5>Besoin</h5><p>' + data[i].besoin.cpf.souscategorie.libelle + '</p>';
@@ -103,16 +103,11 @@ function initMarker(data, centerMarkers) {
             }
 
             if (data[i].distances !== null) {
-                for (var k in data[i].distances) {
-                    if (data[i].distances[k].entreprise.main === true) {
-                        contentString += "<p>Distance depuis votre entreprise mère " + data[i].distances[k].entreprise.nom + " : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "</p>";
-                        contentString += "<p><a onclick='calculateRoute(" + data[i].distances[k].entreprise.latitude + "," + data[i].distances[k].entreprise.longitude + "," + data[i].user.latitude + "," + data[i].user.longitude + ")'>Obtenir l'itinéraire</a></p>";
-                    }
-                }
+                showDistance(data[i]);
             }
 
             contentString += '<a href = "' + baseUrl + 'details/' + data[i].adresse.id + '">Plus d\'informations<a>' +
-                '</div>';
+                    '</div>';
             infowindow[index] = new google.maps.InfoWindow({
                 content: contentString
             });
@@ -149,11 +144,11 @@ function initMarker(data, centerMarkers) {
                 bounds.extend(new google.maps.LatLng(data[i].sites[j].adresse.latitude, data[i].sites[j].adresse.longitude));
 
                 contentString =
-                    '<div id="content">' +
-                    '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
-                    data[i].sites[j].adresse.adresse + '<br>' +
-                    data[i].sites[j].adresse.codePostal + ' ' + data[i].sites[j].adresse.ville + '<br>' +
-                    '<h4>Ressources</h4>';
+                        '<div id="content">' +
+                        '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
+                        data[i].sites[j].adresse.adresse + '<br>' +
+                        data[i].sites[j].adresse.codePostal + ' ' + data[i].sites[j].adresse.ville + '<br>' +
+                        '<h4>Ressources</h4>';
 
                 if (data[i].sites[j].besoin !== null) {
                     contentString += '<h5>Besoin</h5><p>' + data[i].sites[j].besoin.cpf.souscategorie.libelle + '</p>';
@@ -168,14 +163,12 @@ function initMarker(data, centerMarkers) {
                 }
 
                 if (data[i].sites[j].distances !== null) {
-                    for (var k in data[i].distances) {
-                        contentString += "<p>Distance depuis votre site de production " + data[i].distances[k].entreprise.nom + " : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "<p>";
-                        contentString += "<p><a onclick='calculateRoute(" + data[i].distances[k].entreprise.latitude + "," + data[i].distances[k].entreprise.longitude + "," + data[i].sites[j].adresse.latitude + "," + data[i].sites[j].adresse.longitude + ")'>Obtenir l'itinéraire</a></p>";
-                    }
+                    showDistance(data[i]);
                 }
 
+
                 contentString += '<a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
-                    '</div>';
+                        '</div>';
                 infowindow[index] = new google.maps.InfoWindow({
                     content: contentString
                 });
@@ -207,7 +200,7 @@ function initMarker(data, centerMarkers) {
                 }
             });
             $("#distance").val(data.distances.min.string +
-                " - " + data.distances.max.string);
+                    " - " + data.distances.max.string);
         });
     }
     $('.results').removeClass('hide');
@@ -280,6 +273,18 @@ function calculateRoute(departLat, departLng, arriveLat, arriveLng) {
 function resetRoutes() {
     directionDisplay.setMap(null);
     $('#itineraireTxt').parent().parent().addClass('hide');
+}
+
+//Affichage des distance et lien pour voir l'itinéraire
+function showDistance(data) {
+    for (var k in data.distances) {
+        if (data.distances[k].entreprise.main === true) {
+            contentString += "<p>Distance depuis votre entreprise mère <strong>" + data.distances[k].entreprise.nom + "</strong> : " + data.distances[k].text + " Durée du trajet : " + data.distances[k].duration.text + "</p>";
+        } else {
+            contentString += "<p>Distance depuis votre site de production <strong> " + data.distances[k].entreprise.nom + "</strong> : " + data.distances[k].text + " Durée du trajet : " + data.distances[k].duration.text + "<p>";
+        }
+        contentString += "<p><a onclick='calculateRoute(" + data.distances[k].entreprise.latitude + "," + data.distances[k].entreprise.longitude + "," + data.user.latitude + "," + data.user.longitude + ")'>Obtenir l'itinéraire</a></p>";
+    }
 }
 
 $(document).ready(function () {
