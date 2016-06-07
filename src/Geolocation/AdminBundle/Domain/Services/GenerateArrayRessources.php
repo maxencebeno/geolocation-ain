@@ -86,7 +86,8 @@ class GenerateArrayRessources
                             array('besoin' => $besoin,
                                 'proposition' => $proposition,
                                 'user' => $user,
-                                'adresse' => $adresse
+                                'adresse' => $adresse,
+                                'display' => true
                             );
                     }
                     $sites = $em->getRepository('GeolocationAdminBundle:Site')
@@ -131,7 +132,8 @@ class GenerateArrayRessources
                     array('besoin' => $besoin,
                         'proposition' => $proposition,
                         'user' => $user,
-                        'adresse' => $adresse
+                        'adresse' => $adresse,
+                        'display' => true
                     );
                 $sites = $em->getRepository('GeolocationAdminBundle:Site')
                     ->findBy([

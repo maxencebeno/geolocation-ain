@@ -66,7 +66,7 @@ function initMarker(data, centerMarkers) {
     }
     // On affiche les maisons meres
     for (i in data) {
-        if (i !== "ville" && i !== "connectedUser" && i !== "distances") {
+        if (i !== "ville" && i !== "connectedUser" && i !== "distances" && data[i].display === true) {
             latlng.push(new google.maps.LatLng(data[i].user.latitude, data[i].user.longitude));
             markers.push(new google.maps.Marker({
                 position: latlng[index],

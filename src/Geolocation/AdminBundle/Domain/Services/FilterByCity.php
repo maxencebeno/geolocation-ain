@@ -28,8 +28,8 @@ class FilterByCity
     /**
      * On enlève les cases du tableau ne correspondant pas à la ville cherchée
      *
-     * @param array           $datas      Le tableau contenant toutes les entreprises
-     * @param array           $request    The POST parameters
+     * @param array $datas Le tableau contenant toutes les entreprises
+     * @param array $request The POST parameters
      */
     public function filterByCity($datas = [], Request $request)
     {
@@ -38,14 +38,13 @@ class FilterByCity
             $user = $data['user'];
 
             if (strtolower(ApiLib::slugifyCity($user->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
-                if (isset($data['sites'])) {
-                    foreach ($data['sites'] as $sites) {
-                        foreach ($sites as $site) {
-                            if ($site !== null && get_class($site) === "Site") {
-                                if (strtolower(ApiLib::slugifyCity($site->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
-                                    unset($datas[$key]);
-                                }
-                            }
+                $datas[$key]['display'] = false;
+            }
+            if (isset($data['sites'])) {
+                foreach ($data['sites'] as $keySite => $site) {
+                    if ($site !== null) {
+                        if (strtolower(ApiLib::slugifyCity($site['adresse']->getVille())) !== strtolower(ApiLib::slugifyCity($request->request->get('city')))) {
+                            unset($datas[$key]['sites'][$keySite]);
                         }
                     }
                 }

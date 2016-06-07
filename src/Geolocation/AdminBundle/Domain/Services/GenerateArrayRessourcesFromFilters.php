@@ -99,7 +99,8 @@ class GenerateArrayRessourcesFromFilters
                         'proposition' => null,
                         'user' => null,
                         'adresse' => null,
-                        'sites' => null
+                        'sites' => null,
+                        'display' => true
                     ];
                 }
                 if (!isset($datas[$ressource->getUser()->getId()]['sites'])) {
@@ -146,7 +147,8 @@ class GenerateArrayRessourcesFromFilters
                                             'proposition' => null,
                                             'user' => null,
                                             'adresse' => null,
-                                            'sites' => null
+                                            'sites' => null,
+                                            'display' => true
                                         ];
                                     }
                                     if (!isset($datas[$ressourceSite->getUser()->getId()]['sites'])) {
