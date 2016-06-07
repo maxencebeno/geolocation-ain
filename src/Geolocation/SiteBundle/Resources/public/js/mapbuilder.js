@@ -95,7 +95,7 @@ function initMarker(data, centerMarkers) {
             }
 
             if (data[i].proposition !== null) {
-                contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.souscategorie.libelle + '<sub> NAF : '+data[i].proposition.cpf.nom+'</sub></p>';
+                contentString += '<h5>Proposition</h5><p>' + data[i].proposition.cpf.souscategorie.libelle + '<sub> NAF / APE : '+data[i].proposition.cpf.nom+'</sub></p>';
             }
 
             if (data[i].proposition === null && data[i].besoin === null) {
@@ -145,17 +145,17 @@ function initMarker(data, centerMarkers) {
 
                 contentString =
                         '<div id="content">' +
-                        '<h3>' + data[i].sites[j].adresse.nom + '</h3>' +
+                        '<div class="col-sm-12"><a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '"><h3>' + data[i].sites[j].adresse.nom + '</h3></a><a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '">Plus d\'informations</a></div>' +
                         data[i].sites[j].adresse.adresse + '<br>' +
                         data[i].sites[j].adresse.codePostal + ' ' + data[i].sites[j].adresse.ville + '<br>' +
                         '<h4>Ressources</h4>';
 
                 if (data[i].sites[j].besoin !== null) {
-                    contentString += '<h5>Besoin</h5><p>' + data[i].sites[j].besoin.cpf.souscategorie.libelle + '</p>';
+                    contentString += '<h5>Besoin</h5><p>' + data[i].sites[j].besoin.cpf.souscategorie.libelle + '<sub> NAF / APE : '+data[i].sites[j].besoin.cpf.nom+'</sub></p>';
                 }
 
                 if (data[i].sites[j].proposition !== null) {
-                    contentString += '<h5>Proposition</h5><p>' + data[i].sites[j].proposition.cpf.souscategorie.libelle + '</p>';
+                    contentString += '<h5>Proposition</h5><p>' + data[i].sites[j].proposition.cpf.souscategorie.libelle + '<sub> NAF / APE : '+data[i].sites[j].proposition.cpf.nom+'</sub></p>';
                 }
 
                 if (data[i].sites[j].proposition === null && data[i].sites[j].besoin === null) {
@@ -167,8 +167,8 @@ function initMarker(data, centerMarkers) {
                 }
 
 
-                contentString += '<a href = "' + baseUrl + 'details/' + data[i].sites[j].adresse.id + '">Plus d\'informations<a>' +
-                        '</div>';
+                contentString += '</div>';
+
                 infowindow[index] = new google.maps.InfoWindow({
                     content: contentString
                 });
@@ -278,12 +278,14 @@ function resetRoutes() {
 //Affichage des distance et lien pour voir l'itinéraire
 function showDistance(data) {
     for (var k in data.distances) {
-        if (data.distances[k].entreprise.main === true) {
-            contentString += "<p>Distance depuis votre entreprise mère <strong>" + data.distances[k].entreprise.nom + "</strong> : " + data.distances[k].text + " Durée du trajet : " + data.distances[k].duration.text + "</p>";
-        } else {
-            contentString += "<p>Distance depuis votre site de production <strong> " + data.distances[k].entreprise.nom + "</strong> : " + data.distances[k].text + " Durée du trajet : " + data.distances[k].duration.text + "<p>";
+        if (data.distances[k].entrepriseDestination.id === data.adresse.id) {
+            if (data.distances[k].entrepriseDepart.main === true) {
+                contentString += "<p>Distance depuis votre entreprise mère <strong>" + data.distances[k].entrepriseDepart.nom + "</strong> : " + data.distances[k].text + " Durée du trajet : " + data.distances[k].duration.text + "</p>";
+            } else {
+                contentString += "<p>Distance depuis votre site de production <strong> " + data.distances[k].entrepriseDepart.nom + "</strong> : " + data.distances[k].text + " Durée du trajet : " + data.distances[k].duration.text + "<p>";
+            }
+            contentString += "<p><a onclick='calculateRoute(" + data.distances[k].entrepriseDepart.latitude + "," + data.distances[k].entrepriseDepart.longitude + "," + data.user.latitude + "," + data.user.longitude + ")'>Obtenir l'itinéraire</a></p>";
         }
-        contentString += "<p><a onclick='calculateRoute(" + data.distances[k].entreprise.latitude + "," + data.distances[k].entreprise.longitude + "," + data.user.latitude + "," + data.user.longitude + ")'>Obtenir l'itinéraire</a></p>";
     }
 }
 
