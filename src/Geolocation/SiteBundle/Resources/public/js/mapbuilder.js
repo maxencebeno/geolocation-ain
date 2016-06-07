@@ -162,8 +162,17 @@ function initMarker(data, centerMarkers) {
                     contentString += '<p>Pas de ressources pour le moment</p>';
                 }
 
-                if (data[i].sites[j].distances !== null) {
-                    showDistance(data[i]);
+                if (data[i].distances !== null) {
+                    for (var k in data[i].distances) {
+                        if (data[i].distances[k].entrepriseDestination.id === data[i].sites[j].adresse.id) {
+                            if (data[i].distances[k].entrepriseDepart.main === true) {
+                                contentString += "<p>Distance depuis votre entreprise mère <strong>" + data[i].distances[k].entrepriseDepart.nom + "</strong> : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "</p>";
+                            } else {
+                                contentString += "<p>Distance depuis votre site de production <strong> " + data[i].distances[k].entrepriseDepart.nom + "</strong> : " + data[i].distances[k].text + " Durée du trajet : " + data[i].distances[k].duration.text + "<p>";
+                            }
+                            contentString += "<p><a onclick='calculateRoute(" + data[i].distances[k].entrepriseDepart.latitude + "," + data[i].distances[k].entrepriseDepart.longitude + "," + data[i].adresse.latitude + "," + data[i].sites[j].adresse.longitude + ")'>Obtenir l'itinéraire</a></p>";
+                        }
+                    }
                 }
 
 
