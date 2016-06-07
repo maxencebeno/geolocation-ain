@@ -302,37 +302,37 @@ th.quantite{
 
 @media screen and (max-width: 767px){
      /*Gestion Tableau*/
-    table, tbody {
+    .reponsiveTable table, .reponsiveTable tbody {
         display: block; 
         width: 100%;
     }
 
-    tr:first-child{
+    .reponsiveTable tr:first-child{
         display: none;
     }
 
-    tr {
+    .reponsiveTable tr {
         display: table;
         width: 100%;
     }
 
-    td, th { 
+    .reponsiveTable td, .reponsiveTable th { 
         display: table-row;
         height:50px;
     }
     
-    td:after{
+    .reponsiveTable td:after{
         content:" ";
     }
 
-    td:before {
+    .reponsiveTable td:before {
         content: attr(data-headers);
         display: table-cell;
         width: 40%;
         font-weight: bold;
     }
 
-    tr,td{
+    .reponsiveTable tr, .reponsiveTable td{
        text-align:center;
     }
     
@@ -346,4 +346,17 @@ th.quantite{
 #accordion a{
     padding:10px 15px;
     display: block;
+}
+
+
+#itineraireTxt table{
+    margin:auto;
+}
+
+#itineraireTxt table tr:nth-child(2n+1){
+    background-color:#d2e7f7;
+}
+
+#itineraireTxt .adp-placemark{
+    margin:10px;
 }
