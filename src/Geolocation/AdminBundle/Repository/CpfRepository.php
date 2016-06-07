@@ -15,6 +15,7 @@ class CpfRepository extends EntityRepository
 
     public function findByCpf(array $params = []) {
         $qb = $this->createQueryBuilder('c')
+            ->select('c.id')
             ->where('c.section = :section');
         if ($params['groupe'] !== "-1") {
             $qb->andWhere('c.groupe = :groupe');

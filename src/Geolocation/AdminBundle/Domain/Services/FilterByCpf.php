@@ -21,8 +21,8 @@ class FilterByCpf
     /**
      * On enlève les cases du tableau ne correspondant pas au cpf recherché
      *
-     * @param array           $datas      Le tableau contenant toutes les entreprises
-     * @param array           $request    The POST parameters
+     * @param array $datas Le tableau contenant toutes les entreprises
+     * @param array $request The POST parameters
      */
     public function filterByCpf(array $datas = [], Request $request)
     {
@@ -33,24 +33,25 @@ class FilterByCpf
                 'division' => $request->request->get('division'),
                 'classe' => $request->request->get('classe')
             ]);
+        $cpfExist = [];
+        foreach ($cpf as $value) {
+            $cpfExist[] = $value['id'];
+        }
 
         foreach ($datas as $idUser => $data) {
             $removeUser = true;
             $continue = true;
-            /** @var Cpf $item */
-            foreach ($cpf as $item) {
-                if ($continue === true) {
-                    if ($data['besoin'] !== null && $continue === true) {
-                        if ($item->getId() === $data['besoin']->getCpf()->getId()) {
-                            $removeUser = false;
-                            $continue = false;
-                        }
+            if ($continue === true) {
+                if ($data['besoin'] !== null) {
+                    if (in_array($data['besoin']->getCpf()->getId(), $cpfExist)) {
+                        $removeUser = false;
+                        $continue = false;
                     }
-                    if ($data['proposition'] !== null && $continue === true) {
-                        if ($item->getId() === $data['proposition']->getCpf()->getId()) {
-                            $removeUser = false;
-                            $continue = false;
-                        }
+                }
+                if ($data['proposition'] !== null) {
+                    if (in_array($data['proposition']->getCpf()->getId(), $cpfExist)) {
+                        $removeUser = false;
+                        $continue = false;
                     }
                 }
             }
@@ -58,26 +59,22 @@ class FilterByCpf
             if (isset($data['sites'])) {
                 foreach ($data['sites'] as $key => $site) {
                     $removeSite = true;
-                    $continue = true;
-                    /** @var Cpf $item */
-                    foreach ($cpf as $item) {
-                        if ($continue === true) {
-                            if ($site['besoin'] !== null && $continue === true) {
-                                if ($item->getId() === $site['besoin']->getCpf()->getId()) {
-                                    $removeSite = false;
-                                    $continue = false;
-                                }
-                            }
-                            if ($site['proposition'] !== null && $continue === true) {
-                                if ($item->getId() === $site['proposition']->getCpf()->getId()) {
-                                    $removeSite = false;
-                                    $continue = false;
-                                }
-                            }
+                    if ($site['besoin'] !== null) {
+                        if (in_array($site['besoin']->getCpf()->getId(), $cpfExist)) {
+                            $removeSite = false;
+                            $removeUser = false;
+                            $datas[$idUser]['display'] = false;
                         }
-                        if ($removeSite === true) {
-                            unset($datas[$idUser]['sites'][$key]);
+                    }
+                    if ($site['proposition'] !== null) {
+                        if (in_array($site['proposition']->getCpf()->getId(), $cpfExist)) {
+                            $removeSite = false;
+                            $removeUser = false;
+                            $datas[$idUser]['display'] = false;
                         }
+                    }
+                    if ($removeSite === true) {
+                        unset($datas[$idUser]['sites'][$key]);
                     }
                 }
             }

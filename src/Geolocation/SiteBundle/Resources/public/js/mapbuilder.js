@@ -198,7 +198,7 @@ function initMarker(data, centerMarkers) {
     if (typeof data.connectedUser !== 'undefined' && markers.length === 0) {
         //centerMap(data.connectedUser.latitude, data.connectedUser.longitude);
         /*Gestion du slider range pour le filtre de distance*/
-        $(function () {
+        /*$(function () {
             $("#slider-range").slider({
                 range: true,
                 min: data.distances.min.value,
@@ -210,7 +210,7 @@ function initMarker(data, centerMarkers) {
             });
             $("#distance").val(data.distances.min.string +
                     " - " + data.distances.max.string);
-        });
+        });*/
     }
     $('.results').removeClass('hide');
     if (markers.length > 0) {

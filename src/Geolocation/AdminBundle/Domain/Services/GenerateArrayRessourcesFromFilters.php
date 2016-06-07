@@ -185,12 +185,13 @@ class GenerateArrayRessourcesFromFilters
          * pour calculer les distances (son entreprise mère et ses sites de production
         */
 
-        $user = $this->tokenStorage->getToken()->getUser();
+        $auth_checker = $this->security;
+        if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            $user = $this->tokenStorage->getToken()->getUser();
 
-        if ($auth_checker->isGranted("IS_AUTHENTICATED_REMEMBERED") || $auth_checker->isGranted("IS_AUTHENTICATED_FULLY")) {
             $ressourceUser = null;
 
-            foreach ($datas as $idUser => $ressource) {
+            foreach ($ressources as $idUser => $ressource) {
                 if ($idUser === $user->getId()) {
                     $ressourceUser = $ressource;
                 }
@@ -199,35 +200,66 @@ class GenerateArrayRessourcesFromFilters
             if ($ressourceUser !== null) {
                 /** @var Site $entrepriseMereUser */
                 $entrepriseMereUser = $ressourceUser['adresse'];
-                $siteDeProductionUser = $ressourceUser['sites'];
+                if (isset($ressourceUser['sites'])) {
+                    $siteDeProductionUser = $ressourceUser['sites'];
 
-                foreach ($datas as $idUser => $ressource) {
-                    if ($idUser !== $user->getId()) {
-                        $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
-                        if (isset($distance['value'])) {
-                            $datas[$idUser]['distances'][] = [
-                                'value' => $distance['value'],
-                                'text' => $distance['text'],
-                                'duration' => $distance['duration'],
-                                'entreprise' => $entrepriseMereUser
-                            ];
-                        }
-                        if (isset($ressource['sites'])) {
-                            foreach ($ressource['sites'] as $site) {
-                                /** @var Site $destination */
-                                $destination = $site['adresse'];
-                                foreach ($siteDeProductionUser as $value) {
-                                    /** @var Site $depart */
-                                    $depart = $value['adresse'];
-                                    if ($depart->getUser()->getId() !== $destination->getUser()->getId()) {
-                                        $distance = $this->distanceService->getDistanceFromPosition($depart, $destination);
-                                        if (isset($distance['value'])) {
-                                            $datas[$idUser]['distances'][] = [
-                                                'value' => $distance['value'],
-                                                'text' => $distance['text'],
-                                                'duration' => $distance['duration'],
-                                                'entrepriseDepart' => $depart
-                                            ];
+                    foreach ($ressources as $idUser => $ressource) {
+                        if ($idUser !== $user->getId()) {
+                            $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
+                            if (isset($distance['value'])) {
+                                $ressources[$idUser]['distances'][] = [
+                                    'value' => $distance['value'],
+                                    'text' => $distance['text'],
+                                    'duration' => $distance['duration'],
+                                    'entrepriseDepart' => $entrepriseMereUser,
+                                    'entrepriseDestination' => $ressource['adresse']
+                                ];
+                            }
+                            $entrepriseMereOther = $ressource['adresse'];
+                            if (isset($ressource['sites'])) {
+                                foreach ($ressource['sites'] as $site) {
+                                    /** @var Site $destination */
+                                    $destination = $site['adresse'];
+                                    foreach ($siteDeProductionUser as $value) {
+                                        /** @var Site $depart */
+                                        $depart = $value['adresse'];
+                                        if ($depart->getUser()->getId() !== $destination->getUser()->getId()) {
+                                            $distanceFromSite = $this->distanceService->getDistanceFromPosition($depart, $destination);
+                                            if (isset($distanceFromSite['value'])) {
+                                                $ressources[$idUser]['distances'][] = [
+                                                    'value' => $distanceFromSite['value'],
+                                                    'text' => $distanceFromSite['text'],
+                                                    'duration' => $distanceFromSite['duration'],
+                                                    'entrepriseDepart' => $depart,
+                                                    'entrepriseDestination' => $destination
+                                                ];
+                                            }
+                                        }
+                                        if ($entrepriseMereUser->getUser()->getId() !== $destination->getUser()->getId()) {
+
+                                            $distanceFromBase = $this->distanceService->getDistanceFromPosition($destination, $entrepriseMereUser);
+                                            if (isset($distanceFromBase['value'])) {
+                                                $ressources[$idUser]['distances'][] = [
+                                                    'value' => $distanceFromBase['value'],
+                                                    'text' => $distanceFromBase['text'],
+                                                    'duration' => $distanceFromBase['duration'],
+                                                    'entrepriseDepart' => $entrepriseMereUser,
+                                                    'entrepriseDestination' => $destination
+                                                ];
+                                            }
+                                        }
+
+                                        if ($entrepriseMereOther->getUser()->getId() !== $depart->getUser()->getId()) {
+                                            $distanceFromBaseToSite = $this->distanceService->getDistanceFromPosition($depart, $entrepriseMereOther);
+                                            if (isset($distanceFromBaseToSite['value'])) {
+                                                $ressources[$idUser]['distances'][] = [
+                                                    'value' => $distanceFromBaseToSite['value'],
+                                                    'text' => $distanceFromBaseToSite['text'],
+                                                    'duration' => $distanceFromBaseToSite['duration'],
+                                                    'entrepriseDepart' => $depart,
+                                                    'entrepriseDestination' => $entrepriseMereOther
+                                                ];
+                                            }
                                         }
                                     }
                                 }
