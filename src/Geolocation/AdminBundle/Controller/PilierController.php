@@ -186,6 +186,9 @@ class PilierController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('GeolocationAdminBundle:Pilier')->find($id);
+        
+        $em = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Pilier');
+    	$piliers = $em->findAll();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Pilier entity.');
@@ -198,6 +201,7 @@ class PilierController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'piliers' => $piliers 
         ));
     }
 
