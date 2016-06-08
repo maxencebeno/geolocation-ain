@@ -291,6 +291,8 @@ class UserController extends Controller
 
     public function toggleActivationAction(Request $request)
     {
+        $fullUrl = $this->generateUrl('site_homepage', $params = array(), true);
+        
         // On récupère l'utilisateur
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('GeolocationAdminBundle:User')
@@ -312,7 +314,7 @@ class UserController extends Controller
                 ->setBody(
                     $this->renderView(
                         '@GeolocationAdmin/Email/activation_account.html.twig',
-                        array('user' => $user)
+                        array('user' => $user, 'url' => $fullUrl)
                     ),
                     'text/html'
                 )
