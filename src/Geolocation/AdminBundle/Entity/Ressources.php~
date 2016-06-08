@@ -256,4 +256,18 @@ class Ressources
     {
         return $this->quantite;
     }
+
+    /**
+     * Set site
+     *
+     * @param \Geolocation\AdminBundle\Entity\Site $site
+     *
+     * @return Ressources
+     */
+    public function setSite(\Geolocation\AdminBundle\Entity\Site $site = null)
+    {
+        $this->site = $site;
+
+        return $this;
+    }
 }

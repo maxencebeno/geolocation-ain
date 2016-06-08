@@ -137,4 +137,28 @@ class Section
     {
         return $this->getLibelle();
     }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Section
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }

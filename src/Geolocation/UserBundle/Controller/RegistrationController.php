@@ -108,6 +108,8 @@ class RegistrationController extends BaseController
 
                     if ($verifcp === true) {
 
+                        $user->setType($request->attributes->get('type'));
+
                         $data = $datas[0];
                         $latitude = $data->getLatitude();
                         $longitude = $data->getLongitude();
