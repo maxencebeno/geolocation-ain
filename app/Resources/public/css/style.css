@@ -381,3 +381,7 @@ i.visible_tel{
     right: -204px;
     top: 13px;
 }
+
+.credits a {
+    color: white;
+}
