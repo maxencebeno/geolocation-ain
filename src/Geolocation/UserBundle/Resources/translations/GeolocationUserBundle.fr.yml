@@ -45,7 +45,7 @@ profile:
         security_infos: Sécurité
         link_change_password: Changer mon mot de passe
         nonrenseigne: Non renseigné
-        description: Description
+        description: Description de l'activité
         ressources_title : Mes ressources
         link_edit_ressources : Modifier mes ressources
         no_ressources : Aucune ressource choisie

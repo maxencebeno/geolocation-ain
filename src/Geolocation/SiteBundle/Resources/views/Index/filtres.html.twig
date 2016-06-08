@@ -1,10 +1,10 @@
-<div style="overflow-y:scroll" class="filtres col-sm-3" id="zoneRechercheCarte">
+<div style="overflow-y:scroll" class="filtres col-sm-3 reduire" id="zoneRechercheCarte">
     <form id="form-filters" role="form" class="form-horizontal col-sm-10 col-sm-offset-1" action="#" method="post">
         <fieldset>
-            <legend id="filtreRechercheCarte" class="active">Filtres de recherche <span
+            <legend id="filtreRechercheCarte" class="active">Recherche avancées <span
                         class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></legend>
 
-            <div class="form-group">
+            <div class="form-group disabled">
                 <select id="sections" class="section form-control" name="section" data-placeholder="Section"
                         title="Section">
                     <option label="Section" value="-1"></option>
@@ -14,21 +14,21 @@
                 </select>
             </div>
 
-            <div class="form-group hide division-form">
+            <div class="form-group hide division-form disabled">
                 <select id="division" name="division" data-placeholder="Division" title="Division"
                         class="form-control division">
                     <option label="Division" value="-1"></option>
                 </select>
             </div>
 
-            <div class="form-group hide groupe-form">
+            <div class="form-group hide groupe-form disabled">
                 <select id="groupe" name="groupe" data-placeholder="Groupe" title="Groupe"
                         class="form-control groupe">
                     <option label="Groupe" value="-1"></option>
                 </select>
             </div>
 
-            <div class="form-group hide classe-form">
+            <div class="form-group hide classe-form disabled">
                 <select id="classe" name="classe" data-placeholder="Classe" title="Classe"
                         class="form-control classe">
                     <option label="Classe" value="-1"></option>
@@ -36,16 +36,16 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group disabled">
                 <input type="text" id="search-city" class="autocomplete-search-city form-control"
                        data-url="{{ path('api_commun_json_villes') }}" name="city" placeholder="Ville">
             </div>
 
-            <div class="form-group">
+            <div class="form-group disabled">
                 <input type="text" id="search-cp" class="form-control" name="cp" placeholder="Code Postal">
             </div>
 
-            <div class="form-group">
+            <div class="form-group disabled">
                 <input type="text" id="search-entreprise" class="autocomplete-search-entreprise form-control"
                        data-url="{{ path('api_commun_json_entreprise') }}" name="entreprise" placeholder="Entreprise">
             </div>
@@ -58,7 +58,7 @@
                 {#</div>#}
             {#{% endif %}#}
 
-            <input type="submit" class="btn btn-default"/>
+            <input type="submit" class="btn btn-default disabled"/>
         </fieldset>
     </form>
 </div>

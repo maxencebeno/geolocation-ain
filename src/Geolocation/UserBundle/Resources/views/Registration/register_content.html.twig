@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.nom) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.nom, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.nom', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '1', 'required': 'required'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.nom) }}</span>
                             </div>
@@ -42,13 +42,13 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.username) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.username, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.username', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '3'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.username) }}</span>
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.email) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.email, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.email', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '4'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.email) }}</span>
                             </div>
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.adresse) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.adresse, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.adresse', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '5'}}) }}
                                 <span class="text-danger" id="error-surname">{{ form_errors(form.adresse) }}</span>
                             </div>
@@ -66,14 +66,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <span class="form-register-label">{{ form_label(form.codePostal) }} <strong
-                                                    class="text-danger">*</strong></span>
+                                                class="text-danger">*</strong></span>
                                         {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}
                                         <span class="text-danger"
                                               id="error-surname">{{ form_errors(form.codePostal) }}</span>
                                     </div>
                                     <div class="col-sm-6">
                                         <span class="form-register-label">{{ form_label(form.ville) }} <strong
-                                                    class="text-danger">*</strong></span>
+                                                class="text-danger">*</strong></span>
                                         {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '7', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
                                         <span class="text-danger"
                                               id="error-surname">{{ form_errors(form.ville) }}</span>
@@ -86,11 +86,11 @@
                             {% if type == 'entreprise' %}
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.tel) }} <strong
-                                                class="text-danger">*</strong> <i
-                                                class="glyphicon glyphicon-question-sign"
-                                                data-toggle="tooltip"
-                                                data-placement="right"
-                                                title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
+                                            class="text-danger">*</strong> <i
+                                            class="glyphicon glyphicon-question-sign"
+                                            data-toggle="tooltip"
+                                            data-placement="right"
+                                            title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
                                     {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '8'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
 
@@ -113,15 +113,15 @@
                             {% else %}
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.tel) }} <strong
-                                                class="text-danger">*</strong> <i
-                                                class="glyphicon glyphicon-question-sign" data-toggle="tooltip"
-                                                data-placement="right"
-                                                title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
+                                            class="text-danger">*</strong> <i
+                                            class="glyphicon glyphicon-question-sign" data-toggle="tooltip"
+                                            data-placement="right"
+                                            title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i></span>
                                     {{ form_widget(form.tel, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.tel', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '8', 'required': 'required'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
                                 </div>
                                 <div class="col-sm-6">
-                                     <span class="form-edit-label visible_tel">{{ form_label(form.isPublic) }}
+                                    <span class="form-edit-label visible_tel">{{ form_label(form.isPublic) }}
                                         <i class="glyphicon glyphicon-question-sign visible_tel"
                                            data-toggle="tooltip"
                                            data-placement="right"
@@ -136,7 +136,7 @@
                             {% if type == 'entreprise' %}
                                 <div class="col-sm-6">
                                     <span class="form-register-label">{{ form_label(form.siren) }} <strong
-                                                class="text-danger">*</strong></span>
+                                            class="text-danger">*</strong></span>
                                     {{ form_widget(form.siren, { 'attr': {'class': 'register-form-input form-control', 'placeholder': 'form.siren', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '11', 'required': 'required'}}) }}
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.siren) }}</span>
                                 </div>
@@ -177,7 +177,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.plainPassword.first) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '15'}}) }}
                                 <div id="password-solidity">
                                     <div id="register-pass-status-line1" class="register-pass-status-line"></div>
@@ -193,7 +193,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.plainPassword.second) }} <strong
-                                            class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong></span>
                                 {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'register-form-input  form-control', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '16'}}) }}
                                 <span class="text-danger"
                                       id="error-second-password">{{ form_errors(form.plainPassword.second) }}</span>
@@ -206,9 +206,20 @@
                         </div>
 
                         {{ form_end(form) }}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-info">
+                                    <p><i class="glyphicon glyphicon-info-sign"></i> Après avoir validé ce formulaire, votre compte sera en cours de traitement, donc inutilisable.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
+
+
+
         </div>
     </div>
 </div>

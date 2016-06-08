@@ -32,7 +32,7 @@ a:hover{
     top: 0px;
     right: 63px;
     background-color: #374a5d;
-    height: 420px;
+    height: 500px;
     opacity: 0.9;
     font-size:1em;
     overflow: hidden;
@@ -41,7 +41,7 @@ a:hover{
 }
 
 #zoneRechercheCarte.reduire{
-    height : 50px;
+    height : 60px;
     opacity: 1;
 }
 

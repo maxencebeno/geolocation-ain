@@ -3,9 +3,12 @@ var baseUrl = "/app_dev.php/";
 
 /*Afficher cacher les filtres de recherche*/
 $(function() {
+    
     nbClic = 0;
     $("#filtreRechercheCarte").click(function() {
+        
         $(this).siblings().toggleClass("disabled");
+ 
         $("#zoneRechercheCarte").toggleClass("reduire");
         nbClic++;
         if (nbClic % 2 === 0) {
