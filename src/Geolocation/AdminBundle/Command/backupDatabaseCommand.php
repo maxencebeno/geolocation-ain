@@ -31,7 +31,7 @@ class BackupDatabaseCommand extends ContainerAwareCommand {
         set_time_limit(0);
         ini_set('memory_limit', '5120M');
 
-        system("mysqldump -u geoloc -p\"49wPNR495y\" -P 3306 -h 127.0.0.1 --all-databases > backup" . date('Ymd') . ".sql");
+        system("mysql -u geoloc -p\"49wPNR495y\" -P 3306 -h 127.0.0.1 --all-databases > backup" . date('Ymd') . ".sql");
     }
 
 }
