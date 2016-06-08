@@ -12,7 +12,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('enabled', CheckboxType::class, ['label' => 'Compte de l\'entreprise est activé'])
+            ->add('enabled', CheckboxType::class, ['label' => 'Compte de l\'entreprise est activé', 'required' => false])
             ->add('nom')
             ->add('email')
             ->add('adresse')
