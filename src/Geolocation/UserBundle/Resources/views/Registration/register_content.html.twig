@@ -121,12 +121,11 @@
                                     <span class="text-danger" id="error-surname">{{ form_errors(form.tel) }}</span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="form-edit-label">{{ form_label(form.isPublic) }}
-                                        </span>
-                                    <i class="glyphicon glyphicon-question-sign"
-                                       data-toggle="tooltip"
-                                       data-placement="right"
-                                       title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i>
+                                     <span class="form-edit-label visible_tel">{{ form_label(form.isPublic) }}
+                                        <i class="glyphicon glyphicon-question-sign visible_tel"
+                                           data-toggle="tooltip"
+                                           data-placement="right"
+                                           title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i></span>
                                     {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'tabindex': '9','spellcheck': 'false'}}) }}
                                     <span class="form-error" id="error-isPublic">{{ form_errors(form.isPublic) }}</span>
                                 </div>
