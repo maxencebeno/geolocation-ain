@@ -171,7 +171,7 @@ form:
 entreprise:
     no_entreprise: "Pas d'entreprise pour le moment"
     no_pilier: "Aucun pilier"
-    title: "Liste des entreprises partenaires"
+    title: "Liste des inscrits"
     delete_action: "Etes-vous sûr de vouloir supprimer ce site : "
     delete: "Supprimer"
     confirm: "Confirmation"

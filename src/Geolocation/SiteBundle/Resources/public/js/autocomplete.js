@@ -150,6 +150,9 @@ $('#search-code-naf-form').submit(function (e) {
                 initMarker(data);
             }
         });
+    } else {
+        $('#nb_firm_found').text('Aucune entreprise ne correspond à votre recherche');
+        clearMarker();
     }
 
     return false;
@@ -159,6 +162,9 @@ $('#send-form').click(function () {
     var idCpf = $('#search-code-naf-input').val();
     if (idCpf !== '' && idCpf !== null && idCpf !== "-1") {
         $('#search-code-naf-form').submit();
+    } else {
+        $('#nb_firm_found').text('Aucune entreprise ne correspond à votre recherche');
+        clearMarker();
     }
 });
 
