@@ -200,6 +200,7 @@ class UserController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $fullUrl = $this->generateUrl('site_homepage', $params = array(), true);
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('GeolocationAdminBundle:User')->find($id);
@@ -208,11 +209,36 @@ class UserController extends Controller
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
+        if (!$entity->isEnabled()) {
+            $enabled = false;
+        } else {
+            $enabled = true;
+        }
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new UserType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+
+            if ($enabled === false && $entity->isEnabled()) {
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('BIENVENUE SUR GEORIC')
+                    ->setFrom(['georic.ain@gmail.com' => "GEORIC"])
+                    ->setTo($entity->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                            '@GeolocationAdmin/Email/activation_account.html.twig',
+                            array('user' => $user, 'url' => $fullUrl)
+                        ),
+                        'text/html'
+                    )
+                    ->setContentType("text/html");
+
+                // Envoit du mail
+                $this->get('mailer')->send($message);
+            }
+
             $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
@@ -284,7 +310,7 @@ class UserController extends Controller
         $response = new Response();
 
         $response->headers->set('Content-Type', 'application/pdf');
-        
+
         $response->setContent($content);
         return $response;
     }
@@ -292,7 +318,7 @@ class UserController extends Controller
     public function toggleActivationAction(Request $request)
     {
         $fullUrl = $this->generateUrl('site_homepage', $params = array(), true);
-        
+
         // On récupère l'utilisateur
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('GeolocationAdminBundle:User')
@@ -305,7 +331,7 @@ class UserController extends Controller
 
         $em->persist($user);
         $em->flush();
-        
+
         if ($user->isEnabled()) {
             $message = \Swift_Message::newInstance()
                 ->setSubject('BIENVENUE SUR GEORIC')
@@ -318,8 +344,7 @@ class UserController extends Controller
                     ),
                     'text/html'
                 )
-                ->setContentType("text/html")
-            ;
+                ->setContentType("text/html");
 
             // Envoit du mail
             $this->get('mailer')->send($message);
