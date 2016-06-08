@@ -185,8 +185,8 @@ class SiteController extends Controller
         $form->handleRequest($request);
 
         //récupération des ressources
-        $sections = $em->getRepository('GeolocationAdminBundle:Section')
-            ->findAll();
+        /*$sections = $em->getRepository('GeolocationAdminBundle:Section')
+            ->findAll();*/
         $ressource = new Ressources();
 
         $formRessource = $this->createForm(new RessourcesType(), $ressource);
@@ -201,7 +201,7 @@ class SiteController extends Controller
         if ($formRessource->isValid()) {
             $user = $this->getUser();
 
-            $section = $em->getRepository('GeolocationAdminBundle:Section')
+            /*$section = $em->getRepository('GeolocationAdminBundle:Section')
                 ->findOneBy(array(
                     'id' => $request->request->get('section')
                 ));
@@ -216,7 +216,7 @@ class SiteController extends Controller
                     'id' => $request->request->get('groupe')
                 ));
 
-            /* $classe = $em->getRepository('GeolocationAdminBundle:Classe')
+             $classe = $em->getRepository('GeolocationAdminBundle:Classe')
               ->findOneBy(array(
               'id' => $request->request->get('classe')
               ));
@@ -233,9 +233,7 @@ class SiteController extends Controller
 
             $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
                 ->findOneBy(array(
-                    'section' => $section,
-                    'division' => $division,
-                    'groupe' => $groupe
+                    'id' => $request->request->get('codeNaf')
                 ));
 
             /* $cpf = $em->getRepository('GeolocationAdminBundle:Cpf')
@@ -291,7 +289,7 @@ class SiteController extends Controller
                 ),
                 'form1' => $form->createView(),
                 'form' => $formRessource->createView(),
-                'sections' => $sections,
+                //'sections' => $sections,
                 'ressourcesPropo' => $ressourcesProposition,
                 'ressourcesBesoin' => $ressourcesBesoin,
                 'isoAlreadyIn' => $isoAlreadyIn
@@ -320,7 +318,7 @@ class SiteController extends Controller
                     ),
                     'form1' => $form->createView(),
                     'form' => $formRessource->createView(),
-                    'sections' => $sections,
+                    //'sections' => $sections,
                     'ressourcesPropo' => $ressourcesProposition,
                     'ressourcesBesoin' => $ressourcesBesoin,
                     'isoAlreadyIn' => $isoAlreadyIn
@@ -399,7 +397,7 @@ class SiteController extends Controller
                             ),
                             'form1' => $form->createView(),
                             'form' => $formRessource->createView(),
-                            'sections' => $sections,
+                            //'sections' => $sections,
                             'ressourcesPropo' => $ressourcesProposition,
                             'ressourcesBesoin' => $ressourcesBesoin,
                             'isoAlreadyIn' => $isoAlreadyIn
@@ -416,7 +414,7 @@ class SiteController extends Controller
                         ),
                         'form1' => $form->createView(),
                         'form' => $formRessource->createView(),
-                        'sections' => $sections,
+                        //'sections' => $sections,
                         'ressourcesPropo' => $ressourcesProposition,
                         'ressourcesBesoin' => $ressourcesBesoin,
                         'isoAlreadyIn' => $isoAlreadyIn
@@ -432,7 +430,7 @@ class SiteController extends Controller
             ),
             'form1' => $form->createView(),
             'form' => $formRessource->createView(),
-            'sections' => $sections,
+            //'sections' => $sections,
             'ressourcesPropo' => $ressourcesProposition,
             'ressourcesBesoin' => $ressourcesBesoin,
             'isoAlreadyIn' => $isoAlreadyIn

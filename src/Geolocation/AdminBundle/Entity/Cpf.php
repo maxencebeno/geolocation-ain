@@ -246,7 +246,7 @@ class Cpf
 
     public function __toString()
     {
-        return $this->getSection()->getCode() . '.' . $this->getSouscategorie()->getCode() . ' ' . $this->getClasse();
+        return $this->getSection()->getCode() . '.' . $this->getSouscategorie()->getCode() . ' ' . $this->getSouscategorie();
     }
 
     /**
