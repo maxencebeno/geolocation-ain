@@ -264,6 +264,20 @@ class GenerateArrayRessourcesFromFilters
                                     }
                                 }
                             }
+                            foreach ($siteDeProductionUser as $site) {
+                                /** @var Site $depart */
+                                $departSite = $site['adresse'];
+                                $distanceFromSiteToBase = $this->distanceService->getDistanceFromPosition($departSite, $entrepriseMereOther);
+                                if (isset($distanceFromSiteToBase['value'])) {
+                                    $ressources[$idUser]['distances'][] = [
+                                        'value' => $distanceFromSiteToBase['value'],
+                                        'text' => $distanceFromSiteToBase['text'],
+                                        'duration' => $distanceFromSiteToBase['duration'],
+                                        'entrepriseDepart' => $departSite,
+                                        'entrepriseDestination' => $entrepriseMereOther
+                                    ];
+                                }
+                            }
                         }
                     }
                 }
