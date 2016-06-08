@@ -14,6 +14,7 @@ class UserType extends AbstractType
         $builder
             ->add('enabled', CheckboxType::class, ['label' => 'Compte de l\'entreprise est activé'])
             ->add('nom')
+            ->add('email')
             ->add('adresse')
             ->add('codePostal')
             ->add('ville')
