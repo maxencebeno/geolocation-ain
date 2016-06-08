@@ -27,7 +27,8 @@
         "jordillonch/crud-generator": "dev-master",
         "willdurand/geocoder-bundle": "@stable",
         "egeloen/google-map-bundle": "^2.2",
-        "widop/http-adapter-bundle": "^1.2"
+        "widop/http-adapter-bundle": "^1.2",
+        "egeloen/ckeditor-bundle": "^4.0"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "~2.7"

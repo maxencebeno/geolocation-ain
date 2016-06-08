@@ -16,10 +16,13 @@ class IndexController extends Controller {
         $sections = $em->getRepository('GeolocationAdminBundle:Section')
                 ->findByUserExist();
         
+        $pageContent = $em->getRepository('GeolocationAdminBundle:Page')
+            ->findOneBy(['url' => '/']);
+        
         $piliers = $em->getRepository('GeolocationAdminBundle:Pilier')
             ->findAll();
 
-        return $this->render('SiteBundle:Index:index.html.twig', ['sections' => $sections, 'piliers' => $piliers]);
+        return $this->render('SiteBundle:Index:index.html.twig', ['sections' => $sections, 'piliers' => $piliers, 'pageContent' => $pageContent]);
     }
 
     public function getCitiesAction(Request $request) {

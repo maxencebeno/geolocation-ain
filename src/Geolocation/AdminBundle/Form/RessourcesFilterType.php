@@ -23,12 +23,12 @@ class RessourcesFilterType extends AbstractType
             ]])
             ->add('id', 'number', ['required' => false])
             ->add('user', EntityType::class, [
-                'required' => 'false',
+                'required' => false,
                 'class' => 'Geolocation\AdminBundle\Entity\User',
                 'placeholder' => ""
             ])
             ->add('cpf', EntityType::class, [
-                'required' => 'false',
+                'required' => false,
                 'class' => 'Geolocation\AdminBundle\Entity\Cpf',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('c')

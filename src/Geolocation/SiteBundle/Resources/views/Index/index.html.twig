@@ -3,7 +3,7 @@
 {% trans_default_domain 'accueil' %}
 
 {% block title %}
-    {{ 'titles.accueil'|trans({}, 'titles') }}
+    {{ pageContent.title }}
 {% endblock title %}
 
 {% block body %}
@@ -59,7 +59,7 @@
 
     <div class="container">
         <div class="row text-center">
-            <div class="col-sm-12"><h1>Géolocalisation des ressources industrielles et commerciales</h1></div>
+            <div class="col-sm-12"><h1>{{ pageContent.titre }}</h1></div>
         </div>
         <section id="tuileContainer" class="row">
             <article class="col-sm-4">
@@ -76,12 +76,7 @@
             </article>
             <article class="col-sm-8 text-left">
 
-                {{ 'filters.content'|trans|raw }}
-
-                <a href="http://www.ademe.fr/expertises/economie-circulaire">
-                    <img class="img-responsive" src="https://www.ademe.fr/sites/default/files/assets/images/economie_circulaire_schema_ademe.gif" alt="Schéma de l'économie circulaire"/>
-                    <p>Source : ADEME</p>
-                </a>
+                {{ pageContent.content|raw }}
             </article>
 
             <div class="clear"></div>

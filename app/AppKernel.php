@@ -21,6 +21,7 @@ class AppKernel extends Kernel {
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
 
             // Nos bundles
             new Geolocation\SiteBundle\SiteBundle(),
