@@ -53,6 +53,7 @@ function clearMarker() {
 
 //initialiser les marker en fonctions de la requête ajax
 function initMarker(data, centerMarkers) {
+    console.log(data);
     centerMarkers = typeof centerMarkers === 'undefined';
     var i;
     var index = 0;
