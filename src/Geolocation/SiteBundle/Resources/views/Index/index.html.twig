@@ -3,7 +3,7 @@
 {% trans_default_domain 'accueil' %}
 
 {% block title %}
-    {{ pageContent.title }}
+    {{ pageContent.title != null ? pageContent.title : 'Georic' }}
 {% endblock title %}
 
 {% block body %}
@@ -59,7 +59,7 @@
 
     <div class="container">
         <div class="row text-center">
-            <div class="col-sm-12"><h1>{{ pageContent.titre }}</h1></div>
+            <div class="col-sm-12"><h1>{{ pageContent.titre != null ? pageContent.titre : '' }}</h1></div>
         </div>
         <section id="tuileContainer" class="row">
             <article class="col-sm-4">
@@ -76,7 +76,7 @@
             </article>
             <article class="col-sm-8 text-left">
 
-                {{ pageContent.content|raw }}
+                {{ pageContent.content|raw != null ? pageContent.content|raw : '' }}
             </article>
 
             <div class="clear"></div>

@@ -16,16 +16,32 @@ class PageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', ['label' => 'Title de référencement'])
-            ->add('titre', 'text', ['label' => 'Titre de la page'])
-            ->add('description')
+            ->add('title', 'text', [
+                'label' => 'Title de référencement',
+                'attr' => [
+                    'style' => 'width:100%;'
+                ]
+            ])
+            ->add('titre', 'text', [
+                'label' => 'Titre de la page',
+                'attr' => [
+                    'style' => 'width:100%;'
+                ]])
+            ->add('description', 'textarea', [
+                'attr' => [
+                    'style' => 'width:100%;height:50px;'
+                ]
+            ])
             ->add('content', CKEditorType::class, array(
                 'label' => 'Contenu'
             ))
-            ->add('url')
-        ;
+            ->add('url', 'text', [
+                'attr' => [
+                    'style' => 'width:100%;'
+                ]
+            ]);
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
