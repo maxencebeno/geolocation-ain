@@ -1,17 +1,12 @@
-{% extends '::base.html.twig' %}
-
-{% trans_default_domain 'accueil' %}
-
+{% extends "::base.html.twig" %}
 {% block title %}
-    {{ 'titles.accueil'|trans({}, 'titles') }}
-{% endblock title %}
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
 {% block body %}
-    <h1>Bienvenue sur GEORIC</h1>
+    <h1>Bienvenue sur GEORIC {{ user.nom }}</h1>
 
     <p>Nous avons le plaisir de vous informer que votre demande de création de compte vient d'être acceptée</p>
     <p>Profitez de nos services <a href="{{ path('site_homepage') }}">ici</a></p>
     <p>Merci de votre confiance</p>
-
-{% endblock body %}
+{% endblock %}
 

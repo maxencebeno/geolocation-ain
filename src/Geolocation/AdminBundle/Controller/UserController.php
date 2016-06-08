@@ -306,8 +306,8 @@ class UserController extends Controller
         
         if ($user->isEnabled()) {
             $message = \Swift_Message::newInstance()
-                ->setSubject('Nouvelle demande de Contact')
-                ->setFrom('georic.ain@gmail.com')
+                ->setSubject('BIENVENUE SUR GEORIC')
+                ->setFrom(['georic.ain@gmail.com' => "GEORIC"])
                 ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView(
@@ -316,6 +316,7 @@ class UserController extends Controller
                     ),
                     'text/html'
                 )
+                ->setContentType("text/html")
             ;
 
             // Envoit du mail
