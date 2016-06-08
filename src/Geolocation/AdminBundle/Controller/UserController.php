@@ -200,6 +200,7 @@ class UserController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $userManager = $this->get('fos_user.user_manager');
         $fullUrl = $this->generateUrl('site_homepage', $params = array(), true);
         $em = $this->getDoctrine()->getManager();
 
@@ -229,7 +230,7 @@ class UserController extends Controller
                     ->setBody(
                         $this->renderView(
                             '@GeolocationAdmin/Email/activation_account.html.twig',
-                            array('user' => $user, 'url' => $fullUrl)
+                            array('user' => $entity, 'url' => $fullUrl)
                         ),
                         'text/html'
                     )
@@ -238,6 +239,8 @@ class UserController extends Controller
                 // Envoit du mail
                 $this->get('mailer')->send($message);
             }
+            
+            $userManager->updateUser($entity);
 
             $em->persist($entity);
             $em->flush();

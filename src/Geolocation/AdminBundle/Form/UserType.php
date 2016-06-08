@@ -23,6 +23,14 @@ class UserType extends AbstractType
             ->add('siren')
             ->add('kbis')
             ->add('url')
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
+                'required' => false,
+                'options' => array('translation_domain' => 'GeolocationUserBundle'),
+                'first_options' => array('label' => 'form.password'),
+                'second_options' => array('label' => 'form.password_confirmation'),
+                'invalid_message' => 'fos_user.password.mismatch',
+            ))
         ;
     }
 
