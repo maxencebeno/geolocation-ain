@@ -143,10 +143,14 @@ class PilierController extends Controller
     {
         $entity = new Pilier();
         $form   = $this->createForm(new PilierType(), $entity);
+        
+        $em = $this->getDoctrine()->getManager()->getRepository('GeolocationAdminBundle:Pilier');
+    	$piliers = $em->findAll();
 
         return $this->render('GeolocationAdminBundle:Pilier:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'piliers' => $piliers 
         ));
     }
 
