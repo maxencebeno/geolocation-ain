@@ -44,7 +44,8 @@ class RegistrationController extends BaseController
     public function registerAction(Request $request)
     {
         $fullUrl = $this->generateUrl('site_homepage', $params = array(), true);
-        
+        $url = $this->generateUrl('site_homepage', $params = array(), true);
+
         $errors = [];
         $em = $this->getDoctrine()->getManager();
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -185,7 +186,7 @@ class RegistrationController extends BaseController
 
             $this->addFlash('info', 'Merci pour votre inscription, votre demande sera étudiée dans les plus brefs délais');
 
-            
+            $url = $this->generateUrl('site_homepage');
             
             $message = \Swift_Message::newInstance()
                 ->setSubject('Nouvelle inscription')
