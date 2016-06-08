@@ -58,11 +58,21 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <span class="form-edit-label">{{ form_label(form.tel) }} <strong
-                                        class="text-danger">*</strong></span>
+                                        class="text-danger">*</strong>
+                                <i class="glyphicon glyphicon-question-sign"
+                                        data-toggle="tooltip"
+                                        data-placement="right"
+                                        title="Le numéro de téléphone vous est demandé afin de pouvoir avoir un référant de l'économie circulaire. Il reste confidentiel et interne à Géoric"></i>
+                                </span>
                                 {{ form_widget(form.tel, { 'attr': {'class': 'edit-form-site', 'spellcheck': 'false', 'tabindex': '5'}}) }}
                                 <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
 
-                                <span class="form-edit-label">{{ form_label(form.isPublic) }}</span>
+                                <span class="form-edit-label visible_tel">{{ form_label(form.isPublic) }}
+                                 <i class="glyphicon glyphicon-question-sign visible_tel"
+                                       data-toggle="tooltip"
+                                       data-placement="right"
+                                       title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i>
+                                </span>
                                 {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-site big-checkbox', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6'}}) }}<br>
                                 <span class="form-error" id="error-tel">{{ form_errors(form.isPublic) }}</span>
                             </div>

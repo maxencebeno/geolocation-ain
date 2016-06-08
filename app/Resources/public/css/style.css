@@ -371,3 +371,13 @@ th.quantite{
     display: inline-block;
 }
 
+/**/
+span.visible_tel{
+    position: relative;
+}
+
+i.visible_tel{
+    position: absolute;
+    right: -204px;
+    top: 13px;
+}
