@@ -6,6 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h3>{{ 'profile.edit.title'|trans }}</h3></div>
                 <div class="panel-body">
+                    <p><strong class="text-danger">{{ 'profile.required_field'|trans }}</strong><br></p>
                     {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
                     {{ form_start(form) }}
                     {{ form_errors(form) }}
@@ -23,29 +24,29 @@
                     </div>
 
                     <div class="form-group">
-                        <span class="form-edit-label">{{ form_label(form.email) }}<strong
+                        <span class="form-edit-label">{{ form_label(form.email) }} <strong
                                 class="text-danger">*</strong></span>
                         {{ form_widget(form.email, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'tabindex': '3', 'spellcheck': 'false'}}) }}
                         <span class="form-error" id="error-email">{{ form_errors(form.email) }}</span>
                     </div>
 
                     <div class="form-group">
-                        <span class="form-edit-label">{{ form_label(form.adresse) }}<strong
+                        <span class="form-edit-label">{{ form_label(form.adresse) }} <strong
                                 class="text-danger">*</strong></span>
                         {{ form_widget(form.adresse, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'tabindex': '4','spellcheck': 'false'}}) }}
-                        <span class="form-error" id="error-adresse">{{ form_errors(form.adresse) }}</span>
+                        <span class="form-error" id="error-adresse">{{ form_errors(form.adresse) }} </span>
                     </div>
 
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label class="form-register-label">{{ form_label(form.ville) }}<strong
+                                <label class="form-register-label">{{ form_label(form.ville) }} <strong
                                         class="text-danger">*</strong></label>
                                 {{ form_widget(form.ville, { 'attr': {'class': 'register-form-input form-control autocomplete-search-city', 'placeholder': 'form.ville', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '5', 'data-url': path('api_commun_json_villes'), 'name': 'city'}}) }}
                                 <span class="form-error" id="error-ville">{{ form_errors(form.ville) }}</span>
                             </div>
                             <div class="col-sm-6">
-                                <span class="form-edit-label">{{ form_label(form.codePostal) }}<strong
+                                <span class="form-edit-label">{{ form_label(form.codePostal) }} <strong
                                         class="text-danger">*</strong></span>
                                 {{ form_widget(form.codePostal, { 'attr': {'class': 'register-form-input form-control autocomplete-search-cp', 'placeholder': 'form.cp', 'autocomplete': 'off', 'spellcheck': 'false', 'tabindex': '6', 'name': 'cp'}}) }}
                                 <span class="form-error" id="error-codePostal">{{ form_errors(form.codePostal) }}</span>
@@ -64,12 +65,13 @@
                                 <span class="form-error" id="error-tel">{{ form_errors(form.tel) }}</span>
                                 
                                 
-                                <span class="form-edit-label">{{ form_label(form.isPublic) }}  </span>
-                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names big-checkbox', 'autocomplete': 'off', 'tabindex': '7','spellcheck': 'false'}}) }}
-                                <i class="glyphicon glyphicon-question-sign"
+                                <span class="form-edit-label">{{ form_label(form.isPublic) }}  
+                                 <i class="glyphicon glyphicon-question-sign"
                                        data-toggle="tooltip"
                                        data-placement="right"
                                        title="Cocher la case si vous voulez que votre numéro soit visible sur votre fiche de description"></i>
+                                {{ form_widget(form.isPublic, { 'attr': {'class': 'edit-form-names big-checkbox', 'autocomplete': 'off', 'tabindex': '7','spellcheck': 'false'}}) }}
+                                </span>
                                 <span class="form-error" id="error-isPublic">{{ form_errors(form.isPublic) }}</span>
          
                                 
@@ -125,7 +127,8 @@
 
                     <div class="mt20"></div>
                     <div class="form-group">
-                        <span class="form-edit-label">{{ form_label(form.current_password) }}</span>
+                        <span class="form-edit-label">{{ form_label(form.current_password) }} <strong
+                                        class="text-danger">*</strong></span>
                         {{ form_widget(form.current_password, { 'attr': {'class': 'edit-form-names form-control', 'autocomplete': 'off', 'tabindex': '13','spellcheck': 'false'}}) }}
                         <span class="form-error"
                               id="error-current_password">{{ form_errors(form.current_password) }}</span>

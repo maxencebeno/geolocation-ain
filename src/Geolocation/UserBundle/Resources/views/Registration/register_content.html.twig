@@ -18,7 +18,7 @@
                         {% form_theme form 'GeolocationUserBundle:Form:error.html.twig' %}
                         {{ form_start(form) }}
                         {{ form_errors(form) }}
-
+                        <p><strong class="text-danger">{{ 'profile.required_field'|trans }}</strong><br></p>
                         <div class="row">
                             <div class="col-sm-6">
                                 <span class="form-register-label">{{ form_label(form.nom) }} <strong

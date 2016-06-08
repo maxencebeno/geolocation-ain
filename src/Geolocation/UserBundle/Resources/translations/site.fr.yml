@@ -24,6 +24,7 @@ site:
     confirm: Confirmation
     delete_action: Supprimer
     modify: Modifier
+    required_field: "* champs obligatoires"
     
 iso:
     certified: Etes-vous certifié ?

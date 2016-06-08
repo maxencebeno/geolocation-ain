@@ -35,6 +35,7 @@ ressources:
     no: Non
     yes: Oui
     confirm: Confirmation
+    required_field: "* champs obligatoires"
 
 form:
     besoin_label: Besoin

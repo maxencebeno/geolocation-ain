@@ -63,6 +63,7 @@ profile:
         updated: Le profil a été mis à jour
     demand: Demande de suppression de compte
     address_not_found: Votre adresse n'a pas pu être trouvée, merci de réessayer.
+    required_field: "* champs obligatoires"
 
 # Password change
 change_password:

@@ -11,9 +11,11 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h3>{{ 'ressources.edit.add_ressource_title'|trans }}</h3></div>
         <div class="panel-body">
+            <p><strong class="text-danger">{{ 'ressources.required_field'|trans }}</strong><br></p>
             
             <div class="form-group">
-                <span class="form-edit-label">{{ form_label(form.besoin) }}</span><br>
+                <span class="form-edit-label">{{ form_label(form.besoin) }} <strong
+                                class="text-danger">*</strong></span><br>
                 {{ form_widget(form.besoin, { 'attr': {'class': 'edit-form-names', 'autocomplete': 'off', 'spellcheck': 'false'}}) }}
                 <span class="form-error" id="error-besoin">{{ form_errors(form.besoin) }}</span>
             </div>
