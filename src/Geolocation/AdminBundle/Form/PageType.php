@@ -20,9 +20,6 @@ class PageType extends AbstractType
             ->add('titre', 'text', ['label' => 'Titre de la page'])
             ->add('description')
             ->add('content', CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '#ffffff',
-                ),
                 'label' => 'Contenu'
             ))
             ->add('url')
