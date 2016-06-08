@@ -57,13 +57,11 @@
                     <th>Id</th>
                     <th>Nom</th>
                     <th>Nom d'utilisateur</th>
-                    <th>Adresse</th>
-                    <th>Code postal</th>
+                    <th>Email</th>
                     <th>Ville</th>
                     <th>Téléphone</th>
                     <th>Siren</th>
                     <th>Kbis</th>
-                    <th>Url</th>
                     <th>Etat</th>
                     <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
                 </tr>
@@ -79,14 +77,12 @@
                         {% else %}
                             <td>{{ entity.username }}</td>
                         {% endif %}
-                        <td>{{ entity.adresse }}</td>
-                        <td>{{ entity.codePostal }}</td>
+                        <td><a href="mailto:{{ entity.email }}">{{ entity.email }}</a></td>
                         <td>{{ entity.ville }}</td>
                         <td>{{ entity.tel }}</td>
                         <td>{{ entity.siren }}</td>
                         <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}"
                                traget="_blank">{{ entity.kbis }}</a></td>
-                        <td>{{ entity.url }}</td>
                         {% if entity.enabled == '1' %}
                             <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i
                                             class="etat text-success fa fa-power-off"></i></a></td>

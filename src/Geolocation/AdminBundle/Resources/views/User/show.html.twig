@@ -19,7 +19,7 @@
             <label class="control-label">Adresse</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.adresse }}</span>            </div>
         </div>        <div class="control-group">
-            <label class="control-label">Codepostal</label>
+            <label class="control-label">Code postal</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.codePostal }}</span>            </div>
         </div>        <div class="control-group">
             <label class="control-label">Ville</label>
@@ -28,14 +28,14 @@
             <label class="control-label">Tel</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tel }}</span>            </div>
         </div>        <div class="control-group">
-            <label class="control-label">Datecreation</label>
-            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.dateCreation|date('Y-m-d H:i:s') }}</span>            </div>
+            <label class="control-label">Date de création du compte</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.dateCreation|date('d/m/Y H:i:s') }}</span>            </div>
         </div>        <div class="control-group">
-            <label class="control-label">Datecreationentreprise</label>
-            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.dateCreationEntreprise|date('Y-m-d H:i:s') }}</span>            </div>
+            <label class="control-label">Date de création de l'entreprise</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.dateCreationEntreprise|date('d/m/Y H:i:s') }}</span>            </div>
         </div>        <div class="control-group">
-            <label class="control-label">Datemodification</label>
-            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.dateModification|date('Y-m-d H:i:s') }}</span>            </div>
+            <label class="control-label">Date de dernière modification</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.dateModification|date('d/m/Y H:i:s') }}</span>            </div>
         </div>        <div class="control-group">
             <label class="control-label">Siren</label>
             <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.siren }}</span>            </div>
