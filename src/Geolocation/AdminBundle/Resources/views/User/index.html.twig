@@ -68,37 +68,39 @@
                 </thead>
                 <tbody>
                 {% for entity in entities %}
-                    <tr>
-                        <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                        <td>{{ entity.nom }}</td>
-                        {% if is_granted('ROLE_ALLOWED_TO_SWITCH') %}
-                            <td><a href="{{ path('site_homepage', {'_switch_user': entity.username}) }}">Changer
-                                    en {{ entity.username }}</a></td>
-                        {% else %}
-                            <td>{{ entity.username }}</td>
-                        {% endif %}
-                        <td><a href="mailto:{{ entity.email }}">{{ entity.email }}</a></td>
-                        <td>{{ entity.ville }}</td>
-                        <td>{{ entity.tel }}</td>
-                        <td>{{ entity.siren }}</td>
-                        <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}"
-                               traget="_blank">{{ entity.kbis }}</a></td>
-                        {% if entity.enabled == '1' %}
-                            <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i
-                                            class="etat text-success fa fa-power-off"></i></a></td>
-                        {% else %}
-                            <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i
-                                            class="etat text-error fa fa-power-off"></i></a></td>
-                        {% endif %}
-                        <td>
-                            <a class="btn btn-mini" href="{{ path('user_show', { 'id': entity.id }) }}">
-                                {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-                            </a>
-                            <a class="btn btn-mini" href="{{ path('user_edit', { 'id': entity.id }) }}">
-                                {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-                            </a>
-                        </td>
-                    </tr>
+                    {% if entity.id != app.user.id %}
+                        <tr>
+                            <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.nom }}</td>
+                            {% if is_granted('ROLE_ALLOWED_TO_SWITCH') %}
+                                <td><a href="{{ path('site_homepage', {'_switch_user': entity.username}) }}">Changer
+                                        en {{ entity.username }}</a></td>
+                            {% else %}
+                                <td>{{ entity.username }}</td>
+                            {% endif %}
+                            <td><a href="mailto:{{ entity.email }}">{{ entity.email }}</a></td>
+                            <td>{{ entity.ville }}</td>
+                            <td>{{ entity.tel }}</td>
+                            <td>{{ entity.siren }}</td>
+                            <td><a href="{{ path('user_download_kbis', {'id': entity.id}) }}"
+                                   traget="_blank">{{ entity.kbis }}</a></td>
+                            {% if entity.enabled == '1' %}
+                                <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i
+                                                class="etat text-success fa fa-power-off"></i></a></td>
+                            {% else %}
+                                <td><a href="{{ path('toggle_user_activation', {'id': entity.id}) }}"><i
+                                                class="etat text-error fa fa-power-off"></i></a></td>
+                            {% endif %}
+                            <td>
+                                <a class="btn btn-mini" href="{{ path('user_show', { 'id': entity.id }) }}">
+                                    {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                                </a>
+                                <a class="btn btn-mini" href="{{ path('user_edit', { 'id': entity.id }) }}">
+                                    {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
