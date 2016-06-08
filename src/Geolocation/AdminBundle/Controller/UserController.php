@@ -303,6 +303,24 @@ class UserController extends Controller
 
         $em->persist($user);
         $em->flush();
+        
+        if ($user->isEnabled()) {
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Nouvelle demande de Contact')
+                ->setFrom('georic.ain@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        '@GeolocationAdmin/Email/activation_account.html.twig',
+                        array('user' => $user)
+                    ),
+                    'text/html'
+                )
+            ;
+
+            // Envoit du mail
+            $this->get('mailer')->send($message);
+        }
 
         $this->addFlash(
             'notice',
