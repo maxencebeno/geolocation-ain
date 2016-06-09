@@ -7,6 +7,7 @@
 {% block page %}
 
     <h1>{{ 'views.edit.edit'|trans({'%entity%': 'Entreprise'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    <a target="_blank" href="https://www.sirene.fr/sirene/public/accueil">Vérifier le code SIREN</a>
     <div class="well">
         <form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
             <input type="hidden" name="_method" value="PUT" />
