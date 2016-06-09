@@ -6,66 +6,77 @@
 
 {% block page %}
 
-            <h1>Aide sur l'espace d'administration</h1>
+    <h1>Aide sur l'espace d'administration</h1>
 
 
-            <div class="accordion" id="accordion2">
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                            Comment activer une entreprise ?
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="accordion-body collapse in">
-                        <div class="accordion-inner">
-                            <p>Il suffit d'aller sur la page listant les entreprises en cliquant sur le lien "Entreprise" dans le menu.<br>
-                            Si l'entreprise est valide après vérification de son SIREN ou Kbis, vous pouvez cliquer sur le symbole, dans la colonne état.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                            Une information d'une entreprise ou d'un site n'est pas conforme, comment puis-je la modifier ?
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <p>Rendez-vous sur les pages de liste d'entreprise ou de site de production puis cliquez sur le bouton "Editer".<br>
-                            Arrivé sur la nouvelle page, modifiez l'information dans le formulaire et validez.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                            <p>Un nouveau pilier a fait son apparition dans l'économie circulaire. Comment  l'ajouter ?</p>
-                        </a>
-                    </div>
-                    <div id="collapseThree" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <p>Cliquez sur le lien "Piliers économie circulaire" dans le menu. Cliquez ensuite sur "Créer un nouveau pilier". Indiquez un nom et la catégorie du pilier, puis validez.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-                            Une nouvelle norme ISO a fait son aparition. Comment l'ajouter ?
-                        </a>
-                    </div>
-                    <div id="collapseFour" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <p>Cliquez sur le lien "Codes ISO" dans le menu. Cliquez ensuite sur "Créer un nouveau ISO". Indiquez un code, puis validez.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    Comment activer une entreprise ?
+                </a>
             </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                    <p>Il suffit d'aller sur la page listant les entreprises en cliquant sur le lien "Entreprise" dans
+                        le menu.<br>
+                        Si l'entreprise est valide après vérification de son SIREN ou Kbis, vous pouvez cliquer sur le
+                        symbole, dans la colonne état.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                    Une information d'une entreprise ou d'un site n'est pas conforme, comment puis-je la modifier ?
+                </a>
+            </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <p>Rendez-vous sur les pages de liste d'entreprise ou de site de production puis cliquez sur le
+                        bouton "Editer".<br>
+                        Arrivé sur la nouvelle page, modifiez l'information dans le formulaire et validez.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                    <p>Un nouveau pilier a fait son apparition dans l'économie circulaire. Comment l'ajouter ?</p>
+                </a>
+            </div>
+            <div id="collapseThree" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <p>Cliquez sur le lien "Piliers économie circulaire" dans le menu. Cliquez ensuite sur "Créer un
+                        nouveau pilier". Indiquez un nom et la catégorie du pilier, puis validez.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                    Une nouvelle norme ISO a fait son aparition. Comment l'ajouter ?
+                </a>
+            </div>
+            <div id="collapseFour" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <p>Cliquez sur le lien "Codes ISO" dans le menu. Cliquez ensuite sur "Créer un nouveau ISO".
+                        Indiquez un code, puis validez.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <p><i class="fa fa-file-pdf-o fa-2" style="font-size: 20px;"></i> <a href="{{ asset('docs/Documentation-georic-admin.pdf') }}" target="_blank">Télécharger la
+                    documentation de l'interface</a></p>
+        </div>
+    </div>
 
 
 
