@@ -184,21 +184,21 @@ class GenerateArrayRessources
             if ($ressourceUser !== null) {
                 /** @var Site $entrepriseMereUser */
                 $entrepriseMereUser = $ressourceUser['adresse'];
-                if (isset($ressourceUser['sites'])) {
-                    $siteDeProductionUser = $ressourceUser['sites'];
 
-                    foreach ($this->ressources as $idUser => $ressource) {
-                        if ($idUser !== $user->getId()) {
-                            $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
-                            if (isset($distance['value'])) {
-                                $this->ressources[$idUser]['distances'][] = [
-                                    'value' => $distance['value'],
-                                    'text' => $distance['text'],
-                                    'duration' => $distance['duration'],
-                                    'entrepriseDepart' => $entrepriseMereUser,
-                                    'entrepriseDestination' => $ressource['adresse']
-                                ];
-                            }
+                foreach ($this->ressources as $idUser => $ressource) {
+                    if ($idUser !== $user->getId()) {
+                        $distance = $this->distanceService->getDistanceFromPosition($entrepriseMereUser, $ressource['adresse']);
+                        if (isset($distance['value'])) {
+                            $this->ressources[$idUser]['distances'][] = [
+                                'value' => $distance['value'],
+                                'text' => $distance['text'],
+                                'duration' => $distance['duration'],
+                                'entrepriseDepart' => $entrepriseMereUser,
+                                'entrepriseDestination' => $ressource['adresse']
+                            ];
+                        }
+                        if (isset($ressourceUser['sites'])) {
+                            $siteDeProductionUser = $ressourceUser['sites'];
                             $entrepriseMereOther = $ressource['adresse'];
                             if (isset($ressource['sites'])) {
                                 foreach ($ressource['sites'] as $site) {
