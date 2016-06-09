@@ -64,6 +64,7 @@
                     <th>{{ 'site.phone'|trans }} Postal</th>
                     <th>{{ 'site.phoneVisible'|trans }}</th>
                     <th>{{ 'site.siret'|trans }}</th>
+                    <th>{{ 'site.mere'|trans }}</th>
                     <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
                 </tr>
                 </thead>
@@ -82,6 +83,7 @@
                             <td>Non</td>
                         {% endif %}
                         <td>{{ entity.siret }}</td>
+                        <td><a href="{{ path('user_show', { 'id': entity.user.id }) }}">{{ entity.user }}</a></td>
                         <td>
                             <a class="btn btn-mini" href="{{ path('site_show', { 'id': entity.id }) }}">
                                 {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}

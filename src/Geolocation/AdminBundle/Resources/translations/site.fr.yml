@@ -18,6 +18,7 @@ site:
     phone: Télépone
     phoneVisible: Téléphone visible par tous
     siret: Siret
+    mere: Entreprise mère
     iso: Code ISO
     no_iso: Pas de certification pour le moment
     production_site: Site de production

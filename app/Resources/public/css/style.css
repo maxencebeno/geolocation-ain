@@ -56,14 +56,14 @@ a:hover{
         top:initial;
         right:initial;
         margin:10px;
-        height: 400px;
+
     }
     #map{
         display: block;
     }
     
     .container-map{
-        margin-bottom:420px !important;
+        margin-bottom:500px;
     }
 }   
 
@@ -152,6 +152,10 @@ footer ul{
 footer li a{
     display: block;
     padding:10px;
+    color:white;
+}
+
+footer a{
     color:white;
 }
 
