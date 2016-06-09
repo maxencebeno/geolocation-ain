@@ -172,7 +172,7 @@ class RessourcesController extends Controller
                     'besoin' => $besoin
                 ));
 
-            if (intval($besoin) != $entity->getBesoin() && $existeRessource !== null) {
+            if (intval($besoin) === $entity->getBesoin() && $existeRessource !== null) {
                 $this->addFlash('danger', $this->get('translator')->trans('ressources.flash.already_exist', [], 'ressources'));
             } else {
                 $entity->setUser($user);
