@@ -157,7 +157,7 @@ form:
     siren: "N° de SIREN"
     url: "Lien du site web"
     dateCreationEntreprise : "Date de création de l'entreprise"
-    description: "Description"
+    description: "Description de l'activité"
     rna: "N° RNA"
     valider: "Mettre à jour"
     pilier: "Pilier de l'économie circulaire"
