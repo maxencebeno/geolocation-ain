@@ -62,7 +62,7 @@
                                     {% else %}
                                         {{ item.isoId.codeIso }}
                                     {% endif %}
-                                    
+
                                     {% if not loop.last %}
                                         ,
                                     {% endif %}
@@ -94,7 +94,12 @@
                                 <article class="col-sm-12 ressource-detail">
                                     <div class="row">
                                         <div class="col-sm-4 text-center">
-                                            <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
+                                            {% if item.cpf.section.image is null %}
+                                                <img src="{{ asset("bundles/site/img/logo-ressources/notfound.png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ item.cpf.section.libelle }}" /><br>
+                                            {% else %}
+                                                <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.image) }}"  data-toggle="tooltip" data-placement="bottom" title="{{ item.cpf.section.libelle }}" /><br>
+                                            {% endif %}
+
                                             {{ item.cpf.souscategorie.libelle }}<br>
                                             {% if item.quantite != null %}
                                                 <strong>{{ 'detail.quantite'|trans }} : </strong>{{ item.quantite }}
@@ -136,7 +141,11 @@
                                 <article class="col-sm-12 ressource-detail">
                                     <div class="row">
                                         <div class="col-sm-4 text-center">
-                                            <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.code~".png") }}" /><br>
+                                            {% if item.cpf.section.image is null %}
+                                                <img src="{{ asset("bundles/site/img/logo-ressources/notfound.png") }}"  data-toggle="tooltip" data-placement="bottom" title="{{ item.cpf.section.libelle }}" /><br>
+                                            {% else %}
+                                                <img src="{{ asset("bundles/site/img/logo-ressources/"~item.cpf.section.image) }}"  data-toggle="tooltip" data-placement="bottom" title="{{ item.cpf.section.libelle }}" /><br>
+                                            {% endif %}
                                             {{ item.cpf.souscategorie.libelle }}<br>
                                             {% if item.quantite != null %}
                                                 <strong>{{ 'detail.quantite'|trans }} : </strong>{{ item.quantite }}
