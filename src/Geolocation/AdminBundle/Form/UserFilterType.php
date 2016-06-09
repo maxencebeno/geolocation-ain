@@ -19,6 +19,7 @@ class UserFilterType extends AbstractType
             ->add('codePostal', 'filter_text')
             ->add('ville', 'filter_text')
             ->add('siren', 'filter_text')
+            ->add('type', 'choice', ['label' => 'Type d\'entreprise', 'choices' => ['' => '', 'association' => 'association', 'entreprise' => 'entreprise']])
         ;
 
         $listener = function(FormEvent $event)

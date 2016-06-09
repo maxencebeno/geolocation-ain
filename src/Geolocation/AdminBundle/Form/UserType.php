@@ -21,7 +21,6 @@ class UserType extends AbstractType
             ->add('tel')
             ->add('isPublic', 'checkbox', ['label' => 'N° de téléphone visible par tous', 'required' => false])
             ->add('siren')
-            ->add('kbis')
             ->add('url')
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
