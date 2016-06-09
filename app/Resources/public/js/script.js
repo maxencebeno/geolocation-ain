@@ -48,19 +48,19 @@ $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
-    $('.container-map').css("margin-bottom", "40px");
+    $('.container-map').css("margin-bottom", "50px");
 
     $(window).resize(function () {
         if ($(window).width() < 752) {
             if ($('#zoneRechercheCarte').css("height") == "500px") {
-                if ($('.container-map').css("margin-bottom") == "40px") {
+                if ($('.container-map').css("margin-bottom") == "50px") {
                     toggleFiltres();
                 }
             }
         }
         if ($(window).width() > 752) {
-            if ($('.container-map').css("margin-bottom") != "40px") {
-                $('.container-map').css("margin-bottom", "40px");
+            if ($('.container-map').css("margin-bottom") != "50px") {
+                $('.container-map').css("margin-bottom", "50px");
                 toggleFiltres();
             }
         }
