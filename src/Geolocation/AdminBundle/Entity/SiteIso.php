@@ -36,7 +36,7 @@ class SiteIso
      *
      * @ORM\ManyToOne(targetEntity="Geolocation\AdminBundle\Entity\Site")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="adresse_id", referencedColumnName="id", onDelete="CASCADE")
      * })
      */
     private $siteId;
